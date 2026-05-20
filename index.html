@@ -1,1 +1,218 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Zenithoche</title><style>:root{color-scheme:dark;--bg:#050505;--panel:rgba(15,15,15,.86);--panel2:rgba(22,22,22,.74);--text:#f5f1ea;--muted:#b9b0a5;--line:#292623;--soft:#dfd8cf}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 50% 0%,rgba(255,255,255,.09),transparent 30rem),linear-gradient(180deg,#090909 0%,#040404 100%);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}main{width:min(1080px,calc(100% - 32px));margin:0 auto;padding:56px 0 80px}.hero,.card{border:1px solid var(--line);background:var(--panel);border-radius:26px;box-shadow:0 24px 80px rgba(0,0,0,.42)}.hero{padding:clamp(28px,6vw,64px)}.card{padding:28px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:22px}.brand{color:var(--muted);text-transform:uppercase;letter-spacing:.18em;font-size:.82rem}h1,h2,h3{line-height:1.15}h1{margin:8px 0 14px;font-size:clamp(2.2rem,7vw,5.4rem);letter-spacing:.04em}h2{margin:2.3rem 0 .7rem;padding-top:1.4rem;border-top:1px solid var(--line);font-size:1.28rem}h3{margin:0 0 8px;font-size:1.15rem}p,li{color:var(--muted)}a{color:var(--text)}.pillrow,.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.pill,.links a{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:10px 14px;color:var(--text);text-decoration:none;background:rgba(255,255,255,.025)}.links a:hover{border-color:var(--soft)}.small{font-size:.94rem;color:var(--muted)}.kicker{margin:0;color:var(--soft);font-size:1.08rem}footer{margin-top:28px;color:var(--muted);font-size:.92rem}</style></head><body><main><section class="hero"><div class="brand">Zenithoche</div><h1>Clean tools for real communities.</h1><p class="kicker">One home for Zenithoche products, legal pages, support paths, and future software.</p><div class="pillrow"><span class="pill">Discord bots</span><span class="pill">Creator tools</span><span class="pill">Server operations</span><span class="pill">Simple surfaces</span></div><div class="links"><a href="./products/">Products</a><a href="./products/jupnich/">Jupnich</a><a href="./products/ashiko/">Ashiko</a></div></section><section class="grid"><article class="card"><h3>Jupnich</h3><p>Discord server operations: setup, tickets, events, roles, onboarding, moderation support, and community structure.</p><div class="links"><a href="./products/jupnich/">Open Jupnich</a><a href="./products/jupnich/terms.html">Terms</a><a href="./products/jupnich/privacy.html">Privacy</a></div></article><article class="card"><h3>Ashiko</h3><p>Streamer and creator tools: AutoPost, Backdraft review, Hat Draws, and clean creator setup through one simple help doorway.</p><div class="links"><a href="./products/ashiko/">Open Ashiko</a><a href="./products/ashiko/terms.html">Terms</a><a href="./products/ashiko/privacy.html">Privacy</a></div></article></section><footer>Zenithoche · one house for clean tools and human-owned software.</footer></main></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zenithoche — Clean tools for real communities</title>
+    <meta name="description" content="Zenithoche builds clean Discord and creator tools with simple setup surfaces, stronger community operations, and human-owned software direction." />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+  </head>
+  <body>
+    <div id="signal-field" class="signal-field" aria-hidden="true"></div>
+    <div id="cursor-glow" class="cursor-glow" aria-hidden="true"></div>
+
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="wrap nav">
+          <a class="brand" data-link="home" href="/" aria-label="Zenithoche home">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <span>Zenithoche</span>
+          </a>
+          <nav class="nav-links" aria-label="Primary navigation">
+            <a href="#products" data-link="products">Products</a>
+            <a href="#media" data-link="media">Media</a>
+            <a href="#pricing" data-link="pricing">Plans</a>
+            <a href="/products/jupnich/" data-link="jupnich">Jupnich</a>
+            <a href="/products/ashiko/" data-link="ashiko">Ashiko</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="wrap hero-grid">
+            <div data-reveal>
+              <div class="kicker"><span class="live-dot"></span> public software house</div>
+              <h1>Clean tools <span>with a pulse.</span></h1>
+              <p class="lede">Zenithoche builds simple, high-signal tools for Discord communities, creators, and server owners who need software that feels clear instead of hostile.</p>
+              <div class="hero-actions">
+                <a class="button primary" href="#products">Explore products</a>
+                <a class="button ghost" href="#media">See the surface</a>
+              </div>
+              <div class="hero-stats" aria-label="Zenithoche principles">
+                <div class="stat"><strong>01</strong><span>Few buttons. Clear paths.</span></div>
+                <div class="stat"><strong>02</strong><span>Polished setup without walls.</span></div>
+                <div class="stat"><strong>03</strong><span>Built for real communities.</span></div>
+              </div>
+            </div>
+
+            <div class="orbit-card" data-tilt data-reveal aria-label="Zenithoche living interface preview">
+              <div class="orbit-core"><div class="lotus-orb" aria-hidden="true"></div></div>
+              <span class="orbit-chip one">server ops</span>
+              <span class="orbit-chip two">creator signal</span>
+              <span class="orbit-chip three">setup repair</span>
+              <span class="orbit-chip four">human-owned</span>
+              <p class="orbit-caption">The site is the living showroom: product surfaces, loops, screenshots, pricing, support paths, and the visible proof that the tools are real.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="products" class="section">
+          <div class="wrap">
+            <div class="section-head" data-reveal>
+              <div>
+                <div class="section-eyebrow">Products</div>
+                <h2>Two tools. One clean house.</h2>
+              </div>
+              <p class="section-copy">Each product keeps its own job. Zenithoche keeps the design language consistent: simple setup, calm surfaces, strong utility, and no bloated command maze.</p>
+            </div>
+
+            <div class="product-grid">
+              <article class="product-card" data-tilt data-reveal>
+                <div>
+                  <h3>Jupnich</h3>
+                  <p>Discord server operations without a setup wall: setup repair, tickets, events, roles, welcome flows, moderation support, and source routing.</p>
+                  <div class="product-tags">
+                    <span class="tag">Setup</span><span class="tag">Tickets</span><span class="tag">Events</span><span class="tag">Moderation</span>
+                  </div>
+                  <div class="product-visual" aria-hidden="true"></div>
+                </div>
+                <div class="card-actions">
+                  <a class="button primary" href="/products/jupnich/" data-link="jupnich">Open Jupnich</a>
+                  <a class="button ghost" href="#" data-link="jupnich-install">Install</a>
+                </div>
+              </article>
+
+              <article class="product-card" data-tilt data-reveal>
+                <div>
+                  <h3>Ashiko</h3>
+                  <p>Creator-server tools for clean signal: AutoPost, Backdraft overflow review, Hat Draws, and a simple builder doorway.</p>
+                  <div class="product-tags">
+                    <span class="tag">AutoPost</span><span class="tag">Backdraft</span><span class="tag">Hat Draw</span><span class="tag">Builder</span>
+                  </div>
+                  <div class="product-visual" aria-hidden="true"></div>
+                </div>
+                <div class="card-actions">
+                  <a class="button primary" href="/products/ashiko/" data-link="ashiko">Open Ashiko</a>
+                  <a class="button ghost disabled" href="#" data-link="ashiko-store">Store soon</a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="wrap">
+            <div class="section-head" data-reveal>
+              <div>
+                <div class="section-eyebrow">Why it feels different</div>
+                <h2>Less command maze. More doorway.</h2>
+              </div>
+              <p class="section-copy">The website can show what Discord cannot: motion, product previews, guided setup stories, media proof, pricing context, and a stable public identity for the whole software line.</p>
+            </div>
+            <div class="feature-grid">
+              <article class="feature-card" data-reveal><h3>Simple surfaces</h3><p>Top-level actions stay readable. Complexity lives underneath the surface, not in the user’s face.</p></article>
+              <article class="feature-card" data-reveal><h3>Real setup support</h3><p>Product pages can teach setup with video loops, screenshots, and plain words instead of burying everything in slash command help.</p></article>
+              <article class="feature-card" data-reveal><h3>Living product proof</h3><p>Every panel, feature, and flow can get a visual slot so the site feels like active software instead of a text placeholder.</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section id="media" class="section">
+          <div class="wrap">
+            <div class="section-head" data-reveal>
+              <div>
+                <div class="section-eyebrow">Media surface</div>
+                <h2>Drop loops here.</h2>
+              </div>
+              <p class="section-copy">These cards are wired for screenshots, GIFs, and MP4s. Until the real files are dropped in, they hold the shape without breaking the page.</p>
+            </div>
+            <div class="media-grid">
+              <article class="media-card large" data-fallback="Drop /assets/media/jupnich-setup-loop.mp4 here" data-reveal>
+                <video data-media="jupnichSetupLoop" autoplay muted loop playsinline></video>
+                <div class="media-caption"><strong>Jupnich setup repair</strong><span>Show the server-owner flow in motion.</span></div>
+              </article>
+              <article class="media-card" data-fallback="Drop /assets/media/ashiko-builder-loop.mp4 here" data-reveal>
+                <video data-media="ashikoBuilderLoop" autoplay muted loop playsinline></video>
+                <div class="media-caption"><strong>Ashiko builder</strong><span>Simple creator setup surface.</span></div>
+              </article>
+              <article class="media-card" data-fallback="Drop /assets/media/jupnich-tickets.gif here" data-reveal>
+                <img data-media="jupnichTicketsGif" alt="Jupnich ticket panel preview" />
+                <div class="media-caption"><strong>Ticket panels</strong><span>Clean support flow.</span></div>
+              </article>
+              <article class="media-card" data-fallback="Drop /assets/media/ashiko-hat-draw.gif here" data-reveal>
+                <img data-media="ashikoHatDrawGif" alt="Ashiko Hat Draw preview" />
+                <div class="media-caption"><strong>Hat Draw</strong><span>Community draw surface.</span></div>
+              </article>
+              <article class="media-card" data-fallback="Drop /assets/media/ashiko-autopost.png here" data-reveal>
+                <img data-media="ashikoAutopostImage" alt="Ashiko AutoPost preview" />
+                <div class="media-caption"><strong>AutoPost</strong><span>Signal without spam.</span></div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="pricing" class="section">
+          <div class="wrap">
+            <div class="section-head" data-reveal>
+              <div>
+                <div class="section-eyebrow">Plans</div>
+                <h2>Pricing that can stay current.</h2>
+              </div>
+              <p class="section-copy">Prices are pulled from one small config file so they do not rot across multiple pages. When final Discord SKU prices are locked, update one file.</p>
+            </div>
+
+            <div class="price-grid">
+              <article class="price-card" data-reveal>
+                <span class="plan-label">Jupnich</span>
+                <h3>Free</h3>
+                <div class="price" data-price="jupnich-free">$0</div>
+                <p>Core server operations for communities getting organized.</p>
+                <ul class="check-list"><li>Setup/status/checklist</li><li>Basic tickets and events</li><li>Welcome, roles, and moderation basics</li></ul>
+              </article>
+              <article class="price-card featured" data-reveal>
+                <span class="plan-label">Jupnich</span>
+                <h3>Plus</h3>
+                <div class="price" data-price="jupnich-plus">Discord SKU</div>
+                <p>More control for active server teams.</p>
+                <ul class="check-list"><li>Deeper event tools</li><li>Stronger media controls</li><li>Moderation case surfaces</li></ul>
+              </article>
+              <article class="price-card" data-reveal>
+                <span class="plan-label">Jupnich</span>
+                <h3>Pro</h3>
+                <div class="price" data-price="jupnich-pro">Discord SKU</div>
+                <p>Advanced operations once entitlement unlocks are wired.</p>
+                <ul class="check-list"><li>Advanced source automation</li><li>Templates and archive direction</li><li>Future analytics surfaces</li></ul>
+              </article>
+            </div>
+            <p class="note" data-note="jupnich-pricing"></p>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="wrap">
+            <div class="cta-panel" data-reveal>
+              <div class="section-eyebrow">Next surface</div>
+              <h2>Discord is the tool. The website is the world around it.</h2>
+              <p>Use this site for demos, tutorials, launch pages, polished media, product trust, pricing, and the public Zenithoche identity. Discord can stay simple because the site can carry the atmosphere.</p>
+              <div class="hero-actions">
+                <a class="button primary" href="/products/jupnich/" data-link="jupnich">View Jupnich</a>
+                <a class="button ghost" href="/products/ashiko/" data-link="ashiko">View Ashiko</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="wrap footer-row">
+          <div>Zenithoche · clean tools and human-owned software.</div>
+          <div class="footer-links"><a href="#" data-link="terms">Terms</a><a href="#" data-link="privacy">Privacy</a><a href="#" data-link="support">Support</a></div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="/assets/js/site-config.js"></script>
+    <script src="/assets/js/site.js"></script>
+  </body>
+</html>

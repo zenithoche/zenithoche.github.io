@@ -1,122 +1,73 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Ashiko | Zenithoche</title>
-  <style>
-:root{color-scheme:dark;--bg:#050505;--panel:rgba(15,15,15,.88);--panel2:rgba(22,22,22,.76);--text:#f5f1ea;--muted:#b9b0a5;--line:#292623;--soft:#dfd8cf}
-*{box-sizing:border-box}
-body{margin:0;min-height:100vh;background:radial-gradient(circle at 50% 0%,rgba(255,255,255,.09),transparent 30rem),linear-gradient(180deg,#090909 0%,#040404 100%);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
-main{width:min(1120px,calc(100% - 32px));margin:0 auto;padding:56px 0 80px}
-.hero,.card{border:1px solid var(--line);background:var(--panel);border-radius:26px;box-shadow:0 24px 80px rgba(0,0,0,.42)}
-.hero{padding:clamp(28px,6vw,64px)}
-.card{padding:28px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:22px}
-.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:22px}
-.brand{color:var(--muted);text-transform:uppercase;letter-spacing:.18em;font-size:.82rem}
-h1,h2,h3{line-height:1.15}
-h1{margin:8px 0 14px;font-size:clamp(2.2rem,7vw,5.4rem);letter-spacing:.04em}
-h2{margin:2.3rem 0 .7rem;padding-top:1.4rem;border-top:1px solid var(--line);font-size:1.28rem}
-h3{margin:0 0 8px;font-size:1.18rem}
-p,li{color:var(--muted)}
-a{color:var(--text)}
-.pillrow,.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-.pill,.links a{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:10px 14px;color:var(--text);text-decoration:none;background:rgba(255,255,255,.025)}
-.links a:hover{border-color:var(--soft)}
-.kicker{margin:0;color:var(--soft);font-size:1.08rem}
-.price{font-size:1.7rem;color:var(--text);margin:10px 0 4px}
-.badge{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:6px 10px;color:var(--soft);font-size:.88rem;margin-bottom:14px}
-ul{padding-left:1.15rem;margin:12px 0 0}
-.notice{border:1px solid var(--line);background:var(--panel2);border-radius:18px;padding:16px 18px;margin-top:20px}
-footer{margin-top:28px;color:var(--muted);font-size:.92rem}
-</style>
-</head>
-<body>
-  <main>
-    <section class="hero">
-      <div class="brand">Zenithoche Product</div>
-      <h1>Ashiko</h1>
-      <p class="kicker">Simple streamer tools. One doorway. Clean creator setup.</p>
-      <div class="pillrow">
-        <span class="pill">AutoPost</span>
-        <span class="pill">Backdraft</span>
-        <span class="pill">Hat Draw</span>
-        <span class="pill">Builder</span>
-      </div>
-      <div class="links">
-        <a href="../">All products</a>
-        <a href="./terms.html">Terms</a>
-        <a href="./privacy.html">Privacy</a>
-      </div>
-    </section>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ashiko — Simple creator tools</title>
+    <meta name="description" content="Ashiko helps creator servers with AutoPost, Backdraft review, Hat Draws, and a clean builder surface." />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+  </head>
+  <body>
+    <div id="signal-field" class="signal-field" aria-hidden="true"></div>
+    <div id="cursor-glow" class="cursor-glow" aria-hidden="true"></div>
+    <div class="page-shell">
+      <header class="site-header"><div class="wrap nav"><a class="brand" data-link="home" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Zenithoche</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="/" data-link="home">Home</a><a href="/#products" data-link="products">Products</a><a href="/#media" data-link="media">Media</a><a href="/products/jupnich/" data-link="jupnich">Jupnich</a></nav></div></header>
 
-    <section class="grid">
-      <article class="card">
-        <h3>AutoPost</h3>
-        <p>Add a creator link, pick a post channel, and let Ashiko handle paced creator posts.</p>
-      </article>
-      <article class="card">
-        <h3>Backdraft</h3>
-        <p>Overflow posts are held for review instead of flooding the server. Managers can post or delete.</p>
-      </article>
-      <article class="card">
-        <h3>Hat Draw</h3>
-        <p>A simple event/community draw tool with a cute creator-friendly surface.</p>
-      </article>
-    </section>
+      <main>
+        <section class="product-hero">
+          <div class="wrap product-hero-grid">
+            <div class="product-title" data-reveal>
+              <div class="kicker"><span class="live-dot"></span> creator server tools</div>
+              <h1>Ashiko</h1>
+              <p class="lede">AutoPost handles the signal. Backdraft catches the overflow. Hat Draw gives the community a watchable moment.</p>
+              <div class="hero-actions"><a class="button primary" href="#flows">See flows</a><a class="button ghost" href="#plans">View plans</a></div>
+            </div>
+            <div class="media-card large" data-fallback="Drop /assets/media/ashiko-builder-loop.mp4 here" data-reveal>
+              <video data-media="ashikoBuilderLoop" autoplay muted loop playsinline></video>
+              <div class="media-caption"><strong>Builder panel</strong><span>Use a short loop of the /builder panel flow here.</span></div>
+            </div>
+          </div>
+        </section>
 
-    <h2>Plans</h2>
-    <section class="pricing">
-      <article class="card">
-        <span class="badge">Free</span>
-        <h3>Ashiko Free</h3>
-        <p class="price">$0</p>
-        <p>Basic creator-server setup with the clean Ashiko button surface.</p>
-        <ul>
-          <li>Builder basics</li>
-          <li>Hat Draw basics</li>
-          <li>One clean <code>/help</code> doorway</li>
-          <li>Founder panel</li>
-        </ul>
-      </article>
+        <section id="flows" class="section">
+          <div class="wrap">
+            <div class="section-head" data-reveal><div><div class="section-eyebrow">Core flows</div><h2>One doorway. Clean creator setup.</h2></div><p class="section-copy">Ashiko should feel fast, cute, and useful without throwing a streamer into a maze of commands.</p></div>
+            <div class="feature-grid">
+              <article class="feature-card" data-reveal><h3>AutoPost</h3><p>Add a creator link, choose a channel, and let Ashiko pace posts without flooding the server.</p></article>
+              <article class="feature-card" data-reveal><h3>Backdraft</h3><p>Overflow gets held for review so managers can post or delete instead of cleaning up spam after damage.</p></article>
+              <article class="feature-card" data-reveal><h3>Hat Draw</h3><p>A creator-friendly draw surface for events, winners, and community moments.</p></article>
+            </div>
+          </div>
+        </section>
 
-      <article class="card">
-        <span class="badge">Plus</span>
-        <h3>Ashiko Plus</h3>
-        <p class="price">Discord Premium</p>
-        <p>For creator servers that need clean AutoPost without spam.</p>
-        <ul>
-          <li>One creator AutoPost route</li>
-          <li>YouTube checks</li>
-          <li>Backdraft overflow review</li>
-          <li>Post/Delete held creator posts</li>
-          <li>Built-in pacing and duplicate protection</li>
-        </ul>
-      </article>
+        <section class="section">
+          <div class="wrap">
+            <div class="section-head" data-reveal><div><div class="section-eyebrow">Media</div><h2>Make the sheep move.</h2></div><p class="section-copy">Drop Ashiko’s screenshots, GIFs, and MP4s here. The cards already know what files to look for.</p></div>
+            <div class="media-grid">
+              <article class="media-card large" data-fallback="Drop /assets/media/ashiko-hat-draw.gif here" data-reveal><img data-media="ashikoHatDrawGif" alt="Ashiko Hat Draw preview" /><div class="media-caption"><strong>Hat Draw</strong><span>Draw panel, watch state, reveal moment.</span></div></article>
+              <article class="media-card" data-fallback="Drop /assets/media/ashiko-autopost.png here" data-reveal><img data-media="ashikoAutopostImage" alt="Ashiko AutoPost preview" /><div class="media-caption"><strong>AutoPost</strong><span>Creator signal without spam.</span></div></article>
+              <article class="media-card" data-fallback="Drop a Backdraft screenshot here" data-reveal><div class="media-caption"><strong>Backdraft</strong><span>Held posts for review.</span></div></article>
+              <article class="media-card" data-fallback="Drop a builder screenshot here" data-reveal><div class="media-caption"><strong>Builder</strong><span>Need Role, Need Channel, Need Event, and more.</span></div></article>
+              <article class="media-card" data-fallback="Drop a founder panel screenshot here" data-reveal><div class="media-caption"><strong>Founder panel</strong><span>The consistent Zenithoche surface.</span></div></article>
+            </div>
+          </div>
+        </section>
 
-      <article class="card">
-        <span class="badge">Pro</span>
-        <h3>Ashiko Pro</h3>
-        <p class="price">Discord Premium</p>
-        <p>For growing creator communities with multiple routes and heavier operations.</p>
-        <ul>
-          <li>Multiple creator AutoPost routes</li>
-          <li>Twitch/Kick checks when keys are set</li>
-          <li>Backdraft for overflow</li>
-          <li>Future analytics and history tools</li>
-          <li>Advanced creator-server operations</li>
-        </ul>
-      </article>
-    </section>
+        <section id="plans" class="section">
+          <div class="wrap">
+            <div class="section-head" data-reveal><div><div class="section-eyebrow">Plans</div><h2>Creator growth without visual clutter.</h2></div><p class="section-copy">Update final prices in /assets/js/site-config.js once Discord SKU pricing is locked.</p></div>
+            <div class="price-grid">
+              <article class="price-card" data-reveal><span class="plan-label">Free</span><h3>Starter</h3><div class="price" data-price="ashiko-free">$0</div><p>Basic creator-server setup and the clean help doorway.</p><ul class="check-list"><li>Builder basics</li><li>Hat Draw basics</li><li>Founder panel</li></ul></article>
+              <article class="price-card featured" data-reveal><span class="plan-label">Plus</span><h3>Signal</h3><div class="price" data-price="ashiko-plus">Discord SKU</div><p>For creator servers that need AutoPost without spam.</p><ul class="check-list"><li>One creator AutoPost route</li><li>Backdraft overflow review</li><li>Pacing and duplicate protection</li></ul></article>
+              <article class="price-card" data-reveal><span class="plan-label">Pro</span><h3>Growth</h3><div class="price" data-price="ashiko-pro">Discord SKU</div><p>For heavier creator communities with more routes and operations.</p><ul class="check-list"><li>Multiple creator routes</li><li>Advanced review direction</li><li>Future analytics/history tools</li></ul></article>
+            </div>
+            <p class="note" data-note="ashiko-pricing"></p>
+          </div>
+        </section>
+      </main>
 
-    <section class="notice">
-      <strong>Purchase path:</strong>
-      Ashiko paid plans are handled through Discord Premium Apps once Discord monetization is enabled for the app.
-      The bot reads Discord entitlements to unlock Plus and Pro for the server.
-    </section>
-
-    <footer>Zenithoche · one house for clean tools and human-owned software.</footer>
-  </main>
-</body>
+      <footer class="site-footer"><div class="wrap footer-row"><div>Ashiko · Zenithoche product.</div><div class="footer-links"><a href="/" data-link="home">Home</a><a href="#" data-link="terms">Terms</a><a href="#" data-link="privacy">Privacy</a></div></div></footer>
+    </div>
+    <script src="/assets/js/site-config.js"></script><script src="/assets/js/site.js"></script>
+  </body>
 </html>

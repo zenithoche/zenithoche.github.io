@@ -1,1 +1,78 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Jupnich</title><style>:root{color-scheme:dark;--bg:#050505;--panel:rgba(15,15,15,.86);--panel2:rgba(22,22,22,.74);--text:#f5f1ea;--muted:#b9b0a5;--line:#292623;--soft:#dfd8cf}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 50% 0%,rgba(255,255,255,.09),transparent 30rem),linear-gradient(180deg,#090909 0%,#040404 100%);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}main{width:min(1080px,calc(100% - 32px));margin:0 auto;padding:56px 0 80px}.hero,.card{border:1px solid var(--line);background:var(--panel);border-radius:26px;box-shadow:0 24px 80px rgba(0,0,0,.42)}.hero{padding:clamp(28px,6vw,64px)}.card{padding:28px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:22px}.brand{color:var(--muted);text-transform:uppercase;letter-spacing:.18em;font-size:.82rem}h1,h2,h3{line-height:1.15}h1{margin:8px 0 14px;font-size:clamp(2.2rem,7vw,5.4rem);letter-spacing:.04em}h2{margin:2.3rem 0 .7rem;padding-top:1.4rem;border-top:1px solid var(--line);font-size:1.28rem}h3{margin:0 0 8px;font-size:1.15rem}p,li{color:var(--muted)}a{color:var(--text)}.pillrow,.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.pill,.links a{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:10px 14px;color:var(--text);text-decoration:none;background:rgba(255,255,255,.025)}.links a:hover{border-color:var(--soft)}.small{font-size:.94rem;color:var(--muted)}.kicker{margin:0;color:var(--soft);font-size:1.08rem}footer{margin-top:28px;color:var(--muted);font-size:.92rem}</style></head><body><main><section class="hero"><div class="brand">Zenithoche Product</div><h1>Jupnich</h1><p class="kicker">Discord server operations without a setup wall.</p><div class="pillrow"><span class="pill">Setup</span><span class="pill">Tickets</span><span class="pill">Events</span><span class="pill">Roles</span><span class="pill">Moderation support</span></div><div class="links"><a href="../">All products</a><a href="./terms.html">Terms</a><a href="./privacy.html">Privacy</a></div></section><section class="grid"><article class="card"><h3>What Jupnich does</h3><p>Jupnich helps server owners build cleaner Discord communities with setup tools, tickets, events, roles, welcome flows, moderation support, and source routing.</p></article><article class="card"><h3>Product shape</h3><p>Jupnich is for server operations. It is not positioned as a dedicated music bot, game bot, or RP economy bot.</p></article></section><footer>Zenithoche · one house for clean tools and human-owned software.</footer></main></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jupnich — Discord server operations without a setup wall</title>
+    <meta name="description" content="Jupnich helps Discord server owners handle setup, tickets, events, roles, welcome flows, moderation support, and source routing." />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+  </head>
+  <body>
+    <div id="signal-field" class="signal-field" aria-hidden="true"></div>
+    <div id="cursor-glow" class="cursor-glow" aria-hidden="true"></div>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="wrap nav">
+          <a class="brand" data-link="home" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Zenithoche</span></a>
+          <nav class="nav-links" aria-label="Primary navigation"><a href="/" data-link="home">Home</a><a href="/#products" data-link="products">Products</a><a href="/#media" data-link="media">Media</a><a href="/products/ashiko/" data-link="ashiko">Ashiko</a></nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="product-hero">
+          <div class="wrap product-hero-grid">
+            <div class="product-title" data-reveal>
+              <div class="kicker"><span class="live-dot"></span> discord server operations</div>
+              <h1>Jupnich</h1>
+              <p class="lede">Setup, tickets, events, roles, welcome flows, moderation support, and source routing through a cleaner server-owner surface.</p>
+              <div class="hero-actions"><a class="button primary" href="#" data-link="jupnich-install">Install Jupnich</a><a class="button ghost" href="#plans">View plans</a></div>
+            </div>
+            <div class="media-card large" data-fallback="Drop /assets/media/jupnich-setup-loop.mp4 here" data-reveal>
+              <video data-media="jupnichSetupLoop" autoplay muted loop playsinline></video>
+              <div class="media-caption"><strong>Setup without a wall</strong><span>Use a short MP4 loop of /setup status and /setup repair here.</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="wrap">
+            <div class="section-head" data-reveal><div><div class="section-eyebrow">Product shape</div><h2>Built for owners who just need the server fixed.</h2></div><p class="section-copy">Jupnich should explain what is missing, repair what Discord allows, and tell the owner exactly what permission or role order is blocking the rest.</p></div>
+            <div class="feature-grid">
+              <article class="feature-card" data-reveal><h3>Setup repair</h3><p>Creates or reuses starter channels and explains permission blockers in normal server-owner language.</p></article>
+              <article class="feature-card" data-reveal><h3>Community operations</h3><p>Tickets, events, welcome flows, roles, announcements, and moderation support live under one organized tool.</p></article>
+              <article class="feature-card" data-reveal><h3>Source routing</h3><p>Source/feed routing gives communities a structured place for updates without turning setup into a developer manual.</p></article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="wrap">
+            <div class="section-head" data-reveal><div><div class="section-eyebrow">Visual proof</div><h2>Show the flows.</h2></div><p class="section-copy">Drop real screenshots, GIFs, and MP4s here once you capture them. The layout is already waiting for them.</p></div>
+            <div class="media-grid">
+              <article class="media-card large" data-fallback="Drop /assets/media/jupnich-tickets.gif here" data-reveal><img data-media="jupnichTicketsGif" alt="Jupnich ticket flow preview" /><div class="media-caption"><strong>Tickets</strong><span>Panel, open, close, staff flow.</span></div></article>
+              <article class="media-card" data-fallback="Drop /assets/media/jupnich-events.png here" data-reveal><img data-media="jupnichEventsImage" alt="Jupnich event card preview" /><div class="media-caption"><strong>Events</strong><span>Signup cards and event ops.</span></div></article>
+              <article class="media-card" data-fallback="Drop a role panel image here" data-reveal><div class="media-caption"><strong>Roles</strong><span>Self-role and role-panel surfaces.</span></div></article>
+              <article class="media-card" data-fallback="Drop a moderation image here" data-reveal><div class="media-caption"><strong>Moderation</strong><span>Warnings, cases, notes, history.</span></div></article>
+              <article class="media-card" data-fallback="Drop a source routing image here" data-reveal><div class="media-caption"><strong>Source routing</strong><span>Feeds, routes, status, history.</span></div></article>
+            </div>
+          </div>
+        </section>
+
+        <section id="plans" class="section">
+          <div class="wrap">
+            <div class="section-head" data-reveal><div><div class="section-eyebrow">Plans</div><h2>Simple now. Deeper when needed.</h2></div><p class="section-copy">Prices are centralized in /assets/js/site-config.js so the site does not drift when Discord SKU pricing changes.</p></div>
+            <div class="price-grid">
+              <article class="price-card" data-reveal><span class="plan-label">Free</span><h3>Core</h3><div class="price" data-price="jupnich-free">$0</div><p>Useful without feeling baited.</p><ul class="check-list"><li>Setup and guide surfaces</li><li>Basic tickets/events</li><li>Welcome, roles, moderation basics</li></ul></article>
+              <article class="price-card featured" data-reveal><span class="plan-label">Plus</span><h3>Ops</h3><div class="price" data-price="jupnich-plus">Discord SKU</div><p>For active communities needing stronger controls.</p><ul class="check-list"><li>Advanced media controls</li><li>Event reminders/attendance direction</li><li>Moderation case memory</li></ul></article>
+              <article class="price-card" data-reveal><span class="plan-label">Pro</span><h3>Advanced</h3><div class="price" data-price="jupnich-pro">Discord SKU</div><p>For heavier operations after entitlement routing is live.</p><ul class="check-list"><li>Source automation direction</li><li>Templates/archive direction</li><li>Future analytics surfaces</li></ul></article>
+            </div>
+            <p class="note" data-note="jupnich-pricing"></p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer"><div class="wrap footer-row"><div>Jupnich · Zenithoche product.</div><div class="footer-links"><a href="/" data-link="home">Home</a><a href="#" data-link="terms">Terms</a><a href="#" data-link="privacy">Privacy</a></div></div></footer>
+    </div>
+    <script src="/assets/js/site-config.js"></script><script src="/assets/js/site.js"></script>
+  </body>
+</html>
