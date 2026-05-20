@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   color-scheme: dark;
   --bg: #050506;
   --bg-soft: #0a0b0f;
@@ -885,3 +885,48 @@ h2 {
     transition-duration: 1ms !important;
   }
 }
+
+/* Living product console banners */
+.product-grid .product-card:nth-child(1) .product-visual,
+.product-grid .product-card:nth-child(2) .product-visual {
+  min-height: 0;
+  aspect-ratio: 16 / 6.2;
+  margin-top: 18px;
+  border-radius: 20px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  opacity: 0.88;
+  box-shadow: inset 0 0 70px rgba(0, 0, 0, 0.72);
+}
+
+.product-grid .product-card:nth-child(1) .product-visual {
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.62)),
+    url("/assets/media/jupnich-living-console.png");
+  background-position: center 48%;
+}
+
+.product-grid .product-card:nth-child(2) .product-visual {
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.42)),
+    url("/assets/media/ashiko-living-console.png");
+  background-position: center 50%;
+}
+
+.product-grid .product-card:nth-child(1) .product-visual::before,
+.product-grid .product-card:nth-child(2) .product-visual::before {
+  inset: 0;
+  border: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.08), transparent 42%),
+    linear-gradient(90deg, rgba(0,0,0,0.44), transparent 30%, transparent 70%, rgba(0,0,0,0.44));
+}
+
+.product-grid .product-card:nth-child(1) .product-visual::after,
+.product-grid .product-card:nth-child(2) .product-visual::after {
+  opacity: 0.28;
+}
+/* End living product console banners */
+
