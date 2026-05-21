@@ -1,4 +1,4 @@
-window.ZENITHOCHE_CONFIG = {
+﻿window.ZENITHOCHE_CONFIG = {
   updated: "2026-05-20",
   links: {
     home: "/",
@@ -17,14 +17,17 @@ window.ZENITHOCHE_CONFIG = {
   pricing: {
     jupnich: {
       free: "$0",
-      plus: "Discord SKU",
-      pro: "Discord SKU",
+      plus: "$7/mo · Discord SKU",
+      pro: "$13/mo · Discord SKU",
       note: "Jupnich paid plans are being moved to Discord Premium App subscriptions. Use the Discord store as the source of truth when live."
     },
     ashiko: {
+      free: "ashiko: {
       free: "$0",
-      plus: "Discord SKU",
-      pro: "Discord SKU",
+      plus: "$5/mo · Discord SKU",
+      pro: "$10/mo · Discord SKU",",
+      plus: "$5/mo · Discord SKU",
+      pro: "$10/mo · Discord SKU",
       note: "Ashiko paid plans are planned for Discord Premium App subscriptions. Replace these labels with final SKU prices once they are approved/live."
     }
   },
@@ -38,3 +41,8 @@ window.ZENITHOCHE_CONFIG = {
     ashikoAutopostImage: "/assets/media/ashiko-autopost.png"
   }
 };
+
+
+
+
+
