@@ -930,3 +930,173 @@ h2 {
 }
 /* End living product console banners */
 
+/* Final clean product media geometry */
+#media .media-grid.clean-product-media-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 1.08fr) minmax(220px, 0.96fr) minmax(220px, 0.96fr);
+  gap: 18px;
+  align-items: start;
+  max-width: 1120px;
+  margin-inline: auto;
+}
+
+#media .media-stack {
+  display: grid;
+  gap: 18px;
+}
+
+#media .media-card,
+#media .media-card.large {
+  min-height: 0;
+  height: auto;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #050505;
+}
+
+#media .setup-card {
+  aspect-ratio: 682 / 512;
+}
+
+#media .level-card {
+  aspect-ratio: 1193 / 680;
+}
+
+#media .portrait-card {
+  aspect-ratio: 512 / 792;
+}
+
+#media .ashiko-builder-card {
+  aspect-ratio: 512 / 816;
+}
+
+#media .ticket-panel-card {
+  aspect-ratio: 512 / 768;
+}
+
+#media .media-card video,
+#media .media-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  background: #050505;
+  opacity: 1;
+}
+
+#media .level-card img {
+  padding: 8px;
+}
+
+#media .media-caption {
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  padding: 10px 12px;
+}
+
+@media (max-width: 980px) {
+  #media .media-grid.clean-product-media-grid {
+    grid-template-columns: 1fr;
+    max-width: 460px;
+  }
+}
+/* End Final clean product media geometry */
+
+/* Identity loop strip */
+.identity-loops {
+  padding: 34px 0 54px;
+}
+
+.identity-loop-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 150px);
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.identity-loop-card {
+  position: relative;
+  overflow: hidden;
+  width: 150px;
+  aspect-ratio: 1 / 1;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #050505;
+}
+
+.identity-loop-card video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.identity-loop-card span {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  padding: 7px 9px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.66);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+  backdrop-filter: blur(14px);
+}
+
+@media (max-width: 720px) {
+  .identity-loop-grid {
+    grid-template-columns: repeat(3, 92px);
+    gap: 12px;
+  }
+
+  .identity-loop-card {
+    width: 92px;
+    border-radius: 20px;
+  }
+
+  .identity-loop-card span {
+    font-size: 0.52rem;
+  }
+}
+/* End identity loop strip */
+
+/* Zenithoche header logo final */
+.brand-mark {
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  min-height: 46px;
+  flex: 0 0 46px;
+  aspect-ratio: 1 / 1;
+  display: block;
+  border-radius: 999px;
+  overflow: hidden;
+
+  background-image: url("/assets/media/zenithoche-lotus-final.png");
+  background-size: 178%;
+  background-position: center 53%;
+  background-repeat: no-repeat;
+  background-color: #050505;
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 0 18px rgba(255, 255, 255, 0.13),
+    inset 0 0 18px rgba(255, 255, 255, 0.06);
+}
+
+.brand-mark svg,
+.brand-mark img {
+  opacity: 0;
+  pointer-events: none;
+}
+/* End Zenithoche header logo final */
+
