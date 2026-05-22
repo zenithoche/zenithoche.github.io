@@ -1382,6 +1382,111 @@
       }
     }
     /* === JUPNICH HERO ATMOSPHERE END === */
+      /* === JUPNICH HERO BANNER BAR START === */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 44px;
+      min-height: 0;
+      padding-top: 0;
+      padding-bottom: 76px;
+      overflow: visible;
+      isolation: auto;
+    }
+    .hero > div:first-child {
+      order: 2;
+      position: relative;
+      z-index: 3;
+      max-width: 720px;
+      padding-top: 0;
+    }
+    .hero-card {
+      order: 1;
+      position: relative;
+      top: auto;
+      right: auto;
+      bottom: auto;
+      left: auto;
+      width: 100vw;
+      height: clamp(300px, 32vw, 520px);
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      background: #030303;
+      box-shadow: none;
+      opacity: 1;
+      mix-blend-mode: normal;
+      filter: none;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .hero-card::before {
+      display: none;
+    }
+    .hero-card .tall-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      max-height: none;
+      aspect-ratio: auto;
+      border: none;
+      border-radius: 0;
+      background: #030303;
+      box-shadow: none;
+      overflow: hidden;
+    }
+    .hero-banner-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      opacity: .88;
+      filter: brightness(.78) contrast(1.08);
+      transform: none;
+    }
+    .hero-card .tall-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(90deg, rgba(3,3,3,.68) 0%, rgba(3,3,3,.18) 38%, rgba(3,3,3,.16) 68%, rgba(3,3,3,.58) 100%), linear-gradient(180deg, rgba(3,3,3,.55) 0%, rgba(3,3,3,0) 32%, rgba(3,3,3,.82) 100%);
+    }
+    .hero-card .mock-screen {
+      display: none;
+    }
+    .hero::after {
+      display: none;
+    }
+    .hero h1 {
+      text-shadow: 0 0 54px rgba(0,0,0,.86), 0 0 80px rgba(255,255,255,.10);
+    }
+    @media (max-width: 980px) {
+      .hero {
+        gap: 32px;
+        padding-bottom: 54px;
+      }
+      .hero-card {
+        height: clamp(260px, 42vw, 380px);
+        margin-top: 0;
+      }
+      .hero-banner-image {
+        opacity: .90;
+        object-position: center center;
+      }
+    }
+    @media (max-width: 640px) {
+      .hero-card {
+        height: 240px;
+      }
+    }
+    /* === JUPNICH HERO BANNER BAR END === */
   </style>
 </head>
 
@@ -1715,6 +1820,7 @@
   </main>
 </body>
 </html>
+
 
 
 
