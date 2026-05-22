@@ -1,78 +1,863 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Jupnich — Discord server operations without a setup wall</title>
-    <meta name="description" content="Jupnich helps Discord server owners handle setup, tickets, events, roles, welcome flows, moderation support, and source routing." />
-    <link rel="stylesheet" href="/assets/css/styles.css" />
-  </head>
-  <body>
-    <div id="signal-field" class="signal-field" aria-hidden="true"></div>
-    <div id="cursor-glow" class="cursor-glow" aria-hidden="true"></div>
-    <div class="page-shell">
-      <header class="site-header">
-        <div class="wrap nav">
-          <a class="brand" data-link="home" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Zenithoche</span></a>
-          <nav class="nav-links" aria-label="Primary navigation"><a href="/" data-link="home">Home</a><a href="/#products" data-link="products">Products</a><a href="/#media" data-link="media">Media</a><a href="/products/ashiko/" data-link="ashiko">Ashiko</a></nav>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jupnich Preview | Zenithoche</title>
+  <style>
+    :root {
+      --bg: #030303;
+      --panel: rgba(255,255,255,.045);
+      --panel-2: rgba(255,255,255,.07);
+      --line: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.62);
+      --faint: rgba(255,255,255,.38);
+      --glow: rgba(255,255,255,.18);
+      --radius: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(255,255,255,.12), transparent 30%),
+        radial-gradient(circle at 80% 10%, rgba(255,255,255,.07), transparent 28%),
+        linear-gradient(180deg, #090909 0%, #030303 42%, #000 100%);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 22px;
+      letter-spacing: -.03em;
+    }
+
+    .brand img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 18px rgba(255,255,255,.25));
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,.045);
+      color: var(--text);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: .88fr 1.12fr;
+      gap: 42px;
+      align-items: center;
+      padding: 58px 0 42px;
+    }
+
+    .eyebrow {
+      color: var(--faint);
+      font-size: 12px;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin: 0 0 18px;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(76px, 10vw, 142px);
+      line-height: .88;
+      letter-spacing: -.08em;
+      font-weight: 500;
+    }
+
+    .hero h2 {
+      margin-top: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.04;
+      letter-spacing: -.055em;
+      font-weight: 400;
+    }
+
+    .lead {
+      max-width: 640px;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.72;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      padding: 15px 22px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.055);
+      color: var(--text);
+      min-width: 154px;
+      font-weight: 700;
+    }
+
+    .btn.primary {
+      background: #fff;
+      color: #000;
+      box-shadow: 0 0 28px rgba(255,255,255,.22);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.035);
+      padding: 10px 14px;
+      color: rgba(255,255,255,.68);
+      font-size: 14px;
+    }
+
+    .hero-media {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.12), transparent 34%),
+        rgba(255,255,255,.035);
+      box-shadow: 0 22px 80px rgba(0,0,0,.45);
+    }
+
+    .tall-preview {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      max-height: 690px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.14);
+      background:
+        radial-gradient(circle at 50% 16%, rgba(255,255,255,.18), transparent 28%),
+        linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+    }
+
+    .tall-preview video,
+    .tall-preview img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .78;
+      filter: grayscale(1) contrast(1.08) brightness(.82);
+    }
+
+    .mock-screen {
+      position: absolute;
+      inset: 18px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 14px;
+      z-index: 2;
+    }
+
+    .mock-bar,
+    .mock-footer,
+    .mini-card {
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.48);
+      backdrop-filter: blur(14px);
+      border-radius: 18px;
+    }
+
+    .mock-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 14px;
+      color: rgba(255,255,255,.7);
+      font-size: 12px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .mock-stack {
+      display: grid;
+      gap: 12px;
+      align-content: center;
+    }
+
+    .mini-card {
+      padding: 16px;
+    }
+
+    .mini-title {
+      width: 46%;
+      height: 10px;
+      background: rgba(255,255,255,.45);
+      border-radius: 999px;
+      margin-bottom: 13px;
+    }
+
+    .mini-line {
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.14);
+      margin: 8px 0;
+    }
+
+    .mini-line.short { width: 68%; }
+    .mini-line.mid { width: 82%; }
+
+    .mock-footer {
+      padding: 16px;
+    }
+
+    .mock-footer strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 18px;
+    }
+
+    .mock-footer span {
+      color: rgba(255,255,255,.62);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    section {
+      padding: 42px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 26px;
+    }
+
+    .section-head.left {
+      text-align: left;
+      margin-left: 0;
+    }
+
+    .section-head h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.04;
+      letter-spacing: -.055em;
+      font-weight: 400;
+    }
+
+    .section-head p {
+      margin-top: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    .cards-4,
+    .cards-6,
+    .pricing {
+      display: grid;
+      gap: 14px;
+    }
+
+    .cards-4 { grid-template-columns: repeat(4, 1fr); }
+    .cards-6 { grid-template-columns: repeat(6, 1fr); }
+    .pricing { grid-template-columns: repeat(3, 1fr); }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.08), transparent 42%),
+        rgba(255,255,255,.038);
+      min-height: 150px;
+    }
+
+    .card .icon {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      color: rgba(255,255,255,.75);
+      background: rgba(255,255,255,.04);
+      font-size: 22px;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      letter-spacing: -.02em;
+      margin-bottom: 10px;
+    }
+
+    .card p,
+    .price-card p,
+    .trust p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .vertical-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .preview-card {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 12px;
+      background: rgba(255,255,255,.04);
+      overflow: hidden;
+    }
+
+    .preview-box {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 18px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 24%, rgba(255,255,255,.18), transparent 28%),
+        linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.018));
+    }
+
+    .preview-ui {
+      position: absolute;
+      inset: 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.42);
+      backdrop-filter: blur(12px);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .tag {
+      align-self: flex-start;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 999px;
+      padding: 6px 9px;
+      font-size: 11px;
+      color: rgba(255,255,255,.62);
+      background: rgba(255,255,255,.04);
+    }
+
+    .fake-lines div {
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.14);
+      margin-top: 8px;
+    }
+
+    .fake-lines div:nth-child(1) { width: 72%; background: rgba(255,255,255,.34); }
+    .fake-lines div:nth-child(2) { width: 92%; }
+    .fake-lines div:nth-child(3) { width: 64%; }
+
+    .preview-copy {
+      padding: 16px 4px 4px;
+    }
+
+    .preview-copy h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      font-weight: 400;
+      letter-spacing: -.04em;
+      margin-bottom: 8px;
+    }
+
+    .preview-copy p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .trust {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 24px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      background:
+        radial-gradient(circle at 10% 50%, rgba(255,255,255,.16), transparent 24%),
+        rgba(255,255,255,.04);
+    }
+
+    .trust h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(32px, 4vw, 50px);
+      line-height: 1.05;
+      letter-spacing: -.055em;
+      font-weight: 400;
+      margin-bottom: 14px;
+    }
+
+    .trust-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .quote {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px 16px;
+      color: rgba(255,255,255,.75);
+      background: rgba(0,0,0,.24);
+    }
+
+    .price-card {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 26px;
+      background: rgba(255,255,255,.04);
+      min-height: 230px;
+    }
+
+    .price-card.featured {
+      box-shadow: 0 0 34px rgba(255,255,255,.16);
+      background: rgba(255,255,255,.065);
+    }
+
+    .price-card h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 36px;
+      line-height: .95;
+      letter-spacing: -.055em;
+      font-weight: 400;
+      margin-bottom: 14px;
+    }
+
+    .price-card ul {
+      padding-left: 18px;
+      color: rgba(255,255,255,.68);
+      line-height: 1.75;
+      font-size: 14px;
+      margin: 18px 0 0;
+    }
+
+    .cta {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 30px;
+      margin: 28px 0 54px;
+      background:
+        radial-gradient(circle at 5% 50%, rgba(255,255,255,.18), transparent 22%),
+        rgba(255,255,255,.04);
+    }
+
+    .cta h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.04;
+      letter-spacing: -.055em;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .note {
+      border: 1px dashed rgba(255,255,255,.22);
+      color: rgba(255,255,255,.55);
+      border-radius: 18px;
+      padding: 14px 16px;
+      font-size: 13px;
+      line-height: 1.6;
+      margin: 20px 0 0;
+      background: rgba(255,255,255,.025);
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .trust,
+      .cta {
+        grid-template-columns: 1fr;
+      }
+
+      .cards-4,
+      .vertical-grid,
+      .cards-6,
+      .pricing {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-media {
+        max-width: 520px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page { width: min(100% - 24px, var(--max)); }
+      .nav-links { display: none; }
+      .hero { padding-top: 36px; }
+      .cards-4,
+      .vertical-grid,
+      .cards-6,
+      .pricing {
+        grid-template-columns: 1fr;
+      }
+
+      .cta .actions { margin-top: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header class="nav">
+      <a class="brand" href="../../index.html">
+        <img src="../../assets/media/zenithoche-lotus-final.png" alt="Zenithoche lotus">
+        <span>Zenithoche</span>
+      </a>
+      <nav class="nav-links">
+        <a href="../../index.html#products">Products</a>
+        <a href="../../index.html#support">Support</a>
+        <a class="nav-pill" href="https://discord.com/oauth2/authorize?client_id=1492395787764764682&scope=bot%20applications.commands&integration_type=0">Get Jupnich</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Discord server operations</p>
+        <h1>Jupnich</h1>
+        <h2>Server setup without the setup wall.</h2>
+        <p class="lead">
+          Jupnich helps Discord communities handle setup, roles, events, welcome flows,
+          moderation basics, and source routing through a cleaner owner-friendly surface.
+        </p>
+
+        <div class="actions">
+          <a class="btn primary" href="https://discord.com/oauth2/authorize?client_id=1492395787764764682&scope=bot%20applications.commands&integration_type=0">Install Jupnich →</a>
+          <a class="btn" href="https://discord.com/application-directory/1492395787764764682/store">View plans</a>
         </div>
-      </header>
 
-      <main>
-        <section class="product-hero">
-          <div class="wrap product-hero-grid">
-            <div class="product-title" data-reveal>
-              <div class="kicker"><span class="live-dot"></span> discord server operations</div>
-              <h1>Jupnich</h1>
-              <p class="lede">Setup, tickets, events, roles, welcome flows, moderation support, and source routing through a cleaner server-owner surface.</p>
-              <div class="hero-actions"><a class="button primary" href="#" data-link="jupnich-install">Install Jupnich</a><a class="button ghost" href="#plans">View plans</a></div>
+        <div class="chips">
+          <span class="chip">Hat Draw</span>
+          <span class="chip">Source routing</span>
+          <span class="chip">Role panels</span>
+          <span class="chip">Discord SKU ready</span>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <div class="tall-preview">
+          <video autoplay muted loop playsinline>
+            <source src="../../assets/media/jupnich-setup-loop.mp4" type="video/mp4">
+          </video>
+
+          <div class="mock-screen">
+            <div class="mock-bar">
+              <span>Hat Draw</span>
+              <span>3:4 preview</span>
             </div>
-            <div class="media-card large" data-fallback="Drop /assets/media/jupnich-setup-loop.mp4 here" data-reveal>
-              <video data-media="jupnichSetupLoop" autoplay muted loop playsinline></video>
-              <div class="media-caption"><strong>Setup without a wall</strong><span>Use a short MP4 loop of /setup status and /setup repair here.</span></div>
+
+            <div class="mock-stack">
+              <div class="mini-card">
+                <div class="mini-title"></div>
+                <div class="mini-line"></div>
+                <div class="mini-line mid"></div>
+                <div class="mini-line short"></div>
+              </div>
+              <div class="mini-card">
+                <div class="mini-title"></div>
+                <div class="mini-line mid"></div>
+                <div class="mini-line"></div>
+                <div class="mini-line short"></div>
+              </div>
+              <div class="mini-card">
+                <div class="mini-title"></div>
+                <div class="mini-line"></div>
+                <div class="mini-line short"></div>
+              </div>
+            </div>
+
+            <div class="mock-footer">
+              <strong>Hat Draw preview</strong>
+              <span>Shows the draw panel, watch moment, winner reveal, and customizable card direction.</span>
             </div>
           </div>
-        </section>
+        </div>
+      </div>
+    </section>
 
-        <section class="section">
-          <div class="wrap">
-            <div class="section-head" data-reveal><div><div class="section-eyebrow">Product shape</div><h2>Built for owners who just need the server fixed.</h2></div><p class="section-copy">Jupnich should explain what is missing, repair what Discord allows, and tell the owner exactly what permission or role order is blocking the rest.</p></div>
-            <div class="feature-grid">
-              <article class="feature-card" data-reveal><h3>Setup repair</h3><p>Creates or reuses starter channels and explains permission blockers in normal server-owner language.</p></article>
-              <article class="feature-card" data-reveal><h3>Community operations</h3><p>Tickets, events, welcome flows, roles, announcements, and moderation support live under one organized tool.</p></article>
-              <article class="feature-card" data-reveal><h3>Source routing</h3><p>Source/feed routing gives communities a structured place for updates without turning setup into a developer manual.</p></article>
+    <section>
+      <div class="section-head">
+        <h2>Built for owners who just need the server fixed.</h2>
+        <p>
+          Jupnich should make setup feel readable, not like a giant developer manual hiding inside a bot.
+        </p>
+      </div>
+
+      <div class="cards-4">
+        <article class="card">
+          <div class="icon">⌁</div>
+          <h3>Setup repair</h3>
+          <p>Checks your server, fixes what Discord allows, and tells you what still needs permission.</p>
+        </article>
+        <article class="card">
+          <div class="icon">⌘</div>
+          <h3>Community operations</h3>
+          <p>Events, welcome flows, roles, logs, and owner surfaces handled from one cleaner direction.</p>
+        </article>
+        <article class="card">
+          <div class="icon">⌯</div>
+          <h3>Source routing</h3>
+          <p>Route feeds and server signals into the right channels without turning automation into a maze.</p>
+        </article>
+        <article class="card">
+          <div class="icon">◇</div>
+          <h3>Moderation memory</h3>
+          <p>Decisions and context stay connected so your team can act with more confidence.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Creator flows. Vertical previews. No repeated homepage proof.</h2>
+        <p>
+          Ticket panels and level cards are already front-facing on the homepage. This preview tests stronger vertical feature moments instead.
+        </p>
+      </div>
+
+      <div class="vertical-grid">
+        <article class="preview-card">
+          <div class="preview-box">
+            <div class="preview-ui">
+              <span class="tag">3:4 MP4</span>
+              <div class="fake-lines">
+                <div></div><div></div><div></div>
+              </div>
+              <span class="tag">Hat Draw</span>
             </div>
           </div>
-        </section>
+          <div class="preview-copy">
+            <h3>Hat Draw</h3>
+            <p>Show the draw panel, suspense/watch state, winner reveal, and customizable card direction.</p>
+          </div>
+        </article>
 
-        <section class="section">
-          <div class="wrap">
-            <div class="section-head" data-reveal><div><div class="section-eyebrow">Visual proof</div><h2>Show the flows.</h2></div><p class="section-copy">Drop real screenshots, GIFs, and MP4s here once you capture them. The layout is already waiting for them.</p></div>
-            <div class="media-grid">
-              <article class="media-card large" data-fallback="Drop /assets/media/jupnich-tickets.gif here" data-reveal><img data-media="jupnichTicketsGif" alt="Jupnich ticket flow preview" /><div class="media-caption"><strong>Tickets</strong><span>Panel, open, close, staff flow.</span></div></article>
-              <article class="media-card" data-fallback="Drop /assets/media/jupnich-events.png here" data-reveal><img data-media="jupnichEventsImage" alt="Jupnich event card preview" /><div class="media-caption"><strong>Events</strong><span>Signup cards and event ops.</span></div></article>
-              <article class="media-card" data-fallback="Drop a role panel image here" data-reveal><div class="media-caption"><strong>Roles</strong><span>Self-role and role-panel surfaces.</span></div></article>
-              <article class="media-card" data-fallback="Drop a moderation image here" data-reveal><div class="media-caption"><strong>Moderation</strong><span>Warnings, cases, notes, history.</span></div></article>
-              <article class="media-card" data-fallback="Drop a source routing image here" data-reveal><div class="media-caption"><strong>Source routing</strong><span>Feeds, routes, status, history.</span></div></article>
+        <article class="preview-card">
+          <div class="preview-box">
+            <div class="preview-ui">
+              <span class="tag">3:4 MP4</span>
+              <div class="fake-lines">
+                <div></div><div></div><div></div>
+              </div>
+              <span class="tag">capture needed</span>
             </div>
           </div>
-        </section>
-
-        <section id="plans" class="section">
-          <div class="wrap">
-            <div class="section-head" data-reveal><div><div class="section-eyebrow">Plans</div><h2>Simple now. Deeper when needed.</h2></div><p class="section-copy">Prices are centralized in /assets/js/site-config.js so the site does not drift when Discord SKU pricing changes.</p></div>
-            <div class="price-grid">
-              <article class="price-card" data-reveal><span class="plan-label">Free</span><h3>Core</h3><div class="price" data-price="jupnich-free">$0</div><p>Useful without feeling baited.</p><ul class="check-list"><li>Setup and guide surfaces</li><li>Basic tickets/events</li><li>Welcome, roles, moderation basics</li></ul></article>
-              <article class="price-card featured" data-reveal><span class="plan-label">Plus</span><h3>Ops</h3><div class="price" data-price="jupnich-plus">Discord SKU</div><p>For active communities needing stronger controls.</p><ul class="check-list"><li>Advanced media controls</li><li>Event reminders/attendance direction</li><li>Moderation case memory</li></ul></article>
-              <article class="price-card" data-reveal><span class="plan-label">Pro</span><h3>Advanced</h3><div class="price" data-price="jupnich-pro">Discord SKU</div><p>For heavier operations after entitlement routing is live.</p><ul class="check-list"><li>Source automation direction</li><li>Templates/archive direction</li><li>Future analytics surfaces</li></ul></article>
-            </div>
-            <p class="note" data-note="jupnich-pricing"></p>
+          <div class="preview-copy">
+            <h3>Source Routing</h3>
+            <p>Show feed routing, destination channels, and clear routing status.</p>
           </div>
-        </section>
-      </main>
+        </article>
 
-      <footer class="site-footer"><div class="wrap footer-row"><div>Jupnich · Zenithoche product.</div><div class="footer-links"><a href="/" data-link="home">Home</a><a href="#" data-link="terms">Terms</a><a href="#" data-link="privacy">Privacy</a></div></div></footer>
-    </div>
-    <script src="/assets/js/site-config.js"></script><script src="/assets/js/site.js"></script>
-  </body>
+        <article class="preview-card">
+          <div class="preview-box">
+            <div class="preview-ui">
+              <span class="tag">3:4 MP4</span>
+              <div class="fake-lines">
+                <div></div><div></div><div></div>
+              </div>
+              <span class="tag">capture needed</span>
+            </div>
+          </div>
+          <div class="preview-copy">
+            <h3>Role Panels</h3>
+            <p>Show role/self-role setup without reusing ticket or level proof.</p>
+          </div>
+        </article>
+
+        <article class="preview-card">
+          <div class="preview-box">
+            <div class="preview-ui">
+              <span class="tag">3:4 MP4</span>
+              <div class="fake-lines">
+                <div></div><div></div><div></div>
+              </div>
+              <span class="tag">capture needed</span>
+            </div>
+          </div>
+          <div class="preview-copy">
+            <h3>Guide Surface</h3>
+            <p>Show the cleaner guide/help flow instead of a command wall.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="trust">
+      <div>
+        <p class="eyebrow">Permission clarity</p>
+        <h2>If Discord lets Jupnich fix it, she will.</h2>
+        <p>
+          Jupnich cannot bypass Discord permissions or role order. The product value is that she explains blockers clearly instead of hiding them behind vague errors.
+        </p>
+      </div>
+
+      <div class="trust-list">
+        <div class="quote">“I need Manage Channels before I can create this.”</div>
+        <div class="quote">“My role is below the role I need to assign.”</div>
+        <div class="quote">“Move Jupnich higher in Server Settings → Roles, then try again.”</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>One cleaner surface for the parts owners touch most.</h2>
+      </div>
+
+      <div class="cards-6">
+        <article class="card">
+          <div class="icon">✓</div>
+          <h3>Setup status + repair</h3>
+          <p>See what is off, fix what Discord allows, and get clear next steps.</p>
+        </article>
+        <article class="card">
+          <div class="icon">⌯</div>
+          <h3>Source routing</h3>
+          <p>Track server signals and route them to the right place.</p>
+        </article>
+        <article class="card">
+          <div class="icon">◎</div>
+          <h3>Roles + panels</h3>
+          <p>Manage cleaner role surfaces and self-role entry points.</p>
+        </article>
+        <article class="card">
+          <div class="icon">?</div>
+          <h3>Guide surface</h3>
+          <p>Keep setup guidance readable without a giant command manual.</p>
+        </article>
+        <article class="card">
+          <div class="icon">▣</div>
+          <h3>Events + announcements</h3>
+          <p>Keep community updates in the loop without clutter.</p>
+        </article>
+        <article class="card">
+          <div class="icon">◇</div>
+          <h3>Moderation memory</h3>
+          <p>Keep decisions and context connected as the server grows.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="plans">
+      <div class="section-head">
+        <h2>Simple now. Deeper when needed.</h2>
+        <p>
+          Pricing should stay honest and Discord-native. Do not overpromise automatic entitlement unlocks until the real Discord purchase flow is verified.
+        </p>
+      </div>
+
+      <div class="pricing">
+        <article class="price-card">
+          <h3>Free<br>$0</h3>
+          <p>Core operations for getting started.</p>
+          <ul>
+            <li>Setup repair basics</li>
+            <li>Core server surfaces</li>
+            <li>Owner-friendly guidance</li>
+          </ul>
+        </article>
+
+        <article class="price-card featured">
+          <h3>Plus<br>Discord SKU</h3>
+          <p>More depth for growing communities.</p>
+          <ul>
+            <li>Expanded setup tools</li>
+            <li>Deeper routing surfaces</li>
+            <li>More polish and control</li>
+          </ul>
+        </article>
+
+        <article class="price-card">
+          <h3>Pro<br>Discord SKU</h3>
+          <p>Advanced direction for active servers.</p>
+          <ul>
+            <li>All Plus direction</li>
+            <li>Higher operations ceiling</li>
+            <li>Priority product surface</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div>
+        <h2>Bring Jupnich into your server.</h2>
+        <p>Start with setup, roles, routing, and the server operations surface your community actually needs.</p>
+      </div>
+
+      <div class="actions">
+        <a class="btn primary" href="https://discord.com/oauth2/authorize?client_id=1492395787764764682&scope=bot%20applications.commands&integration_type=0">Install Jupnich →</a>
+        <a class="btn" href="https://discord.gg/eCNPT7YDvN">Join Support Discord</a>
+      </div>
+    </section>
+  </main>
+</body>
 </html>
+
+
