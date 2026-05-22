@@ -1671,6 +1671,39 @@
       }
     }
     /* === JUPNICH WIRED MEDIA END === */
+      /* === JUPNICH VIDEO OVERLAY FIX START === */
+    .panel-video {
+      opacity: 1 !important;
+      filter: brightness(1.08) contrast(1.04) !important;
+      z-index: 1;
+    }
+    .video-preview-box {
+      background: #050505 !important;
+    }
+    .video-preview-box .preview-ui {
+      background: transparent !important;
+      border-color: transparent !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      z-index: 2;
+    }
+    .video-preview-box .preview-ui .fake-lines {
+      display: none !important;
+    }
+    .video-preview-box .tag {
+      background: rgba(0,0,0,.42) !important;
+      border-color: rgba(255,255,255,.18) !important;
+      color: rgba(255,255,255,.78) !important;
+      backdrop-filter: blur(10px);
+    }
+    .card-flow-video-wrap video {
+      opacity: 1 !important;
+      filter: brightness(1.08) contrast(1.04) !important;
+    }
+    .card-flow-video-wrap {
+      background: #050505 !important;
+    }
+    /* === JUPNICH VIDEO OVERLAY FIX END === */
   </style>
 </head>
 
@@ -2021,6 +2054,7 @@
   </main>
 </body>
 </html>
+
 
 
 
