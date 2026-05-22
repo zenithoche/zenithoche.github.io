@@ -1487,6 +1487,190 @@
       }
     }
     /* === JUPNICH HERO BANNER BAR END === */
+      /* === JUPNICH MEDIA PANEL VIDEO START === */
+    .vertical-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .panel-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: .92;
+      filter: brightness(.88) contrast(1.06);
+    }
+    .video-preview-box {
+      aspect-ratio: 512 / 682;
+    }
+    .video-preview-box .preview-ui {
+      background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.68));
+    }
+    .card-flow-section {
+      padding: 48px 0 54px;
+    }
+    .card-flow-head {
+      max-width: 760px;
+      margin-bottom: 28px;
+    }
+    .card-flow-head h2 {
+      max-width: 720px;
+    }
+    .card-flow-head .section-text {
+      max-width: 620px;
+      padding-top: 18px;
+      justify-self: auto;
+    }
+    .card-flow-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .card-flow-item {
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 30px;
+      background: radial-gradient(circle at 50% 0%, rgba(255,255,255,.10), transparent 42%), rgba(255,255,255,.038);
+      padding: 14px;
+      overflow: hidden;
+      box-shadow: 0 28px 90px rgba(0,0,0,.38);
+    }
+    .card-flow-video-wrap {
+      position: relative;
+      aspect-ratio: 680 / 512;
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 22px;
+      overflow: hidden;
+      background: #050505;
+    }
+    .card-flow-video-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .card-flow-copy {
+      padding: 16px 6px 4px;
+    }
+    .card-flow-copy h3 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      letter-spacing: -.045em;
+    }
+    .card-flow-copy p {
+      margin: 0;
+      color: rgba(255,255,255,.56);
+      font-size: 14px;
+      line-height: 1.62;
+    }
+    @media (max-width: 980px) {
+      .vertical-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .card-flow-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .vertical-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    /* === JUPNICH MEDIA PANEL VIDEO END === */
+      /* === JUPNICH WIRED MEDIA START === */
+    .vertical-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .panel-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      opacity: .94;
+      filter: brightness(.90) contrast(1.06);
+    }
+    .video-preview-box {
+      aspect-ratio: 512 / 682;
+      background: #030303;
+    }
+    .video-preview-box .preview-ui {
+      background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.72));
+    }
+    .video-preview-box .fake-lines {
+      display: none;
+    }
+    .card-flow-section {
+      padding: 48px 0 54px;
+    }
+    .card-flow-head {
+      max-width: 780px;
+      margin-bottom: 28px;
+    }
+    .card-flow-head .section-text {
+      max-width: 640px;
+      padding-top: 18px;
+      justify-self: auto;
+    }
+    .card-flow-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .card-flow-item {
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 30px;
+      background: radial-gradient(circle at 50% 0%, rgba(255,255,255,.10), transparent 42%), rgba(255,255,255,.038);
+      padding: 14px;
+      overflow: hidden;
+      box-shadow: 0 28px 90px rgba(0,0,0,.38);
+    }
+    .card-flow-video-wrap {
+      position: relative;
+      aspect-ratio: 680 / 512;
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 22px;
+      overflow: hidden;
+      background: #050505;
+    }
+    .card-flow-video-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .card-flow-copy {
+      padding: 16px 6px 4px;
+    }
+    .card-flow-copy h3 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      letter-spacing: -.045em;
+    }
+    .card-flow-copy p {
+      margin: 0;
+      color: rgba(255,255,255,.56);
+      font-size: 14px;
+      line-height: 1.62;
+    }
+    @media (max-width: 980px) {
+      .vertical-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .card-flow-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 640px) {
+      .vertical-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    /* === JUPNICH WIRED MEDIA END === */
   </style>
 </head>
 
@@ -1620,11 +1804,11 @@
             <p>Shape member access, self-roles, and clean entry points without making setup feel heavy.</p>
           </div>
         </article>
-
         <article class="preview-card">
-          <div class="preview-box">
+          <div class="preview-box video-preview-box">
+            <video class="panel-video" autoplay muted loop playsinline preload="auto" src="../../assets/media/jupnich-guide-menus-loop.mp4"></video>
             <div class="preview-ui">
-              <span class="tag">3:4 MP4</span>
+              <span class="tag">MP4</span>
               <div class="fake-lines"><div></div><div></div><div></div></div>
               <span class="tag">Guide Menus</span>
             </div>
@@ -1634,7 +1818,6 @@
             <p>Simple menus help owners find the right path without digging through command walls.</p>
           </div>
         </article>
-
         <article class="preview-card">
           <div class="preview-box">
             <div class="preview-ui">
@@ -1648,22 +1831,40 @@
             <p>Server controls, saved settings, and owner tools gathered into a readable surface.</p>
           </div>
         </article>
+      </div>
+    </section>
 
-        <article class="preview-card">
-          <div class="preview-box">
-            <div class="preview-ui">
-              <span class="tag">3:4 MP4</span>
-              <div class="fake-lines"><div></div><div></div><div></div></div>
-              <span class="tag">Welcome Cards</span>
-            </div>
+    
+
+    <!-- JUPNICH WELCOME GOODBYE SECTION START -->
+    <section class="card-flow-section">
+      <div class="card-flow-head">
+        <p class="section-label">Welcome Flow</p>
+        <h2>Cards that make the server feel alive.</h2>
+        <p class="section-text">Arrivals and goodbyes should feel clean, readable, and cared for. Jupnich gives those moments a polished surface without making owners build the design from scratch.</p>
+      </div>
+      <div class="card-flow-grid">
+        <article class="card-flow-item">
+          <div class="card-flow-video-wrap">
+            <video autoplay muted loop playsinline preload="auto" src="../../assets/media/jupnich-welcome-card-loop.mp4"></video>
           </div>
-          <div class="preview-copy">
-            <h3>Welcome + Goodbye Cards</h3>
-            <p>Show arrivals and departures with polished cards that make the server feel alive.</p>
+          <div class="card-flow-copy">
+            <h3>Welcome Cards</h3>
+            <p>Show new arrivals with a clean card that helps the server feel intentional from the first moment.</p>
+          </div>
+        </article>
+        <article class="card-flow-item">
+          <div class="card-flow-video-wrap">
+            <video autoplay muted loop playsinline preload="auto" src="../../assets/media/jupnich-goodbye-card-loop.mp4"></video>
+          </div>
+          <div class="card-flow-copy">
+            <h3>Goodbye Cards</h3>
+            <p>Keep departures readable and calm with a card surface that still feels part of the community.</p>
           </div>
         </article>
       </div>
     </section>
+    <!-- JUPNICH WELCOME GOODBYE SECTION END -->
 
     <section class="source-routing-feature">
       <div class="source-routing-panel">
@@ -1820,6 +2021,9 @@
   </main>
 </body>
 </html>
+
+
+
 
 
 
