@@ -1,37 +1,435 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Ashiko — Simple creator tools</title>
+    <title>Ashiko â€” Simple creator tools</title>
     <meta name="description" content="Ashiko helps creator servers with AutoPost, Backdraft review, Hat Draws, and a clean builder surface." />
     <link rel="stylesheet" href="/assets/css/styles.css" />
-  </head>
-  <body>
+  <style id="ashiko-pink-foundation-style">
+/* === ASHIKO PINK FOUNDATION START === */
+.ashiko-page-polished {
+  --ashiko-pink: #f6a7ca;
+  --ashiko-pink-hot: #ff7fbd;
+  --ashiko-blush: #ffd6e9;
+  --ashiko-rose-dim: rgba(246, 167, 202, .22);
+  --ashiko-rose-soft: rgba(246, 167, 202, .12);
+}
+
+.ashiko-page-polished .section-label,
+.ashiko-page-polished .eyebrow,
+.ashiko-page-polished .kicker,
+.ashiko-page-polished .tag {
+  color: rgba(255, 214, 233, .86) !important;
+  border-color: rgba(246, 167, 202, .22) !important;
+  background: rgba(246, 167, 202, .08) !important;
+}
+
+.ashiko-page-polished h1,
+.ashiko-page-polished h2,
+.ashiko-page-polished h3 {
+  letter-spacing: -.045em;
+}
+
+.ashiko-hero-signal {
+  display: block;
+  max-width: 68ch;
+  margin-top: 18px;
+  color: rgba(255, 235, 245, .88);
+  font-size: clamp(17px, 1.35vw, 22px);
+  line-height: 1.7;
+  font-weight: 650;
+  letter-spacing: .012em;
+  text-shadow: 0 0 24px rgba(246, 167, 202, .13);
+}
+
+.ashiko-soft-line {
+  display: block;
+  color: rgba(255, 235, 245, .78);
+  font-style: italic;
+  line-height: 1.75;
+  max-width: 68ch;
+}
+
+.ashiko-page-polished .hero,
+.ashiko-page-polished .product-hero,
+.ashiko-page-polished .feature-card,
+.ashiko-page-polished .preview-card,
+.ashiko-page-polished .plan-card,
+.ashiko-page-polished .glass-card,
+.ashiko-page-polished article {
+  border-color: rgba(246, 167, 202, .16) !important;
+}
+
+.ashiko-page-polished .hero,
+.ashiko-page-polished .product-hero {
+  background:
+    radial-gradient(circle at 82% 8%, rgba(246, 167, 202, .18), transparent 34%),
+    radial-gradient(circle at 18% 12%, rgba(255, 214, 233, .10), transparent 30%),
+    linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.018)) !important;
+}
+
+.ashiko-page-polished .feature-card,
+.ashiko-page-polished .preview-card,
+.ashiko-page-polished .plan-card,
+.ashiko-page-polished .glass-card,
+.ashiko-page-polished article {
+  background:
+    linear-gradient(180deg, rgba(246, 167, 202, .055), rgba(255,255,255,.018)) !important;
+  box-shadow:
+    0 20px 70px rgba(0,0,0,.22),
+    inset 0 0 0 1px rgba(255,255,255,.025) !important;
+}
+
+.ashiko-page-polished .preview-box,
+.ashiko-page-polished .media-box,
+.ashiko-page-polished .video-box {
+  border-color: rgba(246, 167, 202, .18) !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.035), 0 0 34px rgba(246,167,202,.08) !important;
+}
+
+.ashiko-page-polished a.button,
+.ashiko-page-polished .button,
+.ashiko-page-polished .btn,
+.ashiko-page-polished .cta,
+.ashiko-page-polished a[class*="button"],
+.ashiko-page-polished a[class*="btn"] {
+  border-color: rgba(246, 167, 202, .26) !important;
+}
+
+.ashiko-page-polished a.button:hover,
+.ashiko-page-polished .button:hover,
+.ashiko-page-polished .btn:hover,
+.ashiko-page-polished .cta:hover,
+.ashiko-page-polished a[class*="button"]:hover,
+.ashiko-page-polished a[class*="btn"]:hover {
+  border-color: rgba(255, 214, 233, .42) !important;
+  box-shadow: 0 0 30px rgba(246, 167, 202, .12) !important;
+}
+
+.ashiko-page-polished .plans-grid .plan-card:nth-child(2),
+.ashiko-page-polished .plan-card:nth-of-type(2) {
+  border-color: rgba(246, 167, 202, .32) !important;
+  box-shadow: 0 24px 80px rgba(246, 167, 202, .10), inset 0 0 0 1px rgba(255,255,255,.03) !important;
+}
+
+.ashiko-page-polished .preview-copy p,
+.ashiko-page-polished .plan-card p,
+.ashiko-page-polished li,
+.ashiko-page-polished p {
+  color: rgba(255,255,255,.74);
+}
+
+.ashiko-page-polished strong,
+.ashiko-page-polished b {
+  color: rgba(255, 235, 245, .94);
+}
+/* === ASHIKO PINK FOUNDATION END === */
+</style>
+<style id="ashiko-hero-banner-base-style">body.ashiko-page-polished main>section:first-of-type{position:relative!important;overflow:hidden!important;isolation:isolate!important;min-height:clamp(620px,68vw,840px)!important;padding-top:clamp(72px,7vw,118px)!important;padding-bottom:clamp(76px,8vw,130px)!important;background:linear-gradient(90deg,rgba(0,0,0,.86) 0%,rgba(0,0,0,.68) 34%,rgba(0,0,0,.36) 72%,rgba(0,0,0,.44) 100%),linear-gradient(180deg,rgba(0,0,0,.12) 0%,rgba(0,0,0,.26) 46%,rgba(0,0,0,.86) 100%),url("../../assets/media/ashiko-public-banner.png") center center/cover no-repeat!important;border-bottom:1px solid rgba(255,170,215,.16)!important;box-shadow:inset 0 -120px 140px rgba(0,0,0,.88),0 38px 100px rgba(255,90,180,.08)!important}body.ashiko-page-polished main>section:first-of-type::before{content:""!important;position:absolute!important;inset:0!important;pointer-events:none!important;background:radial-gradient(circle at 65% 28%,rgba(255,120,205,.22),transparent 28%),radial-gradient(circle at 18% 24%,rgba(255,190,225,.10),transparent 30%)!important;z-index:-1!important}body.ashiko-page-polished main>section:first-of-type>*{position:relative!important;z-index:1!important}@media(max-width:760px){body.ashiko-page-polished main>section:first-of-type{min-height:auto!important;background-position:center top!important;padding-top:54px!important;padding-bottom:76px!important}}</style>
+<style id="ashiko-builder-video-hard-style">
+/* === ASHIKO BUILDER VIDEO HARD FIX START === */
+.ashiko-builder-panel{position:relative!important;overflow:hidden!important;min-height:clamp(430px,39vw,650px)!important;background:#060006!important;border-color:rgba(255,170,220,.26)!important;box-shadow:0 24px 90px rgba(255,80,180,.10),inset 0 0 0 1px rgba(255,255,255,.035)!important;}
+.ashiko-builder-panel::before,.ashiko-builder-panel::after,.ashiko-builder-visual::before,.ashiko-builder-visual::after{display:none!important;content:none!important;background:none!important;opacity:0!important;}
+.ashiko-builder-visual-video{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;min-height:100%!important;z-index:0!important;border-radius:inherit!important;background:#060006!important;overflow:hidden!important;}
+.ashiko-builder-video{display:block!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;min-height:100%!important;object-fit:cover!important;object-position:center center!important;opacity:1!important;filter:none!important;mix-blend-mode:normal!important;background:#060006!important;z-index:0!important;}
+.ashiko-builder-caption{position:absolute!important;left:20px!important;right:20px!important;bottom:20px!important;z-index:3!important;background:rgba(0,0,0,.58)!important;border:1px solid rgba(255,210,235,.16)!important;border-radius:18px!important;padding:16px 18px!important;backdrop-filter:blur(10px)!important;}
+.ashiko-builder-caption h3{margin:0 0 8px!important;color:rgba(255,245,250,.96)!important;}
+.ashiko-builder-caption p{margin:0!important;color:rgba(255,235,245,.78)!important;}
+@media(max-width:760px){.ashiko-builder-panel{min-height:430px!important}.ashiko-builder-caption{left:14px!important;right:14px!important;bottom:14px!important}}
+/* === ASHIKO BUILDER VIDEO HARD FIX END === */
+</style>
+<style id="ashiko-complete-flow-media-style">
+.ashiko-flow-media-section{position:relative!important;padding:clamp(74px,8vw,124px) 0!important;background:linear-gradient(180deg,rgba(0,0,0,.92),rgba(12,3,10,.97))!important;overflow:hidden!important;border-top:1px solid rgba(255,170,215,.10)!important;border-bottom:1px solid rgba(255,170,215,.10)!important}.ashiko-flow-media-section::before{content:""!important;position:absolute!important;inset:0!important;pointer-events:none!important;background:radial-gradient(circle at 18% 12%,rgba(255,115,190,.16),transparent 34%),radial-gradient(circle at 82% 22%,rgba(255,190,220,.09),transparent 31%),linear-gradient(90deg,rgba(255,125,195,.045),transparent 34%,rgba(255,125,195,.035))!important}.ashiko-flow-inner{position:relative!important;z-index:1!important;width:min(1240px,calc(100% - 42px))!important;margin:0 auto!important}.ashiko-flow-copy{display:grid!important;grid-template-columns:minmax(0,1.05fr) minmax(280px,.75fr)!important;gap:clamp(24px,5vw,80px)!important;align-items:end!important;margin-bottom:clamp(32px,4.6vw,62px)!important}.ashiko-flow-kicker{display:block!important;margin:0 0 18px!important;text-transform:uppercase!important;letter-spacing:.38em!important;font-size:12px!important;font-weight:900!important;color:rgba(255,184,220,.72)!important}.ashiko-flow-copy h2{margin:0!important;font-size:clamp(44px,6vw,88px)!important;line-height:.9!important;letter-spacing:-.07em!important;color:#fff!important;text-wrap:balance!important}.ashiko-flow-copy p{margin:0!important;max-width:58ch!important;font-size:16px!important;line-height:1.75!important;color:rgba(255,255,255,.72)!important;font-style:italic!important}.ashiko-flow-grid{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:clamp(16px,1.8vw,24px)!important;align-items:start!important}.ashiko-flow-card{border:1px solid rgba(255,185,220,.20)!important;background:linear-gradient(180deg,rgba(255,255,255,.078),rgba(255,255,255,.024))!important;border-radius:28px!important;padding:12px!important;box-shadow:0 24px 80px rgba(255,70,170,.09)!important;overflow:hidden!important}.ashiko-flow-video-shell{position:relative!important;aspect-ratio:9/16!important;border-radius:21px!important;overflow:hidden!important;background:#050005!important;border:1px solid rgba(255,255,255,.10)!important}.ashiko-flow-video-shell video{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;opacity:1!important;filter:none!important;mix-blend-mode:normal!important;background:#000!important}.ashiko-flow-badge{position:absolute!important;left:12px!important;bottom:12px!important;z-index:3!important;border:1px solid rgba(255,255,255,.16)!important;background:rgba(0,0,0,.36)!important;border-radius:999px!important;padding:7px 10px!important;font-size:12px!important;color:rgba(255,255,255,.94)!important;backdrop-filter:blur(8px)!important}.ashiko-flow-card h3{margin:16px 4px 8px!important;font-size:clamp(22px,1.75vw,30px)!important;line-height:1!important;letter-spacing:-.045em!important;color:#fff!important}.ashiko-flow-card p{margin:0 4px 8px!important;font-size:13px!important;line-height:1.62!important;color:rgba(255,255,255,.68)!important}.ashiko-flow-card.is-primary{box-shadow:0 28px 90px rgba(255,93,180,.15)!important;border-color:rgba(255,205,230,.28)!important}@media(max-width:1150px){.ashiko-flow-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}.ashiko-flow-card:nth-last-child(-n+2){transform:none!important}}@media(max-width:900px){.ashiko-flow-copy{grid-template-columns:1fr!important;gap:18px!important}.ashiko-flow-grid{grid-template-columns:1fr!important}.ashiko-flow-card{max-width:460px!important;margin:0 auto!important;width:100%!important}.ashiko-flow-copy h2{font-size:clamp(40px,13vw,68px)!important}}
+</style>
+<style id="ashiko-discord-invite-style">.ashiko-discord-invite{border:1px solid rgba(255,175,220,.34)!important;background:linear-gradient(180deg,rgba(255,160,210,.18),rgba(255,110,190,.075))!important;color:#fff!important;box-shadow:0 16px 44px rgba(255,80,170,.15),inset 0 1px 0 rgba(255,255,255,.08)!important}.ashiko-discord-invite:hover{border-color:rgba(255,205,235,.56)!important;box-shadow:0 18px 54px rgba(255,95,185,.22),inset 0 1px 0 rgba(255,255,255,.12)!important;transform:translateY(-1px)}.ashiko-discord-invite:focus-visible{outline:2px solid rgba(255,190,225,.65)!important;outline-offset:3px!important}</style>
+<style id="ashiko-support-cta-polish-style">.ashiko-support-discord-section{max-width:1240px!important;margin:clamp(70px,8vw,120px) auto 64px!important;padding:0 24px!important}.ashiko-support-discord-section .cta-panel{position:relative!important;overflow:hidden!important;display:grid!important;grid-template-columns:minmax(0,1.1fr) minmax(260px,.75fr)!important;gap:32px!important;align-items:center!important;min-height:320px!important;padding:clamp(34px,5vw,64px)!important;border-radius:34px!important;border:1px solid rgba(255,175,220,.24)!important;background:radial-gradient(circle at 76% 35%,rgba(255,135,205,.22),transparent 34%),radial-gradient(circle at 18% 12%,rgba(255,210,235,.12),transparent 30%),linear-gradient(135deg,rgba(255,155,210,.11),rgba(10,8,11,.92) 46%,rgba(0,0,0,.94))!important;box-shadow:0 32px 110px rgba(255,80,170,.13),inset 0 1px 0 rgba(255,255,255,.08)!important}.ashiko-support-discord-section .cta-panel::after{content:"ASHIKO SUPPORT\A SETUP HELP\A PRODUCT UPDATES\A CREATOR SIGNAL";white-space:pre-line!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;min-height:210px!important;border-radius:28px!important;border:1px solid rgba(255,190,230,.22)!important;background:linear-gradient(180deg,rgba(255,190,225,.13),rgba(255,120,200,.055))!important;color:rgba(255,226,244,.76)!important;font-size:12px!important;line-height:2!important;font-weight:800!important;letter-spacing:.22em!important;text-transform:uppercase!important;box-shadow:inset 0 0 70px rgba(255,120,200,.09)!important}.ashiko-support-discord-section .eyebrow{display:inline-flex!important;width:auto!important;padding:8px 14px!important;border-radius:999px!important;background:rgba(255,180,220,.10)!important;border:1px solid rgba(255,190,230,.18)!important;color:rgba(255,210,236,.82)!important}.ashiko-support-discord-section h2{max-width:760px!important;margin:22px 0 14px!important;letter-spacing:-.055em!important}.ashiko-support-discord-section p:not(.eyebrow){max-width:680px!important;font-style:italic!important;color:rgba(255,232,246,.76)!important;line-height:1.7!important}.ashiko-support-discord-section .actions{margin-top:24px!important}.ashiko-support-discord-section .ashiko-discord-invite{padding:14px 22px!important;border-radius:999px!important}@media(max-width:820px){.ashiko-support-discord-section .cta-panel{grid-template-columns:1fr!important}.ashiko-support-discord-section .cta-panel::after{min-height:150px!important}}</style>
+<style id="ashiko-support-sheep-cta-style">
+.ashiko-support-discord-section .cta-panel{
+  grid-template-columns:minmax(0,1fr) minmax(280px,.62fr)!important;
+  gap:clamp(24px,4vw,54px)!important;
+  align-items:center!important;
+}
+.ashiko-support-discord-section .cta-panel::after{
+  content:""!important;
+  min-height:clamp(260px,25vw,390px)!important;
+  width:100%!important;
+  border-radius:30px!important;
+  border:1px solid rgba(255,210,235,.28)!important;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.14)),
+    url("/assets/media/ashiko-support-sheep.png") center center/cover no-repeat!important;
+  box-shadow:0 26px 90px rgba(255,120,190,.18),inset 0 1px 0 rgba(255,255,255,.16)!important;
+}
+.ashiko-support-discord-section .cta-panel::before{
+  content:""!important;
+  position:absolute!important;
+  inset:auto 32px 32px auto!important;
+  width:210px!important;
+  height:210px!important;
+  border-radius:999px!important;
+  background:radial-gradient(circle,rgba(255,155,215,.22),transparent 66%)!important;
+  pointer-events:none!important;
+}
+.ashiko-support-discord-section .actions{
+  display:flex!important;
+  gap:14px!important;
+  align-items:center!important;
+}
+.ashiko-support-discord-section h2{
+  max-width:650px!important;
+}
+@media(max-width:820px){
+  .ashiko-support-discord-section .cta-panel{
+    grid-template-columns:1fr!important;
+  }
+  .ashiko-support-discord-section .cta-panel::after{
+    min-height:280px!important;
+    order:-1!important;
+  }
+}
+</style>
+<style id="ashiko-core-flows-jupnich-style-pass">
+body.ashiko-page-polished .ashiko-core-feature-surface{
+  position:relative!important;
+  isolation:isolate!important;
+  max-width:1120px!important;
+  margin:clamp(82px,8vw,132px) auto!important;
+  padding:clamp(74px,7vw,112px) clamp(20px,4vw,42px)!important;
+  border-top:1px solid rgba(255,185,224,.13)!important;
+  border-bottom:1px solid rgba(255,185,224,.10)!important;
+  background:
+    radial-gradient(circle at 50% 8%,rgba(255,210,236,.13),transparent 28%),
+    radial-gradient(circle at 12% 35%,rgba(255,118,197,.10),transparent 28%),
+    radial-gradient(circle at 88% 45%,rgba(255,172,220,.09),transparent 30%)!important;
+}
+body.ashiko-page-polished .ashiko-core-feature-surface::before{
+  content:""!important;
+  position:absolute!important;
+  inset:18px 0 auto 0!important;
+  height:1px!important;
+  background:linear-gradient(90deg,transparent,rgba(255,195,230,.42),transparent)!important;
+  pointer-events:none!important;
+}
+body.ashiko-page-polished .ashiko-core-feature-surface::after{
+  content:""!important;
+  position:absolute!important;
+  left:50%!important;
+  top:38px!important;
+  width:min(580px,70vw)!important;
+  height:180px!important;
+  transform:translateX(-50%)!important;
+  background:radial-gradient(ellipse at center,rgba(255,160,216,.16),transparent 68%)!important;
+  filter:blur(10px)!important;
+  z-index:-1!important;
+  pointer-events:none!important;
+}
+body.ashiko-page-polished .ashiko-core-feature-surface .split,
+body.ashiko-page-polished .ashiko-core-feature-surface .split-head,
+body.ashiko-page-polished .ashiko-core-feature-surface .section-head{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  justify-items:center!important;
+  text-align:center!important;
+  gap:18px!important;
+  max-width:920px!important;
+  margin:0 auto!important;
+}
+body.ashiko-page-polished .ashiko-core-feature-surface .eyebrow{
+  display:inline-flex!important;
+  justify-content:center!important;
+  width:auto!important;
+  margin:0 auto 20px!important;
+  padding:8px 14px!important;
+  border-radius:999px!important;
+  border:1px solid rgba(255,190,228,.20)!important;
+  background:rgba(255,178,220,.085)!important;
+  color:rgba(255,214,240,.78)!important;
+  letter-spacing:.34em!important;
+}
+body.ashiko-page-polished .ashiko-core-feature-surface h2{
+  max-width:900px!important;
+  margin:0 auto 16px!important;
+  text-align:center!important;
+  font-size:clamp(48px,7vw,82px)!important;
+  line-height:.96!important;
+  letter-spacing:-.065em!important;
+  text-wrap:balance!important;
+  filter:drop-shadow(0 18px 46px rgba(255,135,205,.10))!important;
+}
+body.ashiko-page-polished .ashiko-core-feature-surface .split-copy,
+body.ashiko-page-polished .ashiko-core-feature-surface .section-copy{
+  max-width:620px!important;
+  margin:0 auto!important;
+  text-align:center!important;
+}
+body.ashiko-page-polished .ashiko-core-feature-surface .split-copy p,
+body.ashiko-page-polished .ashiko-core-feature-surface .section-copy,
+body.ashiko-page-polished .ashiko-core-feature-surface > p{
+  font-style:italic!important;
+  color:rgba(255,230,246,.78)!important;
+  line-height:1.75!important;
+  text-wrap:balance!important;
+}
+body.ashiko-page-polished .ashiko-core-feature-surface .card-grid,
+body.ashiko-page-polished .ashiko-core-feature-surface .grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:20px!important;
+  margin-top:clamp(36px,5vw,58px)!important;
+}
+body.ashiko-page-polished .ashiko-core-feature-surface .card,
+body.ashiko-page-polished .ashiko-core-feature-surface article{
+  position:relative!important;
+  overflow:hidden!important;
+  min-height:168px!important;
+  padding:28px 28px 30px!important;
+  border-radius:24px!important;
+  border:1px solid rgba(255,183,224,.22)!important;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,225,244,.115),transparent 38%),
+    linear-gradient(180deg,rgba(255,170,220,.075),rgba(255,255,255,.018))!important;
+  box-shadow:
+    0 28px 80px rgba(255,90,178,.075),
+    inset 0 1px 0 rgba(255,255,255,.08)!important;
+}
+body.ashiko-page-polished .ashiko-core-feature-surface .card::before,
+body.ashiko-page-polished .ashiko-core-feature-surface article::before{
+  content:""!important;
+  position:absolute!important;
+  left:22px!important;
+  right:22px!important;
+  top:0!important;
+  height:1px!important;
+  background:linear-gradient(90deg,transparent,rgba(255,210,238,.62),transparent)!important;
+}
+body.ashiko-page-polished .ashiko-core-feature-surface .card h3,
+body.ashiko-page-polished .ashiko-core-feature-surface article h3{
+  margin:0 0 14px!important;
+  color:#fff!important;
+  font-size:clamp(21px,1.6vw,27px)!important;
+  line-height:1.05!important;
+  letter-spacing:-.035em!important;
+}
+body.ashiko-page-polished .ashiko-core-feature-surface .card p,
+body.ashiko-page-polished .ashiko-core-feature-surface article p{
+  color:rgba(255,236,248,.76)!important;
+  line-height:1.72!important;
+  font-size:15px!important;
+}
+@media(max-width:980px){
+  body.ashiko-page-polished .ashiko-core-feature-surface .card-grid,
+  body.ashiko-page-polished .ashiko-core-feature-surface .grid{
+    grid-template-columns:1fr!important;
+  }
+  body.ashiko-page-polished .ashiko-core-feature-surface h2{
+    font-size:clamp(40px,12vw,66px)!important;
+  }
+}
+</style>
+
+<style id="ashiko-core-flows-spacing-correct-style">body.ashiko-page-polished main section:has(h2):has(.card-grid){margin-top:clamp(42px,5vw,72px)!important;padding-top:clamp(54px,5vw,78px)!important;padding-bottom:clamp(58px,6vw,90px)!important}body.ashiko-page-polished main section:has(h2):has(.card-grid) h2{margin-bottom:clamp(18px,2vw,28px)!important}body.ashiko-page-polished main section:has(h2):has(.card-grid) .split-copy{margin-top:0!important;margin-bottom:clamp(28px,3vw,44px)!important}body.ashiko-page-polished main section:has(h2):has(.card-grid) .split-copy p{margin:0 auto!important;max-width:58ch!important;text-align:center!important}body.ashiko-page-polished main section:has(h2):has(.card-grid) .card-grid{margin-top:0!important}</style>
+<style id="ashiko-core-card-gap-fix-style">body.ashiko-page-polished main section:has(h2):has(.card-grid) .split-copy{margin-bottom:clamp(36px,4vw,60px)!important}body.ashiko-page-polished main section:has(h2):has(.card-grid) .split-copy p{margin-bottom:0!important}body.ashiko-page-polished main section:has(h2):has(.card-grid) .card-grid{margin-top:clamp(34px,4vw,56px)!important}</style>
+<style id="ashiko-real-core-gap-style">.ashiko-core-gap-spacer{display:block!important;height:clamp(34px,4vw,58px)!important;width:100%!important;flex-basis:100%!important}.ashiko-core-feature-surface .card-grid,.ashiko-core-feature-surface .grid,.ashiko-core-feature-surface [class*="grid"]{margin-top:0!important}</style>
+<style id="ashiko-core-outer-shell-final-style">.ashiko-core-outer-shell-final{position:relative!important;max-width:1160px!important;margin:clamp(52px,5vw,78px) auto!important;padding:clamp(58px,6vw,86px) clamp(44px,5vw,70px)!important;border-radius:34px!important;border:1px solid rgba(255,185,225,.20)!important;background:radial-gradient(circle at 50% 8%,rgba(255,155,210,.14),transparent 42%),radial-gradient(circle at 16% 24%,rgba(255,190,228,.07),transparent 34%),linear-gradient(180deg,rgba(26,17,29,.82),rgba(8,8,12,.90))!important;box-shadow:0 34px 95px rgba(0,0,0,.34),0 0 90px rgba(255,95,180,.055),inset 0 1px 0 rgba(255,255,255,.07)!important;overflow:hidden!important;border-top-color:rgba(255,205,235,.18)!important;border-bottom-color:rgba(255,150,210,.14)!important}.ashiko-core-outer-shell-final::before{content:""!important;position:absolute!important;inset:1px!important;border-radius:33px!important;pointer-events:none!important;background:linear-gradient(135deg,rgba(255,255,255,.035),transparent 38%,rgba(255,150,210,.035))!important;z-index:0!important}.ashiko-core-outer-shell-final::after{content:""!important;position:absolute!important;left:8%!important;right:8%!important;top:0!important;height:1px!important;background:linear-gradient(90deg,transparent,rgba(255,210,238,.40),transparent)!important;pointer-events:none!important}.ashiko-core-outer-shell-final>*{position:relative!important;z-index:1!important}.ashiko-core-outer-shell-final hr{display:none!important}</style>
+</head>
+  <body class="ashiko-page-polished">
     <div id="signal-field" class="signal-field" aria-hidden="true"></div>
     <div id="cursor-glow" class="cursor-glow" aria-hidden="true"></div>
     <div class="page-shell">
       <header class="site-header"><div class="wrap nav"><a class="brand" data-link="home" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Zenithoche</span></a><nav class="nav-links" aria-label="Primary navigation"><a href="/" data-link="home">Home</a><a href="/#products" data-link="products">Products</a><a href="/#media" data-link="media">Media</a><a href="/products/jupnich/" data-link="jupnich">Jupnich</a></nav></div></header>
 
       <main>
-        <section class="product-hero">
+<section class="product-hero">
           <div class="wrap product-hero-grid">
             <div class="product-title" data-reveal>
               <div class="kicker"><span class="live-dot"></span> creator server tools</div>
               <h1>Ashiko</h1>
-              <p class="lede">AutoPost handles the signal. Backdraft catches the overflow. Hat Draw gives the community a watchable moment.</p>
+              <p class="lede"><span class="ashiko-hero-signal">AutoPost handles the signal. Backdraft catches the overflow. Hat Draw gives the community a watchable moment.</span></p>
               <div class="hero-actions"><a class="button primary" href="#flows">See flows</a><a class="button ghost" href="#plans">View plans</a></div>
             </div>
-            <div class="media-card large" data-fallback="Drop /assets/media/ashiko-builder-loop.mp4 here" data-reveal>
+            <div class="media-card large ashiko-builder-panel" data-fallback="Drop /assets/media/ashiko-builder-loop.mp4 here" data-reveal>
+  <div class="ashiko-builder-visual ashiko-builder-visual-video">
+    <video class="ashiko-builder-video" autoplay muted loop playsinline preload="auto" aria-label="Ashiko builder panel preview">
+      <source src="/assets/media/ashiko-builder-panel-loop.mp4" type="video/mp4">
+    </video>
+  </div>
               <video data-media="ashikoBuilderLoop" autoplay muted loop playsinline></video>
-              <div class="media-caption"><strong>Builder panel</strong><span>Use a short loop of the /builder panel flow here.</span></div>
+              <div class="media-caption"><strong>Crafted with love and compassion from Zenithoche for small creators.</strong><span></span></div>
             </div>
           </div>
         </section>
 
-        <section id="flows" class="section">
+<!-- ASHIKO FLOW MEDIA START -->
+<section class="ashiko-flow-media-section" id="ashiko-flow-previews">
+  <div class="ashiko-flow-inner">
+    <div class="ashiko-flow-copy">
+      <div>
+        <span class="ashiko-flow-kicker">Creator flows</span>
+        <h2>Clean signal. Soft surface. Real tools.</h2>
+      </div>
+      <p>AutoPost handles the signal. Backdraft catches the overflow. Announcements and events stay easy to build. Hat Draw gives the community a watchable moment.</p>
+    </div>
+    <div class="ashiko-flow-grid">
+      <article class="ashiko-flow-card is-primary">
+        <div class="ashiko-flow-video-shell">
+          <video autoplay muted loop playsinline preload="auto" aria-label="Ashiko AutoPost preview">
+            <source src="/assets/media/ashiko-autopost-loop.mp4" type="video/mp4">
+          </video>
+          <span class="ashiko-flow-badge">AutoPost</span>
+        </div>
+        <h3>AutoPost</h3>
+        <p>Creator signals routed cleanly without forcing owners through a command wall.</p>
+      </article>
+      <article class="ashiko-flow-card">
+        <div class="ashiko-flow-video-shell">
+          <video autoplay muted loop playsinline preload="auto" aria-label="Ashiko Backdraft preview">
+            <source src="/assets/media/ashiko-backdraft-loop.mp4" type="video/mp4">
+          </video>
+          <span class="ashiko-flow-badge">Backdraft</span>
+        </div>
+        <h3>Backdraft</h3>
+        <p>Overflow held for review so the server signal stays useful instead of messy.</p>
+      </article>
+      <article class="ashiko-flow-card">
+        <div class="ashiko-flow-video-shell">
+          <video autoplay muted loop playsinline preload="auto" aria-label="Ashiko Announcement preview">
+            <source src="/assets/media/ashiko-announcement-loop.mp4" type="video/mp4">
+          </video>
+          <span class="ashiko-flow-badge">Announcements</span>
+        </div>
+        <h3>Announcements</h3>
+        <p>Clean announcement setup for posts that need to land without extra friction.</p>
+      </article>
+      <article class="ashiko-flow-card">
+        <div class="ashiko-flow-video-shell">
+          <video autoplay muted loop playsinline preload="auto" aria-label="Ashiko Event preview">
+            <source src="/assets/media/ashiko-event-loop.mp4" type="video/mp4">
+          </video>
+          <span class="ashiko-flow-badge">Events</span>
+        </div>
+        <h3>Events</h3>
+        <p>Event surfaces that help creators post what matters without rebuilding the setup.</p>
+      </article>
+      <article class="ashiko-flow-card">
+        <div class="ashiko-flow-video-shell">
+          <video autoplay muted loop playsinline preload="auto" aria-label="Ashiko Hat Draw preview">
+            <source src="/assets/media/ashiko-hatdraw-loop.mp4" type="video/mp4">
+          </video>
+          <span class="ashiko-flow-badge">Hat Draw</span>
+        </div>
+        <h3>Hat Draw</h3>
+        <p>A simple community draw flow built to feel readable, playful, and watchable.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- ASHIKO FLOW MEDIA END -->
+
+
+        <section id="flows" class="ashiko-core-outer-shell-final section ashiko-core-feature-surface">
           <div class="wrap">
-            <div class="section-head" data-reveal><div><div class="section-eyebrow">Core flows</div><h2>One doorway. Clean creator setup.</h2></div><p class="section-copy">Ashiko should feel fast, cute, and useful without throwing a streamer into a maze of commands.</p></div>
+            <div class="section-head" data-reveal><div><div class="section-eyebrow">Core flows</div><h2>Sleeper tools with no gatekeeping.</h2></div><p class="section-copy"><span class="ashiko-soft-line">Ashiko should feel fast, cute, and useful without throwing a streamer into a maze of commands.<div class="ashiko-core-gap-spacer"></div></span></p></div>
             <div class="feature-grid">
               <article class="feature-card" data-reveal><h3>AutoPost</h3><p>Add a creator link, choose a channel, and let Ashiko pace posts without flooding the server.</p></article>
               <article class="feature-card" data-reveal><h3>Backdraft</h3><p>Overflow gets held for review so managers can post or delete instead of cleaning up spam after damage.</p></article>
@@ -39,21 +437,7 @@
             </div>
           </div>
         </section>
-
-        <section class="section">
-          <div class="wrap">
-            <div class="section-head" data-reveal><div><div class="section-eyebrow">Media</div><h2>Make the sheep move.</h2></div><p class="section-copy">Drop Ashiko’s screenshots, GIFs, and MP4s here. The cards already know what files to look for.</p></div>
-            <div class="media-grid">
-              <article class="media-card large" data-fallback="Drop /assets/media/ashiko-hat-draw.gif here" data-reveal><img data-media="ashikoHatDrawGif" alt="Ashiko Hat Draw preview" /><div class="media-caption"><strong>Hat Draw</strong><span>Draw panel, watch state, reveal moment.</span></div></article>
-              <article class="media-card" data-fallback="Drop /assets/media/ashiko-autopost.png here" data-reveal><img data-media="ashikoAutopostImage" alt="Ashiko AutoPost preview" /><div class="media-caption"><strong>AutoPost</strong><span>Creator signal without spam.</span></div></article>
-              <article class="media-card" data-fallback="Drop a Backdraft screenshot here" data-reveal><div class="media-caption"><strong>Backdraft</strong><span>Held posts for review.</span></div></article>
-              <article class="media-card" data-fallback="Drop a builder screenshot here" data-reveal><div class="media-caption"><strong>Builder</strong><span>Need Role, Need Channel, Need Event, and more.</span></div></article>
-              <article class="media-card" data-fallback="Drop a founder panel screenshot here" data-reveal><div class="media-caption"><strong>Founder panel</strong><span>The consistent Zenithoche surface.</span></div></article>
-            </div>
-          </div>
-        </section>
-
-        <section id="plans" class="section">
+<section id="plans" class="section">
           <div class="wrap">
             <div class="section-head" data-reveal><div><div class="section-eyebrow">Plans</div><h2>Creator growth without visual clutter.</h2></div><p class="section-copy">Update final prices in /assets/js/site-config.js once Discord SKU pricing is locked.</p></div>
             <div class="price-grid">
@@ -64,10 +448,39 @@
             <p class="note" data-note="ashiko-pricing"></p>
           </div>
         </section>
-      </main>
+      
+<section class="section ashiko-support-discord-section">
+  <div class="cta-panel">
+    <div>
+      <p class="eyebrow">Support signal</p>
+      <h2>Need help setting up Ashiko?</h2>
+      <p>Join the Zenithoche support Discord for setup help, product updates, and creator-server support.</p>
+    </div>
+    <div class="actions">
+      <a class="button ashiko-discord-invite" href="https://discord.gg/eCNPT7YDvN" target="_blank" rel="noopener">Join Support Discord</a>
+    </div>
+  </div>
+</section>
 
-      <footer class="site-footer"><div class="wrap footer-row"><div>Ashiko · Zenithoche product.</div><div class="footer-links"><a href="/" data-link="home">Home</a><a href="#" data-link="terms">Terms</a><a href="#" data-link="privacy">Privacy</a></div></div></footer>
+</main>
+
+      <footer class="site-footer"><div class="wrap footer-row"><div>Ashiko Â· Zenithoche product.</div><div class="footer-links"><a href="/" data-link="home">Home</a><a href="#" data-link="terms">Terms</a><a href="#" data-link="privacy">Privacy</a></div></div></footer>
     </div>
     <script src="/assets/js/site-config.js"></script><script src="/assets/js/site.js"></script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
