@@ -702,7 +702,7 @@
     .pricing .price-card:hover {
       transform: translateY(-3px);
       background: rgba(255,255,255,.058);
-      border-color: rgba(255,255,255,.18);
+      border-color: rgba(255,255,255,.12);
       box-shadow: 0 30px 95px rgba(0,0,0,.45);
     }
 
@@ -719,7 +719,7 @@
     .preview-card:hover {
       transform: translateY(-5px);
       background: rgba(255,255,255,.058);
-      border-color: rgba(255,255,255,.18);
+      border-color: rgba(255,255,255,.12);
       box-shadow: 0 34px 105px rgba(0,0,0,.50);
     }
 
@@ -1053,7 +1053,7 @@
     .route-line strong {
       display: block;
       margin-bottom: 8px;
-      color: rgba(255,255,255,.82);
+      color: rgba(255,255,255,.92);
       font-size: 14px;
     }
     .route-line span {
@@ -1487,190 +1487,8 @@
       }
     }
     /* === JUPNICH HERO BANNER BAR END === */
-      /* === JUPNICH MEDIA PANEL VIDEO START === */
-    .vertical-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    .panel-video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      opacity: .92;
-      filter: brightness(.88) contrast(1.06);
-    }
-    .video-preview-box {
-      aspect-ratio: 512 / 682;
-    }
-    .video-preview-box .preview-ui {
-      background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.68));
-    }
-    .card-flow-section {
-      padding: 48px 0 54px;
-    }
-    .card-flow-head {
-      max-width: 760px;
-      margin-bottom: 28px;
-    }
-    .card-flow-head h2 {
-      max-width: 720px;
-    }
-    .card-flow-head .section-text {
-      max-width: 620px;
-      padding-top: 18px;
-      justify-self: auto;
-    }
-    .card-flow-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-    .card-flow-item {
-      border: 1px solid rgba(255,255,255,.13);
-      border-radius: 30px;
-      background: radial-gradient(circle at 50% 0%, rgba(255,255,255,.10), transparent 42%), rgba(255,255,255,.038);
-      padding: 14px;
-      overflow: hidden;
-      box-shadow: 0 28px 90px rgba(0,0,0,.38);
-    }
-    .card-flow-video-wrap {
-      position: relative;
-      aspect-ratio: 680 / 512;
-      border: 1px solid rgba(255,255,255,.11);
-      border-radius: 22px;
-      overflow: hidden;
-      background: #050505;
-    }
-    .card-flow-video-wrap video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-    }
-    .card-flow-copy {
-      padding: 16px 6px 4px;
-    }
-    .card-flow-copy h3 {
-      margin: 0 0 8px;
-      font-size: 24px;
-      letter-spacing: -.045em;
-    }
-    .card-flow-copy p {
-      margin: 0;
-      color: rgba(255,255,255,.56);
-      font-size: 14px;
-      line-height: 1.62;
-    }
-    @media (max-width: 980px) {
-      .vertical-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .card-flow-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    @media (max-width: 640px) {
-      .vertical-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    /* === JUPNICH MEDIA PANEL VIDEO END === */
-      /* === JUPNICH WIRED MEDIA START === */
-    .vertical-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    .panel-video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-      opacity: .94;
-      filter: brightness(.90) contrast(1.06);
-    }
-    .video-preview-box {
-      aspect-ratio: 512 / 682;
-      background: #030303;
-    }
-    .video-preview-box .preview-ui {
-      background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.72));
-    }
-    .video-preview-box .fake-lines {
-      display: none;
-    }
-    .card-flow-section {
-      padding: 48px 0 54px;
-    }
-    .card-flow-head {
-      max-width: 780px;
-      margin-bottom: 28px;
-    }
-    .card-flow-head .section-text {
-      max-width: 640px;
-      padding-top: 18px;
-      justify-self: auto;
-    }
-    .card-flow-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-    .card-flow-item {
-      border: 1px solid rgba(255,255,255,.13);
-      border-radius: 30px;
-      background: radial-gradient(circle at 50% 0%, rgba(255,255,255,.10), transparent 42%), rgba(255,255,255,.038);
-      padding: 14px;
-      overflow: hidden;
-      box-shadow: 0 28px 90px rgba(0,0,0,.38);
-    }
-    .card-flow-video-wrap {
-      position: relative;
-      aspect-ratio: 680 / 512;
-      border: 1px solid rgba(255,255,255,.11);
-      border-radius: 22px;
-      overflow: hidden;
-      background: #050505;
-    }
-    .card-flow-video-wrap video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-    }
-    .card-flow-copy {
-      padding: 16px 6px 4px;
-    }
-    .card-flow-copy h3 {
-      margin: 0 0 8px;
-      font-size: 24px;
-      letter-spacing: -.045em;
-    }
-    .card-flow-copy p {
-      margin: 0;
-      color: rgba(255,255,255,.56);
-      font-size: 14px;
-      line-height: 1.62;
-    }
-    @media (max-width: 980px) {
-      .vertical-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .card-flow-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    @media (max-width: 640px) {
-      .vertical-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    /* === JUPNICH WIRED MEDIA END === */
+      
+      
       /* === JUPNICH VIDEO OVERLAY FIX START === */
     .panel-video {
       opacity: 1 !important;
@@ -1694,7 +1512,7 @@
       background: rgba(0,0,0,.42) !important;
       border-color: rgba(255,255,255,.18) !important;
       color: rgba(255,255,255,.78) !important;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(6px);
     }
     .card-flow-video-wrap video {
       opacity: 1 !important;
@@ -1704,7 +1522,178 @@
       background: #050505 !important;
     }
     /* === JUPNICH VIDEO OVERLAY FIX END === */
+  
+    /* === JUPNICH PRODUCT PANEL MEDIA START === */
+    .vertical-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: start;
+    }
+
+    .product-media-card {
+      height: 100%;
+    }
+
+    .product-panel-video-box {
+      position: relative;
+      background: #050505;
+      overflow: hidden;
+    }
+
+    .role-panel-video-box {
+      aspect-ratio: 512 / 806;
+    }
+
+    .help-guide-video-box {
+      aspect-ratio: 512 / 862;
+    }
+
+    .summon-video-box {
+      aspect-ratio: 512 / 788;
+    }
+
+    .product-panel-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      opacity: 1;
+      filter: brightness(1.06) contrast(1.04);
+    }
+
+    .product-panel-video-box .preview-ui {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+      pointer-events: none;
+    }
+
+    .product-panel-video-box .fake-lines {
+      display: none;
+    }
+
+    .product-panel-video-box .tag {
+      width: fit-content;
+      background: rgba(0,0,0,.16);
+      border-color: rgba(255,255,255,.12);
+      color: rgba(255,255,255,.92);
+      backdrop-filter: blur(6px);
+    }
+
+    @media (max-width: 980px) {
+      .vertical-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .vertical-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    /* === JUPNICH PRODUCT PANEL MEDIA END === */
+
   </style>
+<style id="jupnich-film-hard-kill">.product-panel-video-box{background:#050505!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)!important}.product-panel-video-box::before,.product-panel-video-box::after,.product-panel-video-box .preview-ui::before,.product-panel-video-box .preview-ui::after,.product-media-card::before,.product-media-card::after{display:none!important;content:none!important;background:none!important;opacity:0!important}.product-panel-video{opacity:1!important;filter:none!important;mix-blend-mode:normal!important}.product-panel-video-box .preview-ui{background:transparent!important;box-shadow:none!important;backdrop-filter:none!important}.product-panel-video-box .fake-lines{display:none!important}.product-panel-video-box .tag{background:rgba(0,0,0,.22)!important;border-color:rgba(255,255,255,.14)!important;color:rgba(255,255,255,.94)!important;backdrop-filter:none!important}</style>
+<style id="jupnich-server-cards-layout-fix">#jupnich-server-cards-section .preview-card{padding:18px!important;border-radius:28px!important;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.018))!important}#jupnich-server-cards-section .preview-box{border-radius:22px!important;overflow:hidden!important;margin-bottom:18px!important;background:#050505!important}#jupnich-server-cards-section .preview-copy{padding:2px 4px 4px!important}#jupnich-server-cards-section .preview-copy h3{font-size:clamp(24px,2vw,34px)!important;line-height:1!important;letter-spacing:-.03em!important;margin:0 0 10px!important}#jupnich-server-cards-section .preview-copy p{font-size:15px!important;line-height:1.55!important;max-width:54ch!important;color:rgba(255,255,255,.72)!important;margin:0!important}#jupnich-server-cards-section .two-grid,#jupnich-server-cards-section .preview-grid{gap:28px!important;align-items:start!important}@media(max-width:760px){#jupnich-server-cards-section .preview-card{padding:14px!important}#jupnich-server-cards-section .preview-copy h3{font-size:25px!important}}</style>
+<style id="jupnich-card-header-style">.server-card-title{display:block!important;margin:34px 0 14px!important;font-size:clamp(30px,2.5vw,42px)!important;line-height:.92!important;letter-spacing:-.055em!important;font-weight:900!important;color:#fff!important;text-wrap:balance!important}.server-card-title+p{margin:0 0 34px!important;font-size:16px!important;line-height:1.7!important;color:rgba(255,255,255,.74)!important;max-width:58ch!important;font-style:italic!important}.preview-copy:has(.server-card-title){padding:8px 4px 22px!important}.preview-box+.preview-copy:has(.server-card-title){margin-top:20px!important}</style>
+<style id="jupnich-server-card-section-style">.server-card-section-copy{display:block!important;font-style:italic!important;margin:14px 0 42px!important;font-size:16px!important;line-height:1.75!important;color:rgba(255,255,255,.74)!important;max-width:62ch!important}.server-card-section-copy+.preview-card,.server-card-section-copy+.preview-grid,.server-card-section-copy+.two-grid{margin-top:28px!important}</style>
+<style id="jupnich-soft-subheading-style">.jupnich-soft-subheading{display:block!important;margin-top:10px!important;font-family:Georgia,'Times New Roman',serif!important;font-size:clamp(18px,1.45vw,23px)!important;line-height:1.45!important;font-weight:500!important;letter-spacing:.035em!important;color:rgba(255,255,255,.76)!important;font-style:normal!important;text-wrap:balance!important}</style>
+<style id="jupnich-universal-label-style">.jupnich-universal-label{display:block!important;margin-top:18px!important;text-transform:uppercase!important;letter-spacing:.22em!important;font-size:13px!important;line-height:1.55!important;font-weight:700!important;color:rgba(255,255,255,.68)!important;font-style:normal!important}</style>
+<style id="jupnich-hero-subline-style">.jupnich-hero-subline-label{display:block!important;margin-top:18px!important;text-transform:uppercase!important;letter-spacing:.22em!important;font-size:13px!important;line-height:1.65!important;font-weight:700!important;color:rgba(255,255,255,.68)!important;font-style:normal!important;max-width:72ch!important}</style>
+<style id="jupnich-cta-video-style">
+  .jupnich-cta-video-section{
+    margin-top:clamp(72px,8vw,120px)!important;
+  }
+  .jupnich-cta-video-card{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) minmax(300px,440px)!important;
+    gap:clamp(24px,4vw,56px)!important;
+    align-items:center!important;
+    padding:clamp(24px,4vw,44px)!important;
+    border:1px solid rgba(255,255,255,.13)!important;
+    border-radius:34px!important;
+    overflow:hidden!important;
+    background:
+      radial-gradient(circle at 22% 16%,rgba(255,255,255,.13),transparent 34%),
+      radial-gradient(circle at 82% 12%,rgba(255,255,255,.07),transparent 32%),
+      linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.018))!important;
+    box-shadow:0 28px 80px rgba(0,0,0,.35)!important;
+  }
+  .jupnich-cta-copy h2{
+    margin:0 0 14px!important;
+    font-size:clamp(32px,4vw,58px)!important;
+    line-height:.92!important;
+    letter-spacing:-.055em!important;
+  }
+  .jupnich-cta-copy p{
+    margin:0 0 28px!important;
+    max-width:60ch!important;
+    color:rgba(255,255,255,.72)!important;
+    font-size:15px!important;
+    line-height:1.7!important;
+    font-style:italic!important;
+  }
+  .jupnich-cta-actions{
+    display:flex!important;
+    flex-wrap:wrap!important;
+    gap:14px!important;
+    align-items:center!important;
+  }
+  .jupnich-cta-media{
+    position:relative!important;
+    border-radius:26px!important;
+    overflow:hidden!important;
+    border:1px solid rgba(255,255,255,.13)!important;
+    background:#050505!important;
+    min-height:230px!important;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.04),0 24px 70px rgba(0,0,0,.35)!important;
+  }
+  .jupnich-cta-media video{
+    width:100%!important;
+    height:100%!important;
+    min-height:230px!important;
+    display:block!important;
+    object-fit:cover!important;
+    object-position:center!important;
+    opacity:1!important;
+    filter:none!important;
+  }
+  .jupnich-cta-media::after{
+    content:""!important;
+    position:absolute!important;
+    inset:0!important;
+    pointer-events:none!important;
+    border-radius:inherit!important;
+    background:linear-gradient(180deg,rgba(255,255,255,.035),transparent 30%,rgba(0,0,0,.12))!important;
+  }
+  .jupnich-cta-media-label{
+    position:absolute!important;
+    left:16px!important;
+    bottom:14px!important;
+    z-index:2!important;
+    padding:7px 10px!important;
+    border-radius:999px!important;
+    border:1px solid rgba(255,255,255,.14)!important;
+    background:rgba(0,0,0,.34)!important;
+    color:rgba(255,255,255,.88)!important;
+    font-size:11px!important;
+    letter-spacing:.12em!important;
+    text-transform:uppercase!important;
+  }
+  @media(max-width:900px){
+    .jupnich-cta-video-card{grid-template-columns:1fr!important;}
+    .jupnich-cta-media{min-height:210px!important;}
+    .jupnich-cta-media video{min-height:210px!important;}
+  }
+</style>
 </head>
 
 <body>
@@ -1729,7 +1718,7 @@
         <p class="eyebrow"><span class="dot"></span>Discord server operations</p>
         <h1>Jupnich</h1>
         <p class="hero-copy">
-          Setup, roles, events, welcome flows, moderation support, and source routing through a cleaner server-owner surface.
+          <span class="jupnich-hero-subline-label">Setup, roles, events, welcome flows, moderation support, and source routing through a cleaner server-owner surface.</span>
         </p>
 
         <div class="actions">
@@ -1790,7 +1779,7 @@
           <h2>Crafted for owners who just want to build a home.</h2>
         </div>
         <p class="section-text">
-          Jupnich explains what is missing, repairs what Discord allows, and shows the exact route to fix anything she cannot safely repair herself.
+          <strong><em>Jupnich explains what is missing, repairs what Discord allows, and shows the exact route to fix anything she cannot safely repair herself.</em></strong>
         </p>
       </div>
 
@@ -1819,49 +1808,53 @@
           <h2>High-functioning and adaptable.</h2>
         </div>
         <p class="section-text">
-          Universal systems for every user.
+          <span class="jupnich-universal-label">Universal systems for every user.</span>
         </p>
       </div>
 
       <div class="vertical-grid">
-        <article class="preview-card">
-          <div class="preview-box">
+        <article class="preview-card product-media-card">
+          <div class="preview-box product-panel-video-box role-panel-video-box">
+            <video class="product-panel-video" autoplay muted loop playsinline preload="metadata" src="../../assets/media/jupnich-role-panels-loop.mp4"></video>
             <div class="preview-ui">
-              <span class="tag">3:4 MP4</span>
+              <span class="tag">MP4</span>
               <div class="fake-lines"><div></div><div></div><div></div></div>
               <span class="tag">Role Panels</span>
             </div>
           </div>
           <div class="preview-copy">
             <h3>Role Panels</h3>
-            <p>Shape member access, self-roles, and clean entry points without making setup feel heavy.</p>
+            <p>Shape member access and role sections from a clean panel-first manager.</p>
           </div>
         </article>
-        <article class="preview-card">
-          <div class="preview-box video-preview-box">
-            <video class="panel-video" autoplay muted loop playsinline preload="auto" src="../../assets/media/jupnich-guide-menus-loop.mp4"></video>
+
+        <article class="preview-card product-media-card">
+          <div class="preview-box product-panel-video-box help-guide-video-box">
+            <video class="product-panel-video" autoplay muted loop playsinline preload="metadata" src="../../assets/media/jupnich-help-guide-loop.mp4"></video>
             <div class="preview-ui">
               <span class="tag">MP4</span>
               <div class="fake-lines"><div></div><div></div><div></div></div>
-              <span class="tag">Guide Menus</span>
+              <span class="tag">Help / Guide</span>
             </div>
           </div>
           <div class="preview-copy">
-            <h3>Guide Menus</h3>
-            <p>Simple menus help owners find the right path without digging through command walls.</p>
+            <h3>Help / Guide Menu</h3>
+            <p>A softer guide surface for owners who need direction without being dropped into a command wall.</p>
           </div>
         </article>
-        <article class="preview-card">
-          <div class="preview-box">
+
+        <article class="preview-card product-media-card">
+          <div class="preview-box product-panel-video-box summon-video-box">
+            <video class="product-panel-video" autoplay muted loop playsinline preload="metadata" src="../../assets/media/jupnich-summon-zenithoche-loop.mp4"></video>
             <div class="preview-ui">
-              <span class="tag">3:4 MP4</span>
+              <span class="tag">MP4</span>
               <div class="fake-lines"><div></div><div></div><div></div></div>
-              <span class="tag">Admin Settings</span>
+              <span class="tag">Summon</span>
             </div>
           </div>
           <div class="preview-copy">
-            <h3>Admin Menu / Settings</h3>
-            <p>Server controls, saved settings, and owner tools gathered into a readable surface.</p>
+            <h3>Summon Zenithoche</h3>
+            <p>Request support from the same panel-first surface when a server needs a human hand.</p>
           </div>
         </article>
       </div>
@@ -1870,11 +1863,11 @@
     
 
     <!-- JUPNICH WELCOME GOODBYE SECTION START -->
-    <section class="card-flow-section">
+    <section id="jupnich-server-cards-section" class="card-flow-section">
       <div class="card-flow-head">
         <p class="section-label">Welcome Flow</p>
-        <h2>Cards that make the server feel alive.</h2>
-        <p class="section-text">Arrivals and goodbyes should feel clean, readable, and cared for. Jupnich gives those moments a polished surface without making owners build the design from scratch.</p>
+        <h2>Easy Customizable Server Cards</h2>
+        <p class="section-text"><span class="server-card-section-copy">Arrivals and Goodbyes should feel clean, cozy, and cared for. Jupnich gives users an easily navigatable system to upload custom GIFS and MP4s.</span></p>
       </div>
       <div class="card-flow-grid">
         <article class="card-flow-item">
@@ -1882,8 +1875,8 @@
             <video autoplay muted loop playsinline preload="auto" src="../../assets/media/jupnich-welcome-card-loop.mp4"></video>
           </div>
           <div class="card-flow-copy">
-            <h3>Welcome Cards</h3>
-            <p>Show new arrivals with a clean card that helps the server feel intentional from the first moment.</p>
+            <h3 class="server-card-title">Welcome Cards</h3>
+            <p>Give new arrivals a clean, cozy card with custom GIF or MP4 support.</p>
           </div>
         </article>
         <article class="card-flow-item">
@@ -1891,8 +1884,8 @@
             <video autoplay muted loop playsinline preload="auto" src="../../assets/media/jupnich-goodbye-card-loop.mp4"></video>
           </div>
           <div class="card-flow-copy">
-            <h3>Goodbye Cards</h3>
-            <p>Keep departures readable and calm with a card surface that still feels part of the community.</p>
+            <h3 class="server-card-title">Goodbye Cards</h3>
+            <p>Keep departures clean and readable with custom media that still feels part of the server.</p>
           </div>
         </article>
       </div>
@@ -1951,7 +1944,7 @@
       <div class="section-head center">
         <p class="section-label">Feature surface</p>
         <h2>Built for the quiet work behind every good server.</h2>
-        <p class="section-text feature-surface-line">Small systems for the people holding communities together.</p>
+        <p class="section-text feature-surface-line"><em>Small systems for the people holding communities together.</em></p>
       </div>
 
       <div class="feature-grid">
@@ -1994,7 +1987,7 @@
           <h2>Core tools now. Focused tools later.</h2>
         </div>
         <p class="section-text">
-          Built to be reliable at every level. Free keeps core tools in the user’s hands, while Plus and Pro add extra depth and layers of functionality to Jupnich.
+          <em>Built to be reliable at every level. Free keeps core tools in the user’s hands, while Plus and Pro add extra depth and layers of functionality to Jupnich.</em>
         </p>
       </div>
 
@@ -2031,17 +2024,22 @@
       </div>
     </section>
 
-    <section class="cta">
-      <div>
-        <h2>Bring Jupnich into your server.</h2>
-        <p>Start with setup, roles, routing, and the server operations surface your community actually needs.</p>
+    <section class="jupnich-cta-video-section">
+  <div class="jupnich-cta-video-card">
+    <div class="jupnich-cta-copy">
+      <h2>Bring Jupnich into your server.</h2>
+      <p>Start with setup, roles, routing, and the server operations surface your community actually needs.</p>
+      <div class="jupnich-cta-actions">
+        <a class="btn primary"  href="https://discord.com/oauth2/authorize?client_id=1492395787764764682&scope=bot%20applications.commands&integration_type=0">Install Jupnich</a>
+        <a class="btn"  href="https://discord.gg/eCNPT7YDvN">Join Support Discord</a>
       </div>
-
-      <div class="actions">
-        <a class="btn primary" href="https://discord.com/oauth2/authorize?client_id=1492395787764764682&scope=bot%20applications.commands&integration_type=0">Install Jupnich</a>
-        <a class="btn" href="https://discord.gg/eCNPT7YDvN">Join Support Discord</a>
-      </div>
-    </section>
+    </div>
+    <div class="jupnich-cta-media">
+      <video autoplay muted loop playsinline preload="metadata" src="../../assets/media/jupnich-cta-loop.mp4"></video>
+      <span class="jupnich-cta-media-label">Jupnich</span>
+    </div>
+  </div>
+</section>
 
     <footer>
       <span>Jupnich · Zenithoche product.</span>
@@ -2054,6 +2052,19 @@
   </main>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
