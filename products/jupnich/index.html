@@ -945,6 +945,141 @@
       line-height: 1.55;
     }
     /* === JUPNICH FEATURE SURFACE TYPE END === */
+      /* === JUPNICH SOURCE ROUTING SECTION START === */
+    .source-routing-feature {
+      padding: 54px 0;
+    }
+    .source-routing-panel {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 28px;
+      align-items: stretch;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 34px;
+      padding: 22px;
+      background: radial-gradient(circle at 18% 0%, rgba(255,255,255,.14), transparent 34%), rgba(255,255,255,.04);
+      box-shadow: 0 34px 110px rgba(0,0,0,.46);
+      overflow: hidden;
+    }
+    .source-routing-copy {
+      padding: 14px 10px 14px 8px;
+    }
+    .source-routing-copy h2 {
+      max-width: 720px;
+    }
+    .source-routing-copy .section-text {
+      max-width: 620px;
+      padding-top: 20px;
+      justify-self: auto;
+      color: rgba(255,255,255,.66);
+    }
+    .source-route-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+    .source-route-pills span {
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      background: rgba(255,255,255,.045);
+      padding: 10px 13px;
+      color: rgba(255,255,255,.66);
+      font-size: 13px;
+    }
+    .source-routing-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .source-mini-card {
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 20px;
+      background: rgba(0,0,0,.24);
+      padding: 16px;
+    }
+    .source-mini-card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      letter-spacing: -.03em;
+    }
+    .source-mini-card p {
+      margin: 0;
+      color: rgba(255,255,255,.55);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .source-routing-media {
+      min-height: 430px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 28px;
+      background: radial-gradient(circle at 50% 12%, rgba(255,255,255,.22), transparent 32%), linear-gradient(145deg, rgba(255,255,255,.10), rgba(255,255,255,.018));
+      padding: 18px;
+      overflow: hidden;
+    }
+    .source-route-screen {
+      height: 100%;
+      min-height: 394px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 24px;
+      background: rgba(0,0,0,.42);
+      backdrop-filter: blur(16px);
+      padding: 18px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 16px;
+    }
+    .source-route-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      color: rgba(255,255,255,.60);
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .source-route-flow {
+      display: grid;
+      gap: 12px;
+      align-content: center;
+    }
+    .route-line {
+      border: 1px solid rgba(255,255,255,.11);
+      border-radius: 18px;
+      background: rgba(255,255,255,.045);
+      padding: 13px;
+    }
+    .route-line strong {
+      display: block;
+      margin-bottom: 8px;
+      color: rgba(255,255,255,.82);
+      font-size: 14px;
+    }
+    .route-line span {
+      display: block;
+      height: 8px;
+      width: 78%;
+      border-radius: 999px;
+      background: rgba(255,255,255,.14);
+    }
+    .source-route-footer {
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 18px;
+      background: rgba(255,255,255,.045);
+      padding: 14px;
+      color: rgba(255,255,255,.62);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    @media (max-width: 980px) {
+      .source-routing-panel { grid-template-columns: 1fr; }
+      .source-routing-media { min-height: 360px; }
+    }
+    @media (max-width: 680px) {
+      .source-routing-cards { grid-template-columns: 1fr; }
+    }
+    /* === JUPNICH SOURCE ROUTING SECTION END === */
   </style>
 </head>
 
@@ -1122,6 +1257,38 @@
       </div>
     </section>
 
+    <section class="source-routing-feature">
+      <div class="source-routing-panel">
+        <div class="source-routing-copy">
+          <p class="section-label">Source Routing</p>
+          <h2>Signals land where they belong.</h2>
+          <p class="section-text">Feeds, killfeeds, and server signals should not scatter across a community. Jupnich gives them routes, destinations, and cleaner places to land.</p>
+          <div class="source-route-pills">
+            <span>Killfeeds</span>
+            <span>Game feeds</span>
+            <span>Server updates</span>
+            <span>Route status</span>
+          </div>
+          <div class="source-routing-cards">
+            <article class="source-mini-card"><h3>Killfeeds</h3><p>Game events can land in the right channel without flooding the rest of the server.</p></article>
+            <article class="source-mini-card"><h3>Feeds</h3><p>Outside updates and signals get shaped into readable server paths.</p></article>
+            <article class="source-mini-card"><h3>Routes</h3><p>Owners can see where a signal is meant to go and keep the path understandable.</p></article>
+          </div>
+        </div>
+        <div class="source-routing-media">
+          <div class="source-route-screen">
+            <div class="source-route-top"><span>Routing preview</span><span>MP4 slot</span></div>
+            <div class="source-route-flow">
+              <div class="route-line"><strong>Source detected</strong><span></span></div>
+              <div class="route-line"><strong>Route selected</strong><span></span></div>
+              <div class="route-line"><strong>Posted cleanly</strong><span></span></div>
+            </div>
+            <div class="source-route-footer">Future media slot: assets/media/jupnich-source-routing-loop.mp4</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="trust">
       <div>
         <p class="section-label">Permission clarity</p>
@@ -1245,6 +1412,7 @@
   </main>
 </body>
 </html>
+
 
 
 
