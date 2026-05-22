@@ -1080,6 +1080,36 @@
       .source-routing-cards { grid-template-columns: 1fr; }
     }
     /* === JUPNICH SOURCE ROUTING SECTION END === */
+      /* === JUPNICH STATIC HERO BANNER START === */
+    .hero-card .tall-media {
+      aspect-ratio: 16 / 9;
+      max-height: none;
+      min-height: 420px;
+    }
+    .hero-banner-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: .96;
+      filter: contrast(1.04) brightness(.92);
+    }
+    .hero-card .mock-screen {
+      display: none;
+    }
+    @media (max-width: 980px) {
+      .hero-card .tall-media {
+        min-height: 320px;
+      }
+    }
+    @media (max-width: 640px) {
+      .hero-card .tall-media {
+        min-height: 220px;
+      }
+    }
+    /* === JUPNICH STATIC HERO BANNER END === */
   </style>
 </head>
 
@@ -1123,6 +1153,7 @@
 
       <div class="hero-card">
         <div class="tall-media">
+          <img class="hero-banner-image" src="../../assets/media/jupnich-static-banner.png" alt="Jupnich static banner">
           <div class="mock-screen">
             <div class="mock-bar">
               <span>Role Panels</span>
@@ -1412,6 +1443,7 @@
   </main>
 </body>
 </html>
+
 
 
 
