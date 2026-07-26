@@ -1789,26 +1789,6 @@
   z-index:1!important;
 }
 </style>
-
-<script id="jupnich-language-banner-script">
-document.addEventListener("DOMContentLoaded", function () {
-  const needle = "The control surface follows the member.";
-  const nodes = Array.from(document.querySelectorAll("section, article, div"));
-
-  const hit = nodes.find(node =>
-    node && node.textContent && node.textContent.includes(needle)
-  );
-
-  if (!hit) return;
-
-  let target = hit;
-  for (let i = 0; i < 3; i++) {
-    if (target.parentElement) target = target.parentElement;
-  }
-
-  target.classList.add("jupnich-language-banner-target");
-});
-</script>
 </head>
 
 <body>
@@ -2140,7 +2120,7 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     </section>
 
-    <section class="section" aria-labelledby="jupnich-language-title">
+    <section class="section jupnich-language-banner-target" aria-labelledby="jupnich-language-title">
       <p class="eyebrow"><span class="dot"></span>Multilingual interface</p>
       <h2 id="jupnich-language-title">The control surface follows the member.</h2>
       <p class="hero-copy">Jupnich’s core interface automatically follows Discord’s language setting in English, Spanish, Korean, French, Russian, Japanese, Hindi, German, Italian, Chinese, and Portuguese.</p>
