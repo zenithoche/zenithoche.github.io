@@ -1699,6 +1699,32 @@
     .jupnich-cta-media video{min-height:210px!important;}
   }
 </style>
+<style id="jupnich-signals-banner-style">
+.source-routing-panel{
+  position:relative!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+}
+
+.source-routing-panel::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  border-radius:32px!important;
+  background:
+    linear-gradient(90deg, rgba(5,6,10,.92) 0%, rgba(6,7,12,.82) 46%, rgba(7,8,13,.72) 100%),
+    url("/assets/media/jupnich-signals-banner.png") center center / cover no-repeat!important;
+  opacity:.42!important;
+  pointer-events:none!important;
+  z-index:0!important;
+}
+
+.source-routing-copy,
+.source-routing-media{
+  position:relative!important;
+  z-index:1!important;
+}
+</style>
 </head>
 
 <body>
