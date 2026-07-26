@@ -1,5 +1,5 @@
-﻿window.ZENITHOCHE_CONFIG = {
-  updated: "2026-05-20",
+window.ZENITHOCHE_CONFIG = {
+  updated: "2026-07-26",
   links: {
     home: "/",
     products: "/#products",
@@ -7,10 +7,15 @@
     pricing: "/#pricing",
     jupnich: "/products/jupnich/",
     ashiko: "/products/ashiko/",
-    jupnichInstall: "https://discord.com/oauth2/authorize?client_id=1492395787764764682&scope=bot%20applications.commands&integration_type=0",
+    jupnichInstall: "https://discord.com/oauth2/authorize?client_id=1492395787764764682",
+    ashikoInstall: "https://discord.com/oauth2/authorize?client_id=1503742525259780198",
+    jupnichTopGG: "https://top.gg/bot/1492395787764764682",
+    ashikoTopGG: "https://top.gg/bot/1503742525259780198",
+    jupnichDiscordBotList: "https://discordbotlist.com/bots/jupnich",
+    ashikoDiscordBotList: "https://discordbotlist.com/bots/ashiko",
     jupnichStore: "https://discord.com/application-directory/1492395787764764682/store",
-    ashikoStore: "#",
-    support: "#",
+    ashikoStore: "https://discord.com/application-directory/1503742525259780198/store",
+    support: "https://discord.gg/eCNPT7YDvN",
     terms: "/terms.html",
     privacy: "/privacy.html"
   },
@@ -19,16 +24,13 @@
       free: "$0",
       plus: "$7/mo · Discord SKU",
       pro: "$13/mo · Discord SKU",
-      note: "Jupnich paid plans are being moved to Discord Premium App subscriptions. Use the Discord store as the source of truth when live."
+      note: "Free tools stay useful. Paid plans cover the heavier server operations and automation layers."
     },
     ashiko: {
-      free: "ashiko: {
       free: "$0",
       plus: "$5/mo · Discord SKU",
-      pro: "$10/mo · Discord SKU",",
-      plus: "$5/mo · Discord SKU",
       pro: "$10/mo · Discord SKU",
-      note: "Ashiko paid plans are planned for Discord Premium App subscriptions. Replace these labels with final SKU prices once they are approved/live."
+      note: "Ashiko stays free-first. Paid plans expand creator routing and higher-volume community operations."
     }
   },
   media: {
@@ -41,8 +43,3 @@
     ashikoAutopostImage: "/assets/media/ashiko-autopost.png"
   }
 };
-
-
-
-
-

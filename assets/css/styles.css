@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   color-scheme: dark;
   --bg: #050506;
   --bg-soft: #0a0b0f;
@@ -1415,3 +1415,23 @@ h2 {
 }
 /* End Zenithoche support Discord panel */
 
+
+/* Public listing proof links */
+.directory-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.directory-links a {
+  color: rgba(255,255,255,.78);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,.18);
+}
+.directory-links a:hover {
+  color: #fff;
+  border-bottom-color: rgba(255,255,255,.62);
+}

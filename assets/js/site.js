@@ -36,6 +36,11 @@
     setHref("[data-link='jupnich']", links.jupnich);
     setHref("[data-link='ashiko']", links.ashiko);
     setHref("[data-link='jupnich-install']", links.jupnichInstall);
+    setHref("[data-link='ashiko-install']", links.ashikoInstall);
+    setHref("[data-link='jupnich-topgg']", links.jupnichTopGG);
+    setHref("[data-link='ashiko-topgg']", links.ashikoTopGG);
+    setHref("[data-link='jupnich-discordbotlist']", links.jupnichDiscordBotList);
+    setHref("[data-link='ashiko-discordbotlist']", links.ashikoDiscordBotList);
     setHref("[data-link='jupnich-store']", links.jupnichStore);
     setHref("[data-link='ashiko-store']", links.ashikoStore);
     setHref("[data-link='support']", links.support);
