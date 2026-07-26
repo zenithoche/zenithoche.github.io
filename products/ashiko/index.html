@@ -373,6 +373,44 @@ body.ashiko-page-polished .ashiko-core-outer-shell-final .feature-grid article{
   }
 }
 </style>
+<style id="ashiko-support-approved-banner-style">
+body.ashiko-page-polished .ashiko-support-discord-section .cta-panel{
+  background:
+    linear-gradient(
+      90deg,
+      rgba(6,6,10,.93) 0%,
+      rgba(8,7,12,.82) 48%,
+      rgba(9,8,14,.67) 100%
+    ),
+    url("/assets/media/ashiko-support-orbits-banner.png")
+    center center / cover no-repeat!important;
+}
+
+body.ashiko-page-polished .ashiko-support-discord-section .cta-panel::after{
+  content:""!important;
+  min-height:clamp(260px,25vw,390px)!important;
+  width:100%!important;
+  border-radius:30px!important;
+  border:1px solid rgba(255,210,235,.25)!important;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255,180,220,.14),
+      rgba(7,7,11,.28) 62%,
+      rgba(4,4,8,.48) 100%
+    ),
+    url("/assets/media/ashiko-support-sheep.png")
+    center center / 74% no-repeat!important;
+  box-shadow:
+    0 26px 90px rgba(255,120,190,.14),
+    inset 0 1px 0 rgba(255,255,255,.12)!important;
+}
+
+body.ashiko-page-polished .ashiko-support-discord-section .cta-panel > div{
+  position:relative!important;
+  z-index:2!important;
+}
+</style>
 </head>
   <body class="ashiko-page-polished">
     <div id="signal-field" class="signal-field" aria-hidden="true"></div>
