@@ -1757,6 +1757,58 @@
   z-index:1!important;
 }
 </style>
+<style id="jupnich-language-banner-style">
+.jupnich-language-banner-target{
+  position:relative!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  border-radius:28px!important;
+}
+
+.jupnich-language-banner-target::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  border-radius:28px!important;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(6,7,12,.92) 0%,
+      rgba(8,9,14,.78) 42%,
+      rgba(9,10,15,.68) 100%
+    ),
+    url("/assets/media/jupnich-language-banner.png")
+    center center / cover no-repeat!important;
+  opacity:.34!important;
+  pointer-events:none!important;
+  z-index:0!important;
+}
+
+.jupnich-language-banner-target > *{
+  position:relative!important;
+  z-index:1!important;
+}
+</style>
+
+<script id="jupnich-language-banner-script">
+document.addEventListener("DOMContentLoaded", function () {
+  const needle = "The control surface follows the member.";
+  const nodes = Array.from(document.querySelectorAll("section, article, div"));
+
+  const hit = nodes.find(node =>
+    node && node.textContent && node.textContent.includes(needle)
+  );
+
+  if (!hit) return;
+
+  let target = hit;
+  for (let i = 0; i < 3; i++) {
+    if (target.parentElement) target = target.parentElement;
+  }
+
+  target.classList.add("jupnich-language-banner-target");
+});
+</script>
 </head>
 
 <body>
