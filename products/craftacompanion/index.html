@@ -3,187 +3,85 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CraftaCompanion — Create someone who feels like yours | Zenithoche</title>
-  <meta name="description" content="CraftaCompanion turns companion creation into a guided experience. Choose the personality, boundaries, continuity, appearance, and voice; we handle the machinery." />
-  <meta name="robots" content="noindex,nofollow" />
+  <title>CraftaCompanion — Build a companion that feels like yours | Zenithoche</title>
+  <meta name="description" content="CraftaCompanion is a guided companion builder from Zenithoche. Shape identity, personality, boundaries, continuity, appearance, and voice without doing the infrastructure work yourself." />
   <link rel="canonical" href="https://zenithoche.com/products/craftacompanion/" />
+  <meta property="og:title" content="CraftaCompanion — Zenithoche" />
+  <meta property="og:description" content="Build identity, personality, boundaries, continuity, appearance, and voice through normal choices. Crafta handles the machinery underneath." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://zenithoche.com/products/craftacompanion/" />
   <style>
-    :root{
-      color-scheme:dark;
-      --bg:#030303;--panel:rgba(255,255,255,.045);--panel2:rgba(255,255,255,.07);
-      --line:rgba(255,255,255,.13);--text:rgba(255,255,255,.94);--muted:rgba(255,255,255,.62);
-      --faint:rgba(255,255,255,.38);--max:1180px;
-    }
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--text);background:radial-gradient(circle at 20% 0%,rgba(255,255,255,.12),transparent 30%),radial-gradient(circle at 82% 10%,rgba(255,255,255,.07),transparent 28%),linear-gradient(180deg,#090909 0%,#030303 45%,#000 100%);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}a{color:inherit;text-decoration:none}.page{width:min(var(--max),calc(100% - 36px));margin:0 auto}.nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;border-bottom:1px solid var(--line)}.brand{font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:14px}.nav-links{display:flex;gap:20px;color:var(--muted);font-size:14px}.hero{padding:80px 0 56px;max-width:920px}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--faint);border:1px solid var(--line);border-radius:999px;padding:9px 13px;background:rgba(255,255,255,.04);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;margin-bottom:26px}.dot{width:8px;height:8px;border-radius:99px;background:white;box-shadow:0 0 18px rgba(255,255,255,.75)}h1,h2,h3,p{margin:0}h1{font-size:clamp(54px,9vw,118px);line-height:.88;letter-spacing:-.07em;font-weight:900}h2{font-size:clamp(30px,5vw,54px);letter-spacing:-.04em;margin-bottom:14px}h3{font-size:19px;margin-bottom:8px}.lead{max-width:720px;margin-top:26px;color:var(--muted);font-size:19px;line-height:1.7}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{appearance:none;border:1px solid var(--line);border-radius:999px;padding:14px 20px;background:rgba(255,255,255,.055);color:var(--text);font:inherit;font-weight:800;cursor:pointer}.btn.primary{background:#fff;color:#000}.btn:disabled{opacity:.42;cursor:not-allowed}.section{padding:52px 0;border-top:1px solid var(--line)}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{border:1px solid var(--line);background:var(--panel);border-radius:24px;padding:24px}.card p,.section-copy{color:var(--muted);line-height:1.65}.stepnum{display:inline-flex;width:34px;height:34px;border:1px solid var(--line);border-radius:99px;align-items:center;justify-content:center;margin-bottom:16px;color:var(--muted);font-weight:800}.builder{display:none;margin-top:28px;border:1px solid var(--line);background:rgba(0,0,0,.28);border-radius:28px;overflow:hidden}.builder.active{display:block}.progress{height:3px;background:rgba(255,255,255,.09)}.progress>div{height:100%;background:#fff;width:14.285%;transition:width .25s ease}.panel{display:none;padding:28px}.panel.active{display:block}.question{font-size:26px;letter-spacing:-.03em;font-weight:800;margin-bottom:8px}.hint{color:var(--muted);margin-bottom:22px}.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.choice{border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.035);padding:14px 16px;cursor:pointer;text-align:left;color:var(--text);font:inherit}.choice.selected{background:#fff;color:#000;border-color:#fff}.field{width:100%;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.035);color:var(--text);padding:15px 16px;font:inherit;outline:none}.field:focus{border-color:rgba(255,255,255,.5)}textarea.field{min-height:130px;resize:vertical}.builder-nav{display:flex;justify-content:space-between;gap:12px;padding:0 28px 28px}.summary{white-space:pre-wrap;color:var(--muted);line-height:1.7;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:18px;padding:18px}.fine{font-size:12px;color:var(--faint);line-height:1.6;margin-top:14px}.status{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:8px 11px;color:var(--muted);font-size:12px;margin-top:18px}footer{padding:34px 0 56px;color:var(--faint);font-size:13px}.legal{display:flex;flex-wrap:wrap;gap:16px;margin-top:14px}@media(max-width:760px){.grid{grid-template-columns:1fr}.choices{grid-template-columns:1fr}.nav-links{display:none}.hero{padding-top:56px}.panel{padding:22px}.builder-nav{padding:0 22px 22px}}
+    :root{color-scheme:dark;--bg:#030303;--panel:rgba(255,255,255,.045);--line:rgba(255,255,255,.13);--text:rgba(255,255,255,.95);--muted:rgba(255,255,255,.66);--faint:rgba(255,255,255,.42);--max:1180px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 18% 0%,rgba(255,255,255,.11),transparent 30%),radial-gradient(circle at 82% 8%,rgba(255,255,255,.06),transparent 27%),linear-gradient(180deg,#090909,#030303 46%,#000);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit;text-decoration:none}.page{width:min(var(--max),calc(100% - 36px));margin:auto}.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}.brand{font-weight:850;letter-spacing:.12em;text-transform:uppercase;font-size:14px}.nav-links{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:14px}.hero{padding:88px 0 64px;max-width:980px}.eyebrow{display:inline-flex;gap:9px;align-items:center;padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}.dot{width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 18px rgba(255,255,255,.8)}h1,h2,h3,p{margin:0}h1{font-size:clamp(54px,9vw,116px);line-height:.9;letter-spacing:-.065em;font-weight:900}h2{font-size:clamp(30px,5vw,54px);letter-spacing:-.04em;margin-bottom:14px}.lead{max-width:760px;margin-top:28px;color:var(--muted);font-size:20px;line-height:1.7}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:999px;padding:14px 20px;font-weight:800;background:rgba(255,255,255,.055)}.btn.primary{background:#fff;color:#000}.status{margin-top:18px;color:var(--faint);font-size:13px}.section{padding:54px 0;border-top:1px solid var(--line)}.section-copy{max-width:760px;color:var(--muted);font-size:17px;line-height:1.7}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:26px}.card{border:1px solid var(--line);background:var(--panel);border-radius:24px;padding:24px}.card h3{font-size:20px;margin-bottom:8px}.card p{color:var(--muted);line-height:1.65}.price{font-size:34px;font-weight:900;letter-spacing:-.04em;margin:8px 0 12px}.pill{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:7px 10px;color:var(--faint);font-size:12px;margin-bottom:12px}.list{margin:16px 0 0;padding-left:18px;color:var(--muted);line-height:1.8}.launch-panel{border:1px solid var(--line);background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border-radius:28px;padding:30px;display:flex;align-items:center;justify-content:space-between;gap:24px}.launch-panel p{color:var(--muted);line-height:1.65;max-width:700px}.fine{color:var(--faint);font-size:13px;line-height:1.65}.footer{padding:34px 0 54px;color:var(--faint);font-size:13px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.footer-links{display:flex;gap:14px}@media(max-width:780px){.grid{grid-template-columns:1fr}.nav-links{display:none}.launch-panel{align-items:flex-start;flex-direction:column}.hero{padding-top:58px}}
   </style>
 </head>
 <body>
   <main class="page">
     <nav class="nav">
-      <a class="brand" href="../../">Zenithoche</a>
-      <div class="nav-links"><a href="../">Products</a><a href="#how">How it works</a><a href="#builder">Builder</a></div>
+      <a class="brand" href="https://zenithoche.com/">Zenithoche</a>
+      <div class="nav-links">
+        <a href="https://zenithoche.com/#products">Products</a>
+        <a href="#how">How it works</a>
+        <a href="#plans">Plans</a>
+        <a class="btn primary" href="https://crafta.zenithoche.com/">Launch Crafta</a>
+      </div>
     </nav>
 
     <section class="hero">
-      <div class="eyebrow"><span class="dot"></span> CraftaCompanion alpha</div>
-      <h1>Create someone who feels like yours.</h1>
-      <p class="lead">Choose the personality, relationship, boundaries, continuity, appearance, and voice. CraftaCompanion turns those choices into a persistent companion without making you learn the machinery underneath.</p>
-      <div class="actions"><button class="btn primary" id="startCraft">Start crafting</button><a class="btn" href="#how">See the process</a></div>
-      <div class="status">Hidden alpha surface · checkout not enabled yet</div>
+      <div class="eyebrow"><span class="dot"></span> CraftaCompanion · live prototype</div>
+      <h1>Craft your companion.</h1>
+      <p class="lead">You make the choices. CraftaCompanion handles the machinery. Build identity, personality, boundaries, continuity, appearance, and voice through a guided experience instead of wiring models, storage, billing, and prompt structure yourself.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://crafta.zenithoche.com/">Start crafting</a>
+        <a class="btn" href="#how">See how it works</a>
+      </div>
+      <p class="status">Account creation, saved drafts, paid activation, Craft Helper, companion finalization, chat, export, billing management, and refills are wired into the live Crafta runtime.</p>
     </section>
 
     <section class="section" id="how">
       <h2>You choose. We assemble.</h2>
-      <p class="section-copy">The meaningful decisions stay with you. CraftaCompanion handles configuration, model routing, continuity, storage, versions, and the technical setup required to make those choices usable.</p>
-      <div class="grid" style="margin-top:24px">
-        <article class="card"><div class="stepnum">1</div><h3>Shape</h3><p>Name them, choose the kind of companion, describe how they communicate, and set the relationship you want.</p></article>
-        <article class="card"><div class="stepnum">2</div><h3>Refine</h3><p>The Craft Helper turns plain-language choices into a coherent core, highlights contradictions, and asks only what still matters.</p></article>
-        <article class="card"><div class="stepnum">3</div><h3>Meet</h3><p>Finalize the companion, preserve their continuity, and begin talking. Appearance and voice can be added without rebuilding the identity.</p></article>
-      </div>
-    </section>
-
-    <section class="section" id="builder">
-      <h2>Craft preview</h2>
-      <p class="section-copy">This staging builder saves only to this browser for now. Server-side accounts, billing, and persistent companion storage are being wired behind this surface.</p>
-
-      <div class="builder" id="craftBuilder">
-        <div class="progress"><div id="progressBar"></div></div>
-
-        <section class="panel active" data-step="0">
-          <div class="question">What should we call them?</div>
-          <div class="hint">You can change this later.</div>
-          <input id="companionName" class="field" maxlength="48" placeholder="Companion name" autocomplete="off" />
-        </section>
-
-        <section class="panel" data-step="1">
-          <div class="question">What kind of companion are you making?</div>
-          <div class="hint">Pick the closest starting point. Custom is always allowed.</div>
-          <div class="choices" data-key="relationshipMode">
-            <button class="choice">Friend</button><button class="choice">Creative partner</button><button class="choice">Mentor</button><button class="choice">Gaming companion</button><button class="choice">Everyday companion</button><button class="choice">Custom</button>
-          </div>
-        </section>
-
-        <section class="panel" data-step="2">
-          <div class="question">How should conversation feel?</div>
-          <div class="hint">This becomes part of their communication core.</div>
-          <div class="choices" data-key="conversationStyle">
-            <button class="choice">Warm</button><button class="choice">Calm</button><button class="choice">Playful</button><button class="choice">Dry</button><button class="choice">Curious</button><button class="choice">Direct</button>
-          </div>
-        </section>
-
-        <section class="panel" data-step="3">
-          <div class="question">How proactive should they be?</div>
-          <div class="hint">This controls whether the companion mostly responds or more actively carries conversation.</div>
-          <div class="choices" data-key="initiativeLevel">
-            <button class="choice">Mostly responsive</button><button class="choice">Balanced</button><button class="choice">Often proactive</button><button class="choice">Very proactive</button>
-          </div>
-        </section>
-
-        <section class="panel" data-step="4">
-          <div class="question">What matters most about their personality?</div>
-          <div class="hint">Plain language is better than prompt language.</div>
-          <textarea id="personalityNotes" class="field" placeholder="A few traits, habits, values, quirks, or things you want them to understand..."></textarea>
-        </section>
-
-        <section class="panel" data-step="5">
-          <div class="question">What should they never do?</div>
-          <div class="hint">Boundaries are part of the core, not an afterthought.</div>
-          <textarea id="boundaryNotes" class="field" placeholder="Behaviors, tones, topics, or patterns you do not want..."></textarea>
-        </section>
-
-        <section class="panel" data-step="6">
-          <div class="question">Review your starting core.</div>
-          <div class="hint">The full Craft Helper will refine this before finalization.</div>
-          <div id="summary" class="summary"></div>
-          <p class="fine">Alpha preview only. Final paid creation will require account creation, Terms and Privacy acceptance, entitlement verification, and customer confirmation before the companion core is finalized.</p>
-        </section>
-
-        <div class="builder-nav"><button class="btn" id="prevStep" disabled>Back</button><button class="btn primary" id="nextStep">Continue</button></div>
+      <p class="section-copy">Crafta keeps the meaningful decisions with you while turning those decisions into a persistent companion core that can survive model changes and future feature expansion.</p>
+      <div class="grid">
+        <article class="card"><span class="pill">01 · Shape</span><h3>Describe the person</h3><p>Name them, choose the relationship, conversation style, initiative, personality, boundaries, interests, memory preferences, appearance notes, and voice notes.</p></article>
+        <article class="card"><span class="pill">02 · Refine</span><h3>Use Craft Helper</h3><p>Craft Helper reviews what you wrote, preserves your actual choices, flags meaningful contradictions, and can suggest clearer wording without taking authorship away from you.</p></article>
+        <article class="card"><span class="pill">03 · Meet</span><h3>Finalize and talk</h3><p>Approve version 1 of the companion core, begin chatting, preserve continuity, export the companion, and manage usage without rebuilding the identity underneath.</p></article>
       </div>
     </section>
 
     <section class="section">
-      <h2>Designed for continuity.</h2>
+      <h2>Built around continuity.</h2>
       <div class="grid">
-        <article class="card"><h3>Identity stays canonical</h3><p>Your companion's durable core is stored separately from whichever supported AI model is currently producing a response.</p></article>
-        <article class="card"><h3>Appearance Lock</h3><p>Approve visual references and define what should remain stable versus what can change between generated images.</p></article>
-        <article class="card"><h3>Voice ready</h3><p>Licensed voice options can attach to the same companion without rebuilding their text identity. Advanced custom voice features remain separately gated.</p></article>
+        <article class="card"><h3>Persistent core</h3><p>The companion identity is stored separately from whichever supported model is producing a response, so the model is infrastructure rather than the identity itself.</p></article>
+        <article class="card"><h3>Provider-neutral direction</h3><p>Plans can route to different model capability levels while the companion core remains yours and does not become synonymous with a single provider name.</p></article>
+        <article class="card"><h3>Exportable</h3><p>Crafta includes an export path so the companion is not trapped behind one chat surface. The prototype keeps that portability principle visible from the start.</p></article>
       </div>
     </section>
 
-    <footer>
-      Zenithoche · CraftaCompanion
-      <div class="legal"><span>Terms — staging</span><span>Privacy — staging</span><span>18+ launch</span></div>
+    <section class="section" id="plans">
+      <h2>Choose the experience level.</h2>
+      <p class="section-copy">The public plan names describe the experience instead of making people choose infrastructure by provider model name.</p>
+      <div class="grid">
+        <article class="card"><span class="pill">Everyday</span><div class="price">$6/mo</div><p>Fast, lower-cost access for normal companion use with an included AI allowance.</p><ul class="list"><li>Persistent companion core</li><li>Craft Helper access</li><li>Finalization and chat</li><li>Refills available</li></ul></article>
+        <article class="card"><span class="pill">Enhanced</span><div class="price">$12/mo</div><p>More reasoning capacity and a larger included allowance for richer conversation.</p><ul class="list"><li>Everything in Everyday</li><li>Higher capability routing</li><li>Larger included allowance</li><li>Refills available</li></ul></article>
+        <article class="card"><span class="pill">Deep</span><div class="price">$24/mo</div><p>The highest-capability Crafta tier with the largest included allowance.</p><ul class="list"><li>Everything in Enhanced</li><li>Premium model routing</li><li>Largest included allowance</li><li>Refills available</li></ul></article>
+      </div>
+      <p class="fine" style="margin-top:18px">Refills are optional prepaid usage entitlements and are not transferable currency. Billing and subscription management are handled through secure checkout and the customer billing portal.</p>
+    </section>
+
+    <section class="section">
+      <div class="launch-panel">
+        <div>
+          <h2>Crafta is live on Zenithoche.</h2>
+          <p>The public product lives here at Zenithoche. The interactive application runs on the dedicated Zenithoche Crafta runtime at crafta.zenithoche.com.</p>
+        </div>
+        <a class="btn primary" href="https://crafta.zenithoche.com/">Open CraftaCompanion</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Zenithoche · CraftaCompanion</span>
+      <div class="footer-links"><a href="https://crafta.zenithoche.com/terms">Terms</a><a href="https://crafta.zenithoche.com/privacy">Privacy</a><a href="https://zenithoche.com/">Zenithoche</a></div>
     </footer>
   </main>
-
-  <script>
-    (() => {
-      const KEY = 'craftacompanion-alpha-draft-v0';
-      const builder = document.getElementById('craftBuilder');
-      const panels = [...document.querySelectorAll('.panel')];
-      const progressBar = document.getElementById('progressBar');
-      const next = document.getElementById('nextStep');
-      const prev = document.getElementById('prevStep');
-      const start = document.getElementById('startCraft');
-      const name = document.getElementById('companionName');
-      const personality = document.getElementById('personalityNotes');
-      const boundaries = document.getElementById('boundaryNotes');
-      const summary = document.getElementById('summary');
-      let step = 0;
-      let draft = {};
-
-      try { draft = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch { draft = {}; }
-      name.value = draft.displayName || '';
-      personality.value = draft.personalityNotes || '';
-      boundaries.value = draft.boundaryNotes || '';
-
-      document.querySelectorAll('.choices').forEach(group => {
-        const key = group.dataset.key;
-        group.querySelectorAll('.choice').forEach(button => {
-          if (draft[key] === button.textContent.trim()) button.classList.add('selected');
-          button.addEventListener('click', () => {
-            group.querySelectorAll('.choice').forEach(b => b.classList.remove('selected'));
-            button.classList.add('selected');
-            draft[key] = button.textContent.trim();
-            save();
-          });
-        });
-      });
-
-      function captureFields(){
-        draft.displayName = name.value.trim();
-        draft.personalityNotes = personality.value.trim();
-        draft.boundaryNotes = boundaries.value.trim();
-        save();
-      }
-      function save(){ localStorage.setItem(KEY, JSON.stringify(draft)); }
-      function renderSummary(){
-        captureFields();
-        summary.textContent = [
-          `Name: ${draft.displayName || 'Not chosen yet'}`,
-          `Companion type: ${draft.relationshipMode || 'Not chosen yet'}`,
-          `Conversation: ${draft.conversationStyle || 'Not chosen yet'}`,
-          `Initiative: ${draft.initiativeLevel || 'Not chosen yet'}`,
-          `Personality notes: ${draft.personalityNotes || 'None yet'}`,
-          `Boundaries: ${draft.boundaryNotes || 'None yet'}`
-        ].join('\n\n');
-      }
-      function showStep(index){
-        step = Math.max(0, Math.min(index, panels.length - 1));
-        panels.forEach((p,i) => p.classList.toggle('active', i === step));
-        progressBar.style.width = `${((step + 1) / panels.length) * 100}%`;
-        prev.disabled = step === 0;
-        next.textContent = step === panels.length - 1 ? 'Save draft' : 'Continue';
-        if (step === panels.length - 1) renderSummary();
-      }
-      function openBuilder(){ builder.classList.add('active'); builder.scrollIntoView({behavior:'smooth',block:'start'}); }
-      start.addEventListener('click', openBuilder);
-      next.addEventListener('click', () => { captureFields(); if (step < panels.length - 1) showStep(step + 1); else { save(); next.textContent = 'Draft saved'; setTimeout(() => next.textContent = 'Save draft', 1200); } });
-      prev.addEventListener('click', () => { captureFields(); showStep(step - 1); });
-      [name, personality, boundaries].forEach(el => el.addEventListener('input', captureFields));
-      showStep(0);
-    })();
-  </script>
 </body>
 </html>
