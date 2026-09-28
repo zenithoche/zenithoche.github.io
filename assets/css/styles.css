@@ -1327,7 +1327,9 @@ body::after {
 }
 
 .homepage-subhead-italic {
-  font-style: normal !important;
+  font-style: italic !important;
+  font-weight: 500;
+  letter-spacing: 0.005em;
 }
 
 .button {
