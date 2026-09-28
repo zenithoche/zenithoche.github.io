@@ -26,6 +26,20 @@ body {
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: -5%;
+  z-index: -7;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(5,5,6,.28), rgba(5,5,6,.72)),
+    url("https://d8j0ntlcm91z4.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/hf_20260928_192058_544060bc-3f23-4b5a-99c1-479320475505.png") center / cover no-repeat;
+  opacity: .26;
+  filter: saturate(.62) contrast(1.12) brightness(.58);
+  transform: scale(1.04);
+}
+
 #world {
   position: fixed;
   inset: 0;
