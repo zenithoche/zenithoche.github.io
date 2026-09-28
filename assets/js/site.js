@@ -57,46 +57,11 @@
     setText("[data-note='ashiko-pricing']", pricing.ashiko && pricing.ashiko.note);
   }
 
-  function surfaceCrafta() {
-    const nav = document.querySelector(".nav-links");
-    if (nav && !nav.querySelector("[data-link='crafta']")) {
-      const link = document.createElement("a");
-      link.href = "/products/craftacompanion/";
-      link.dataset.link = "crafta";
-      link.textContent = "CraftaCompanion";
-      nav.appendChild(link);
-    }
-
-    const grid = document.querySelector("#products .product-grid");
-    if (grid && !grid.querySelector("[data-product='crafta']")) {
-      const card = document.createElement("article");
-      card.className = "product-card";
-      card.dataset.product = "crafta";
-      card.setAttribute("data-tilt", "");
-      card.setAttribute("data-reveal", "");
-      card.innerHTML = `
-        <div>
-          <h3>CraftaCompanion</h3>
-          <p><span class="homepage-subhead-strong">Create a persistent AI companion through normal choices instead of prompt engineering. Shape identity, personality, boundaries, continuity, appearance, and voice while Crafta handles the machinery underneath.</span></p>
-          <div class="product-tags">
-            <span class="tag">Companion builder</span><span class="tag">Continuity</span><span class="tag">Craft Helper</span><span class="tag">Live prototype</span>
-          </div>
-          <div class="product-visual" aria-hidden="true"></div>
-        </div>
-        <div class="card-actions">
-          <a class="button primary" href="/products/craftacompanion/">Open CraftaCompanion</a>
-          <a class="button ghost" href="https://crafta.zenithoche.com/">Launch Crafta</a>
-        </div>
-      `;
-      grid.appendChild(card);
-    }
-  }
-
   function createSignalField() {
     const field = byId("signal-field");
     if (!field || prefersReducedMotion) return;
 
-    const count = window.innerWidth < 720 ? 18 : 42;
+    const count = window.innerWidth < 720 ? 12 : 26;
     for (let i = 0; i < count; i += 1) {
       const mote = document.createElement("span");
       mote.className = "signal-mote";
@@ -138,9 +103,9 @@
     document.querySelectorAll("[data-tilt]").forEach((card) => {
       card.addEventListener("pointermove", (event) => {
         const rect = card.getBoundingClientRect();
-        const x = ((event.clientX - rect.left) / rect.width - 0.5) * 10;
-        const y = ((event.clientY - rect.top) / rect.height - 0.5) * -10;
-        card.style.transform = `perspective(900px) rotateY(${x}deg) rotateX(${y}deg) translateY(-4px)`;
+        const x = ((event.clientX - rect.left) / rect.width - 0.5) * 5;
+        const y = ((event.clientY - rect.top) / rect.height - 0.5) * -5;
+        card.style.transform = `perspective(900px) rotateY(${x}deg) rotateX(${y}deg) translateY(-2px)`;
       });
       card.addEventListener("pointerleave", () => {
         card.style.transform = "";
@@ -194,7 +159,6 @@
   }
 
   hydrateConfig();
-  surfaceCrafta();
   createSignalField();
   setupCursorGlow();
   setupTiltCards();
