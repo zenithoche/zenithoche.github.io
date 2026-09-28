@@ -90,16 +90,6 @@
       `;
       grid.appendChild(card);
     }
-
-    const ctaActions = document.querySelector(".cta-panel .hero-actions");
-    if (ctaActions && !ctaActions.querySelector("[data-link='crafta-cta']")) {
-      const link = document.createElement("a");
-      link.className = "button ghost";
-      link.href = "/products/craftacompanion/";
-      link.dataset.link = "crafta-cta";
-      link.textContent = "View CraftaCompanion";
-      ctaActions.appendChild(link);
-    }
   }
 
   function createSignalField() {
