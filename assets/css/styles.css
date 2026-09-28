@@ -1435,3 +1435,127 @@ h2 {
   color: #fff;
   border-bottom-color: rgba(255,255,255,.62);
 }
+
+
+/* CraftaCompanion standalone homepage panel */
+.crafta-home-section {
+  position: relative;
+}
+
+.crafta-home-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+  padding: clamp(28px, 5vw, 64px);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 82% 30%, rgba(178, 62, 86, .18), transparent 35%),
+    radial-gradient(circle at 70% 82%, rgba(255,255,255,.07), transparent 30%),
+    linear-gradient(145deg, rgba(20,20,24,.96), rgba(8,8,11,.98));
+  box-shadow: 0 26px 80px rgba(0,0,0,.28);
+}
+
+.crafta-home-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, rgba(255,255,255,.045), transparent 32%, transparent 68%, rgba(255,255,255,.025));
+}
+
+.crafta-home-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.crafta-home-copy h2 {
+  margin: 10px 0 14px;
+  max-width: 720px;
+}
+
+.crafta-home-copy p {
+  max-width: 780px;
+  margin: 0 0 24px;
+}
+
+.crafta-home-visual {
+  position: relative;
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+}
+
+.crafta-home-orbit {
+  position: absolute;
+  width: min(280px, 78%);
+  aspect-ratio: 1;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 34px rgba(255,255,255,.018),
+    0 0 70px rgba(155,42,67,.16);
+}
+
+.crafta-home-orbit::before,
+.crafta-home-orbit::after {
+  content: "";
+  position: absolute;
+  inset: 18%;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 50%;
+}
+
+.crafta-home-orbit::after {
+  inset: 36%;
+  background: radial-gradient(circle, rgba(180,56,82,.22), rgba(255,255,255,.025) 55%, transparent 70%);
+  border-color: rgba(181,70,92,.22);
+}
+
+.crafta-home-core {
+  position: relative;
+  z-index: 2;
+  width: 92px;
+  height: 92px;
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(12,12,15,.76);
+  box-shadow: 0 16px 50px rgba(0,0,0,.35), inset 0 0 24px rgba(255,255,255,.035);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+}
+
+.crafta-home-chip {
+  position: absolute;
+  z-index: 3;
+  padding: 8px 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px;
+  background: rgba(13,13,16,.82);
+  backdrop-filter: blur(12px);
+  color: rgba(255,255,255,.76);
+  font-size: .76rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.crafta-home-chip.chip-one { top: 15%; left: 4%; }
+.crafta-home-chip.chip-two { right: 0; top: 42%; }
+.crafta-home-chip.chip-three { bottom: 14%; left: 16%; }
+
+@media (max-width: 820px) {
+  .crafta-home-card {
+    grid-template-columns: 1fr;
+  }
+
+  .crafta-home-visual {
+    min-height: 240px;
+  }
+}
