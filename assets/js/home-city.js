@@ -30,20 +30,54 @@
     },{passive:false});
   }
 
-  // The page itself is not scroll navigation. Wheel/touch/scroll keys never advance scenes.
+  const pocketSelector='.scene-pocket-scroll';
+  const horizontalPocketSelector='.scene-pocket-scroll-x';
+
+  function verticalPocketFor(target){
+    return target&&target.closest?target.closest(pocketSelector):null;
+  }
+
+  // The page itself is not scroll navigation. Only explicit inner pockets may move.
   window.addEventListener('wheel',(event)=>{
-    if(event.target&&event.target.closest&&event.target.closest('#preview-rail')&&event.shiftKey)return;
+    const pocket=verticalPocketFor(event.target);
+    if(pocket){
+      const max=Math.max(0,pocket.scrollHeight-pocket.clientHeight);
+      const movingDown=event.deltaY>0;
+      const canMove=movingDown?pocket.scrollTop<max-1:pocket.scrollTop>1;
+      if(canMove)return;
+    }
+
+    if(event.target&&event.target.closest&&event.target.closest(horizontalPocketSelector)){
+      const horizontal=event.target.closest(horizontalPocketSelector);
+      const delta=Math.abs(event.deltaX)>Math.abs(event.deltaY)?event.deltaX:event.deltaY;
+      const max=Math.max(0,horizontal.scrollWidth-horizontal.clientWidth);
+      const movingRight=delta>0;
+      const canMove=movingRight?horizontal.scrollLeft<max-1:horizontal.scrollLeft>1;
+      if(canMove){
+        event.preventDefault();
+        horizontal.scrollLeft+=delta;
+        return;
+      }
+    }
+
     event.preventDefault();
   },{passive:false});
 
   document.addEventListener('touchmove',(event)=>{
-    if(event.target&&event.target.closest&&event.target.closest('#preview-rail'))return;
+    if(event.target&&event.target.closest&&(
+      event.target.closest(pocketSelector)||
+      event.target.closest(horizontalPocketSelector)
+    ))return;
     event.preventDefault();
   },{passive:false});
 
   window.addEventListener('keydown',(event)=>{
     const tag=event.target&&event.target.tagName;
     if(tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT'||event.target?.isContentEditable)return;
+    if(event.target&&event.target.closest&&(
+      event.target.closest(pocketSelector)||
+      event.target.closest(horizontalPocketSelector)
+    ))return;
     if(['ArrowDown','ArrowUp','PageDown','PageUp',' ','Home','End'].includes(event.key)){
       event.preventDefault();
     }
@@ -198,7 +232,13 @@
       if(outgoingPanel)gsap.set(outgoingPanel,{clearProps:'transform,opacity'});
       if(incomingPanel)gsap.set(incomingPanel,{clearProps:'transform,opacity'});
     }
-    if(incomingPanel)incomingPanel.scrollTop=0;
+    if(incomingPanel){
+      incomingPanel.scrollTop=0;
+      incomingPanel.querySelectorAll('.scene-pocket-scroll,.scene-pocket-scroll-x').forEach((pocket)=>{
+        pocket.scrollTop=0;
+        pocket.scrollLeft=0;
+      });
+    }
 
     animating=false;
     updateHash(current);
