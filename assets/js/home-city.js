@@ -205,7 +205,7 @@
       });
     }
 
-    const durationScale=window.matchMedia('(max-width: 640px)').matches?.82:1;
+    const durationScale=window.matchMedia('(max-width: 640px)').matches ? .82 : 1;
     const tl=gsap.timeline({
       defaults:{overwrite:true},
       onComplete:()=>{
