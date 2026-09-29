@@ -1011,3 +1011,143 @@ html.scene-click-only .scene-stepper::after{
   .tradesmith-heading--hero,
   .tradesmith-heading--weight{stroke-width:5.4}
 }
+
+/* NIX PRINT REFERENCE LOCK — 2026-09-29 */
+/* Typography/placement only. Preserve scene art, controls, panels, media and motion. */
+
+/* Main display headings use the reference-derived Tradesmith vectors WITHOUT the
+   later rounded stroke that made them look like generic bubble/SaaS lettering. */
+.tradesmith-heading{
+  stroke:none!important;
+  stroke-width:0!important;
+  stroke-linecap:butt!important;
+  stroke-linejoin:miter!important;
+  paint-order:normal!important;
+  shape-rendering:geometricPrecision!important;
+  filter:drop-shadow(0 2px 14px rgba(0,0,0,.32))!important;
+}
+
+/* Compact poster scale: strong, graphic, but not oversized. */
+.tradesmith-heading--hero{max-width:520px!important}
+.tradesmith-heading--crimson{max-width:505px!important}
+.tradesmith-heading--weight{max-width:510px!important}
+.tradesmith-heading--preview{max-width:430px!important}
+.tradesmith-heading--pricing{max-width:405px!important}
+.tradesmith-heading--signal{max-width:455px!important}
+
+.hero-copy{
+  max-width:570px!important;
+  padding-right:0!important;
+}
+.hero-copy .journey-title{
+  max-width:520px!important;
+  margin:9px 0 11px!important;
+}
+.crimson-title.tradesmith-host{
+  max-width:505px!important;
+}
+.weight-scene .journey-title,
+.toshi-scene .journey-title{
+  margin:9px 0 12px!important;
+}
+.preview-head .tradesmith-host,
+.pricing-head .tradesmith-host{
+  margin-top:7px!important;
+  margin-bottom:10px!important;
+}
+
+/* Narrative/body copy follows the tall condensed print specimen. */
+.journey-copy,
+.product-panel p,
+.feature-panel p,
+.preview-caption span,
+.price-note,
+.policy-text,
+.toshi-caption strong{
+  font-family:"Oswald","Arial Narrow",sans-serif!important;
+  font-weight:500!important;
+  font-style:normal!important;
+  text-transform:uppercase!important;
+  letter-spacing:.032em!important;
+  word-spacing:.02em!important;
+  line-height:1.27!important;
+  text-rendering:optimizeLegibility;
+}
+
+.journey-copy{
+  max-width:470px!important;
+  font-size:clamp(.93rem,1vw,1.04rem)!important;
+}
+.product-panel p{
+  max-width:510px!important;
+  font-size:.91rem!important;
+}
+.product-panel.crafta p{
+  max-width:650px!important;
+}
+.feature-panel p{
+  font-size:.82rem!important;
+  letter-spacing:.028em!important;
+}
+.preview-caption span{
+  font-size:.80rem!important;
+}
+.price-note{
+  font-size:.77rem!important;
+}
+.policy-text{
+  font-size:.84rem!important;
+  letter-spacing:.025em!important;
+}
+.toshi-caption strong{
+  font-size:.96rem!important;
+}
+
+/* Secondary titles use a narrow retro display instead of editorial/SaaS faces. */
+.product-name,
+.price-group-name,
+.preview-caption strong{
+  font-family:"Big Shoulders Stencil Display","Arial Narrow",Impact,sans-serif!important;
+  font-weight:600!important;
+  text-transform:uppercase!important;
+  letter-spacing:.02em!important;
+  line-height:.95!important;
+  text-shadow:0 2px 16px rgba(0,0,0,.34)!important;
+}
+.product-name{
+  font-size:clamp(2rem,2.8vw,2.85rem)!important;
+  margin:7px 0 9px!important;
+}
+.price-group-name{
+  font-size:clamp(1.95rem,2.7vw,2.8rem)!important;
+}
+.preview-caption strong{
+  font-size:1.28rem!important;
+}
+
+/* Tighten the hero into a print composition rather than an airy web stack. */
+.hero-copy .journey-eyebrow{margin-bottom:1px!important}
+.hero-copy .journey-actions{margin-top:16px!important}
+.hero-policies{margin-top:16px!important}
+.crimson-head{margin-bottom:17px!important}
+
+@media(max-width:980px){
+  .tradesmith-heading--hero,
+  .tradesmith-heading--crimson,
+  .tradesmith-heading--weight,
+  .tradesmith-heading--preview,
+  .tradesmith-heading--pricing,
+  .tradesmith-heading--signal{
+    max-width:min(100%,520px)!important;
+  }
+}
+
+@media(max-width:640px){
+  .journey-copy{
+    font-size:.91rem!important;
+    line-height:1.28!important;
+    letter-spacing:.028em!important;
+  }
+  .hero-copy .journey-title{margin:7px 0 10px!important}
+  .product-name{font-size:2.15rem!important}
+}
