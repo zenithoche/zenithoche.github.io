@@ -24,10 +24,7 @@
     },{passive:false});
   }
 
-  const gsapReady=Boolean(window.gsap&&window.Observer);
-  if(!gsapReady)return;
-
-  gsap.registerPlugin(Observer);
+  if(!window.gsap)return;
 
   const scenes=Array.from(document.querySelectorAll('.journey-scene,.plane-section'));
   if(!scenes.length)return;
@@ -69,10 +66,11 @@
   function buildStepper(){
     const stepper=document.createElement('div');
     stepper.className='scene-stepper';
-    stepper.setAttribute('aria-label','Homepage scenes');
+    stepper.setAttribute('aria-label','Homepage scene controls');
 
     const prev=document.createElement('button');
     prev.type='button';
+    prev.className='scene-stepper__prev';
     prev.setAttribute('aria-label','Previous scene');
     prev.innerHTML='↑';
 
@@ -82,6 +80,7 @@
 
     const next=document.createElement('button');
     next.type='button';
+    next.className='scene-stepper__next';
     next.setAttribute('aria-label','Next scene');
     next.innerHTML='↓';
 
@@ -93,7 +92,7 @@
   const portal=buildPortal();
   const controls=buildStepper();
 
-  document.documentElement.classList.add('scene-deck-mode');
+  document.documentElement.classList.add('scene-deck-mode','scene-click-only');
 
   function sceneIndexForHash(hash){
     if(!hash||hash==='#')return -1;
@@ -105,7 +104,6 @@
   let current=sceneIndexForHash(window.location.hash);
   if(current<0)current=0;
   let animating=false;
-  let lastGestureAt=0;
 
   function syncSceneState(){
     scenes.forEach((scene,index)=>{
@@ -139,16 +137,6 @@
   gsap.set(portal.portal,{autoAlpha:0});
   syncSceneState();
 
-  function innerCanScroll(direction,event){
-    const target=event&&event.target&&event.target.closest?event.target:null;
-    const wrap=target?target.closest('.journey-wrap'):null;
-    if(!wrap)return false;
-    const max=wrap.scrollHeight-wrap.clientHeight;
-    if(max<5)return false;
-    if(direction>0)return wrap.scrollTop<max-3;
-    return wrap.scrollTop>3;
-  }
-
   function edgeNudge(direction){
     const panel=scenes[current].querySelector(':scope > .journey-wrap');
     if(!panel||animating)return;
@@ -164,17 +152,13 @@
     try{history.replaceState(null,'','#'+id);}catch(_){}
   }
 
-  function goToScene(nextIndex,direction,source){
+  function goToScene(nextIndex,direction){
     if(animating)return;
     if(nextIndex<0||nextIndex>=scenes.length){
       edgeNudge(direction||1);
       return;
     }
     if(nextIndex===current)return;
-
-    const now=performance.now();
-    if(source==='gesture'&&now-lastGestureAt<260)return;
-    if(source==='gesture')lastGestureAt=now;
 
     const outgoing=scenes[current];
     const incoming=scenes[nextIndex];
@@ -183,6 +167,9 @@
     const dir=direction||Math.sign(nextIndex-current)||1;
 
     animating=true;
+    controls.prev.disabled=true;
+    controls.next.disabled=true;
+
     outgoing.classList.add('is-deck-transition');
     incoming.classList.add('is-deck-transition');
     incoming.setAttribute('aria-hidden','false');
@@ -191,21 +178,22 @@
       autoAlpha:1,
       zIndex:4,
       '--scene-bg-blur':reducedMotion?'0px':'10px',
-      '--scene-bg-brightness':reducedMotion?'1':'.72',
-      '--scene-bg-scale':reducedMotion?'1.045':'1.09'
+      '--scene-bg-brightness':reducedMotion?'1':'.70',
+      '--scene-bg-scale':reducedMotion?'1.045':'1.085'
     });
     gsap.set(outgoing,{zIndex:3});
+
     if(incomingPanel){
       gsap.set(incomingPanel,{
-        autoAlpha:reducedMotion?0:.22,
-        y:reducedMotion?0:dir*52,
-        scale:reducedMotion?1:1.055,
-        rotateX:reducedMotion?0:dir*-1.45,
+        autoAlpha:reducedMotion?0:.18,
+        y:reducedMotion?0:dir*110,
+        scale:reducedMotion?1:1.035,
+        rotateX:reducedMotion?0:dir*-1.15,
         transformOrigin:'50% 50%'
       });
     }
 
-    const durationScale=window.matchMedia('(max-width: 640px)').matches ? .82 : 1;
+    const durationScale=window.matchMedia('(max-width: 640px)').matches ? .84 : 1;
     const tl=gsap.timeline({
       defaults:{overwrite:true},
       onComplete:()=>{
@@ -226,8 +214,12 @@
           zIndex:3,
           clearProps:'--scene-bg-blur,--scene-bg-brightness,--scene-bg-scale'
         });
+
         if(outgoingPanel)gsap.set(outgoingPanel,{clearProps:'transform,opacity'});
-        if(incomingPanel)gsap.set(incomingPanel,{clearProps:'transform,opacity'});
+        if(incomingPanel){
+          incomingPanel.scrollTop=0;
+          gsap.set(incomingPanel,{clearProps:'transform,opacity'});
+        }
 
         animating=false;
         updateHash(current);
@@ -238,44 +230,44 @@
     if(reducedMotion){
       tl
         .to(outgoing,{autoAlpha:0,duration:.12},0)
-        .to(incoming,{autoAlpha:1,duration:.16},.08);
+        .to(incoming,{autoAlpha:1,duration:.18},.08);
       return;
     }
 
     tl
       .set(portal.portal,{autoAlpha:1,visibility:'visible'},0)
       .fromTo(portal.veil,
-        {scaleY:.045},
-        {scaleY:1,duration:.34*durationScale,ease:'power3.inOut'},0)
+        {scaleY:.035},
+        {scaleY:1,duration:.28*durationScale,ease:'power3.inOut'},0)
       .fromTo(portal.line,
         {scaleX:.04,autoAlpha:0},
-        {scaleX:1,autoAlpha:.95,duration:.30*durationScale,ease:'power2.out'},.03*durationScale)
+        {scaleX:1,autoAlpha:.95,duration:.25*durationScale,ease:'power2.out'},.02*durationScale)
       .fromTo(portal.halo,
         {scaleX:.52,autoAlpha:0},
-        {scaleX:1.08,autoAlpha:.85,duration:.32*durationScale,ease:'power2.out'},.02*durationScale)
+        {scaleX:1.08,autoAlpha:.82,duration:.28*durationScale,ease:'power2.out'},.02*durationScale)
       .fromTo(portal.particles,
-        {autoAlpha:0,y:dir*22},
-        {autoAlpha:.82,y:-dir*16,duration:.44*durationScale,ease:'power1.out'},.02*durationScale);
+        {autoAlpha:0,y:dir*24},
+        {autoAlpha:.78,y:-dir*18,duration:.38*durationScale,ease:'power1.out'},.02*durationScale);
 
     if(outgoingPanel){
       tl.to(outgoingPanel,{
-        y:-dir*34,
-        scale:.947,
-        rotateX:dir*1.35,
-        autoAlpha:.15,
-        duration:.32*durationScale,
-        ease:'power2.in'
+        y:-dir*96,
+        scale:.955,
+        rotateX:dir*1.05,
+        autoAlpha:.08,
+        duration:.34*durationScale,
+        ease:'power3.in'
       },0);
     }
-    tl.to(outgoing,{
-      '--scene-bg-blur':'12px',
-      '--scene-bg-brightness':'.62',
-      '--scene-bg-scale':'1.095',
-      duration:.32*durationScale,
-      ease:'power2.in'
-    },0);
 
-    tl.set(outgoing,{autoAlpha:0,zIndex:0},.30*durationScale);
+    tl.to(outgoing,{
+      '--scene-bg-blur':'13px',
+      '--scene-bg-brightness':'.58',
+      '--scene-bg-scale':'1.09',
+      duration:.30*durationScale,
+      ease:'power2.in'
+    },0)
+      .set(outgoing,{autoAlpha:0,zIndex:0},.29*durationScale);
 
     if(incomingPanel){
       tl.to(incomingPanel,{
@@ -283,94 +275,58 @@
         scale:1,
         rotateX:0,
         autoAlpha:1,
-        duration:.48*durationScale,
+        duration:.52*durationScale,
         ease:'expo.out'
-      },.28*durationScale);
+      },.27*durationScale);
     }
+
     tl.to(incoming,{
       '--scene-bg-blur':'0px',
       '--scene-bg-brightness':'1',
       '--scene-bg-scale':'1.045',
-      duration:.46*durationScale,
+      duration:.48*durationScale,
       ease:'power2.out'
-    },.28*durationScale)
+    },.27*durationScale)
       .to(portal.veil,{
-        scaleY:.045,
+        scaleY:.035,
         duration:.40*durationScale,
         ease:'power3.inOut'
       },.34*durationScale)
       .to(portal.line,{
-        scaleX:.18,
+        scaleX:.16,
         autoAlpha:0,
-        duration:.34*durationScale,
+        duration:.32*durationScale,
         ease:'power2.in'
       },.35*durationScale)
       .to(portal.halo,{
-        scaleX:.62,
+        scaleX:.60,
         autoAlpha:0,
-        duration:.34*durationScale,
+        duration:.32*durationScale,
         ease:'power2.in'
       },.35*durationScale)
       .to(portal.particles,{
         autoAlpha:0,
-        y:-dir*34,
-        duration:.30*durationScale,
+        y:-dir*38,
+        duration:.28*durationScale,
         ease:'power1.in'
       },.38*durationScale)
-      .set(portal.portal,{autoAlpha:0,visibility:'hidden'},.76*durationScale);
+      .set(portal.portal,{autoAlpha:0,visibility:'hidden'},.78*durationScale);
   }
 
-  function requestStep(direction,event,source){
-    if(animating)return;
-    if(source==='gesture'&&innerCanScroll(direction,event))return;
-    goToScene(current+direction,direction,source);
-  }
-
-  controls.prev.addEventListener('click',()=>requestStep(-1,null,'control'));
-  controls.next.addEventListener('click',()=>requestStep(1,null,'control'));
+  controls.prev.addEventListener('click',()=>goToScene(current-1,-1));
+  controls.next.addEventListener('click',()=>goToScene(current+1,1));
 
   document.querySelectorAll('a[href^="#"]').forEach((link)=>{
     link.addEventListener('click',(event)=>{
       const index=sceneIndexForHash(link.getAttribute('href'));
       if(index<0)return;
       event.preventDefault();
-      goToScene(index,Math.sign(index-current)||1,'link');
+      goToScene(index,Math.sign(index-current)||1);
     });
-  });
-
-  window.addEventListener('keydown',(event)=>{
-    const tag=event.target&&event.target.tagName;
-    if(tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT'||event.target?.isContentEditable)return;
-
-    if(event.key==='ArrowDown'||event.key==='PageDown'||event.key===' '){
-      event.preventDefault();
-      requestStep(1,event,'keyboard');
-    }else if(event.key==='ArrowUp'||event.key==='PageUp'){
-      event.preventDefault();
-      requestStep(-1,event,'keyboard');
-    }else if(event.key==='Home'){
-      event.preventDefault();
-      goToScene(0,-1,'keyboard');
-    }else if(event.key==='End'){
-      event.preventDefault();
-      goToScene(scenes.length-1,1,'keyboard');
-    }
   });
 
   window.addEventListener('hashchange',()=>{
     const index=sceneIndexForHash(window.location.hash);
-    if(index>=0&&index!==current)goToScene(index,Math.sign(index-current)||1,'history');
-  });
-
-  Observer.create({
-    target:window,
-    type:'wheel,touch,pointer',
-    wheelSpeed:1,
-    tolerance:18,
-    dragMinimum:18,
-    lockAxis:true,
-    preventDefault:false,
-    onDown:(self)=>requestStep(1,self.event,'gesture'),
-    onUp:(self)=>requestStep(-1,self.event,'gesture')
+    if(index>=0&&index!==current)goToScene(index,Math.sign(index-current)||1);
   });
 })();
