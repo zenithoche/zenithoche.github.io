@@ -973,3 +973,41 @@ html.scene-click-only .scene-stepper::after{
   .tradesmith-heading--pricing{max-width:100%}
   .tradesmith-heading--signal{max-width:100%}
 }
+
+
+/* Rounded Tradesmith treatment + handwritten Zenithoche wordmark.
+   The uploaded Amsterdam Morning / Agatha Putri packs are personal-use-only;
+   this uses a web-safe licensed analogue for the public brand link. */
+.zeni-shell__brand{
+  font-family:"Oooh Baby","Segoe Print","Bradley Hand",cursive!important;
+  font-size:27px!important;
+  line-height:1!important;
+  font-weight:400!important;
+  letter-spacing:.015em!important;
+  text-transform:none!important;
+}
+
+.tradesmith-heading{
+  stroke:#fff;
+  stroke-width:4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:1;
+  paint-order:stroke fill;
+  shape-rendering:geometricPrecision;
+}
+.tradesmith-heading--hero,
+.tradesmith-heading--weight{
+  stroke-width:7;
+}
+
+@media(max-width:640px){
+  .zeni-shell__brand{
+    font-size:20px!important;
+    letter-spacing:0!important;
+  }
+  .zeni-shell__brand span{display:block!important}
+  .tradesmith-heading{stroke-width:3.2}
+  .tradesmith-heading--hero,
+  .tradesmith-heading--weight{stroke-width:5.4}
+}
