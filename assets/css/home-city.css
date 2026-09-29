@@ -399,6 +399,121 @@ body::before,body::after{display:none}
   }
 }
 
+
+/* Hail Mary scene-flow experiment: hide image stitches inside animated void thresholds. */
+.journey-main{background:#020203}
+.journey-scene,.plane-section{overflow:clip}
+.journey-scene::before,.plane-section::before{
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 8%,#000 90%,transparent 100%);
+  mask-image:linear-gradient(to bottom,transparent 0%,#000 8%,#000 90%,transparent 100%);
+}
+.journey-scene::after,.plane-section::after{
+  background:
+    linear-gradient(180deg,rgba(2,2,3,.96) 0%,rgba(2,2,3,.28) 9%,transparent 20%,transparent 78%,rgba(2,2,3,.30) 91%,rgba(2,2,3,.98) 100%),
+    radial-gradient(circle at 50% 50%,transparent 0 44%,rgba(0,0,0,.18) 82%,rgba(0,0,0,.38) 100%);
+}
+
+.scene-bridge{
+  position:relative;
+  z-index:20;
+  height:clamp(104px,15vh,176px);
+  margin:clamp(-72px,-6vh,-44px) 0;
+  overflow:hidden;
+  isolation:isolate;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at center,rgba(77,44,61,.18),transparent 48%),
+    linear-gradient(180deg,rgba(4,4,6,.34),rgba(1,1,2,.96) 38%,#010102 62%,rgba(4,4,6,.34));
+  -webkit-backdrop-filter:blur(18px) saturate(.72);
+  backdrop-filter:blur(18px) saturate(.72);
+  box-shadow:
+    inset 0 18px 34px rgba(0,0,0,.34),
+    inset 0 -18px 34px rgba(0,0,0,.34);
+}
+.scene-bridge::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  opacity:.72;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.04),transparent 24%,transparent 76%,rgba(255,255,255,.035)),
+    radial-gradient(ellipse at 50% 50%,rgba(227,145,173,.12),transparent 58%);
+}
+.scene-bridge::after{
+  content:"";
+  position:absolute;
+  left:8%;
+  right:8%;
+  top:50%;
+  height:1px;
+  transform:translateY(-50%) scaleX(var(--bridge-line-scale,.18));
+  transform-origin:center;
+  opacity:var(--bridge-line-opacity,.38);
+  background:linear-gradient(90deg,transparent,rgba(239,214,223,.15) 12%,rgba(255,247,250,.78) 50%,rgba(239,214,223,.15) 88%,transparent);
+  filter:blur(.35px);
+  box-shadow:0 0 8px rgba(255,255,255,.18),0 0 20px rgba(228,138,171,.15);
+}
+.scene-bridge__haze{
+  position:absolute;
+  inset:18% 0;
+  opacity:var(--bridge-haze-opacity,.45);
+  background:
+    radial-gradient(ellipse at 28% 50%,rgba(255,255,255,.06),transparent 34%),
+    radial-gradient(ellipse at 72% 50%,rgba(229,137,168,.07),transparent 36%);
+  filter:blur(18px);
+  transform:scaleX(1.12);
+}
+.scene-bridge__particles{position:absolute;inset:0}
+.scene-bridge__particles i{
+  position:absolute;
+  left:var(--x);
+  top:var(--y);
+  width:var(--s);
+  height:var(--s);
+  border-radius:50%;
+  opacity:var(--o);
+  background:rgba(246,228,235,.88);
+  box-shadow:0 0 8px rgba(255,255,255,.4),0 0 16px rgba(224,132,166,.18);
+  animation:voidParticleDrift var(--d) ease-in-out var(--delay) infinite alternate;
+}
+@keyframes voidParticleDrift{
+  from{transform:translate3d(-8px,8px,0) scale(.8);opacity:calc(var(--o) * .45)}
+  to{transform:translate3d(16px,-16px,0) scale(1.18);opacity:var(--o)}
+}
+
+.scene-flow-ready .journey-scene>.journey-wrap,
+.scene-flow-ready .plane-section>.journey-wrap{
+  backface-visibility:hidden;
+  transform-style:preserve-3d;
+}
+.scene-flow-ready .glass-panel{
+  transition:border-color .35s ease,box-shadow .35s ease,background-color .35s ease;
+}
+.scene-flow-ready .journey-scene.is-scene-active>.journey-wrap,
+.scene-flow-ready .plane-section.is-scene-active>.journey-wrap{
+  border-color:rgba(255,239,245,.54);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.18),
+    inset 0 -1px 0 rgba(255,255,255,.055),
+    0 42px 120px rgba(0,0,0,.40),
+    0 0 54px rgba(226,145,173,.10);
+}
+
+@media(max-width:640px){
+  .scene-bridge{
+    height:112px;
+    margin:-44px 0;
+    -webkit-backdrop-filter:blur(14px) saturate(.72);
+    backdrop-filter:blur(14px) saturate(.72);
+  }
+  .scene-bridge::after{left:4%;right:4%}
+  .journey-scene::before,.plane-section::before{
+    -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 6%,#000 92%,transparent 100%);
+    mask-image:linear-gradient(to bottom,transparent 0%,#000 6%,#000 92%,transparent 100%);
+  }
+}
+
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}.scene-petals{display:none}.journey-scene::before,.plane-section::before{transform:none}
   .journey-button,.bloom-entrance__sink,.bloom-entrance.is-revealing{transition:none}
