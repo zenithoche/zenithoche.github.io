@@ -1,0 +1,162 @@
+:root{
+  --z-bg:#070708;--z-bg2:#0b0b0d;--z-ink:#f3efe8;--z-muted:rgba(243,239,232,.67);
+  --z-faint:rgba(243,239,232,.42);--z-line:rgba(255,255,255,.16);--z-line-strong:rgba(255,255,255,.26);
+  --z-glass:rgba(8,8,10,.58);--z-glass-soft:rgba(18,16,18,.42);--z-blush:#d8949d;--z-blush-soft:rgba(216,148,157,.24);
+  --z-max:1380px;--z-display:"Young Serif",Georgia,serif;--z-ui:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --z-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace
+}
+html{scroll-behavior:smooth;background:#050506}
+body{margin:0;background:#050506;color:var(--z-ink);font-family:var(--z-ui);overflow-x:hidden}
+body::before{opacity:.08!important}
+.page-shell{background:#050506}
+.zeni-shell{position:sticky;top:0;z-index:90;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(4,4,5,.72);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.zeni-shell__inner{width:min(var(--z-max),calc(100% - 52px));min-height:60px;margin:auto}
+.zeni-shell__brand{font-family:var(--z-mono);font-size:.73rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;margin-left:10px}
+.zeni-shell__brand span{display:block!important}
+.zeni-shell__nav{font-family:var(--z-ui);font-size:.92rem;gap:18px;color:rgba(255,255,255,.78)}
+.zeni-shell__nav a{padding:0 4px;border-radius:0}
+.zeni-shell__nav a:hover{background:transparent;color:#fff}
+.journey-main{position:relative;background:#050506}
+.journey-scene{position:relative;isolation:isolate;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:clamp(80px,8vw,120px) 0}
+.journey-scene::before,.plane-axis::before{content:"";position:absolute;inset:0;z-index:-3;background:
+  radial-gradient(circle at 73% 24%,rgba(245,240,232,.20),transparent 19rem),
+  radial-gradient(circle at 78% 66%,rgba(216,148,157,.11),transparent 22rem),
+  linear-gradient(90deg,rgba(5,5,6,.96) 0%,rgba(5,5,6,.78) 34%,rgba(5,5,6,.28) 67%,rgba(5,5,6,.72) 100%),
+  url("/assets/media/bloom-axis-poster.jpg") center/cover no-repeat;
+filter:grayscale(.9) contrast(1.08) brightness(.62);transform:scale(1.04)}
+.journey-scene::after{content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;background:
+  linear-gradient(180deg,rgba(0,0,0,.18),transparent 16%,transparent 80%,rgba(0,0,0,.34)),
+  radial-gradient(circle at 78% 36%,transparent 0 10rem,rgba(0,0,0,.18) 30rem,rgba(0,0,0,.56) 74rem)}
+.scene-video{position:absolute;inset:0;z-index:-4;width:100%;height:100%;object-fit:cover;opacity:.32;filter:grayscale(1) contrast(1.15) brightness(.55)}
+.journey-wrap{width:min(var(--z-max),calc(100% - 84px));margin:0 auto;position:relative}
+.journey-eyebrow{font-family:var(--z-mono);font-size:.79rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(231,177,182,.78);font-weight:600}
+.journey-title{font-family:var(--z-display);font-size:clamp(3.4rem,6vw,6.2rem);line-height:.91;letter-spacing:-.035em;font-weight:400;margin:18px 0 18px;max-width:760px}
+.journey-title .dot{color:#ef92a2}
+.journey-copy{max-width:640px;font-size:clamp(1rem,1.6vw,1.18rem);line-height:1.48;color:rgba(245,241,235,.88)}
+.journey-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+.journey-button{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 27px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(20,17,19,.40);backdrop-filter:blur(14px);color:#f7f2ee;font-weight:600;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04),0 12px 40px rgba(0,0,0,.28);transition:.2s ease}
+.journey-button:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.46)}
+.journey-button.primary{background:linear-gradient(180deg,rgba(230,166,174,.46),rgba(163,83,96,.31));border-color:rgba(255,220,223,.58);box-shadow:0 0 18px rgba(225,132,146,.22),inset 0 0 18px rgba(255,255,255,.08)}
+.glass-panel{border:1px solid var(--z-line);background:linear-gradient(135deg,rgba(19,17,18,.63),rgba(8,8,10,.45));backdrop-filter:blur(16px) saturate(.84);-webkit-backdrop-filter:blur(16px) saturate(.84);box-shadow:0 24px 80px rgba(0,0,0,.30),inset 0 1px rgba(255,255,255,.05)}
+.hero-scene{align-items:stretch;padding-top:clamp(90px,9vw,130px);padding-bottom:38px}
+.hero-layout{display:grid;grid-template-columns:minmax(0,.82fr) minmax(360px,1.18fr);align-items:center;min-height:calc(100svh - 130px)}
+.hero-copy{align-self:center;padding-right:30px}
+.hero-copy .journey-title{max-width:650px}
+.hero-policies{display:grid;gap:10px;margin-top:24px;max-width:520px}
+.policy{display:grid;grid-template-columns:60px 54px 1fr 44px;align-items:center;min-height:74px;border-radius:16px;padding:8px 14px}
+.policy-icon{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.24);background:rgba(0,0,0,.34)}
+.policy-icon svg{width:23px;height:23px;stroke:#fff;fill:none;stroke-width:1.9}
+.policy-num{font-family:var(--z-mono);font-size:.86rem;color:#fff}
+.policy-text{font-size:1rem;color:#fff}
+.policy-line{height:1px;background:rgba(255,255,255,.65);width:26px}
+.hero-empty{min-height:560px}
+.crimson-scene::before{background:
+  radial-gradient(circle at 72% 20%,rgba(245,240,232,.18),transparent 18rem),
+  linear-gradient(90deg,rgba(4,4,5,.95) 0%,rgba(6,6,7,.62) 42%,rgba(5,5,6,.34) 72%,rgba(4,4,5,.72)),
+  url("/assets/media/bloom-axis-poster.jpg") center 35%/cover no-repeat;filter:grayscale(.92) brightness(.52) contrast(1.16);transform:scale(1.12)}
+.crimson-head{margin-bottom:24px}
+.crimson-title{font-family:var(--z-mono);text-transform:uppercase;letter-spacing:.20em;font-size:clamp(1rem,1.45vw,1.28rem);font-weight:500;margin:0}
+.product-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.product-panel{min-height:320px;padding:30px;border-radius:25px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.product-panel::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(0,0,0,.72),rgba(0,0,0,.23));z-index:-1}
+.product-panel.crafta{grid-column:1/-1;min-height:255px}
+.product-kicker{font-family:var(--z-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.20em;color:rgba(255,255,255,.75)}
+.product-name{font-family:var(--z-display);font-weight:400;font-size:clamp(2.3rem,4vw,4.05rem);line-height:.96;letter-spacing:-.025em;margin:10px 0 10px}
+.product-panel p{max-width:570px;color:rgba(255,255,255,.86);line-height:1.48;margin:0}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
+.chip{padding:8px 12px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(0,0,0,.26);font-size:.82rem;color:rgba(255,255,255,.78)}
+.product-panel .journey-button{align-self:flex-start;margin-top:18px;min-height:44px;padding:0 20px}
+.weight-scene::before{background:
+  radial-gradient(circle at 61% 42%,rgba(245,240,232,.12),transparent 16rem),
+  linear-gradient(90deg,rgba(3,3,4,.96) 0%,rgba(4,4,5,.72) 38%,rgba(4,4,5,.25) 72%,rgba(3,3,4,.68)),
+  url("/assets/media/bloom-axis-poster.jpg") center/cover no-repeat;filter:grayscale(.96) brightness(.44) contrast(1.24);transform:scale(1.22)}
+.weight-grid{display:grid;grid-template-columns:minmax(360px,.78fr) minmax(320px,1.22fr);gap:70px;align-items:center}
+.feature-stack{display:grid;gap:12px;margin-top:28px;max-width:520px}
+.feature-panel{display:grid;grid-template-columns:58px 1fr 38px;align-items:center;gap:16px;padding:17px 20px;border-radius:17px}
+.feature-panel strong{font-size:1rem}
+.feature-panel p{margin:4px 0 0;color:rgba(255,255,255,.68);line-height:1.42;font-size:.91rem}
+.feature-icon{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.20);background:rgba(0,0,0,.38)}
+.feature-icon svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:1.8}
+.feature-arrow{width:34px;height:34px;border:1px solid rgba(255,255,255,.34);border-radius:50%;display:grid;place-items:center;color:#fff}
+.weight-space{min-height:560px}
+.plane-axis{position:relative;isolation:isolate;overflow:hidden;background:#050506}
+.plane-axis::before{position:absolute;filter:grayscale(.96) brightness(.42) contrast(1.18);transform:scale(1.08);background:
+  radial-gradient(circle at 74% 18%,rgba(245,240,232,.18),transparent 17rem),
+  linear-gradient(180deg,rgba(5,5,6,.70),rgba(6,6,7,.36) 46%,rgba(4,4,5,.82)),
+  url("/assets/media/bloom-axis-poster.jpg") center/cover no-repeat}
+.plane-axis::after{content:"";position:absolute;inset:44% 0 0;z-index:-2;background:
+  linear-gradient(180deg,rgba(10,10,12,.18),rgba(2,2,3,.76)),
+  repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 7px);filter:blur(.1px)}
+.plane-section{position:relative;min-height:100svh;display:flex;align-items:center;padding:100px 0 70px}
+.preview-rail{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:22px 2px 34px;margin-top:28px}
+.preview-rail::-webkit-scrollbar{display:none}
+.preview-card{flex:0 0 min(520px,72vw);height:390px;border-radius:24px;overflow:hidden;scroll-snap-align:center;position:relative}
+.preview-card video,.preview-card img{width:100%;height:100%;object-fit:cover;opacity:.82}
+.preview-caption{position:absolute;left:16px;right:16px;bottom:16px;padding:15px 17px;border-radius:15px;background:rgba(5,5,6,.72);border:1px solid rgba(255,255,255,.13);backdrop-filter:blur(14px)}
+.preview-caption strong{display:block;font-family:var(--z-display);font-weight:400;font-size:1.55rem}
+.preview-caption span{display:block;margin-top:3px;color:rgba(255,255,255,.62);font-size:.88rem}
+.preview-controls{display:flex;gap:10px;margin-left:auto}
+.preview-arrow{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(0,0,0,.30);color:#fff;font-size:1.25rem}
+.preview-head{display:flex;align-items:flex-end;gap:28px}
+.preview-head .journey-copy{margin-left:auto;max-width:330px}
+.pricing-section{border-top:1px solid rgba(255,255,255,.05)}
+.pricing-section::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.14;background-image:repeating-linear-gradient(105deg,transparent 0 14px,rgba(255,255,255,.35) 15px,transparent 16px 30px);background-size:220px 220px;animation:rainShift 7s linear infinite}
+@keyframes rainShift{to{background-position:130px 280px}}
+.pricing-head{display:grid;grid-template-columns:minmax(0,.85fr) minmax(340px,1.15fr);gap:50px;align-items:end}
+.price-groups{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
+.price-group{padding:24px;border-radius:24px}
+.price-group-name{font-family:var(--z-display);font-weight:400;font-size:clamp(2.2rem,3.6vw,3.55rem);margin:0 0 18px}
+.price-row{display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:14px;min-height:68px;padding:8px 14px;border:1px solid rgba(255,255,255,.15);border-radius:14px;background:rgba(10,9,10,.40);margin-top:9px}
+.price-row.featured{border-color:rgba(238,172,182,.45);box-shadow:inset 0 0 18px rgba(224,139,151,.07)}
+.tier-dot{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.20);background:rgba(0,0,0,.28)}
+.tier-dot svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:1.8}
+.price-tier{font-size:1rem}
+.price-value{font-size:1.05rem;color:#fff;white-space:nowrap}
+.price-note{margin:16px 2px 0;color:rgba(255,255,255,.53);font-size:.82rem;line-height:1.45}
+.toshi-scene::before{background:
+  radial-gradient(circle at 72% 29%,rgba(233,194,196,.16),transparent 18rem),
+  linear-gradient(90deg,rgba(3,3,4,.95) 0%,rgba(4,4,5,.66) 42%,rgba(4,4,5,.34) 70%,rgba(3,3,4,.74)),
+  url("/assets/media/bloom-axis-poster.jpg") center/cover no-repeat;filter:grayscale(.86) brightness(.46) contrast(1.16);transform:scale(1.12)}
+.toshi-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(360px,1.18fr);gap:58px;align-items:center}
+.signal-pill{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:11px 15px;border-radius:999px;border:1px solid rgba(255,255,255,.15);background:rgba(14,13,14,.35);color:rgba(255,255,255,.68);font-size:.84rem}
+.signal-pill i{width:7px;height:7px;border-radius:50%;background:#d99ca3;box-shadow:0 0 14px rgba(217,156,163,.50)}
+.toshi-visual{position:relative;min-height:560px;border-radius:28px;overflow:hidden}
+.toshi-visual img{width:100%;height:100%;min-height:560px;object-fit:cover;filter:contrast(1.05) saturate(.76) brightness(.78)}
+.toshi-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 48%,rgba(4,4,5,.74) 100%)}
+.toshi-caption{position:absolute;z-index:2;left:30px;bottom:28px}
+.toshi-caption span{display:block;font-family:var(--z-mono);font-size:.7rem;letter-spacing:.20em;color:rgba(229,177,183,.77)}
+.toshi-caption strong{display:block;margin-top:7px;font-size:1.12rem}
+.journey-footer{padding:30px 0 42px;border-top:1px solid rgba(255,255,255,.07);background:#050506;color:rgba(255,255,255,.44);font-size:.82rem}
+.journey-footer .journey-wrap{display:flex;justify-content:space-between;gap:20px}
+.footer-links{display:flex;gap:16px}
+@media(max-width:980px){
+  .zeni-shell__inner{width:min(100% - 28px,var(--z-max));gap:10px}.zeni-shell__nav{gap:8px;overflow-x:auto}
+  .journey-wrap{width:min(var(--z-max),calc(100% - 36px))}
+  .hero-layout,.weight-grid,.pricing-head,.toshi-grid{grid-template-columns:1fr}
+  .hero-empty,.weight-space{display:none}
+  .journey-scene{min-height:auto;padding:92px 0 72px}
+  .product-layout,.price-groups{grid-template-columns:1fr}
+  .product-panel.crafta{grid-column:auto}
+  .preview-head{align-items:flex-start;flex-direction:column}.preview-head .journey-copy{margin-left:0}
+  .plane-section{min-height:auto;padding:92px 0 72px}
+  .toshi-visual{min-height:420px}.toshi-visual img{min-height:420px}
+}
+@media(max-width:640px){
+  .zeni-shell__brand{font-size:.66rem;letter-spacing:.17em;margin-left:0}
+  .zeni-shell__nav{font-size:.84rem}.zeni-shell__nav a{min-height:52px;padding:0 8px}
+  .journey-wrap{width:calc(100% - 30px)}
+  .journey-title{font-size:clamp(2.65rem,12vw,4.1rem);line-height:.94}
+  .journey-copy{font-size:1rem;line-height:1.56}
+  .journey-scene{padding:72px 0 54px}
+  .hero-scene{padding-top:76px}
+  .hero-policies{gap:10px}.policy{grid-template-columns:50px 38px 1fr;min-height:78px;padding:9px 12px}.policy-line{display:none}.policy-icon{width:42px;height:42px}
+  .product-panel{padding:22px;min-height:300px}.product-panel.crafta{min-height:300px}
+  .product-name{font-size:2.55rem}
+  .feature-panel{grid-template-columns:48px 1fr 32px;padding:15px 14px}.feature-icon{width:42px;height:42px}.feature-arrow{width:30px;height:30px}
+  .preview-card{flex-basis:88vw;height:480px}
+  .preview-caption strong{font-size:1.35rem}
+  .price-group{padding:18px}.price-group-name{font-size:2.5rem}
+  .price-row{grid-template-columns:38px 1fr auto;padding:8px 11px}
+  .toshi-visual,.toshi-visual img{min-height:480px}
+  .journey-footer .journey-wrap{flex-direction:column}
+}
