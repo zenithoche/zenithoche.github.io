@@ -791,3 +791,64 @@ html.scene-deck-mode .page-shell.is-last-scene .toshi-scene>.journey-wrap{
   .scene-portal__veil{-webkit-backdrop-filter:none;backdrop-filter:none}
   .scene-stepper button{transition:none}
 }
+
+
+/* Click-only scene controls: the viewport never advances from wheel/touch scrolling. */
+html.scene-click-only,
+html.scene-click-only body{
+  overscroll-behavior:none;
+  touch-action:pan-x pan-y;
+}
+html.scene-click-only .scene-stepper{
+  left:50%;
+  right:auto;
+  bottom:18px;
+  transform:translateX(-50%);
+  grid-template-columns:44px auto 54px;
+  padding:7px;
+  background:rgba(8,7,10,.64);
+  border-color:rgba(255,229,239,.42);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.13),
+    0 18px 54px rgba(0,0,0,.36),
+    0 0 28px rgba(231,145,176,.08);
+}
+html.scene-click-only .scene-stepper__next{
+  width:54px;
+  height:54px;
+  background:linear-gradient(180deg,rgba(222,151,178,.30),rgba(92,52,70,.36));
+  border:1px solid rgba(255,225,236,.28);
+  box-shadow:inset 0 1px 8px rgba(255,255,255,.08),0 0 18px rgba(225,136,169,.13);
+  font-size:1.18rem;
+}
+html.scene-click-only .scene-stepper__prev{
+  width:44px;
+  height:44px;
+}
+html.scene-click-only .scene-stepper__count{
+  min-width:62px;
+  font-size:.68rem;
+  color:rgba(255,244,248,.74);
+}
+html.scene-click-only .scene-stepper::after{
+  content:"CLICK TO CHANGE SCENE";
+  position:absolute;
+  left:50%;
+  top:-24px;
+  transform:translateX(-50%);
+  white-space:nowrap;
+  font-family:var(--z-mono);
+  font-size:.54rem;
+  letter-spacing:.16em;
+  color:rgba(255,240,246,.44);
+  text-shadow:0 1px 8px #000;
+}
+@media(max-width:640px){
+  html.scene-click-only .scene-stepper{
+    bottom:10px;
+    grid-template-columns:40px auto 50px;
+  }
+  html.scene-click-only .scene-stepper__next{width:50px;height:50px}
+  html.scene-click-only .scene-stepper__prev{width:40px;height:40px}
+  html.scene-click-only .scene-stepper::after{top:-20px;font-size:.48rem}
+}
