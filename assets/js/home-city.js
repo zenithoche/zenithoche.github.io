@@ -24,213 +24,353 @@
     },{passive:false});
   }
 
-  document.querySelectorAll('.journey-button[href^="#"]').forEach((link)=>{
+  const gsapReady=Boolean(window.gsap&&window.Observer);
+  if(!gsapReady)return;
+
+  gsap.registerPlugin(Observer);
+
+  const scenes=Array.from(document.querySelectorAll('.journey-scene,.plane-section'));
+  if(!scenes.length)return;
+
+  const pageShell=document.querySelector('.page-shell');
+  scenes.forEach((scene,index)=>{
+    scene.dataset.sceneIndex=String(index);
+    if(!scene.id&&scene.classList.contains('weight-scene'))scene.id='weight';
+  });
+
+  function buildPortal(){
+    const portal=document.createElement('div');
+    portal.className='scene-portal';
+    portal.setAttribute('aria-hidden','true');
+
+    const veil=document.createElement('div');
+    veil.className='scene-portal__veil';
+    const halo=document.createElement('div');
+    halo.className='scene-portal__halo';
+    const line=document.createElement('div');
+    line.className='scene-portal__line';
+    const particles=document.createElement('div');
+    particles.className='scene-portal__particles';
+
+    for(let i=0;i<24;i++){
+      const particle=document.createElement('i');
+      particle.style.setProperty('--x',(((i*37)%94)+3)+'%');
+      particle.style.setProperty('--y',(((i*53)%88)+6)+'%');
+      particle.style.setProperty('--s',(1.1+(i%5)*.52).toFixed(2)+'px');
+      particle.style.setProperty('--o',(0.16+(i%6)*.07).toFixed(2));
+      particles.appendChild(particle);
+    }
+
+    portal.append(veil,halo,line,particles);
+    document.body.appendChild(portal);
+    return {portal,veil,halo,line,particles};
+  }
+
+  function buildStepper(){
+    const stepper=document.createElement('div');
+    stepper.className='scene-stepper';
+    stepper.setAttribute('aria-label','Homepage scenes');
+
+    const prev=document.createElement('button');
+    prev.type='button';
+    prev.setAttribute('aria-label','Previous scene');
+    prev.innerHTML='↑';
+
+    const count=document.createElement('span');
+    count.className='scene-stepper__count';
+    count.setAttribute('aria-live','polite');
+
+    const next=document.createElement('button');
+    next.type='button';
+    next.setAttribute('aria-label','Next scene');
+    next.innerHTML='↓';
+
+    stepper.append(prev,count,next);
+    document.body.appendChild(stepper);
+    return {stepper,prev,count,next};
+  }
+
+  const portal=buildPortal();
+  const controls=buildStepper();
+
+  document.documentElement.classList.add('scene-deck-mode');
+
+  function sceneIndexForHash(hash){
+    if(!hash||hash==='#')return -1;
+    const target=document.querySelector(hash);
+    if(!target)return -1;
+    return scenes.findIndex((scene)=>scene===target||scene.contains(target));
+  }
+
+  let current=sceneIndexForHash(window.location.hash);
+  if(current<0)current=0;
+  let animating=false;
+  let lastGestureAt=0;
+
+  function syncSceneState(){
+    scenes.forEach((scene,index)=>{
+      const active=index===current;
+      scene.classList.toggle('is-deck-active',active);
+      if(!scene.classList.contains('is-deck-transition')){
+        gsap.set(scene,{autoAlpha:active?1:0,zIndex:active?3:0});
+      }
+      scene.setAttribute('aria-hidden',active?'false':'true');
+      scene.querySelectorAll('video').forEach((video)=>{
+        if(active){
+          const play=video.play();
+          if(play&&typeof play.catch==='function')play.catch(()=>{});
+        }else{
+          video.pause();
+        }
+      });
+    });
+
+    controls.prev.disabled=current===0;
+    controls.next.disabled=current===scenes.length-1;
+    controls.count.textContent=String(current+1).padStart(2,'0')+' / '+String(scenes.length).padStart(2,'0');
+    if(pageShell)pageShell.classList.toggle('is-last-scene',current===scenes.length-1);
+  }
+
+  scenes.forEach((scene,index)=>{
+    const panel=scene.querySelector(':scope > .journey-wrap');
+    gsap.set(scene,{autoAlpha:index===current?1:0,zIndex:index===current?3:0});
+    if(panel)gsap.set(panel,{clearProps:'transform,opacity'});
+  });
+  gsap.set(portal.portal,{autoAlpha:0});
+  syncSceneState();
+
+  function innerCanScroll(direction,event){
+    const target=event&&event.target&&event.target.closest?event.target:null;
+    const wrap=target?target.closest('.journey-wrap'):null;
+    if(!wrap)return false;
+    const max=wrap.scrollHeight-wrap.clientHeight;
+    if(max<5)return false;
+    if(direction>0)return wrap.scrollTop<max-3;
+    return wrap.scrollTop>3;
+  }
+
+  function edgeNudge(direction){
+    const panel=scenes[current].querySelector(':scope > .journey-wrap');
+    if(!panel||animating)return;
+    gsap.fromTo(panel,
+      {y:0},
+      {y:direction>0?-10:10,duration:.13,yoyo:true,repeat:1,ease:'power2.out',overwrite:true}
+    );
+  }
+
+  function updateHash(index){
+    const id=scenes[index].id;
+    if(!id)return;
+    try{history.replaceState(null,'','#'+id);}catch(_){}
+  }
+
+  function goToScene(nextIndex,direction,source){
+    if(animating)return;
+    if(nextIndex<0||nextIndex>=scenes.length){
+      edgeNudge(direction||1);
+      return;
+    }
+    if(nextIndex===current)return;
+
+    const now=performance.now();
+    if(source==='gesture'&&now-lastGestureAt<260)return;
+    if(source==='gesture')lastGestureAt=now;
+
+    const outgoing=scenes[current];
+    const incoming=scenes[nextIndex];
+    const outgoingPanel=outgoing.querySelector(':scope > .journey-wrap');
+    const incomingPanel=incoming.querySelector(':scope > .journey-wrap');
+    const dir=direction||Math.sign(nextIndex-current)||1;
+
+    animating=true;
+    outgoing.classList.add('is-deck-transition');
+    incoming.classList.add('is-deck-transition');
+    incoming.setAttribute('aria-hidden','false');
+
+    gsap.set(incoming,{
+      autoAlpha:1,
+      zIndex:4,
+      '--scene-bg-blur':reducedMotion?'0px':'10px',
+      '--scene-bg-brightness':reducedMotion?'1':'.72',
+      '--scene-bg-scale':reducedMotion?'1.045':'1.09'
+    });
+    gsap.set(outgoing,{zIndex:3});
+    if(incomingPanel){
+      gsap.set(incomingPanel,{
+        autoAlpha:reducedMotion?0:.22,
+        y:reducedMotion?0:dir*52,
+        scale:reducedMotion?1:1.055,
+        rotateX:reducedMotion?0:dir*-1.45,
+        transformOrigin:'50% 50%'
+      });
+    }
+
+    const durationScale=window.matchMedia('(max-width: 640px)').matches ? .82 : 1;
+    const tl=gsap.timeline({
+      defaults:{overwrite:true},
+      onComplete:()=>{
+        const previous=current;
+        current=nextIndex;
+
+        scenes[previous].classList.remove('is-deck-active','is-deck-transition');
+        scenes[current].classList.remove('is-deck-transition');
+        scenes[current].classList.add('is-deck-active');
+
+        gsap.set(scenes[previous],{
+          autoAlpha:0,
+          zIndex:0,
+          clearProps:'--scene-bg-blur,--scene-bg-brightness,--scene-bg-scale'
+        });
+        gsap.set(scenes[current],{
+          autoAlpha:1,
+          zIndex:3,
+          clearProps:'--scene-bg-blur,--scene-bg-brightness,--scene-bg-scale'
+        });
+        if(outgoingPanel)gsap.set(outgoingPanel,{clearProps:'transform,opacity'});
+        if(incomingPanel)gsap.set(incomingPanel,{clearProps:'transform,opacity'});
+
+        animating=false;
+        updateHash(current);
+        syncSceneState();
+      }
+    });
+
+    if(reducedMotion){
+      tl
+        .to(outgoing,{autoAlpha:0,duration:.12},0)
+        .to(incoming,{autoAlpha:1,duration:.16},.08);
+      return;
+    }
+
+    tl
+      .set(portal.portal,{autoAlpha:1,visibility:'visible'},0)
+      .fromTo(portal.veil,
+        {scaleY:.045},
+        {scaleY:1,duration:.34*durationScale,ease:'power3.inOut'},0)
+      .fromTo(portal.line,
+        {scaleX:.04,autoAlpha:0},
+        {scaleX:1,autoAlpha:.95,duration:.30*durationScale,ease:'power2.out'},.03*durationScale)
+      .fromTo(portal.halo,
+        {scaleX:.52,autoAlpha:0},
+        {scaleX:1.08,autoAlpha:.85,duration:.32*durationScale,ease:'power2.out'},.02*durationScale)
+      .fromTo(portal.particles,
+        {autoAlpha:0,y:dir*22},
+        {autoAlpha:.82,y:-dir*16,duration:.44*durationScale,ease:'power1.out'},.02*durationScale);
+
+    if(outgoingPanel){
+      tl.to(outgoingPanel,{
+        y:-dir*34,
+        scale:.947,
+        rotateX:dir*1.35,
+        autoAlpha:.15,
+        duration:.32*durationScale,
+        ease:'power2.in'
+      },0);
+    }
+    tl.to(outgoing,{
+      '--scene-bg-blur':'12px',
+      '--scene-bg-brightness':'.62',
+      '--scene-bg-scale':'1.095',
+      duration:.32*durationScale,
+      ease:'power2.in'
+    },0);
+
+    tl.set(outgoing,{autoAlpha:0,zIndex:0},.30*durationScale);
+
+    if(incomingPanel){
+      tl.to(incomingPanel,{
+        y:0,
+        scale:1,
+        rotateX:0,
+        autoAlpha:1,
+        duration:.48*durationScale,
+        ease:'expo.out'
+      },.28*durationScale);
+    }
+    tl.to(incoming,{
+      '--scene-bg-blur':'0px',
+      '--scene-bg-brightness':'1',
+      '--scene-bg-scale':'1.045',
+      duration:.46*durationScale,
+      ease:'power2.out'
+    },.28*durationScale)
+      .to(portal.veil,{
+        scaleY:.045,
+        duration:.40*durationScale,
+        ease:'power3.inOut'
+      },.34*durationScale)
+      .to(portal.line,{
+        scaleX:.18,
+        autoAlpha:0,
+        duration:.34*durationScale,
+        ease:'power2.in'
+      },.35*durationScale)
+      .to(portal.halo,{
+        scaleX:.62,
+        autoAlpha:0,
+        duration:.34*durationScale,
+        ease:'power2.in'
+      },.35*durationScale)
+      .to(portal.particles,{
+        autoAlpha:0,
+        y:-dir*34,
+        duration:.30*durationScale,
+        ease:'power1.in'
+      },.38*durationScale)
+      .set(portal.portal,{autoAlpha:0,visibility:'hidden'},.76*durationScale);
+  }
+
+  function requestStep(direction,event,source){
+    if(animating)return;
+    if(source==='gesture'&&innerCanScroll(direction,event))return;
+    goToScene(current+direction,direction,source);
+  }
+
+  controls.prev.addEventListener('click',()=>requestStep(-1,null,'control'));
+  controls.next.addEventListener('click',()=>requestStep(1,null,'control'));
+
+  document.querySelectorAll('a[href^="#"]').forEach((link)=>{
     link.addEventListener('click',(event)=>{
-      const target=document.querySelector(link.getAttribute('href'));
-      if(!target)return;
+      const index=sceneIndexForHash(link.getAttribute('href'));
+      if(index<0)return;
       event.preventDefault();
-      target.scrollIntoView({behavior:reducedMotion?'auto':'smooth',block:'start'});
+      goToScene(index,Math.sign(index-current)||1,'link');
     });
   });
 
-  const scenes=Array.from(document.querySelectorAll('.journey-scene,.plane-section'));
+  window.addEventListener('keydown',(event)=>{
+    const tag=event.target&&event.target.tagName;
+    if(tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT'||event.target?.isContentEditable)return;
 
-  function buildSceneBridges(){
-    const bridges=[];
-    scenes.slice(0,-1).forEach((scene,index)=>{
-      const bridge=document.createElement('div');
-      bridge.className='scene-bridge';
-      bridge.setAttribute('aria-hidden','true');
-      bridge.dataset.bridgeIndex=String(index);
-      const haze=document.createElement('div');
-      haze.className='scene-bridge__haze';
-      const particles=document.createElement('div');
-      particles.className='scene-bridge__particles';
-      for(let i=0;i<12;i++){
-        const particle=document.createElement('i');
-        particle.style.setProperty('--x',(((i*29)+(index*11))%94+3)+'%');
-        particle.style.setProperty('--y',(((i*37)+(index*17))%66+17)+'%');
-        particle.style.setProperty('--s',(1.2+(i%4)*.55).toFixed(2)+'px');
-        particle.style.setProperty('--o',(0.18+(i%5)*.08).toFixed(2));
-        particle.style.setProperty('--d',(4.8+(i%4)*1.1).toFixed(1)+'s');
-        particle.style.setProperty('--delay',(-((i+index)%6)*.8).toFixed(1)+'s');
-        particles.appendChild(particle);
-      }
-      bridge.append(haze,particles);
-      scene.insertAdjacentElement('afterend',bridge);
-      bridges.push(bridge);
-    });
-    return bridges;
-  }
+    if(event.key==='ArrowDown'||event.key==='PageDown'||event.key===' '){
+      event.preventDefault();
+      requestStep(1,event,'keyboard');
+    }else if(event.key==='ArrowUp'||event.key==='PageUp'){
+      event.preventDefault();
+      requestStep(-1,event,'keyboard');
+    }else if(event.key==='Home'){
+      event.preventDefault();
+      goToScene(0,-1,'keyboard');
+    }else if(event.key==='End'){
+      event.preventDefault();
+      goToScene(scenes.length-1,1,'keyboard');
+    }
+  });
 
-  function addPetals(){
-    if(window.matchMedia('(max-width: 980px)').matches)return;
-    scenes.forEach((scene)=>{
-      if(scene.querySelector(':scope > .scene-petals'))return;
-      const petals=document.createElement('div');
-      petals.className='scene-petals';
-      petals.setAttribute('aria-hidden','true');
-      for(let i=0;i<6;i++){
-        const petal=document.createElement('i');
-        petal.style.setProperty('--petal-x',(9+i*16)+'%');
-        petal.style.setProperty('--petal-duration',(18+i*2)+'s');
-        petal.style.setProperty('--petal-delay',(-i*4)+'s');
-        petals.appendChild(petal);
-      }
-      scene.appendChild(petals);
-    });
-  }
+  window.addEventListener('hashchange',()=>{
+    const index=sceneIndexForHash(window.location.hash);
+    if(index>=0&&index!==current)goToScene(index,Math.sign(index-current)||1,'history');
+  });
 
-  const bridges=buildSceneBridges();
-  addPetals();
-  document.documentElement.classList.add('scene-flow-ready');
-
-  const activeObserver=new IntersectionObserver((entries)=>{
-    entries.forEach((entry)=>{
-      entry.target.classList.toggle('is-scene-active',entry.isIntersecting&&entry.intersectionRatio>.28);
-    });
-  },{threshold:[0,.28,.55]});
-  scenes.forEach((scene)=>activeObserver.observe(scene));
-
-  if(reducedMotion)return;
-
-  if(window.gsap&&window.ScrollTrigger){
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.config({nullTargetWarn:false});
-
-    const mm=gsap.matchMedia();
-
-    mm.add('(min-width: 641px)',()=>{
-      scenes.forEach((scene,index)=>{
-        const panel=scene.querySelector(':scope > .journey-wrap');
-        if(!panel)return;
-
-        gsap.fromTo(scene,
-          {'--scene-shift':'-58px'},
-          {
-            '--scene-shift':'58px',
-            ease:'none',
-            scrollTrigger:{trigger:scene,start:'top bottom',end:'bottom top',scrub:1}
-          }
-        );
-
-        const entry=gsap.fromTo(panel,
-          {
-            y:index===0?18:72,
-            scale:index===0?.985:.948,
-            rotateX:index===0?.35:1.65,
-            opacity:index===0?.86:.56,
-            transformOrigin:'50% 50%'
-          },
-          {
-            y:0,
-            scale:1,
-            rotateX:0,
-            opacity:1,
-            ease:'none',
-            scrollTrigger:{
-              trigger:scene,
-              start:index===0?'top 82%':'top 94%',
-              end:'center 56%',
-              scrub:.72
-            }
-          }
-        );
-
-        const exit=gsap.to(panel,{
-          y:-34,
-          scale:.978,
-          rotateX:-.75,
-          opacity:.76,
-          ease:'none',
-          scrollTrigger:{
-            trigger:scene,
-            start:'center 36%',
-            end:'bottom 7%',
-            scrub:.9
-          }
-        });
-
-        return()=>{entry.kill();exit.kill();};
-      });
-
-      bridges.forEach((bridge,index)=>{
-        const haze=bridge.querySelector('.scene-bridge__haze');
-        const particles=bridge.querySelector('.scene-bridge__particles');
-        gsap.fromTo(bridge,
-          {'--bridge-line-scale':.08,'--bridge-line-opacity':.12},
-          {
-            '--bridge-line-scale':1,
-            '--bridge-line-opacity':.82,
-            ease:'none',
-            scrollTrigger:{trigger:bridge,start:'top 92%',end:'center 54%',scrub:.55}
-          }
-        );
-        gsap.fromTo(haze,
-          {xPercent:index%2?-10:10,scaleX:.82,opacity:.18},
-          {
-            xPercent:index%2?8:-8,
-            scaleX:1.18,
-            opacity:.72,
-            ease:'none',
-            scrollTrigger:{trigger:bridge,start:'top bottom',end:'bottom top',scrub:1}
-          }
-        );
-        gsap.fromTo(particles,
-          {yPercent:18},
-          {
-            yPercent:-18,
-            ease:'none',
-            scrollTrigger:{trigger:bridge,start:'top bottom',end:'bottom top',scrub:1.2}
-          }
-        );
-      });
-    });
-
-    mm.add('(max-width: 640px)',()=>{
-      scenes.forEach((scene,index)=>{
-        const panel=scene.querySelector(':scope > .journey-wrap');
-        if(!panel)return;
-        gsap.fromTo(panel,
-          {y:index===0?8:34,scale:index===0?.994:.978,opacity:index===0?.94:.70},
-          {
-            y:0,
-            scale:1,
-            opacity:1,
-            ease:'none',
-            scrollTrigger:{trigger:scene,start:'top 96%',end:'center 62%',scrub:.45}
-          }
-        );
-        gsap.to(panel,{
-          y:-16,
-          scale:.99,
-          opacity:.86,
-          ease:'none',
-          scrollTrigger:{trigger:scene,start:'center 30%',end:'bottom 6%',scrub:.6}
-        });
-        gsap.fromTo(scene,
-          {'--scene-shift':'-24px'},
-          {
-            '--scene-shift':'24px',
-            ease:'none',
-            scrollTrigger:{trigger:scene,start:'top bottom',end:'bottom top',scrub:.8}
-          }
-        );
-      });
-
-      bridges.forEach((bridge)=>{
-        gsap.fromTo(bridge,
-          {'--bridge-line-scale':.12,'--bridge-line-opacity':.16},
-          {
-            '--bridge-line-scale':.9,
-            '--bridge-line-opacity':.64,
-            ease:'none',
-            scrollTrigger:{trigger:bridge,start:'top 96%',end:'bottom 42%',scrub:.45}
-          }
-        );
-      });
-    });
-
-    ScrollTrigger.refresh();
-  }
+  Observer.create({
+    target:window,
+    type:'wheel,touch,pointer',
+    wheelSpeed:1,
+    tolerance:18,
+    dragMinimum:18,
+    lockAxis:true,
+    preventDefault:false,
+    onDown:(self)=>requestStep(1,self.event,'gesture'),
+    onUp:(self)=>requestStep(-1,self.event,'gesture')
+  });
 })();

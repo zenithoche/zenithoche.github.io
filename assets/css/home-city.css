@@ -518,3 +518,276 @@ body::before,body::after{display:none}
   html{scroll-behavior:auto}.scene-petals{display:none}.journey-scene::before,.plane-section::before{transform:none}
   .journey-button,.bloom-entrance__sink,.bloom-entrance.is-revealing{transition:none}
 }
+
+
+/* Immersive scene deck: one deliberate gesture resolves to one complete visual scene. */
+html.scene-deck-mode,
+html.scene-deck-mode body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  overscroll-behavior:none;
+  background:#010102;
+}
+html.scene-deck-mode .page-shell{
+  position:relative;
+  width:100%;
+  height:100svh;
+  overflow:hidden;
+  background:#010102;
+}
+html.scene-deck-mode .journey-main{
+  position:relative;
+  width:100%;
+  height:100svh;
+  min-height:100svh;
+  overflow:hidden;
+  perspective:1450px;
+  perspective-origin:50% 48%;
+  background:#010102;
+}
+html.scene-deck-mode .journey-scene,
+html.scene-deck-mode .plane-section{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100svh;
+  min-height:100svh;
+  box-sizing:border-box;
+  display:flex;
+  align-items:center;
+  padding:84px 0 42px;
+  overflow:hidden;
+  visibility:hidden;
+  opacity:0;
+  pointer-events:none;
+  isolation:isolate;
+  will-change:opacity,transform;
+}
+html.scene-deck-mode .hero-scene{padding-top:94px}
+html.scene-deck-mode .plane-axis{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100svh;
+  overflow:visible;
+  pointer-events:none;
+  isolation:isolate;
+}
+html.scene-deck-mode .plane-axis::before,
+html.scene-deck-mode .plane-axis::after{display:none}
+html.scene-deck-mode .journey-scene.is-deck-active,
+html.scene-deck-mode .journey-scene.is-deck-transition,
+html.scene-deck-mode .plane-section.is-deck-active,
+html.scene-deck-mode .plane-section.is-deck-transition{
+  visibility:visible;
+}
+html.scene-deck-mode .journey-scene.is-deck-active,
+html.scene-deck-mode .plane-section.is-deck-active{pointer-events:auto}
+html.scene-deck-mode .journey-scene::before,
+html.scene-deck-mode .plane-section::before{
+  inset:-58px 0;
+  -webkit-mask-image:none;
+  mask-image:none;
+  transform:translate3d(0,var(--scene-shift,0px),0) scale(var(--scene-bg-scale,1.045));
+  filter:blur(var(--scene-bg-blur,0px)) brightness(var(--scene-bg-brightness,1));
+  will-change:transform,filter;
+}
+html.scene-deck-mode .journey-scene::after,
+html.scene-deck-mode .plane-section::after{
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.18),transparent 18%,transparent 76%,rgba(0,0,0,.30)),
+    radial-gradient(circle at 50% 48%,transparent 0 42%,rgba(0,0,0,.12) 78%,rgba(0,0,0,.32) 100%);
+}
+html.scene-deck-mode .journey-scene>.journey-wrap,
+html.scene-deck-mode .plane-section>.journey-wrap{
+  width:min(1460px,92%);
+  max-height:calc(100svh - 112px);
+  overflow-y:auto;
+  overflow-x:hidden;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  box-sizing:border-box;
+  padding:clamp(24px,2.8vw,44px);
+  transform-style:preserve-3d;
+  backface-visibility:hidden;
+  will-change:transform,opacity;
+}
+html.scene-deck-mode .journey-scene>.journey-wrap::-webkit-scrollbar,
+html.scene-deck-mode .plane-section>.journey-wrap::-webkit-scrollbar{display:none}
+html.scene-deck-mode .scene-bridge{display:none!important}
+
+.scene-portal{
+  position:fixed;
+  inset:0;
+  z-index:86;
+  pointer-events:none;
+  visibility:hidden;
+  opacity:0;
+  overflow:hidden;
+  isolation:isolate;
+}
+.scene-portal__veil{
+  position:absolute;
+  inset:-12%;
+  transform:scaleY(.05);
+  transform-origin:50% 50%;
+  background:
+    radial-gradient(ellipse at center,rgba(66,39,54,.28) 0%,rgba(7,6,9,.90) 40%,#010102 72%),
+    linear-gradient(180deg,#010102,#060408 50%,#010102);
+  -webkit-backdrop-filter:blur(16px) saturate(.72);
+  backdrop-filter:blur(16px) saturate(.72);
+  box-shadow:inset 0 0 110px rgba(0,0,0,.72);
+}
+.scene-portal__line{
+  position:absolute;
+  left:6%;
+  right:6%;
+  top:50%;
+  height:1px;
+  transform:translateY(-50%) scaleX(.04);
+  transform-origin:50% 50%;
+  opacity:0;
+  background:linear-gradient(90deg,transparent,rgba(234,197,211,.20) 10%,rgba(255,250,252,.95) 50%,rgba(234,197,211,.20) 90%,transparent);
+  box-shadow:0 0 8px rgba(255,255,255,.28),0 0 30px rgba(230,140,174,.24);
+}
+.scene-portal__halo{
+  position:absolute;
+  left:12%;
+  right:12%;
+  top:50%;
+  height:18vh;
+  transform:translateY(-50%) scaleX(.55);
+  opacity:0;
+  background:radial-gradient(ellipse at center,rgba(237,160,189,.15),transparent 66%);
+  filter:blur(18px);
+}
+.scene-portal__particles{position:absolute;inset:0;opacity:0}
+.scene-portal__particles i{
+  position:absolute;
+  left:var(--x);
+  top:var(--y);
+  width:var(--s);
+  height:var(--s);
+  border-radius:50%;
+  background:rgba(251,239,244,.88);
+  opacity:var(--o);
+  box-shadow:0 0 7px rgba(255,255,255,.44),0 0 16px rgba(230,139,174,.18);
+}
+
+.scene-stepper{
+  position:fixed;
+  right:clamp(18px,2.6vw,42px);
+  bottom:clamp(18px,2.6vw,34px);
+  z-index:112;
+  display:grid;
+  grid-template-columns:42px auto 42px;
+  align-items:center;
+  gap:7px;
+  padding:6px;
+  border:1px solid rgba(245,218,228,.32);
+  border-radius:999px;
+  background:rgba(10,8,12,.48);
+  -webkit-backdrop-filter:blur(14px) saturate(.82);
+  backdrop-filter:blur(14px) saturate(.82);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 14px 40px rgba(0,0,0,.30);
+}
+.scene-stepper button{
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  color:#fff;
+  background:rgba(255,255,255,.055);
+  font-size:1rem;
+  line-height:1;
+  transition:transform .18s ease,background .18s ease,opacity .18s ease;
+}
+.scene-stepper button:hover{transform:scale(1.05);background:rgba(255,255,255,.11)}
+.scene-stepper button:disabled{opacity:.24;cursor:default;transform:none}
+.scene-stepper__count{
+  min-width:52px;
+  text-align:center;
+  font-family:var(--z-mono);
+  font-size:.67rem;
+  letter-spacing:.13em;
+  color:rgba(255,255,255,.68);
+}
+.scene-stepper button:focus-visible{outline:2px solid #ffd8e3;outline-offset:3px}
+
+html.scene-deck-mode .journey-footer{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:74;
+  padding:12px 0 14px;
+  transform:translateY(110%);
+  opacity:0;
+  pointer-events:none;
+  border-top:1px solid rgba(255,255,255,.08);
+  background:rgba(3,3,5,.62);
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);
+  transition:transform .35s ease,opacity .35s ease;
+}
+html.scene-deck-mode .page-shell.is-last-scene .journey-footer{
+  transform:translateY(0);
+  opacity:1;
+  pointer-events:auto;
+}
+html.scene-deck-mode .page-shell.is-last-scene .toshi-scene>.journey-wrap{
+  max-height:calc(100svh - 158px);
+}
+
+@media(max-width:980px){
+  html.scene-deck-mode .journey-scene,
+  html.scene-deck-mode .plane-section{
+    min-height:100svh;
+    height:100svh;
+    padding:96px 0 42px;
+  }
+  html.scene-deck-mode .hero-scene{padding-top:112px}
+  html.scene-deck-mode .journey-scene>.journey-wrap,
+  html.scene-deck-mode .plane-section>.journey-wrap{
+    width:calc(100% - 28px);
+    max-height:calc(100svh - 126px);
+    padding:28px 24px;
+  }
+}
+@media(max-width:640px){
+  html.scene-deck-mode .journey-scene,
+  html.scene-deck-mode .plane-section{padding:108px 0 30px}
+  html.scene-deck-mode .hero-scene{padding-top:118px}
+  html.scene-deck-mode .journey-scene>.journey-wrap,
+  html.scene-deck-mode .plane-section>.journey-wrap{
+    width:calc(100% - 18px);
+    max-height:calc(100svh - 134px);
+    padding:22px 17px;
+    border-radius:23px;
+  }
+  html.scene-deck-mode .product-panel,
+  html.scene-deck-mode .product-panel.crafta{min-height:0}
+  html.scene-deck-mode .preview-card{height:min(52vh,430px)}
+  .scene-stepper{
+    right:50%;
+    bottom:12px;
+    transform:translateX(50%);
+    grid-template-columns:38px auto 38px;
+    padding:5px;
+  }
+  .scene-stepper button{width:38px;height:38px}
+  .scene-stepper__count{min-width:46px;font-size:.62rem}
+  .scene-portal__line{left:3%;right:3%}
+  html.scene-deck-mode .page-shell.is-last-scene .toshi-scene>.journey-wrap{
+    max-height:calc(100svh - 174px);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .scene-portal__veil{-webkit-backdrop-filter:none;backdrop-filter:none}
+  .scene-stepper button{transition:none}
+}
