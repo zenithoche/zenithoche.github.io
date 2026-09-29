@@ -61,6 +61,11 @@
     setText("[data-price='crafta-enhanced']", pricing.crafta && pricing.crafta.enhanced);
     setText("[data-price='crafta-deep']", pricing.crafta && pricing.crafta.deep);
     setText("[data-note='crafta-pricing']", pricing.crafta && pricing.crafta.note);
+
+    setText("[data-price='crafta-everyday']", pricing.crafta && pricing.crafta.everyday);
+    setText("[data-price='crafta-enhanced']", pricing.crafta && pricing.crafta.enhanced);
+    setText("[data-price='crafta-deep']", pricing.crafta && pricing.crafta.deep);
+    setText("[data-note='crafta-pricing']", pricing.crafta && pricing.crafta.note);
   }
 
   function createSignalField() {
