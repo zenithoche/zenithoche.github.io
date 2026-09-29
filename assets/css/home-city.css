@@ -919,3 +919,57 @@ html.scene-click-only .scene-stepper::after{
 .scene-stepper::after{
   font-family:var(--z-mono);
 }
+
+
+/* Tradesmith reference headings — vector-built from Nix's provided alphabet specimen.
+   Pure white/transparent so the display treatment stays inside the Zenithoche black/white schema. */
+.sr-only{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+.tradesmith-host{
+  font-size:0!important;
+  line-height:0!important;
+  letter-spacing:0!important;
+  color:#fff!important;
+}
+.tradesmith-heading{
+  display:block;
+  width:100%;
+  height:auto;
+  color:#fff;
+  overflow:visible;
+  filter:drop-shadow(0 2px 18px rgba(0,0,0,.38));
+}
+.tradesmith-heading--hero{max-width:700px}
+.tradesmith-heading--crimson{max-width:650px}
+.tradesmith-heading--weight{max-width:650px}
+.tradesmith-heading--preview{max-width:535px}
+.tradesmith-heading--pricing{max-width:500px}
+.tradesmith-heading--signal{max-width:560px}
+
+.crimson-title.tradesmith-host{
+  width:100%;
+  max-width:650px;
+  margin:0;
+}
+.preview-head .tradesmith-host,
+.pricing-head .tradesmith-host{
+  margin-top:14px;
+  margin-bottom:18px;
+}
+@media(max-width:640px){
+  .tradesmith-heading--hero{max-width:100%}
+  .tradesmith-heading--crimson{max-width:100%}
+  .tradesmith-heading--weight{max-width:100%}
+  .tradesmith-heading--preview{max-width:100%}
+  .tradesmith-heading--pricing{max-width:100%}
+  .tradesmith-heading--signal{max-width:100%}
+}
