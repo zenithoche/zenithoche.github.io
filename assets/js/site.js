@@ -172,12 +172,50 @@
     const previousOverflow = document.body.style.overflow;
     let active = false;
     let revealing = false;
-    let currentSegment = 0;
+    let currentSegment = Math.max(0, film.findIndex((video) => video.classList.contains("is-current")));
     let fallbackTimer;
+    let idleRecoveryTimer;
 
     document.body.style.overflow = "hidden";
     if (page) page.inert = true;
     pageVideos.forEach((video) => video.pause());
+
+    film.forEach((video) => {
+      video.muted = true;
+      video.playsInline = true;
+    });
+
+    function playIdleSegment() {
+      if (active || entrance.hidden || !film.length) return;
+      const current = film[currentSegment] || film[0];
+      if (!current) return;
+      if (!current.classList.contains("is-current")) {
+        film.forEach((video) => video.classList.remove("is-current"));
+        current.classList.add("is-current");
+      }
+      const playback = current.play();
+      if (playback && typeof playback.catch === "function") {
+        playback.catch(() => {
+          // A later visibility/user-gesture recovery attempt will retry.
+        });
+      }
+    }
+
+    function recoverIdlePlayback() {
+      if (active || entrance.hidden) return;
+      const current = film[currentSegment] || film[0];
+      if (!current) return;
+      if (current.paused && !current.ended) playIdleSegment();
+    }
+
+    // Start the actual film explicitly instead of relying on browser autoplay policy.
+    playIdleSegment();
+    idleRecoveryTimer = window.setInterval(recoverIdlePlayback, 1800);
+    window.addEventListener("pageshow", recoverIdlePlayback);
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) recoverIdlePlayback();
+    });
+    entrance.addEventListener("pointerdown", recoverIdlePlayback, { passive: true });
 
     // The four contiguous files contain every frame of the 201.8-second film.
     film.forEach((video, index) => {
@@ -202,6 +240,7 @@
       if (!document.documentElement.classList.contains("bloom-enabled")) return;
       active = true;
       clearTimeout(fallbackTimer);
+      clearInterval(idleRecoveryTimer);
       film.forEach((video) => video.pause());
       sink.pause();
       document.documentElement.classList.remove("bloom-enabled");
@@ -215,10 +254,7 @@
     function startSink() {
       if (active) return;
       active = true;
-      if (prefersReducedMotion) {
-        enter();
-        return;
-      }
+      clearInterval(idleRecoveryTimer);
       trigger.disabled = true;
       entrance.classList.add("is-entering");
       // Keep the current film frame visible until the sink can actually play.
