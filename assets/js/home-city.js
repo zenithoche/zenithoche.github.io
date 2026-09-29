@@ -1,5 +1,11 @@
 (function(){
   const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasGsap=Boolean(window.gsap);
+
+  const scenes=Array.from(document.querySelectorAll('.journey-scene,.plane-section'));
+  if(!scenes.length)return;
+
+  document.documentElement.classList.add('scene-deck-mode','scene-click-only');
 
   function railScroll(dir){
     const rail=document.getElementById('preview-rail');
@@ -24,10 +30,24 @@
     },{passive:false});
   }
 
-  if(!window.gsap)return;
+  // The page itself is not scroll navigation. Wheel/touch/scroll keys never advance scenes.
+  window.addEventListener('wheel',(event)=>{
+    if(event.target&&event.target.closest&&event.target.closest('#preview-rail')&&event.shiftKey)return;
+    event.preventDefault();
+  },{passive:false});
 
-  const scenes=Array.from(document.querySelectorAll('.journey-scene,.plane-section'));
-  if(!scenes.length)return;
+  document.addEventListener('touchmove',(event)=>{
+    if(event.target&&event.target.closest&&event.target.closest('#preview-rail'))return;
+    event.preventDefault();
+  },{passive:false});
+
+  window.addEventListener('keydown',(event)=>{
+    const tag=event.target&&event.target.tagName;
+    if(tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT'||event.target?.isContentEditable)return;
+    if(['ArrowDown','ArrowUp','PageDown','PageUp',' ','Home','End'].includes(event.key)){
+      event.preventDefault();
+    }
+  },{passive:false});
 
   const pageShell=document.querySelector('.page-shell');
   scenes.forEach((scene,index)=>{
@@ -92,8 +112,6 @@
   const portal=buildPortal();
   const controls=buildStepper();
 
-  document.documentElement.classList.add('scene-deck-mode','scene-click-only');
-
   function sceneIndexForHash(hash){
     if(!hash||hash==='#')return -1;
     const target=document.querySelector(hash);
@@ -105,14 +123,25 @@
   if(current<0)current=0;
   let animating=false;
 
+  function setSceneVisibility(scene,active,z){
+    if(hasGsap){
+      gsap.set(scene,{autoAlpha:active?1:0,zIndex:z});
+    }else{
+      scene.style.opacity=active?'1':'0';
+      scene.style.visibility=active?'visible':'hidden';
+      scene.style.zIndex=String(z);
+    }
+  }
+
   function syncSceneState(){
     scenes.forEach((scene,index)=>{
       const active=index===current;
       scene.classList.toggle('is-deck-active',active);
       if(!scene.classList.contains('is-deck-transition')){
-        gsap.set(scene,{autoAlpha:active?1:0,zIndex:active?3:0});
+        setSceneVisibility(scene,active,active?3:0);
       }
       scene.setAttribute('aria-hidden',active?'false':'true');
+
       scene.querySelectorAll('video').forEach((video)=>{
         if(active){
           const play=video.play();
@@ -131,15 +160,16 @@
 
   scenes.forEach((scene,index)=>{
     const panel=scene.querySelector(':scope > .journey-wrap');
-    gsap.set(scene,{autoAlpha:index===current?1:0,zIndex:index===current?3:0});
-    if(panel)gsap.set(panel,{clearProps:'transform,opacity'});
+    setSceneVisibility(scene,index===current,index===current?3:0);
+    if(panel&&hasGsap)gsap.set(panel,{clearProps:'transform,opacity'});
   });
-  gsap.set(portal.portal,{autoAlpha:0});
+  if(hasGsap)gsap.set(portal.portal,{autoAlpha:0});
   syncSceneState();
 
   function edgeNudge(direction){
+    if(!hasGsap||animating)return;
     const panel=scenes[current].querySelector(':scope > .journey-wrap');
-    if(!panel||animating)return;
+    if(!panel)return;
     gsap.fromTo(panel,
       {y:0},
       {y:direction>0?-10:10,duration:.13,yoyo:true,repeat:1,ease:'power2.out',overwrite:true}
@@ -152,6 +182,29 @@
     try{history.replaceState(null,'','#'+id);}catch(_){}
   }
 
+  function finishSceneSwap(previous,nextIndex,outgoingPanel,incomingPanel){
+    current=nextIndex;
+
+    scenes[previous].classList.remove('is-deck-active','is-deck-transition');
+    scenes[current].classList.remove('is-deck-transition');
+    scenes[current].classList.add('is-deck-active');
+
+    setSceneVisibility(scenes[previous],false,0);
+    setSceneVisibility(scenes[current],true,3);
+
+    if(hasGsap){
+      gsap.set(scenes[previous],{clearProps:'--scene-bg-blur,--scene-bg-brightness,--scene-bg-scale'});
+      gsap.set(scenes[current],{clearProps:'--scene-bg-blur,--scene-bg-brightness,--scene-bg-scale'});
+      if(outgoingPanel)gsap.set(outgoingPanel,{clearProps:'transform,opacity'});
+      if(incomingPanel)gsap.set(incomingPanel,{clearProps:'transform,opacity'});
+    }
+    if(incomingPanel)incomingPanel.scrollTop=0;
+
+    animating=false;
+    updateHash(current);
+    syncSceneState();
+  }
+
   function goToScene(nextIndex,direction){
     if(animating)return;
     if(nextIndex<0||nextIndex>=scenes.length){
@@ -160,7 +213,8 @@
     }
     if(nextIndex===current)return;
 
-    const outgoing=scenes[current];
+    const previous=current;
+    const outgoing=scenes[previous];
     const incoming=scenes[nextIndex];
     const outgoingPanel=outgoing.querySelector(':scope > .journey-wrap');
     const incomingPanel=incoming.querySelector(':scope > .journey-wrap');
@@ -173,6 +227,13 @@
     outgoing.classList.add('is-deck-transition');
     incoming.classList.add('is-deck-transition');
     incoming.setAttribute('aria-hidden','false');
+
+    if(!hasGsap){
+      setSceneVisibility(outgoing,false,0);
+      setSceneVisibility(incoming,true,3);
+      finishSceneSwap(previous,nextIndex,outgoingPanel,incomingPanel);
+      return;
+    }
 
     gsap.set(incoming,{
       autoAlpha:1,
@@ -196,35 +257,7 @@
     const durationScale=window.matchMedia('(max-width: 640px)').matches ? .84 : 1;
     const tl=gsap.timeline({
       defaults:{overwrite:true},
-      onComplete:()=>{
-        const previous=current;
-        current=nextIndex;
-
-        scenes[previous].classList.remove('is-deck-active','is-deck-transition');
-        scenes[current].classList.remove('is-deck-transition');
-        scenes[current].classList.add('is-deck-active');
-
-        gsap.set(scenes[previous],{
-          autoAlpha:0,
-          zIndex:0,
-          clearProps:'--scene-bg-blur,--scene-bg-brightness,--scene-bg-scale'
-        });
-        gsap.set(scenes[current],{
-          autoAlpha:1,
-          zIndex:3,
-          clearProps:'--scene-bg-blur,--scene-bg-brightness,--scene-bg-scale'
-        });
-
-        if(outgoingPanel)gsap.set(outgoingPanel,{clearProps:'transform,opacity'});
-        if(incomingPanel){
-          incomingPanel.scrollTop=0;
-          gsap.set(incomingPanel,{clearProps:'transform,opacity'});
-        }
-
-        animating=false;
-        updateHash(current);
-        syncSceneState();
-      }
+      onComplete:()=>finishSceneSwap(previous,nextIndex,outgoingPanel,incomingPanel)
     });
 
     if(reducedMotion){
@@ -236,18 +269,10 @@
 
     tl
       .set(portal.portal,{autoAlpha:1,visibility:'visible'},0)
-      .fromTo(portal.veil,
-        {scaleY:.035},
-        {scaleY:1,duration:.28*durationScale,ease:'power3.inOut'},0)
-      .fromTo(portal.line,
-        {scaleX:.04,autoAlpha:0},
-        {scaleX:1,autoAlpha:.95,duration:.25*durationScale,ease:'power2.out'},.02*durationScale)
-      .fromTo(portal.halo,
-        {scaleX:.52,autoAlpha:0},
-        {scaleX:1.08,autoAlpha:.82,duration:.28*durationScale,ease:'power2.out'},.02*durationScale)
-      .fromTo(portal.particles,
-        {autoAlpha:0,y:dir*24},
-        {autoAlpha:.78,y:-dir*18,duration:.38*durationScale,ease:'power1.out'},.02*durationScale);
+      .fromTo(portal.veil,{scaleY:.035},{scaleY:1,duration:.28*durationScale,ease:'power3.inOut'},0)
+      .fromTo(portal.line,{scaleX:.04,autoAlpha:0},{scaleX:1,autoAlpha:.95,duration:.25*durationScale,ease:'power2.out'},.02*durationScale)
+      .fromTo(portal.halo,{scaleX:.52,autoAlpha:0},{scaleX:1.08,autoAlpha:.82,duration:.28*durationScale,ease:'power2.out'},.02*durationScale)
+      .fromTo(portal.particles,{autoAlpha:0,y:dir*24},{autoAlpha:.78,y:-dir*18,duration:.38*durationScale,ease:'power1.out'},.02*durationScale);
 
     if(outgoingPanel){
       tl.to(outgoingPanel,{
@@ -287,29 +312,10 @@
       duration:.48*durationScale,
       ease:'power2.out'
     },.27*durationScale)
-      .to(portal.veil,{
-        scaleY:.035,
-        duration:.40*durationScale,
-        ease:'power3.inOut'
-      },.34*durationScale)
-      .to(portal.line,{
-        scaleX:.16,
-        autoAlpha:0,
-        duration:.32*durationScale,
-        ease:'power2.in'
-      },.35*durationScale)
-      .to(portal.halo,{
-        scaleX:.60,
-        autoAlpha:0,
-        duration:.32*durationScale,
-        ease:'power2.in'
-      },.35*durationScale)
-      .to(portal.particles,{
-        autoAlpha:0,
-        y:-dir*38,
-        duration:.28*durationScale,
-        ease:'power1.in'
-      },.38*durationScale)
+      .to(portal.veil,{scaleY:.035,duration:.40*durationScale,ease:'power3.inOut'},.34*durationScale)
+      .to(portal.line,{scaleX:.16,autoAlpha:0,duration:.32*durationScale,ease:'power2.in'},.35*durationScale)
+      .to(portal.halo,{scaleX:.60,autoAlpha:0,duration:.32*durationScale,ease:'power2.in'},.35*durationScale)
+      .to(portal.particles,{autoAlpha:0,y:-dir*38,duration:.28*durationScale,ease:'power1.in'},.38*durationScale)
       .set(portal.portal,{autoAlpha:0,visibility:'hidden'},.78*durationScale);
   }
 
