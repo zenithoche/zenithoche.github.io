@@ -1183,3 +1183,30 @@ html.scene-click-only .scene-stepper::after{
   -webkit-font-smoothing:antialiased;
   text-rendering:geometricPrecision;
 }
+
+/* ISOLATED SEGMENTED LABEL CORRECTION — 2026-09-29 */
+/* Scope: seven section/kicker labels + hero Products/Previews only. */
+.journey-eyebrow,
+.product-kicker,
+.hero-label-button{
+  font-family:"Megrim","Gruppo","Arial Narrow",sans-serif!important;
+  font-weight:400!important;
+  text-transform:uppercase!important;
+  text-shadow:none!important;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:geometricPrecision;
+}
+.journey-eyebrow,
+.product-kicker{
+  font-size:.72rem!important;
+  line-height:1!important;
+  letter-spacing:.20em!important;
+  color:rgba(255,255,255,.62)!important;
+  opacity:.92!important;
+}
+.hero-label-button{
+  font-size:.78rem!important;
+  line-height:1!important;
+  letter-spacing:.14em!important;
+  color:rgba(255,255,255,.82)!important;
+}
