@@ -160,3 +160,139 @@ filter:grayscale(.9) contrast(1.08) brightness(.62);transform:scale(1.04)}
   .toshi-visual,.toshi-visual img{min-height:480px}
   .journey-footer .journey-wrap{flex-direction:column}
 }
+
+/* The approved city scenes, with live HTML laid over clean wallpaper assets. */
+:root{--z-max:1380px;--z-glass:rgba(24,17,22,.48)}
+body::before,body::after{display:none}
+.zeni-shell{position:absolute;inset:0 0 auto;background:rgba(3,3,5,.64);backdrop-filter:blur(12px)}
+.zeni-shell__inner{width:min(var(--z-max),90%);min-height:62px;justify-content:flex-start;gap:54px}
+.zeni-shell__brand{margin:0;white-space:nowrap;letter-spacing:.2em}
+.zeni-shell__nav{gap:22px;font-size:.83rem}
+.journey-wrap{width:min(var(--z-max),89%)}
+.journey-scene,.plane-section{min-height:100svh;padding:90px 0 64px;scroll-margin-top:0}
+.journey-scene::before,.plane-section::before{
+  content:"";position:absolute;inset:-24px 0;z-index:-3;
+  background:var(--scene-image) var(--scene-position,center)/cover no-repeat;
+  filter:none;transform:translate3d(0,var(--scene-shift,0px),0);pointer-events:none;
+}
+.journey-scene::after,.plane-section::after{
+  content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.12),transparent 18%,transparent 78%,rgba(0,0,0,.28));
+  animation:none;opacity:1;filter:none;
+}
+.hero-scene{--scene-image:url('/assets/media/city-hero.webp');padding-top:100px}
+.crimson-scene{--scene-image:url('/assets/media/city-hero.webp');--scene-position:center 64%}
+.weight-scene{--scene-image:url('/assets/media/city-weight.webp')}
+.preview-section{--scene-image:url('/assets/media/city-preview.webp')}
+.pricing-section{--scene-image:url('/assets/media/city-pricing.webp')}
+.toshi-scene{--scene-image:url('/assets/media/city-toshi.webp')}
+.plane-axis{overflow:visible;background:transparent;isolation:auto}
+.plane-axis::before,.plane-axis::after{display:none}
+.plane-section{isolation:isolate;overflow:hidden;display:flex;align-items:center}
+.hero-layout{grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);min-height:0;align-items:center}
+.hero-copy{padding:0;max-width:620px}
+.hero-empty,.weight-space{min-height:0}
+.journey-title{font-size:clamp(2.9rem,4.65vw,4.65rem);line-height:1.04;letter-spacing:-.035em;margin:14px 0 18px;text-wrap:balance;text-shadow:0 2px 25px #0008}
+.journey-eyebrow{font-size:.72rem;letter-spacing:.26em;color:#e2b3bd}
+.journey-copy{max-width:510px;font-size:clamp(.95rem,1.12vw,1.1rem);line-height:1.5;color:#f0e9e8;text-shadow:0 1px 12px #000}
+.journey-actions{gap:12px;margin-top:20px}
+.journey-button{min-height:46px;padding:0 24px;font-size:.91rem;background:rgba(33,24,31,.5);border-color:#fff7;backdrop-filter:blur(9px)}
+.journey-button.primary{background:linear-gradient(180deg,#d68195bf,#8d465a99);border-color:#ffe3eac7;box-shadow:0 0 14px #f198ab40,inset 0 1px 7px #fff8}
+.journey-button:focus-visible,.preview-arrow:focus-visible,.preview-caption a:focus-visible{outline:2px solid #ffd8e3;outline-offset:5px}
+.glass-panel{background:linear-gradient(125deg,rgba(41,31,37,.63),rgba(16,13,20,.38));border:1px solid #f2cedb88;backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);box-shadow:inset 0 1px 9px #fff3,0 0 12px #e3a0b02e,0 12px 40px #0004}
+.hero-policies{max-width:495px;margin-top:20px;gap:9px}
+.policy{min-height:72px;border-radius:15px;grid-template-columns:55px 37px 1fr 24px;gap:9px;padding:9px 15px}
+.policy-text{font-size:.89rem;line-height:1.35}.policy-icon{width:43px;height:43px;box-shadow:0 0 10px #ffd8e329}.policy-line{width:23px}
+.crimson-head{margin-bottom:22px}
+.product-layout{max-width:1120px;gap:18px}
+.product-panel{min-height:260px;border-radius:20px;padding:27px;background:linear-gradient(90deg,#0d0b10e6,#18111ba6 57%,#130e1466),url('/assets/media/city-hero.webp') center/cover}
+.product-panel.crafta{min-height:230px;background-position:center 72%}
+.product-panel::before{display:none}
+.product-name{font-size:clamp(2.2rem,3.3vw,3.25rem);line-height:1.08;margin:10px 0}
+.product-panel p{font-size:.95rem;max-width:520px}
+.product-panel.crafta p{max-width:740px}
+.product-kicker{font-size:.65rem;letter-spacing:.2em}
+.chip-row{gap:7px;margin-top:14px}.chip{padding:5px 10px;font-size:.72rem}
+.product-panel .journey-button{min-height:38px;margin-top:17px;font-size:.82rem}
+.weight-grid{grid-template-columns:minmax(0,.93fr) minmax(0,1.07fr);gap:60px}
+.weight-grid>div:first-child{max-width:560px;padding:20px 0}
+.weight-scene::after{background:linear-gradient(90deg,#0008,transparent 65%)}
+.feature-stack{max-width:530px;margin-top:25px;gap:13px}
+.feature-panel{padding:20px 19px;grid-template-columns:48px 1fr 32px;gap:15px;border-radius:17px}
+.feature-panel p{font-size:.86rem;line-height:1.4;color:#e5dde1}.feature-panel strong{font-size:.96rem}
+.feature-icon{width:44px;height:44px}.feature-arrow{width:31px;height:31px}
+.preview-head{align-items:flex-end}.preview-head .journey-copy{margin-bottom:0}
+.preview-controls{margin-bottom:8px}.preview-arrow{background:#17101899;cursor:pointer;border-color:#e4beca99}
+.preview-rail{gap:24px;margin-top:24px;padding:16px 3px 30px;scroll-padding:3px}
+.preview-card{flex:0 0 calc((100% - 54px)/3);height:390px;border-radius:19px;background:linear-gradient(135deg,#20181cbb,#0b0a0ddd)}
+.preview-card video,.preview-card img{height:calc(100% - 96px);object-fit:contain;opacity:1;padding:14px 12px 0}
+.preview-caption{left:0;right:0;bottom:0;min-height:94px;padding:16px 18px;background:#181217a6;border:0;border-top:1px solid #ecd5dd6b;border-radius:0}
+.preview-caption strong{font-size:clamp(1.2rem,1.5vw,1.5rem)}
+.preview-caption strong a{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.preview-caption strong a span{display:inline;font-family:var(--z-ui);font-size:1.25rem;color:#fff}
+.preview-caption>span{font-size:.78rem;line-height:1.35;color:#e7dce3}
+.pricing-head{grid-template-columns:1fr;gap:0;max-width:650px}
+.pricing-head>.journey-copy{font-size:.92rem;max-width:480px}
+.price-groups{max-width:1030px;gap:25px;margin-top:25px}
+.price-group{padding:25px 26px;border-radius:22px}
+.price-group-name{font-size:clamp(2.4rem,3.5vw,3.4rem);line-height:1.1;margin-bottom:20px}
+.price-row{grid-template-columns:38px 1fr auto;gap:12px;min-height:66px;padding:9px 12px;background:linear-gradient(120deg,#51404a88,#21182080);border-color:#e6c5d37a;box-shadow:inset 0 1px 6px #fff2}
+.price-tier{font-size:1rem}.price-value{font-size:.95rem}.price-note{color:#e4d7dd;font-size:.76rem}
+.toshi-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:65px;align-items:center}
+.toshi-visual{min-height:0;height:auto;aspect-ratio:1.38;border-radius:23px}
+.toshi-visual img{min-height:0;width:100%;height:100%;object-fit:cover;filter:none}
+.toshi-caption{left:25px;right:20px;bottom:23px}.toshi-caption strong{font-size:1.1rem}.toshi-caption span{color:#f1b6c7}
+.signal-pill{background:#271b2480;color:#f0dfe6;border-color:#d5aabb5c}
+.scene-petals{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:-1}
+.scene-petals i{position:absolute;top:-15%;left:var(--petal-x);width:5px;height:11px;border-radius:80% 0 80% 0;background:#ed9bb5;opacity:0;box-shadow:0 0 9px #ef8daa88;animation:cityPetal var(--petal-duration) var(--petal-delay) linear infinite}
+@keyframes cityPetal{0%{opacity:0;transform:translate3d(0,0,0) rotate(0)}15%,75%{opacity:.55}100%{opacity:0;transform:translate3d(90px,110vh,0) rotate(310deg)}}
+/* Full viewport film; entering never flashes an opaque black alignment veil. */
+.bloom-entrance__video{top:0;left:0;width:100%;height:100%;max-width:none;transform:none;object-fit:cover}
+.bloom-entrance__sink{transition:opacity 220ms ease}
+.bloom-entrance.is-entering .bloom-entrance__hint{opacity:0;transition:opacity 120ms}
+.bloom-entrance.is-entering .bloom-entrance__trigger{pointer-events:none}
+.bloom-entrance.is-revealing{transition:opacity 300ms ease}
+@media(min-width:981px) and (max-height:780px){
+  .hero-scene{padding-top:88px;padding-bottom:28px}.hero-copy .journey-title{font-size:clamp(2.8rem,4.3vw,4.1rem)}
+  .hero-policies{gap:7px;margin-top:16px}.policy{min-height:62px}.hero-copy .journey-copy{font-size:.94rem}
+  .journey-scene,.plane-section{padding-top:84px;padding-bottom:44px}
+}
+@media(max-width:980px){
+  .zeni-shell__inner{width:92%;gap:25px;min-height:58px}.zeni-shell__nav{gap:10px}
+  .journey-wrap{width:90%}.journey-scene,.plane-section{min-height:90svh;padding:86px 0 65px}
+  .hero-layout,.weight-grid,.toshi-grid{grid-template-columns:1fr}.hero-copy{max-width:560px}
+  .hero-scene{padding-top:115px;--scene-position:65% center}
+  .hero-scene::after{background:linear-gradient(90deg,#0008,#0001)}
+  .product-layout,.price-groups{grid-template-columns:1fr 1fr}.product-panel.crafta{grid-column:1/-1}
+  .preview-head{flex-direction:row;align-items:flex-end}.preview-card{flex-basis:calc((100% - 30px)/2)}
+  .toshi-grid{gap:35px}.toshi-grid>div:first-child{max-width:550px}.toshi-visual{max-width:630px;width:100%;justify-self:center}
+  .price-group{padding:22px 17px}.price-row{gap:8px;grid-template-columns:32px 1fr auto;padding:8px}.price-value{font-size:.8rem}
+  .scene-petals{display:none}
+}
+@media(max-width:640px){
+  .zeni-shell__inner{width:100%;padding:10px 18px 0;display:block;min-height:90px}
+  .zeni-shell__brand{display:inline-block;font-size:.65rem;padding:4px 0 8px}
+  .zeni-shell__nav{display:flex;flex-wrap:nowrap;gap:11px;font-size:.72rem;margin:0 -18px;padding:0 18px;white-space:nowrap;scrollbar-width:none}
+  .zeni-shell__nav a{min-height:34px;padding:6px 0;flex-shrink:0}.zeni-shell__nav::-webkit-scrollbar{display:none}
+  .journey-wrap{width:calc(100% - 36px)}.journey-scene,.plane-section{min-height:100svh;padding:65px 0}
+  .hero-scene{padding-top:132px;padding-bottom:50px;--scene-position:64% center}
+  .hero-copy{max-width:100%}.journey-title{font-size:clamp(2.6rem,10.5vw,3.6rem);line-height:1.07;margin:13px 0 18px}
+  .hero-copy .journey-title{max-width:390px}.journey-eyebrow{font-size:.62rem;letter-spacing:.22em}
+  .journey-copy{font-size:.94rem;line-height:1.55}.journey-actions{gap:9px}.journey-button{padding:0 18px;font-size:.78rem;min-height:44px}
+  .hero-policies{margin-top:24px;gap:10px}.policy{min-height:72px;grid-template-columns:43px 27px 1fr;gap:9px;padding:10px 12px}.policy-icon{width:39px;height:39px}.policy-text{font-size:.82rem}
+  .journey-scene::after,.plane-section::after{background:linear-gradient(180deg,#0005,#0002 45%,#0006)}
+  .weight-scene::after{background:linear-gradient(90deg,#0008,#0003)}
+  .product-layout,.price-groups{grid-template-columns:1fr}.product-panel.crafta{grid-column:auto}
+  .product-panel,.product-panel.crafta{min-height:0;padding:24px 21px}.product-panel p{font-size:.89rem}.product-name{font-size:2.45rem}
+  .crimson-title{font-size:.89rem;letter-spacing:.17em}.crimson-scene{--scene-position:62% center}
+  .weight-grid{gap:0}.weight-grid>div:first-child{padding:0}.feature-panel{padding:17px 13px;grid-template-columns:39px 1fr 27px;gap:11px}.feature-icon{width:36px;height:36px}.feature-icon svg{width:20px}.feature-arrow{width:26px;height:26px}.feature-panel p{font-size:.79rem}.feature-panel strong{font-size:.9rem}
+  .preview-head{gap:12px}.preview-head .journey-title{font-size:2.45rem}.preview-head .journey-copy{font-size:.83rem}.preview-controls{gap:6px}.preview-arrow{width:35px;height:35px}
+  .preview-rail{margin-top:20px;gap:16px}.preview-card{flex-basis:88%;height:400px}.preview-caption strong{font-size:1.25rem}
+  .price-group{padding:24px 20px}.price-group-name{font-size:2.6rem}.price-row{grid-template-columns:36px 1fr auto;gap:10px;padding:9px 12px;min-height:65px}.price-value{font-size:.88rem}.price-note{font-size:.78rem}
+  .toshi-visual{aspect-ratio:1.05;min-height:0}.toshi-visual img{min-height:0}.toshi-caption{left:17px;bottom:19px}.toshi-caption strong{font-size:.96rem}.toshi-caption span{font-size:.6rem}
+  .toshi-grid{gap:30px}.signal-pill{font-size:.75rem}.footer-links{flex-wrap:wrap}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}.scene-petals{display:none}.journey-scene::before,.plane-section::before{transform:none}
+  .journey-button,.bloom-entrance__sink,.bloom-entrance.is-revealing{transition:none}
+}

@@ -163,7 +163,6 @@
     const entrance = byId("bloom-entrance");
     if (!entrance || !document.documentElement.classList.contains("bloom-enabled")) return;
 
-    const idle = byId("bloom-idle");
     const film = Array.from(entrance.querySelectorAll(".bloom-entrance__idle"));
     const sink = byId("bloom-sink");
     const trigger = byId("bloom-trigger");
@@ -171,12 +170,10 @@
     const page = document.querySelector(".page-shell");
     const pageVideos = page ? Array.from(page.querySelectorAll("video[autoplay]")) : [];
     const previousOverflow = document.body.style.overflow;
-    const sinkAxis = 17;
     let active = false;
     let revealing = false;
     let currentSegment = 0;
     let fallbackTimer;
-    let seekTimer;
 
     document.body.style.overflow = "hidden";
     if (page) page.inert = true;
@@ -205,7 +202,6 @@
       if (!document.documentElement.classList.contains("bloom-enabled")) return;
       active = true;
       clearTimeout(fallbackTimer);
-      clearTimeout(seekTimer);
       film.forEach((video) => video.pause());
       sink.pause();
       document.documentElement.classList.remove("bloom-enabled");
@@ -224,55 +220,30 @@
         return;
       }
       trigger.disabled = true;
+      entrance.classList.add("is-entering");
+      // Keep the current film frame visible until the sink can actually play.
+      // No black veil, alignment seek, or ten-second wait after a click.
       film.forEach((video) => video.pause());
-      entrance.classList.add("is-aligning");
-      fallbackTimer = setTimeout(enter, 16000);
-
-      // The opening frame of the sink matches this point in the complete film.
-      // Cover the seek briefly so clicks from either side of the axis feel continuous.
-      setTimeout(() => {
-        if (entrance.hidden) return;
-        film.forEach((video) => video.classList.remove("is-current"));
-        idle.classList.add("is-current");
-        if (idle.readyState === 0) idle.load();
-        let started = false;
-        const playSink = () => {
-          if (started || entrance.hidden) return;
-          started = true;
-          clearTimeout(seekTimer);
-          sink.currentTime = 0;
-          entrance.classList.add("is-sinking");
-          sink.play().then(() => {
-            requestAnimationFrame(() => entrance.classList.remove("is-aligning"));
-          }).catch(enter);
-        };
-        seekTimer = setTimeout(playSink, 1800);
-        const align = () => {
-          if (started || entrance.hidden) return;
-          idle.addEventListener("seeked", playSink, { once: true });
-          try {
-            idle.currentTime = sinkAxis;
-            if (Math.abs(idle.currentTime - sinkAxis) < 0.05 && idle.readyState >= 2) playSink();
-          } catch (_) {
-            playSink();
-          }
-        };
-        if (idle.readyState >= 1) align();
-        else idle.addEventListener("loadedmetadata", align, { once: true });
-      }, 260);
+      fallbackTimer = setTimeout(enter, 4500);
+      sink.playbackRate = 4;
+      sink.addEventListener("playing", () => {
+        if (entrance.hidden) { sink.pause(); return; }
+        entrance.classList.add("is-sinking");
+      }, { once: true });
+      sink.play().catch(enter);
     }
 
     trigger.addEventListener("click", startSink);
     skip.addEventListener("click", enter);
     sink.addEventListener("timeupdate", () => {
-      if (active && !revealing && sink.currentTime >= (Number.isFinite(sink.duration) ? sink.duration - 1.1 : 9.1)) {
+      if (active && !revealing && sink.currentTime >= (Number.isFinite(sink.duration) ? sink.duration - 1.4 : 8.8)) {
         revealing = true;
         pageVideos.forEach((video) => video.play().catch(() => {}));
         entrance.classList.add("is-revealing");
       }
     });
     sink.addEventListener("ended", enter);
-    sink.addEventListener("error", enter);
+    sink.addEventListener("error", () => { if (active) enter(); });
   }
 
   hydrateConfig();
