@@ -164,23 +164,49 @@
     if (!entrance || !document.documentElement.classList.contains("bloom-enabled")) return;
 
     const idle = byId("bloom-idle");
+    const film = Array.from(entrance.querySelectorAll(".bloom-entrance__idle"));
     const sink = byId("bloom-sink");
     const trigger = byId("bloom-trigger");
     const skip = byId("bloom-skip");
     const page = document.querySelector(".page-shell");
     const pageVideos = page ? Array.from(page.querySelectorAll("video[autoplay]")) : [];
     const previousOverflow = document.body.style.overflow;
+    const sinkAxis = 17;
     let active = false;
+    let revealing = false;
+    let currentSegment = 0;
     let fallbackTimer;
+    let seekTimer;
 
     document.body.style.overflow = "hidden";
     if (page) page.inert = true;
     pageVideos.forEach((video) => video.pause());
 
+    // The four contiguous files contain every frame of the 201.8-second film.
+    film.forEach((video, index) => {
+      video.addEventListener("ended", () => {
+        if (active || currentSegment !== index) return;
+        const nextIndex = (index + 1) % film.length;
+        const next = film[nextIndex];
+        next.currentTime = 0;
+        next.play().then(() => {
+          if (active || entrance.hidden) { next.pause(); return; }
+          video.classList.remove("is-current");
+          next.classList.add("is-current");
+          currentSegment = nextIndex;
+          film[(nextIndex + 1) % film.length].preload = "auto";
+        }).catch(() => {
+          // The skip control remains available if a browser refuses playback.
+        });
+      });
+    });
+
     function enter() {
       if (!document.documentElement.classList.contains("bloom-enabled")) return;
+      active = true;
       clearTimeout(fallbackTimer);
-      idle.pause();
+      clearTimeout(seekTimer);
+      film.forEach((video) => video.pause());
       sink.pause();
       document.documentElement.classList.remove("bloom-enabled");
       entrance.hidden = true;
@@ -198,17 +224,52 @@
         return;
       }
       trigger.disabled = true;
-      idle.pause();
-      sink.currentTime = 0;
-      entrance.classList.add("is-sinking");
-      sink.play().catch(enter);
-      fallbackTimer = setTimeout(enter, 6500);
+      film.forEach((video) => video.pause());
+      entrance.classList.add("is-aligning");
+      fallbackTimer = setTimeout(enter, 16000);
+
+      // The opening frame of the sink matches this point in the complete film.
+      // Cover the seek briefly so clicks from either side of the axis feel continuous.
+      setTimeout(() => {
+        if (entrance.hidden) return;
+        film.forEach((video) => video.classList.remove("is-current"));
+        idle.classList.add("is-current");
+        if (idle.readyState === 0) idle.load();
+        let started = false;
+        const playSink = () => {
+          if (started || entrance.hidden) return;
+          started = true;
+          clearTimeout(seekTimer);
+          sink.currentTime = 0;
+          entrance.classList.add("is-sinking");
+          sink.play().then(() => {
+            requestAnimationFrame(() => entrance.classList.remove("is-aligning"));
+          }).catch(enter);
+        };
+        seekTimer = setTimeout(playSink, 1800);
+        const align = () => {
+          if (started || entrance.hidden) return;
+          idle.addEventListener("seeked", playSink, { once: true });
+          try {
+            idle.currentTime = sinkAxis;
+            if (Math.abs(idle.currentTime - sinkAxis) < 0.05 && idle.readyState >= 2) playSink();
+          } catch (_) {
+            playSink();
+          }
+        };
+        if (idle.readyState >= 1) align();
+        else idle.addEventListener("loadedmetadata", align, { once: true });
+      }, 260);
     }
 
     trigger.addEventListener("click", startSink);
     skip.addEventListener("click", enter);
     sink.addEventListener("timeupdate", () => {
-      if (sink.currentTime >= 4.5) entrance.classList.add("is-revealing");
+      if (active && !revealing && sink.currentTime >= (Number.isFinite(sink.duration) ? sink.duration - 1.1 : 9.1)) {
+        revealing = true;
+        pageVideos.forEach((video) => video.play().catch(() => {}));
+        entrance.classList.add("is-revealing");
+      }
     });
     sink.addEventListener("ended", enter);
     sink.addEventListener("error", enter);
