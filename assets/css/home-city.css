@@ -1869,3 +1869,52 @@ body,
     line-height:1.22!important;
   }
 }
+
+
+/* TOSHI + CRAFTA PRICING REPAIR — 2026-09-29 */
+
+/* Three real pricing cards on larger screens; mobile keeps the existing scroll pocket. */
+@media(min-width:981px){
+  .price-groups{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  }
+  .price-group--crafta .price-group-name{
+    font-size:clamp(1.50rem,1.75vw,2.02rem)!important;
+  }
+}
+
+/* The last scene itself is the movable pocket on mobile, while the scene deck remains fixed. */
+@media(max-width:640px){
+  html.scene-deck-mode .toshi-scene>.journey-wrap.toshi-grid.scene-pocket-scroll{
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    max-height:calc(100svh - 154px)!important;
+    padding-bottom:148px!important;
+    scroll-padding-block:10px 154px;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+    touch-action:pan-y;
+  }
+
+  .toshi-visual{
+    min-height:clamp(360px,58svh,520px)!important;
+    margin-bottom:12px;
+  }
+  .toshi-visual img{
+    min-height:clamp(360px,58svh,520px)!important;
+  }
+
+  .price-group--crafta .price-group-name{
+    font-size:1.72rem!important;
+  }
+}
+
+/* Requested wordmark reduction: about four pixels smaller than the previous lock. */
+.zeni-shell__brand{
+  font-size:23px!important;
+}
+@media(max-width:620px){
+  .zeni-shell__brand{
+    font-size:17px!important;
+  }
+}
