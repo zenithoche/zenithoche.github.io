@@ -1210,3 +1210,62 @@ html.scene-click-only .scene-stepper::after{
   letter-spacing:.14em!important;
   color:rgba(255,255,255,.82)!important;
 }
+
+/* ISOLATED GEO-BREAK GEOMETRY CORRECTION — 2026-09-29 */
+/* Only the requested micro-labels and hero buttons.
+   Preserve Megrim's broken geometry at a readable cap height, then condense
+   the glyph run horizontally instead of shrinking the font until it aliases
+   into a generic hairline face. */
+.journey-eyebrow,
+.product-kicker,
+.hero-label-button{
+  font-family:"Megrim","Gruppo","Arial Narrow",sans-serif!important;
+  font-weight:400!important;
+  text-transform:none!important;
+  text-shadow:none!important;
+}
+
+.journey-eyebrow,
+.product-kicker{
+  font-size:.92rem!important;
+  line-height:1!important;
+  letter-spacing:0!important;
+  color:rgba(255,255,255,.56)!important;
+  opacity:1!important;
+}
+
+.geo-break-text{
+  display:inline-block;
+  white-space:nowrap;
+  transform:scaleX(.72);
+  transform-origin:left center;
+  letter-spacing:.13em;
+  font:inherit;
+}
+
+.hero-label-button{
+  font-size:.94rem!important;
+  line-height:1!important;
+  letter-spacing:0!important;
+  color:rgba(255,255,255,.76)!important;
+}
+
+.hero-label-button .geo-break-text--button{
+  transform:scaleX(.76);
+  transform-origin:center center;
+  letter-spacing:.10em;
+}
+
+/* Keep the long Crafta kicker from forcing card geometry wider. */
+.product-panel.crafta .product-kicker{
+  overflow:visible;
+  max-width:100%;
+}
+
+@media(max-width:640px){
+  .journey-eyebrow,
+  .product-kicker{font-size:.86rem!important}
+  .hero-label-button{font-size:.90rem!important}
+  .geo-break-text{transform:scaleX(.70)}
+  .hero-label-button .geo-break-text--button{transform:scaleX(.74)}
+}
