@@ -1709,3 +1709,163 @@ body,
     font-size:.91rem!important;
   }
 }
+
+
+/* MOBILE POCKET PASS — keep the scene fixed; only the content pockets move. */
+.journey-copy,
+.product-panel p,
+.feature-panel p,
+.price-note,
+.preview-caption span,
+.policy-text{
+  text-transform:none!important;
+}
+
+/* Preserve source case for named display text; CRIMSON stays uppercase because the source text is uppercase. */
+.journey-title,
+.product-name,
+.price-group-name,
+.preview-caption strong,
+.toshi-caption strong,
+.tradesmith-host .sr-only{
+  text-transform:none!important;
+}
+
+/* A little less rigid than the previous print-lock while keeping the same chosen faces. */
+.journey-title,
+.crimson-title,
+.product-name,
+.price-group-name,
+.preview-caption strong,
+.toshi-caption strong,
+.tradesmith-host .sr-only{
+  letter-spacing:.018em!important;
+}
+.journey-copy,
+.product-panel p,
+.feature-panel p,
+.price-note,
+.preview-caption span,
+.policy-text{
+  font-weight:400!important;
+  line-height:1.28!important;
+}
+
+/* Generic inner-scroll behavior. The outer scene remains hard-locked. */
+.scene-pocket-scroll{
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  touch-action:pan-y;
+}
+.scene-pocket-scroll::-webkit-scrollbar{display:none}
+.scene-pocket-scroll:focus-visible,
+.scene-pocket-scroll-x:focus-visible{
+  outline:1px solid rgba(255,224,235,.42);
+  outline-offset:4px;
+}
+.scene-pocket-scroll-x{
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  touch-action:pan-x;
+}
+.scene-pocket-scroll-x::-webkit-scrollbar{display:none}
+
+/* Desktop: only scroll if a very short viewport actually needs it. */
+@media(max-height:760px) and (min-width:641px){
+  .hero-policies,
+  .product-layout,
+  .feature-stack,
+  .price-groups{
+    max-height:46svh;
+    overflow-y:auto!important;
+    padding-right:5px;
+    scroll-padding-block:14px 82px;
+  }
+}
+
+/* Mobile: the glass scene stays still; card stacks become the movable layer. */
+@media(max-width:640px){
+  html.scene-deck-mode .journey-scene>.journey-wrap,
+  html.scene-deck-mode .plane-section>.journey-wrap{
+    overflow:hidden!important;
+  }
+
+  .hero-policies,
+  .product-layout,
+  .feature-stack,
+  .price-groups{
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    position:relative;
+    padding-right:2px;
+    padding-bottom:88px;
+    scroll-padding-block:8px 94px;
+  }
+
+  .hero-policies{
+    max-height:min(34svh,330px);
+    scroll-snap-type:y proximity;
+  }
+  .hero-policies .policy{
+    scroll-snap-align:start;
+  }
+
+  .product-layout{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    max-height:min(59svh,610px);
+    gap:16px!important;
+    scroll-snap-type:y proximity;
+  }
+  .product-panel,
+  .product-panel.crafta{
+    min-height:clamp(340px,48svh,470px)!important;
+    scroll-snap-align:start;
+  }
+
+  .feature-stack{
+    max-height:min(52svh,520px);
+    gap:14px!important;
+    scroll-snap-type:y proximity;
+  }
+  .feature-panel{
+    min-height:150px;
+    scroll-snap-align:start;
+  }
+
+  .price-groups{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    max-height:min(58svh,610px);
+    gap:18px!important;
+    scroll-snap-type:y proximity;
+  }
+  .price-group{
+    scroll-snap-align:start;
+  }
+
+  /* Keep horizontal preview movement native and obvious on touch. */
+  .preview-rail{
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scroll-snap-type:x mandatory!important;
+    touch-action:pan-x!important;
+    padding-bottom:34px!important;
+  }
+
+  /* Slightly calmer mobile body rhythm, closer to the rounded print references. */
+  .journey-copy{
+    font-size:.96rem!important;
+    line-height:1.30!important;
+  }
+  .product-panel p{
+    font-size:.93rem!important;
+    line-height:1.28!important;
+  }
+  .policy-text{
+    font-size:.86rem!important;
+    line-height:1.22!important;
+  }
+}
