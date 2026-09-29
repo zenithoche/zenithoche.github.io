@@ -1,5 +1,5 @@
 window.ZENITHOCHE_CONFIG = {
-  updated: "2026-07-26",
+  updated: "2026-09-29",
   links: {
     home: "/",
     products: "/#products",
@@ -31,6 +31,12 @@ window.ZENITHOCHE_CONFIG = {
       plus: "$5/mo · Discord SKU",
       pro: "$10/mo · Discord SKU",
       note: "Ashiko stays free-first. Paid plans expand creator routing and higher-volume community operations."
+    },
+    crafta: {
+      everyday: "$6/mo",
+      enhanced: "$12/mo",
+      deep: "$24/mo",
+      note: "Experience-level plans include an AI allowance, with optional prepaid refills available."
     }
   },
   media: {
