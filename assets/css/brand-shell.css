@@ -90,23 +90,3 @@
   .zeni-shell__mark{width:34px;height:34px}
   .zeni-shell__inner{gap:8px}
 }
-
-
-/* Total typography reset — header overrides */
-.zeni-shell__brand{
-  font-family:"Allura","Segoe Script",cursive!important;
-  font-size:32px!important;
-  font-weight:400!important;
-  letter-spacing:.01em!important;
-  text-transform:none!important;
-  line-height:1!important;
-}
-.zeni-shell__nav{
-  font-family:"Oswald","Arial Narrow",sans-serif!important;
-  font-size:12px!important;
-  font-weight:500!important;
-  letter-spacing:.055em!important;
-}
-@media(max-width:620px){
-  .zeni-shell__brand{font-size:24px!important}
-}
