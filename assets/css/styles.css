@@ -89,15 +89,31 @@ video {
 .bloom-entrance {
   display: none;
   position: fixed;
-  z-index: 100;
+  z-index: 2147483000;
   inset: 0;
   overflow: hidden;
+  isolation: isolate;
   background: #000;
 }
 
 .bloom-enabled .bloom-entrance {
   display: block;
 }
+
+/* The entrance owns the viewport. Site chrome must not leak above the lotus film. */
+.bloom-enabled .zeni-shell,
+.bloom-enabled .scene-stepper,
+.bloom-enabled .journey-footer,
+.bloom-enabled .scene-portal {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.bloom-enabled body {
+  overflow: hidden !important;
+}
+
 
 .bloom-entrance__video {
   position: absolute;
@@ -209,8 +225,8 @@ video {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bloom-entrance__video { display: none; }
-  .bloom-entrance { background: #000 url("/assets/media/bloom-axis-poster.jpg") center / contain no-repeat; }
+  /* Keep the lotus alive; only remove nonessential transition easing. */
+  .bloom-entrance { background: #000; }
   .bloom-entrance.is-revealing { transition: none; }
 }
 
