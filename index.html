@@ -11,10 +11,20 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://zenithoche.com/" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      if (location.pathname === "/" && !location.hash) document.documentElement.classList.add("bloom-enabled");
+    </script>
     <link rel="stylesheet" href="/assets/css/styles.css" />
     <link rel="stylesheet" href="/assets/css/brand-shell.css" />
   </head>
   <body>
+    <div id="bloom-entrance" class="bloom-entrance" role="region" aria-label="Zenithoche entrance">
+      <video id="bloom-idle" class="bloom-entrance__video" src="/assets/media/bloom-idle.mp4" poster="/assets/media/bloom-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+      <video id="bloom-sink" class="bloom-entrance__video bloom-entrance__sink" src="/assets/media/bloom-sink.mp4" poster="/assets/media/bloom-poster.jpg" muted playsinline preload="auto" aria-hidden="true"></video>
+      <button id="bloom-trigger" class="bloom-entrance__trigger" type="button" aria-label="Enter Zenithoche through the lotus"></button>
+      <p class="bloom-entrance__hint" aria-hidden="true">Touch the lotus to enter</p>
+      <button id="bloom-skip" class="bloom-entrance__skip" type="button">Skip intro</button>
+    </div>
     <div id="signal-field" class="signal-field" aria-hidden="true"></div>
     <div id="cursor-glow" class="cursor-glow" aria-hidden="true"></div>
 
@@ -344,7 +354,6 @@
     <script src="/assets/js/site.js"></script>
 </body>
 </html>
-
 
 
 

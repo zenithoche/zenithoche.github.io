@@ -158,10 +158,66 @@
     nodes.forEach((node) => observer.observe(node));
   }
 
+  function setupBloomEntrance() {
+    const entrance = byId("bloom-entrance");
+    if (!entrance || !document.documentElement.classList.contains("bloom-enabled")) return;
+
+    const idle = byId("bloom-idle");
+    const sink = byId("bloom-sink");
+    const trigger = byId("bloom-trigger");
+    const skip = byId("bloom-skip");
+    const page = document.querySelector(".page-shell");
+    const pageVideos = page ? Array.from(page.querySelectorAll("video[autoplay]")) : [];
+    const previousOverflow = document.body.style.overflow;
+    let active = false;
+    let fallbackTimer;
+
+    document.body.style.overflow = "hidden";
+    if (page) page.inert = true;
+    pageVideos.forEach((video) => video.pause());
+
+    function enter() {
+      if (!document.documentElement.classList.contains("bloom-enabled")) return;
+      clearTimeout(fallbackTimer);
+      idle.pause();
+      sink.pause();
+      document.documentElement.classList.remove("bloom-enabled");
+      entrance.hidden = true;
+      document.body.style.overflow = previousOverflow;
+      if (page) page.inert = false;
+      pageVideos.forEach((video) => video.play().catch(() => {}));
+      document.querySelector(".zeni-shell__brand")?.focus({ preventScroll: true });
+    }
+
+    function startSink() {
+      if (active) return;
+      active = true;
+      if (prefersReducedMotion) {
+        enter();
+        return;
+      }
+      trigger.disabled = true;
+      idle.pause();
+      sink.currentTime = 0;
+      entrance.classList.add("is-sinking");
+      sink.play().catch(enter);
+      fallbackTimer = setTimeout(enter, 6500);
+    }
+
+    trigger.addEventListener("click", startSink);
+    skip.addEventListener("click", enter);
+    sink.addEventListener("timeupdate", () => {
+      if (sink.currentTime >= 4.5) entrance.classList.add("is-revealing");
+    });
+    sink.addEventListener("ended", enter);
+    sink.addEventListener("error", enter);
+  }
+
   hydrateConfig();
   createSignalField();
   setupCursorGlow();
   setupTiltCards();
   setupMediaFallbacks();
   setupReveal();
+  setupBloomEntrance();
 })();
