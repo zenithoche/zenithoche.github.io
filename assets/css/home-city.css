@@ -293,6 +293,112 @@ body::before,body::after{display:none}
   .toshi-visual{aspect-ratio:1.05;min-height:0}.toshi-visual img{min-height:0}.toshi-caption{left:17px;bottom:19px}.toshi-caption strong{font-size:.96rem}.toshi-caption span{font-size:.6rem}
   .toshi-grid{gap:30px}.signal-pill{font-size:.75rem}.footer-links{flex-wrap:wrap}
 }
+
+/* City depth pass: large district glass surfaces + scroll-perspective staging. */
+@media(min-width:981px){
+  .journey-main{
+    perspective:1400px;
+    perspective-origin:50% 50vh;
+  }
+  .journey-scene,.plane-section{
+    padding-block:clamp(88px,9vh,118px);
+  }
+  .journey-scene::before,.plane-section::before{
+    inset:-90px 0;
+    transform:translate3d(0,var(--scene-shift,0px),0) scale(1.035);
+    will-change:transform;
+  }
+  .journey-scene>.journey-wrap,.plane-section>.journey-wrap{
+    position:relative;
+    z-index:1;
+    width:min(1460px,92%);
+    box-sizing:border-box;
+    padding:clamp(30px,3.4vw,54px);
+    border:1px solid rgba(242,206,219,.42);
+    border-radius:clamp(28px,3vw,44px);
+    background:
+      linear-gradient(145deg,rgba(49,37,46,.43),rgba(12,10,15,.26) 52%,rgba(34,23,31,.36));
+    -webkit-backdrop-filter:blur(10px) saturate(.92);
+    backdrop-filter:blur(10px) saturate(.92);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.16),
+      inset 0 -1px 0 rgba(255,255,255,.045),
+      0 34px 105px rgba(0,0,0,.34),
+      0 0 42px rgba(226,145,173,.075);
+    transform:
+      translate3d(0,var(--panel-shift,0px),var(--panel-z,0px))
+      scale(var(--panel-scale,1))
+      rotateX(var(--panel-tilt,0deg));
+    transform-origin:50% 50%;
+    will-change:transform;
+  }
+  .journey-scene>.journey-wrap::before,.plane-section>.journey-wrap::before{
+    content:"";
+    position:absolute;
+    top:-1px;
+    left:50%;
+    width:min(48%,620px);
+    height:1px;
+    transform:translateX(-50%);
+    pointer-events:none;
+    background:linear-gradient(90deg,transparent,rgba(229,157,181,.34) 18%,rgba(255,240,246,.82) 50%,rgba(229,157,181,.34) 82%,transparent);
+    box-shadow:0 0 18px rgba(239,160,188,.24);
+  }
+  .journey-scene>.journey-wrap::after,.plane-section>.journey-wrap::after{
+    content:"";
+    position:absolute;
+    inset:13px;
+    border:1px solid rgba(255,255,255,.035);
+    border-radius:calc(clamp(28px,3vw,44px) - 11px);
+    pointer-events:none;
+  }
+  .hero-scene>.journey-wrap{
+    background:linear-gradient(145deg,rgba(43,32,40,.35),rgba(9,8,12,.20) 54%,rgba(30,21,28,.30));
+  }
+  .crimson-scene>.journey-wrap,.preview-section>.journey-wrap{
+    background:linear-gradient(145deg,rgba(53,37,48,.46),rgba(12,9,15,.28) 56%,rgba(33,20,30,.39));
+  }
+  .pricing-section>.journey-wrap,.toshi-scene>.journey-wrap{
+    background:linear-gradient(145deg,rgba(43,34,42,.47),rgba(10,9,13,.30) 56%,rgba(31,22,30,.40));
+  }
+}
+
+@media(max-width:980px){
+  .journey-scene>.journey-wrap,.plane-section>.journey-wrap{
+    position:relative;
+    z-index:1;
+    width:calc(100% - 28px);
+    box-sizing:border-box;
+    padding:30px 24px;
+    border:1px solid rgba(242,206,219,.34);
+    border-radius:28px;
+    background:linear-gradient(145deg,rgba(45,34,43,.44),rgba(11,9,14,.28) 58%,rgba(32,21,30,.38));
+    -webkit-backdrop-filter:blur(8px) saturate(.9);
+    backdrop-filter:blur(8px) saturate(.9);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 24px 68px rgba(0,0,0,.30);
+  }
+  .journey-scene>.journey-wrap::before,.plane-section>.journey-wrap::before{
+    content:"";
+    position:absolute;
+    top:-1px;
+    left:50%;
+    width:58%;
+    height:1px;
+    transform:translateX(-50%);
+    pointer-events:none;
+    background:linear-gradient(90deg,transparent,rgba(255,231,239,.62),transparent);
+    box-shadow:0 0 14px rgba(239,160,188,.18);
+  }
+}
+
+@media(max-width:640px){
+  .journey-scene>.journey-wrap,.plane-section>.journey-wrap{
+    width:calc(100% - 20px);
+    padding:24px 18px;
+    border-radius:24px;
+  }
+}
+
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}.scene-petals{display:none}.journey-scene::before,.plane-section::before{transform:none}
   .journey-button,.bloom-entrance__sink,.bloom-entrance.is-revealing{transition:none}

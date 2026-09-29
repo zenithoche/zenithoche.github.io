@@ -31,7 +31,7 @@
     });
   });
 
-  // Subtle movement belongs to the scenery; controls stay stable and readable.
+  // Layered city movement: scenery and district glass move at different depths while controls remain readable.
   if(!reducedMotion&&window.matchMedia('(min-width: 981px)').matches){
     const scenes=Array.from(document.querySelectorAll('.journey-scene,.plane-section'));
     const visible=new Set();
@@ -46,8 +46,21 @@
       requestAnimationFrame(()=>{
         visible.forEach((scene)=>{
           const rect=scene.getBoundingClientRect();
-          const shift=Math.max(-22,Math.min(22,(window.innerHeight/2-rect.top-rect.height/2)*.045));
-          scene.style.setProperty('--scene-shift',shift.toFixed(1)+'px');
+          const viewportCenter=window.innerHeight*.5;
+          const sceneCenter=rect.top+rect.height*.5;
+          const travel=Math.max(window.innerHeight*.9,rect.height*.72);
+          const progress=Math.max(-1,Math.min(1,(viewportCenter-sceneCenter)/travel));
+          const distance=Math.abs(progress);
+          const sceneShift=progress*48;
+          const panelShift=progress*-24;
+          const panelScale=1-distance*.024;
+          const panelTilt=progress*.72;
+          const panelZ=-distance*20;
+          scene.style.setProperty('--scene-shift',sceneShift.toFixed(1)+'px');
+          scene.style.setProperty('--panel-shift',panelShift.toFixed(1)+'px');
+          scene.style.setProperty('--panel-scale',panelScale.toFixed(4));
+          scene.style.setProperty('--panel-tilt',panelTilt.toFixed(3)+'deg');
+          scene.style.setProperty('--panel-z',panelZ.toFixed(1)+'px');
         });
         scheduled=false;
       });
