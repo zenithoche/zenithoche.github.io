@@ -1151,3 +1151,20 @@ html.scene-click-only .scene-stepper::after{
   .hero-copy .journey-title{margin:7px 0 10px!important}
   .product-name{font-size:2.15rem!important}
 }
+
+/* ISOLATED THIN-LINE LABEL PASS — 2026-09-29 */
+/* Scope intentionally limited to the small section/kicker labels requested by Nix. */
+.journey-eyebrow,
+.product-kicker{
+  font-family:"Gruppo","Arial Narrow",sans-serif!important;
+  font-size:.64rem!important;
+  font-weight:400!important;
+  line-height:1!important;
+  letter-spacing:.24em!important;
+  text-transform:uppercase!important;
+  color:rgba(255,255,255,.56)!important;
+  opacity:.86!important;
+  text-shadow:none!important;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:geometricPrecision;
+}
