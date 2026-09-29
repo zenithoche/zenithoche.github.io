@@ -1,381 +1,228 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Zenithoche - Lotus Powered Software</title>
-    <meta name="description" content="Zenithoche focuses on simple, streamlined, and highly compatible assets for Discord communities, content creators, admins, and developers that want both a reliable and comfortable workflow." />
-    <link rel="canonical" href="https://zenithoche.com/" />
-    <meta property="og:title" content="Zenithoche - Lotus Powered Software" />
-    <meta property="og:description" content="Zenithoche focuses on simple, streamlined, and highly compatible assets for discord communities, content creators, admins, and developers that want both a reliable and comfortable workflow." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://zenithoche.com/" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <script src="/assets/js/bloom-init.js?v=bloom-1"></script>
-    <link rel="stylesheet" href="/assets/css/styles.css?v=bloom-3" />
-    <link rel="stylesheet" href="/assets/css/brand-shell.css" />
-  </head>
-  <body>
-    <div id="bloom-entrance" class="bloom-entrance" role="region" aria-label="Zenithoche entrance">
-      <video id="bloom-idle" class="bloom-entrance__video bloom-entrance__idle is-current" src="/assets/media/bloom-film-00.mp4" poster="/assets/media/bloom-axis-poster.jpg" autoplay muted playsinline preload="auto" aria-hidden="true"></video>
-      <video class="bloom-entrance__video bloom-entrance__idle" src="/assets/media/bloom-film-01.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
-      <video class="bloom-entrance__video bloom-entrance__idle" src="/assets/media/bloom-film-02.mp4" muted playsinline preload="metadata" aria-hidden="true"></video>
-      <video class="bloom-entrance__video bloom-entrance__idle" src="/assets/media/bloom-film-03.mp4" muted playsinline preload="metadata" aria-hidden="true"></video>
-      <video id="bloom-sink" class="bloom-entrance__video bloom-entrance__sink" src="/assets/media/bloom-full-sink.mp4" poster="/assets/media/bloom-axis-poster.jpg" muted playsinline preload="auto" aria-hidden="true"></video>
-      <div class="bloom-entrance__veil" aria-hidden="true"></div>
-      <button id="bloom-trigger" class="bloom-entrance__trigger" type="button" aria-label="Enter Zenithoche through the lotus"></button>
-      <p class="bloom-entrance__hint" aria-hidden="true">Touch the lotus to enter</p>
-      <button id="bloom-skip" class="bloom-entrance__skip" type="button">Skip intro</button>
-    </div>
-    <div id="signal-field" class="signal-field" aria-hidden="true"></div>
-    <div id="cursor-glow" class="cursor-glow" aria-hidden="true"></div>
-
-    <div class="page-shell">
-      <header class="zeni-shell">
-        <div class="zeni-shell__inner">
-          <a class="zeni-shell__brand" href="/" aria-label="Zenithoche home">
-            <img class="zeni-shell__mark" src="/assets/media/zenithoche-lotus-final.png" alt="" />
-            <span>Zenithoche</span>
-          </a>
-          <nav class="zeni-shell__nav" aria-label="Primary navigation">
-            <a href="/#products">Products</a>
-            <a href="/#media">Media</a>
-            <a href="/#pricing">Plans</a>
-            <a href="/products/jupnich/">Jupnich</a>
-            <a href="/products/ashiko/">Ashiko</a>
-            <a href="/products/craftacompanion/">CraftaCompanion</a>
-          </nav>
-        </div>
-      </header>
-
-      <main>
-        <section class="hero">
-          <div class="wrap hero-grid">
-            <div data-reveal>
-              <div class="kicker"><span class="live-dot"></span> public software house</div>
-              <h1>Tools crafted <span>with compassion</span></h1>
-              <p class="lede"><span class="homepage-subhead-strong">Zenithoche focuses on simple, streamlined, and highly compatible assets for discord communities, content creators, admins, and developers that want both a reliable and comfortable workflow.</span></p>
-              <div class="hero-actions">
-                <a class="button primary" href="#products">Explore products</a>
-                <a class="button ghost" href="#media">See the surface</a>
-              </div>
-              <div class="hero-stats" aria-label="Zenithoche principles">
-                <div class="stat"><strong>01</strong><span>Simplistic Integrations</span></div>
-                <div class="stat"><strong>02</strong><span>Financial Clarity and Transparency</span></div>
-                <div class="stat"><strong>03</strong><span>Public Focused Direction</span></div>
-              </div>
-            </div>
-
-            <div class="orbit-card hero-video-card" data-tilt data-reveal aria-label="Zenithoche living interface preview">
-              <video class="hero-core-video" src="/assets/media/zenithoche-hero-core-loop.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
-              <div class="hero-core-shade" aria-hidden="true"></div>
-              <div class="orbit-core"><div class="lotus-orb" aria-hidden="true"></div></div>
-              <span class="orbit-chip one">server ops</span>
-              <span class="orbit-chip two">creator signal</span>
-              <span class="orbit-chip three">setup repair</span>
-              <span class="orbit-chip four">human-owned</span>
-              <p class="orbit-caption">A living surface for setup, support, pricing, and proof.</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="products" class="section">
-          <div class="wrap">
-            <div class="section-head" data-reveal>
-              <div>
-                <div class="section-eyebrow">Products</div>
-                <h2>Crimson Petal Index</h2>
-              </div>
-              <p class="section-copy"><span class="homepage-subhead-strong homepage-subhead-italic">Each product keeps its own job. Zenithoche keeps the design language consistent: simple setup, calm surfaces, strong utility, and no bloated command maze.</span></p>
-            </div>
-
-            <div class="product-grid">
-              <article class="product-card" data-tilt data-reveal>
-                <div>
-                  <h3>Jupnich</h3>
-                  <p><span class="homepage-subhead-strong">Discord server operations without a setup wall: setup repair, tickets, events, roles, welcome flows, moderation support, and source routing.</span></p>
-                  <div class="product-tags">
-                    <span class="tag">Setup</span><span class="tag">Tickets</span><span class="tag">Moderation</span><span class="tag">11 languages</span>
-                  </div>
-                  <div class="product-visual" aria-hidden="true"></div>
-                </div>
-                <div class="card-actions">
-                  <a class="button primary" href="/products/jupnich/" data-link="jupnich">Open Jupnich</a>
-                  <a class="button ghost" href="#" data-link="jupnich-install">Install</a>
-                </div>
-                <div class="directory-links" aria-label="Jupnich directory listings"><a href="#" data-link="jupnich-topgg">Top.gg</a><span>·</span><a href="#" data-link="jupnich-discordbotlist">Discord Bot List</a></div>
-              </article>
-
-              <article class="product-card" data-tilt data-reveal>
-                <div>
-                  <h3>Ashiko</h3>
-                  <p><span class="homepage-subhead-strong">Creator-server tools for clean signal: AutoPost, Backdraft overflow review, Hat Draws, and a simple builder doorway.</span></p>
-                  <div class="product-tags">
-                    <span class="tag">AutoPost</span><span class="tag">Backdraft</span><span class="tag">Builder</span><span class="tag">11 languages</span>
-                  </div>
-                  <div class="product-visual" aria-hidden="true"></div>
-                </div>
-                <div class="card-actions">
-                  <a class="button primary" href="/products/ashiko/" data-link="ashiko">Open Ashiko</a>
-                  <a class="button ghost" href="#" data-link="ashiko-install">Install</a>
-                </div>
-                <div class="directory-links" aria-label="Ashiko directory listings"><a href="#" data-link="ashiko-topgg">Top.gg</a><span>·</span><a href="#" data-link="ashiko-discordbotlist">Discord Bot List</a></div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="wrap">
-            <div class="section-head" data-reveal>
-              <div>
-                <div class="section-eyebrow">Why it feels different</div>
-                <h2>Software that carries weight</h2>
-              </div>
-              <p class="section-copy"><span class="homepage-subhead-strong homepage-subhead-italic">A public home for clean tools, real previews, and systems built to be understood.</span></p>
-            </div>
-            <div class="feature-grid">
-              <article class="feature-card" data-reveal><h3>GUI Reimagined</h3><p>Primary operations remain reviewable while complex command actions reside below the surface.</p></article>
-              <article class="feature-card" data-reveal><h3>Structured Support</h3><p>Products contain guides and tutorials designed to reduce confusion and unnecessary admin workload.</p></article>
-              <article class="feature-card" data-reveal><h3>Evidential Proof</h3><p>Panels, features, updates, and changes stay visible through preview planes, company notices, and public transparency reports.</p></article>
-            </div>
-          </div>
-        </section>
-
-        <section id="media" class="section">
-          <div class="wrap">
-            <div class="section-head" data-reveal>
-              <div>
-                <div class="section-eyebrow">Media surface</div>
-                <h2>Preview Plane</h2>
-              </div>
-              <p class="section-copy"><span class="homepage-subhead-strong">Real-time product functions</span></p>
-            </div>
-            <div class="media-grid clean-product-media-grid">
-  <div class="media-stack jupnich-proof-stack" data-reveal>
-    <article class="media-card setup-card" data-fallback="/assets/media/jupnich-setup-loop.mp4">
-      <video class="media-preview" autoplay muted loop playsinline preload="metadata" aria-label="Jupnich role manager preview"><source src="assets/media/jupnich-server-roles-home.mp4" type="video/mp4"></video>
-      <div class="media-caption"><strong>Jupnich setup repair</strong><span>Server setup and repair in motion.</span></div>
-    </article>
-
-    <article class="media-card level-card">
-      <img src="/assets/media/jupnich-level-card.png" alt="Jupnich role manager preview" />
-      <div class="media-caption"><strong>Jupnich role manager</strong><span>Role and access surfaces without command clutter.</span></div>
-    </article>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zenithoche - Software that carries weight</title>
+  <meta name="description" content="Zenithoche focuses on simple, streamlined, and highly compatible assets for Discord communities, content creators, admins, and developers that want both a reliable and comfortable workflow." />
+  <link rel="canonical" href="https://zenithoche.com/" />
+  <meta property="og:title" content="Zenithoche - Software that carries weight" />
+  <meta property="og:description" content="Simple, streamlined software for communities, creators, admins, and developers." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://zenithoche.com/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+  <script src="/assets/js/bloom-init.js?v=bloom-1"></script>
+  <link rel="stylesheet" href="/assets/css/styles.css?v=bloom-3" />
+  <link rel="stylesheet" href="/assets/css/brand-shell.css" />
+  <link rel="stylesheet" href="/assets/css/home-city.css?v=city-1" />
+</head>
+<body>
+  <div id="bloom-entrance" class="bloom-entrance" role="region" aria-label="Zenithoche entrance">
+    <video id="bloom-idle" class="bloom-entrance__video bloom-entrance__idle is-current" src="/assets/media/bloom-film-00.mp4" poster="/assets/media/bloom-axis-poster.jpg" autoplay muted playsinline preload="auto" aria-hidden="true"></video>
+    <video class="bloom-entrance__video bloom-entrance__idle" src="/assets/media/bloom-film-01.mp4" muted playsinline preload="auto" aria-hidden="true"></video>
+    <video class="bloom-entrance__video bloom-entrance__idle" src="/assets/media/bloom-film-02.mp4" muted playsinline preload="metadata" aria-hidden="true"></video>
+    <video class="bloom-entrance__video bloom-entrance__idle" src="/assets/media/bloom-film-03.mp4" muted playsinline preload="metadata" aria-hidden="true"></video>
+    <video id="bloom-sink" class="bloom-entrance__video bloom-entrance__sink" src="/assets/media/bloom-full-sink.mp4" poster="/assets/media/bloom-axis-poster.jpg" muted playsinline preload="auto" aria-hidden="true"></video>
+    <div class="bloom-entrance__veil" aria-hidden="true"></div>
+    <button id="bloom-trigger" class="bloom-entrance__trigger" type="button" aria-label="Enter Zenithoche through the lotus"></button>
+    <p class="bloom-entrance__hint" aria-hidden="true">Touch the lotus to enter</p>
+    <button id="bloom-skip" class="bloom-entrance__skip" type="button">Skip intro</button>
   </div>
 
-  <article class="media-card portrait-card ashiko-builder-card" data-reveal data-fallback="/assets/media/ashiko-builder-loop.mp4">
-    <video src="/assets/media/ashiko-builder-loop.mp4" autoplay muted loop playsinline preload="metadata"></video>
-    <div class="media-caption"><strong>Ashiko builder</strong><span>Simple creator setup surface.</span></div>
-  </article>
+  <div class="page-shell">
+    <header class="zeni-shell">
+      <div class="zeni-shell__inner">
+        <a class="zeni-shell__brand" href="/" aria-label="Zenithoche home"><span>ZENITHOCHE</span></a>
+        <nav class="zeni-shell__nav" aria-label="Primary navigation">
+          <a href="#products">Products</a>
+          <a href="#media">Media</a>
+          <a href="#pricing">Plans</a>
+          <a href="/products/jupnich/">Jupnich</a>
+          <a href="/products/ashiko/">Ashiko</a>
+          <a href="/products/craftacompanion/">CraftaCompanion</a>
+        </nav>
+      </div>
+    </header>
 
-  <article class="media-card portrait-card ticket-panel-card" data-reveal data-fallback="/assets/media/jupnich-tickets-loop.mp4">
-    <video class="media-preview" autoplay muted loop playsinline preload="metadata" aria-label="Jupnich ticket panel preview"><source src="assets/media/jupnich-tickets-home.mp4" type="video/mp4"></video>
-    <div class="media-caption"><strong>Jupnich tickets</strong><span>Ticket launcher and support flow.</span></div>
-  </article>
-</div>
-          </div>
-        </section>
-
-        <section id="pricing" class="section">
-          <div class="wrap">
-            <div class="section-head" data-reveal>
-              <div>
-                <div class="section-eyebrow">Plans</div>
-                <h2>Pricing that stays valuable</h2>
-              </div>
-              <p class="section-copy"><span class="homepage-subhead-strong homepage-subhead-italic">Built for small creators and real communities: useful free tools first, paid tiers only where the work gets heavier.</span></p>
+    <main class="journey-main">
+      <section class="journey-scene hero-scene" id="surface">
+        <video class="scene-video" src="/assets/media/zenithoche-hero-core-loop.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+        <div class="journey-wrap hero-layout">
+          <div class="hero-copy" data-reveal>
+            <div class="journey-eyebrow">PUBLIC SOFTWARE HOUSE</div>
+            <h1 class="journey-title">Tools crafted<br>with compassion<span class="dot">.</span></h1>
+            <p class="journey-copy">Zenithoche focuses on simple, streamlined, and highly compatible assets for discord communities, content creators, admins, and developers that want both a reliable and comfortable workflow.</p>
+            <div class="journey-actions">
+              <a class="journey-button primary" href="#products">Explore products →</a>
+              <a class="journey-button" href="#media">See the Surface ↓</a>
             </div>
-
-            <div class="price-grid">
-              <article class="price-card" data-reveal>
-                <span class="plan-label">Jupnich</span>
-                <h3>Free</h3>
-                <div class="price" data-price="jupnich-free">$0</div>
-                <p>Core server operations for communities getting organized.</p>
-                <ul class="check-list"><li>Setup/status/checklist</li><li>Basic tickets and events</li><li>Welcome, roles, and moderation basics</li></ul>
-              </article>
-              <article class="price-card featured" data-reveal>
-                <span class="plan-label">Jupnich</span>
-                <h3>Plus</h3>
-                <div class="price" data-price="jupnich-plus">$7/mo · Discord SKU</div>
-                <p>More control for active server teams.</p>
-                <ul class="check-list"><li>Deeper event tools</li><li>Stronger media controls</li><li>Moderation case surfaces</li></ul>
-              </article>
-              <article class="price-card" data-reveal>
-                <span class="plan-label">Jupnich</span>
-                <h3>Pro</h3>
-                <div class="price" data-price="jupnich-pro">$13/mo · Discord SKU</div>
-                <p>Advanced operations for servers carrying heavier automation.</p>
-                <ul class="check-list"><li>Advanced source automation</li><li>Templates and archive workflows</li><li>Expanded operations surfaces</li></ul>
-              </article>
-              <!-- Ashiko pricing cards -->
-              <article class="price-card" data-reveal>
-                <span class="plan-label">Ashiko</span>
-                <h3>Free</h3>
-                <div class="price" data-price="ashiko-free">$0</div>
-                <p>Creator-server setup with a clean four-button doorway.</p>
-                <ul class="check-list"><li>Builder entry surface</li><li>Core creator setup</li><li>Clean server-owner guidance</li></ul>
-              </article>
-
-              <article class="price-card featured" data-reveal>
-                <span class="plan-label">Ashiko</span>
-                <h3>Plus</h3>
-                <div class="price" data-price="ashiko-plus">$5/mo · Discord SKU</div>
-                <p>Creator setup tools for active streamer and community spaces.</p>
-                <ul class="check-list"><li>Builder flow</li><li>AutoPost routing</li><li>Creator-server setup surfaces</li></ul>
-              </article>
-
-              <article class="price-card" data-reveal>
-                <span class="plan-label">Ashiko</span>
-                <h3>Pro</h3>
-                <div class="price" data-price="ashiko-pro">$10/mo · Discord SKU</div>
-                <p>Expanded creator operations for stream tools and event-style community support.</p>
-                <ul class="check-list"><li>Backdraft review</li><li>Hat Draw support</li><li>Expanded creator automation</li></ul>
-              </article>
-              <!-- End Ashiko pricing cards -->
+            <div class="hero-policies" aria-label="Zenithoche core policies">
+              <div class="policy glass-panel">
+                <span class="policy-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5 5L4 17l3 3 5.7-5.7a4 4 0 0 0 5-5l-2.4 2.4-3-3 2.4-2.4Z"/></svg></span>
+                <span class="policy-num">01</span><span class="policy-text">Simplistic Integrations</span><span class="policy-line"></span>
+              </div>
+              <div class="policy glass-panel">
+                <span class="policy-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></span>
+                <span class="policy-num">02</span><span class="policy-text">Financial Clarity and Transparency</span><span class="policy-line"></span>
+              </div>
+              <div class="policy glass-panel">
+                <span class="policy-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2.5 19c.4-4 2.2-6 5.5-6s5.1 2 5.5 6M10.5 19c.4-4 2.2-6 5.5-6s5.1 2 5.5 6"/></svg></span>
+                <span class="policy-num">03</span><span class="policy-text">Public Focused Direction</span><span class="policy-line"></span>
+              </div>
             </div>
-            <p class="note" data-note="jupnich-pricing"></p>
           </div>
-        </section>
-
-        <section id="support-discord" class="section support-discord-section">
-          <div class="wrap">
-            <article class="support-discord-card" data-reveal>
-              <div class="support-discord-copy">
-                <div class="section-eyebrow">Support · Toshi</div>
-                <h2>Join the signal.</h2>
-                <p><span class="homepage-subhead-strong">Setup help, product updates, and direct support for Jupnich and Ashiko live in one place. Toshi is the first small signal from that support layer.</span></p>
-                <div class="support-discord-actions">
-                  <a class="button primary" href="https://discord.gg/eCNPT7YDvN" target="_blank" rel="noopener noreferrer">Join Support Discord</a>
-                  <span class="support-discord-note"><i aria-hidden="true"></i>Toshi signal active</span>
-                </div>
-              </div>
-
-              <div class="support-discord-visual" aria-hidden="true">
-                <img src="/assets/media/toshi-signal.gif" alt="" />
-                <div class="support-discord-glass"></div>
-                <div class="support-visual-caption">
-                  <span>TOSHI / SUPPORT SIGNAL</span>
-                  <strong>Community support with a face.</strong>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section id="craftacompanion-home" class="section crafta-home-section">
-          <div class="wrap">
-            <article class="crafta-home-card" data-reveal>
-              <div class="crafta-home-copy">
-                <div class="section-eyebrow">CraftaCompanion · dedicated companion builder</div>
-                <h2>Craft a companion that feels like yours.</h2>
-                <p><span class="homepage-subhead-strong">You make the meaningful choices. Crafta handles the machinery underneath—identity, personality, boundaries, continuity, appearance, and voice—without turning the experience into prompt engineering.</span></p>
-
-                <div class="crafta-feature-row" aria-label="CraftaCompanion features">
-                  <span>Identity</span>
-                  <span>Continuity</span>
-                  <span>Boundaries</span>
-                  <span>Voice</span>
-                </div>
-
-                <div class="hero-actions">
-                  <a class="button primary" href="/products/craftacompanion/">View CraftaCompanion</a>
-                  <a class="button ghost" href="https://crafta.zenithoche.com/">Launch Crafta</a>
-                </div>
-              </div>
-
-              <div class="crafta-home-visual" aria-hidden="true">
-                <div class="crafta-aura"></div>
-                <div class="crafta-blueprint">
-                  <div class="crafta-blueprint-top">
-                    <span>COMPANION CORE</span>
-                    <span>VERSION 01</span>
-                  </div>
-                  <div class="crafta-blueprint-person">
-                    <div class="crafta-blueprint-avatar"><span></span></div>
-                    <div>
-                      <strong>Built around continuity.</strong>
-                      <small>Identity stays separate from the model underneath.</small>
-                    </div>
-                  </div>
-                  <div class="crafta-blueprint-lanes">
-                    <div><span>Identity</span><em>persistent</em></div>
-                    <div><span>Personality</span><em>user-shaped</em></div>
-                    <div><span>Memory</span><em>portable</em></div>
-                    <div><span>Voice</span><em>optional</em></div>
-                  </div>
-                  <div class="crafta-blueprint-footer">
-                    <span>CRAFTA / ZENITHOCHE</span>
-                    <span class="crafta-status-dot"></span>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section class="section discord-world-section">
-          <div class="wrap">
-            <article class="cta-panel discord-world-panel" data-reveal>
-              <div class="discord-world-copy">
-                <div class="section-eyebrow">Next surface</div>
-                <h2>Discord is the dimension. The domain is the world around it.</h2>
-                <p><span class="homepage-subhead-strong">Use the site for demos, tutorials, launch pages, polished media, product trust, pricing, and the public Zenithoche identity. Discord can stay simple because the domain carries the atmosphere around it.</span></p>
-                <div class="hero-actions">
-                  <a class="button primary" href="/products/jupnich/" data-link="jupnich">View Jupnich</a>
-                  <a class="button ghost" href="/products/ashiko/" data-link="ashiko">View Ashiko</a>
-                </div>
-              </div>
-
-              <div class="discord-world-visual" aria-hidden="true">
-                <div class="discord-world-orbit"></div>
-                <div class="discord-world-core">D</div>
-                <div class="discord-world-stack">
-                  <div><strong>Jupnich</strong><span>server operations</span></div>
-                  <div><strong>Ashiko</strong><span>creator systems</span></div>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-      </main>
-      <footer class="site-footer">
-        <div class="wrap footer-row">
-          <div>Zenithoche · Software that carries weight.</div>
-          <div class="footer-links">
-  <a href="#" data-link="terms">Terms</a>
-  <a href="#" data-link="privacy">Privacy</a>
-  <a href="https://discord.gg/eCNPT7YDvN" target="_blank" rel="noopener noreferrer">Support Discord</a>
-</div>
+          <div class="hero-empty" aria-hidden="true"></div>
         </div>
-      </footer>
-    </div>
+      </section>
 
-    <script src="/assets/js/site-config.js"></script>
-    <script src="/assets/js/site.js?v=bloom-3"></script>
+      <section class="journey-scene crimson-scene" id="products">
+        <div class="journey-wrap">
+          <div class="crimson-head" data-reveal><h2 class="crimson-title">CRIMSON PETAL INDEX</h2></div>
+          <div class="product-layout">
+            <article class="product-panel glass-panel" data-reveal>
+              <div class="product-kicker">DISCORD TOOLING</div>
+              <h3 class="product-name">Jupnich</h3>
+              <p>Discord server operations without a setup wall: setup repair, tickets, events, roles, welcome flows, moderation support, and source routing.</p>
+              <div class="chip-row"><span class="chip">Setup</span><span class="chip">Tickets</span><span class="chip">Moderation</span><span class="chip">11 languages</span></div>
+              <a class="journey-button primary" href="/products/jupnich/">Open Jupnich →</a>
+            </article>
+            <article class="product-panel glass-panel" data-reveal>
+              <div class="product-kicker">DISCORD TOOLING</div>
+              <h3 class="product-name">Ashiko</h3>
+              <p>Creator-server tools for clean signal: AutoPost, Backdraft overflow review, Hat Draws, and a simple builder doorway.</p>
+              <div class="chip-row"><span class="chip">AutoPost</span><span class="chip">Backdraft</span><span class="chip">Builder</span><span class="chip">11 languages</span></div>
+              <a class="journey-button primary" href="/products/ashiko/">Open Ashiko →</a>
+            </article>
+            <article class="product-panel crafta glass-panel" data-reveal>
+              <div class="product-kicker">CRAFTACOMPANION · DEDICATED COMPANION BUILDER</div>
+              <h3 class="product-name">CraftaCompanion</h3>
+              <p>You make the meaningful choices. Crafta handles the machinery underneath—identity, personality, boundaries, continuity, appearance, and voice—without turning the experience into prompt engineering.</p>
+              <div class="chip-row"><span class="chip">Identity</span><span class="chip">Continuity</span><span class="chip">Boundaries</span><span class="chip">Voice</span></div>
+              <a class="journey-button primary" href="/products/craftacompanion/">View CraftaCompanion →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="journey-scene weight-scene">
+        <div class="journey-wrap weight-grid">
+          <div data-reveal>
+            <div class="journey-eyebrow">WHY IT FEELS DIFFERENT</div>
+            <h2 class="journey-title">Software that<br>carries weight<span class="dot">.</span></h2>
+            <p class="journey-copy">A public home for clean tools, real previews, and systems built to be understood.</p>
+            <div class="feature-stack">
+              <article class="feature-panel glass-panel">
+                <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span>
+                <div><strong>GUI Reimagined</strong><p>Primary operations remain reviewable while complex command actions reside below the surface.</p></div><span class="feature-arrow">→</span>
+              </article>
+              <article class="feature-panel glass-panel">
+                <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5c4-1.5 6 0 8 2v12c-2-2-4-3.5-8-2V5.5ZM20 5.5c-4-1.5-6 0-8 2v12c2-2 4-3.5 8-2V5.5Z"/></svg></span>
+                <div><strong>Structured Support</strong><p>Products contain guides and tutorials designed to reduce confusion and unnecessary admin workload.</p></div><span class="feature-arrow">→</span>
+              </article>
+              <article class="feature-panel glass-panel">
+                <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h6"/></svg></span>
+                <div><strong>Evidential Proof</strong><p>Panels, features, updates, and changes stay visible through preview planes, company notices, and public transparency reports.</p></div><span class="feature-arrow">→</span>
+              </article>
+            </div>
+          </div>
+          <div class="weight-space" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <div class="plane-axis">
+        <section class="plane-section preview-section" id="media">
+          <div class="journey-wrap">
+            <div class="preview-head" data-reveal>
+              <div>
+                <div class="journey-eyebrow">MEDIA SURFACE</div>
+                <h2 class="journey-title">Preview Plane</h2>
+                <p class="journey-copy">Real-time product functions.</p>
+              </div>
+              <div class="preview-controls" aria-label="Preview controls">
+                <button class="preview-arrow" type="button" data-preview-dir="-1" aria-label="Previous preview">←</button>
+                <button class="preview-arrow" type="button" data-preview-dir="1" aria-label="Next preview">→</button>
+              </div>
+            </div>
+            <div class="preview-rail" id="preview-rail">
+              <article class="preview-card glass-panel">
+                <video autoplay muted loop playsinline preload="metadata"><source src="/assets/media/jupnich-server-roles-home.mp4" type="video/mp4"></video>
+                <div class="preview-caption"><strong>Jupnich setup repair</strong><span>Server setup and repair in motion.</span></div>
+              </article>
+              <article class="preview-card glass-panel">
+                <img src="/assets/media/jupnich-level-card.png" alt="Jupnich role manager preview">
+                <div class="preview-caption"><strong>Jupnich role manager</strong><span>Role and access surfaces without command clutter.</span></div>
+              </article>
+              <article class="preview-card glass-panel">
+                <video src="/assets/media/ashiko-builder-loop.mp4" autoplay muted loop playsinline preload="metadata"></video>
+                <div class="preview-caption"><strong>Ashiko builder</strong><span>Simple creator setup surface.</span></div>
+              </article>
+              <article class="preview-card glass-panel">
+                <video autoplay muted loop playsinline preload="metadata"><source src="/assets/media/jupnich-tickets-home.mp4" type="video/mp4"></video>
+                <div class="preview-caption"><strong>Jupnich tickets</strong><span>Ticket launcher and support flow.</span></div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="plane-section pricing-section" id="pricing">
+          <div class="journey-wrap">
+            <div class="pricing-head" data-reveal>
+              <div>
+                <div class="journey-eyebrow">PRICING PLANE</div>
+                <h2 class="journey-title">Pricing that<br>stays valuable<span class="dot">.</span></h2>
+              </div>
+              <p class="journey-copy">Built for small creators and real communities: useful free tools first, paid tiers only where the work gets heavier.</p>
+            </div>
+            <div class="price-groups">
+              <article class="price-group glass-panel" data-reveal>
+                <h3 class="price-group-name">Jupnich</h3>
+                <div class="price-row"><span class="tier-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M6 20c.5-5 2.5-7 6-7s5.5 2 6 7"/></svg></span><span class="price-tier">Free</span><span class="price-value" data-price="jupnich-free">$0</span></div>
+                <div class="price-row"><span class="tier-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="7" cy="8" r="2.5"/><circle cx="17" cy="8" r="2.5"/><path d="M2 20c.3-4 1.8-6 5-6s4.7 2 5 6M12 20c.3-4 1.8-6 5-6s4.7 2 5 6"/></svg></span><span class="price-tier">Plus</span><span class="price-value" data-price="jupnich-plus">$7/mo · Discord SKU</span></div>
+                <div class="price-row featured"><span class="tier-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m4 17-1-9 5 4 4-7 4 7 5-4-1 9H4Z"/></svg></span><span class="price-tier">Pro</span><span class="price-value" data-price="jupnich-pro">$13/mo · Discord SKU</span></div>
+                <p class="price-note" data-note="jupnich-pricing">Free tools stay useful. Paid plans cover the heavier server operations and automation layers.</p>
+              </article>
+              <article class="price-group glass-panel" data-reveal>
+                <h3 class="price-group-name">Ashiko</h3>
+                <div class="price-row"><span class="tier-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M6 20c.5-5 2.5-7 6-7s5.5 2 6 7"/></svg></span><span class="price-tier">Free</span><span class="price-value" data-price="ashiko-free">$0</span></div>
+                <div class="price-row"><span class="tier-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="7" cy="8" r="2.5"/><circle cx="17" cy="8" r="2.5"/><path d="M2 20c.3-4 1.8-6 5-6s4.7 2 5 6M12 20c.3-4 1.8-6 5-6s4.7 2 5 6"/></svg></span><span class="price-tier">Plus</span><span class="price-value" data-price="ashiko-plus">$5/mo · Discord SKU</span></div>
+                <div class="price-row featured"><span class="tier-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m4 17-1-9 5 4 4-7 4 7 5-4-1 9H4Z"/></svg></span><span class="price-tier">Pro</span><span class="price-value" data-price="ashiko-pro">$10/mo · Discord SKU</span></div>
+                <p class="price-note" data-note="ashiko-pricing">Ashiko stays free-first. Paid plans expand creator routing and higher-volume community operations.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="journey-scene toshi-scene" id="support-discord">
+        <div class="journey-wrap toshi-grid">
+          <div data-reveal>
+            <div class="journey-eyebrow">SUPPORT · TOSHI</div>
+            <h2 class="journey-title">Join the signal<span class="dot">.</span></h2>
+            <p class="journey-copy">Setup help, product updates, and direct support for Jupnich and Ashiko live in one place. Toshi is the first small signal from that support layer.</p>
+            <div class="journey-actions"><a class="journey-button primary" href="https://discord.gg/eCNPT7YDvN" target="_blank" rel="noopener noreferrer">Join Support Discord →</a></div>
+            <div class="signal-pill"><i aria-hidden="true"></i>Toshi signal active</div>
+          </div>
+          <div class="toshi-visual glass-panel" data-reveal>
+            <img src="/assets/media/toshi-signal.gif" alt="Toshi, Zenithoche support signal">
+            <div class="toshi-caption"><span>TOSHI / SUPPORT SIGNAL</span><strong>Community support with a face.</strong></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="journey-footer">
+      <div class="journey-wrap">
+        <div>Zenithoche · Software that carries weight.</div>
+        <div class="footer-links"><a href="/terms.html">Terms</a><a href="/privacy.html">Privacy</a><a href="https://discord.gg/eCNPT7YDvN" target="_blank" rel="noopener noreferrer">Support Discord</a></div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/assets/js/site-config.js"></script>
+  <script src="/assets/js/site.js?v=bloom-3"></script>
+  <script src="/assets/js/home-city.js?v=city-1"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
