@@ -1011,3 +1011,65 @@ html.scene-click-only .scene-stepper::after{
   .tradesmith-heading--hero,
   .tradesmith-heading--weight{stroke-width:5.4}
 }
+
+
+/* Compact rounded copy pass based on Nix's supplied condensed specimen. */
+.hero-copy > .journey-copy,
+.weight-scene .journey-copy,
+.preview-head .journey-copy,
+.pricing-head .journey-copy,
+.toshi-scene .journey-copy,
+.product-panel > p,
+.product-panel .chip{
+  font-family:"Barlow Condensed","Arial Narrow",sans-serif!important;
+  font-style:normal;
+  text-transform:none;
+  font-variant-ligatures:common-ligatures;
+  text-rendering:optimizeLegibility;
+}
+
+.hero-copy > .journey-copy,
+.weight-scene .journey-copy,
+.preview-head .journey-copy,
+.pricing-head .journey-copy,
+.toshi-scene .journey-copy,
+.product-panel > p{
+  font-weight:400;
+  font-size:clamp(1.06rem,1.25vw,1.30rem);
+  line-height:1.20;
+  letter-spacing:.012em;
+  word-spacing:.025em;
+}
+
+.product-panel > p{
+  font-size:clamp(1rem,1.08vw,1.16rem);
+  line-height:1.18;
+  max-width:64ch;
+}
+
+.product-panel .chip{
+  font-weight:500;
+  font-size:.82rem;
+  line-height:1;
+  letter-spacing:.025em;
+  border-radius:999px;
+  padding:.38rem .66rem;
+}
+
+@media(max-width:640px){
+  .hero-copy > .journey-copy,
+  .weight-scene .journey-copy,
+  .preview-head .journey-copy,
+  .pricing-head .journey-copy,
+  .toshi-scene .journey-copy{
+    font-size:1.08rem;
+    line-height:1.18;
+  }
+  .product-panel > p{
+    font-size:1rem;
+    line-height:1.18;
+  }
+  .product-panel .chip{
+    font-size:.78rem;
+  }
+}
