@@ -1,4 +1,5 @@
 (function () {
+  if (location.pathname === "/" && !location.hash) document.documentElement.classList.add("bloom-enabled");
   const config = window.ZENITHOCHE_CONFIG || {};
   const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
