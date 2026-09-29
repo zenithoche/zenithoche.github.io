@@ -1168,3 +1168,18 @@ html.scene-click-only .scene-stepper::after{
   -webkit-font-smoothing:antialiased;
   text-rendering:geometricPrecision;
 }
+
+/* ISOLATED HERO BUTTON LABEL PASS — 2026-09-29 */
+/* Scope: hero Products / Previews buttons only. Match the small-label typography. */
+.hero-label-button{
+  font-family:"Gruppo","Arial Narrow",sans-serif!important;
+  font-size:.72rem!important;
+  font-weight:400!important;
+  line-height:1!important;
+  letter-spacing:.18em!important;
+  text-transform:uppercase!important;
+  color:rgba(255,255,255,.72)!important;
+  text-shadow:none!important;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:geometricPrecision;
+}
