@@ -1269,3 +1269,189 @@ html.scene-click-only .scene-stepper::after{
   .geo-break-text{transform:scaleX(.70)}
   .hero-label-button .geo-break-text--button{transform:scaleX(.74)}
 }
+
+/* GEOMETRIC TYPE RESET — 2026-09-29 */
+/* Typography-only reset. No wallpaper, scene, panel, motion, lotus, media, or control changes. */
+
+/* Retire the rough Tradesmith artwork without touching the HTML structure.
+   Use the existing accessible text as the visible heading. */
+.tradesmith-heading{display:none!important}
+.tradesmith-host{
+  font-size:inherit!important;
+  line-height:inherit!important;
+  letter-spacing:inherit!important;
+  color:inherit!important;
+}
+.tradesmith-host .sr-only{
+  position:static!important;
+  width:auto!important;
+  height:auto!important;
+  padding:0!important;
+  margin:0!important;
+  overflow:visible!important;
+  clip:auto!important;
+  white-space:normal!important;
+  border:0!important;
+  display:block!important;
+}
+
+/* Modern geometric display system: cleaner, smaller, and visibly segmented. */
+.journey-title,
+.crimson-title,
+.product-name,
+.price-group-name,
+.preview-caption strong,
+.toshi-caption strong,
+.tradesmith-host .sr-only{
+  font-family:"Bruno Ace SC","Arial Narrow",sans-serif!important;
+  font-weight:400!important;
+  text-transform:uppercase!important;
+  letter-spacing:.018em!important;
+  line-height:.92!important;
+  color:#fff!important;
+  text-shadow:0 2px 14px rgba(0,0,0,.28)!important;
+  text-wrap:balance;
+}
+
+/* Controlled line-break segmentation through the glyphs instead of distressed texture. */
+.journey-title .sr-only,
+.crimson-title .sr-only{
+  display:inline!important;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255,255,255,.98) 0 43%,
+      transparent 43% 47%,
+      rgba(255,255,255,.98) 47% 73%,
+      transparent 73% 76%,
+      rgba(255,255,255,.98) 76% 100%
+    );
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* Smaller title scale. */
+.hero-copy .journey-title{
+  max-width:560px!important;
+  font-size:clamp(2.65rem,3.35vw,3.75rem)!important;
+  margin:10px 0 12px!important;
+}
+.crimson-title{
+  font-size:clamp(2rem,2.65vw,2.85rem)!important;
+  max-width:680px!important;
+  margin:0!important;
+}
+.weight-scene .journey-title{
+  font-size:clamp(2.45rem,3.1vw,3.5rem)!important;
+  max-width:650px!important;
+  margin:10px 0 12px!important;
+}
+.preview-head .journey-title,
+.pricing-head .journey-title{
+  font-size:clamp(2.15rem,2.75vw,3rem)!important;
+  margin:8px 0 10px!important;
+}
+.toshi-scene .journey-title{
+  font-size:clamp(2.25rem,2.9vw,3.15rem)!important;
+  margin:9px 0 11px!important;
+}
+.product-name{
+  font-size:clamp(1.65rem,2.1vw,2.25rem)!important;
+  line-height:.95!important;
+  margin:6px 0 8px!important;
+}
+.price-group-name{
+  font-size:clamp(1.65rem,2vw,2.2rem)!important;
+}
+.preview-caption strong{
+  font-size:1.15rem!important;
+  line-height:1!important;
+}
+
+/* Condensed body system so paragraphs read as compact blocks, not long loose strings. */
+body,
+.journey-copy,
+.product-panel p,
+.feature-panel,
+.feature-panel p,
+.price-row,
+.price-note,
+.preview-caption span,
+.policy-text,
+.signal-pill,
+.journey-button,
+.zeni-shell__nav,
+.chip{
+  font-family:"Barlow Condensed","Arial Narrow",sans-serif!important;
+}
+
+.journey-copy,
+.product-panel p,
+.feature-panel p,
+.price-note,
+.preview-caption span{
+  font-weight:500!important;
+  letter-spacing:.018em!important;
+  word-spacing:.005em!important;
+  line-height:1.22!important;
+}
+
+.journey-copy{
+  max-width:500px!important;
+  font-size:clamp(.90rem,.92vw,1rem)!important;
+}
+.product-panel p{
+  max-width:500px!important;
+  font-size:.88rem!important;
+}
+.product-panel.crafta p{max-width:640px!important}
+.feature-panel p{
+  font-size:.80rem!important;
+  line-height:1.18!important;
+}
+.price-note{
+  font-size:.76rem!important;
+  line-height:1.2!important;
+}
+.preview-caption span{
+  font-size:.78rem!important;
+  line-height:1.18!important;
+}
+
+/* Small labels + hero buttons: geometric, thin, restrained, and translucent. */
+.journey-eyebrow,
+.product-kicker,
+.hero-label-button{
+  font-family:"Bruno Ace SC","Arial Narrow",sans-serif!important;
+  font-weight:400!important;
+  text-transform:uppercase!important;
+  text-shadow:none!important;
+  letter-spacing:.13em!important;
+}
+.journey-eyebrow,
+.product-kicker{
+  font-size:.62rem!important;
+  line-height:1!important;
+  color:rgba(255,255,255,.48)!important;
+}
+.hero-label-button{
+  font-size:.70rem!important;
+  color:rgba(255,255,255,.72)!important;
+}
+
+/* Remove the horizontal squeezing hack from the previous pass. */
+.geo-break-text,
+.hero-label-button .geo-break-text--button{
+  transform:none!important;
+  letter-spacing:inherit!important;
+}
+
+@media(max-width:640px){
+  .hero-copy .journey-title{font-size:clamp(2.2rem,10vw,3rem)!important}
+  .weight-scene .journey-title{font-size:clamp(2.05rem,9vw,2.8rem)!important}
+  .preview-head .journey-title,
+  .pricing-head .journey-title,
+  .toshi-scene .journey-title{font-size:clamp(1.9rem,8vw,2.55rem)!important}
+  .journey-copy{font-size:.90rem!important}
+}
