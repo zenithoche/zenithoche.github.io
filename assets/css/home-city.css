@@ -1073,3 +1073,162 @@ html.scene-click-only .scene-stepper::after{
     font-size:.78rem;
   }
 }
+
+
+/* === TOTAL TYPOGRAPHY RESET 2026-09-29 ===
+   New system only: rounded retro display / soft condensed body / vintage script / narrow utility. */
+:root{
+  --z-display:"Lilita One","Trebuchet MS",sans-serif;
+  --z-body:"Dosis","Trebuchet MS",sans-serif;
+  --z-ui:"Dosis","Trebuchet MS",sans-serif;
+  --z-label:"Oswald","Arial Narrow",sans-serif;
+  --z-script:"Allura","Segoe Script",cursive;
+  --z-mono:"Oswald","Arial Narrow",sans-serif;
+}
+
+/* Remove every prior display/vector typography experiment from layout behavior. */
+.tradesmith-heading{display:none!important}
+.tradesmith-host{
+  font-size:inherit!important;
+  line-height:inherit!important;
+  letter-spacing:inherit!important;
+  color:inherit!important;
+}
+
+/* Big scene language: rounded, loose, retro, friendly. */
+.journey-title,
+.crimson-title{
+  font-family:var(--z-display)!important;
+  font-weight:400!important;
+  text-transform:none!important;
+  letter-spacing:.018em!important;
+  line-height:.90!important;
+  color:#fff!important;
+  text-shadow:0 3px 24px rgba(0,0,0,.42);
+  font-optical-sizing:auto;
+}
+.journey-title{
+  font-size:clamp(3.2rem,5.8vw,6.1rem)!important;
+  max-width:760px!important;
+}
+.crimson-title{
+  font-size:clamp(2rem,3vw,3.2rem)!important;
+  text-transform:uppercase!important;
+  letter-spacing:.045em!important;
+}
+
+/* Product / pricing names stay rounded but less oversized. */
+.product-name,
+.price-group-name,
+.toshi-caption strong,
+.preview-caption strong{
+  font-family:var(--z-display)!important;
+  font-weight:400!important;
+  letter-spacing:.015em!important;
+  line-height:.95!important;
+}
+.product-name{font-size:clamp(2rem,3.1vw,3.35rem)!important}
+.price-group-name{font-size:clamp(1.65rem,2.4vw,2.45rem)!important}
+
+/* All body copy: rounded condensed humanist, not rigid poster text. */
+body,
+.journey-copy,
+.product-panel p,
+.feature-panel,
+.price-row,
+.price-note,
+.preview-caption span,
+.signal-pill,
+.journey-button,
+.policy-text,
+.chip{
+  font-family:var(--z-body)!important;
+}
+.journey-copy,
+.product-panel p,
+.price-note,
+.feature-panel p,
+.preview-caption span{
+  font-weight:500!important;
+  letter-spacing:.015em!important;
+  word-spacing:.02em!important;
+  line-height:1.28!important;
+}
+.journey-copy{font-size:clamp(1.08rem,1.28vw,1.34rem)!important}
+.product-panel p{font-size:clamp(1rem,1.12vw,1.18rem)!important}
+.feature-panel p,.price-note,.preview-caption span{font-size:.98rem!important}
+
+/* Chips/buttons are rounded and compact rather than compressed. */
+.chip,
+.journey-button,
+.signal-pill{
+  font-weight:600!important;
+  letter-spacing:.02em!important;
+}
+.chip{
+  font-size:.84rem!important;
+  line-height:1!important;
+  padding:.42rem .72rem!important;
+  border-radius:999px!important;
+}
+
+/* Small system language: tall narrow vintage utility. */
+.journey-eyebrow,
+.product-kicker,
+.policy-num,
+.toshi-caption span,
+.scene-stepper__count,
+.scene-stepper::after,
+.zeni-shell__nav,
+.price-tier,
+.price-value{
+  font-family:var(--z-label)!important;
+  font-weight:500!important;
+  letter-spacing:.10em!important;
+}
+.journey-eyebrow,
+.product-kicker,
+.toshi-caption span{
+  text-transform:uppercase!important;
+}
+
+/* Header wordmark: vintage script, smoother and more intentional. */
+.zeni-shell__brand{
+  font-family:var(--z-script)!important;
+  font-size:32px!important;
+  font-weight:400!important;
+  letter-spacing:.01em!important;
+  text-transform:none!important;
+  line-height:1!important;
+  transform:translateY(1px);
+}
+
+/* Nav is compact but not mono/terminal-looking. */
+.zeni-shell__nav{
+  font-size:12px!important;
+  letter-spacing:.055em!important;
+  text-transform:none!important;
+}
+
+/* Remove the visual residue of the old condensed-copy pass. */
+.hero-copy > .journey-copy,
+.weight-scene .journey-copy,
+.preview-head .journey-copy,
+.pricing-head .journey-copy,
+.toshi-scene .journey-copy,
+.product-panel > p,
+.product-panel .chip{
+  font-family:var(--z-body)!important;
+}
+
+@media(max-width:640px){
+  .journey-title{
+    font-size:clamp(2.45rem,12vw,4rem)!important;
+    line-height:.92!important;
+  }
+  .crimson-title{font-size:clamp(1.65rem,8.7vw,2.55rem)!important}
+  .zeni-shell__brand{font-size:24px!important}
+  .journey-copy{font-size:1.08rem!important}
+  .product-panel p{font-size:1rem!important}
+  .chip{font-size:.79rem!important}
+}
