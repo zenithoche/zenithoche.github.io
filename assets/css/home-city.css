@@ -193,6 +193,7 @@ body::before,body::after{display:none}
 .hero-copy{padding:0;max-width:620px}
 .hero-empty,.weight-space{min-height:0}
 .journey-title{font-size:clamp(2.9rem,4.65vw,4.65rem);line-height:1.04;letter-spacing:-.035em;margin:14px 0 18px;text-wrap:balance;text-shadow:0 2px 25px #0008}
+.journey-title .dot{display:inline;font:inherit;letter-spacing:inherit;color:#ef92a2}
 .journey-eyebrow{font-size:.72rem;letter-spacing:.26em;color:#e2b3bd}
 .journey-copy{max-width:510px;font-size:clamp(.95rem,1.12vw,1.1rem);line-height:1.5;color:#f0e9e8;text-shadow:0 1px 12px #000}
 .journey-actions{gap:12px;margin-top:20px}
