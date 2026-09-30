@@ -2,12 +2,12 @@
 .j-kicker{color:#ffc4df}.j-index{color:#f7bad8}
 .j-button--primary{background:linear-gradient(150deg,rgba(242,137,192,.74),rgba(116,43,88,.82));box-shadow:0 0 24px rgba(246,118,187,.22)}
 .j-button--primary:hover{background:linear-gradient(150deg,rgba(250,161,207,.83),rgba(132,54,101,.88))}
-.a-hero{background:linear-gradient(90deg,rgba(16,3,16,.86),rgba(22,5,20,.56) 56%,rgba(25,6,22,.45)),linear-gradient(0deg,#100712,transparent 24%),url("/assets/media/city-hero.webp") center/cover no-repeat}
+.a-hero{background:linear-gradient(90deg,rgba(16,3,16,.80),rgba(22,5,20,.48) 56%,rgba(25,6,22,.34)),linear-gradient(0deg,#100712,transparent 24%),url("/assets/media/product-worlds/ashiko-atelier.webp") center/cover no-repeat}
 .a-hero .j-hero__copy{background:rgba(23,7,22,.72)}
 .a-hero .j-hero__art img{object-position:36% center}
-.a-builder{background:linear-gradient(100deg,rgba(11,5,15,.91),rgba(15,5,18,.78)),url("/assets/media/city-weight.webp") center/cover no-repeat}
-.a-signal{background:linear-gradient(180deg,rgba(12,5,15,.94),rgba(13,5,17,.8)),url("/assets/media/city-preview.webp") center/cover no-repeat}
-.a-moments{background:linear-gradient(180deg,rgba(12,5,16,.89),rgba(10,5,14,.86)),url("/assets/media/city-pricing.webp") center/cover no-repeat}
+.a-builder{background:linear-gradient(100deg,rgba(11,5,15,.86),rgba(15,5,18,.7)),url("/assets/media/product-worlds/ashiko-workshop.webp") center/cover no-repeat}
+.a-signal{background:linear-gradient(180deg,rgba(12,5,15,.87),rgba(13,5,17,.68)),url("/assets/media/product-worlds/ashiko-passage.webp") center/cover no-repeat}
+.a-moments{background:linear-gradient(180deg,rgba(12,5,16,.83),rgba(10,5,14,.72)),url("/assets/media/product-worlds/ashiko-plaza.webp") center/cover no-repeat}
 .a-plans{background:linear-gradient(180deg,rgba(10,5,13,.88),rgba(11,5,14,.74)),url("/assets/media/ashiko-sleeper-tools-banner.png") center/cover no-repeat}
 .a-close{background:linear-gradient(90deg,rgba(18,4,17,.86),rgba(19,4,17,.57)),url("/assets/media/ashiko-public-banner.png") center/cover no-repeat}
 .a-split{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:center;gap:clamp(35px,5vw,85px)}
