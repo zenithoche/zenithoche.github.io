@@ -1,3 +1,158 @@
-:root{color-scheme:dark;--bg:#030303;--panel:rgba(255,255,255,.045);--line:rgba(255,255,255,.13);--text:rgba(255,255,255,.95);--muted:rgba(255,255,255,.66);--faint:rgba(255,255,255,.42);--max:1180px}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 18% 0%,rgba(255,255,255,.11),transparent 30%),radial-gradient(circle at 82% 8%,rgba(255,255,255,.06),transparent 27%),linear-gradient(180deg,#090909,#030303 46%,#000);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit;text-decoration:none}.page{width:min(var(--max),calc(100% - 36px));margin:auto}.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}.brand{font-weight:850;letter-spacing:.12em;text-transform:uppercase;font-size:14px}.nav-links{display:flex;gap:18px;align-items:center;color:var(--muted);font-size:14px}.hero{padding:88px 0 64px;max-width:980px}.eyebrow{display:inline-flex;gap:9px;align-items:center;padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}.dot{width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 18px rgba(255,255,255,.8)}h1,h2,h3,p{margin:0}h1{font-size:clamp(54px,9vw,116px);line-height:.9;letter-spacing:-.065em;font-weight:900}h2{font-size:clamp(30px,5vw,54px);letter-spacing:-.04em;margin-bottom:14px}.lead{max-width:760px;margin-top:28px;color:var(--muted);font-size:20px;line-height:1.7}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:999px;padding:14px 20px;font-weight:800;background:rgba(255,255,255,.055)}.btn.primary{background:#fff;color:#000}.status{margin-top:18px;color:var(--faint);font-size:13px}.section{padding:54px 0;border-top:1px solid var(--line)}.section-copy{max-width:760px;color:var(--muted);font-size:17px;line-height:1.7}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:26px}.card{border:1px solid var(--line);background:var(--panel);border-radius:24px;padding:24px}.card h3{font-size:20px;margin-bottom:8px}.card p{color:var(--muted);line-height:1.65}.price{font-size:34px;font-weight:900;letter-spacing:-.04em;margin:8px 0 12px}.pill{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:7px 10px;color:var(--faint);font-size:12px;margin-bottom:12px}.list{margin:16px 0 0;padding-left:18px;color:var(--muted);line-height:1.8}.launch-panel{border:1px solid var(--line);background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border-radius:28px;padding:30px;display:flex;align-items:center;justify-content:space-between;gap:24px}.launch-panel p{color:var(--muted);line-height:1.65;max-width:700px}.fine{color:var(--faint);font-size:13px;line-height:1.65}.footer{padding:34px 0 54px;color:var(--faint);font-size:13px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.footer-links{display:flex;gap:14px}@media(max-width:780px){.grid{grid-template-columns:1fr}.nav-links{display:none}.launch-panel{align-items:flex-start;flex-direction:column}.hero{padding-top:58px}}
-.fine-spaced { margin-top: 18px; }
+:root{
+  color-scheme:light;
+  --text:#29272a;
+  --muted:#59565a;
+  --faint:#777378;
+  --line:rgba(48,43,48,.16);
+  --panel:rgba(255,255,255,.74);
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  overflow-x:hidden;
+  color:var(--text);
+  background:#f9f8f6;
+  font-family:"Dosis","Arial Narrow",sans-serif;
+  font-size:18px;
+}
+a{color:inherit;text-decoration:none}
+.page{width:min(var(--max),calc(100% - 48px));margin:auto}
+h1,h2,h3,p{margin:0}
+.hero{
+  position:relative;
+  isolation:isolate;
+  width:100vw;
+  min-height:clamp(720px,90svh,980px);
+  margin-left:calc(50% - 50vw);
+  overflow:hidden;
+  background:#fbfaf8;
+}
+.hero__art{
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background-image:
+    linear-gradient(90deg,rgba(255,255,255,.90) 0%,rgba(255,255,255,.66) 22%,rgba(255,255,255,.13) 48%,transparent 72%),
+    url("/assets/media/crafta-painted-showroom.png");
+  background-size:cover;
+  background-position:center 54%;
+}
+.hero__content{
+  width:min(480px,calc(100% - 48px));
+  margin-left:max(6vw,24px);
+  padding:clamp(92px,13vh,156px) 0 84px;
+}
+.hero__eyebrow,
+.pill{
+  font-family:"Poiret One","Arial Narrow",sans-serif;
+  letter-spacing:.12em;
+}
+.hero__eyebrow{
+  font-size:14px;
+  color:#534d53;
+}
+.hero__eyebrow span{margin-inline:8px;color:#9e959d}
+h1,h2,h3{
+  font-family:"Grandstander",ui-sans-serif,system-ui,sans-serif;
+  font-weight:500;
+}
+h1{
+  max-width:550px;
+  margin-top:26px;
+  font-size:clamp(54px,5.9vw,86px);
+  line-height:.97;
+  letter-spacing:-.055em;
+}
+.lead{
+  max-width:430px;
+  margin-top:30px;
+  font-size:clamp(21px,1.9vw,27px);
+  line-height:1.33;
+  color:#3c393e;
+}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:33px}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  min-height:48px;
+  padding:12px 20px;
+  border:1px solid rgba(39,35,39,.36);
+  border-radius:999px;
+  background:rgba(255,255,255,.68);
+  color:#262226;
+  font-family:"Poiret One","Arial Narrow",sans-serif;
+  font-size:17px;
+  letter-spacing:.015em;
+  transition:transform .2s ease,background .2s ease;
+}
+.btn:hover,.btn:focus-visible{transform:translateY(-2px);background:#fff}
+.btn.primary{background:#262226;color:#fff;border-color:#262226}
+.btn.primary:hover,.btn.primary:focus-visible{background:#403b40}
+.section{padding:clamp(68px,7vw,110px) 0;border-bottom:1px solid var(--line)}
+.section h2{font-size:clamp(32px,3.3vw,50px);line-height:1.03;letter-spacing:-.035em}
+.section-copy{max-width:620px;margin-top:18px;color:var(--muted);font-size:21px;line-height:1.42}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:34px}
+.card{
+  min-width:0;
+  padding:clamp(22px,2.5vw,34px);
+  border:1px solid var(--line);
+  border-radius:26px;
+  background:var(--panel);
+  box-shadow:0 20px 55px rgba(59,48,55,.045);
+}
+.card h3{margin-top:12px;font-size:25px;line-height:1.15;letter-spacing:-.018em}
+.card p{margin-top:17px;color:var(--muted);font-size:18px;line-height:1.48}
+.pill{display:inline-block;color:#81757c;font-size:15px}
+.price{margin:15px 0 0;font-family:"Grandstander",sans-serif;font-size:38px;letter-spacing:-.04em}
+.list{margin:17px 0 0;padding-left:21px;color:var(--muted);line-height:1.75}
+.fine{color:var(--faint);font-size:15px;line-height:1.5}
+.fine-spaced{margin-top:21px}
+.launch-panel{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+  padding:clamp(26px,4vw,50px);
+  border:1px solid var(--line);
+  border-radius:28px;
+  background:linear-gradient(110deg,#fff,#eeeceb);
+}
+.launch-panel p{max-width:600px;margin-top:16px;color:var(--muted);line-height:1.45}
+.footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:35px 0 60px;color:var(--faint);font-size:15px}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+@media(max-width:780px){
+  .page{width:min(100% - 36px,var(--max))}
+  .hero{display:flex;flex-direction:column;min-height:0}
+  .hero__content{
+    order:1;
+    width:min(100% - 48px,560px);
+    margin:0 auto;
+    padding:56px 0 34px;
+  }
+  .hero__art{
+    position:relative;
+    z-index:0;
+    order:2;
+    width:100%;
+    height:clamp(340px,64svh,620px);
+    background-image:url("/assets/media/crafta-painted-showroom.png");
+    background-size:cover;
+    background-position:60% center;
+  }
+  h1{max-width:520px;font-size:clamp(50px,11vw,70px)}
+  .lead{font-size:22px;margin-top:24px}
+  .grid{grid-template-columns:1fr}
+  .launch-panel{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:430px){
+  .hero__content{width:calc(100% - 42px);padding-top:46px}
+  .hero__art{height:400px;background-position:61% center}
+  h1{font-size:clamp(46px,11.5vw,57px)}
+  .lead{font-size:20px}
+  .actions{gap:10px}
+  .btn{min-height:44px;padding:10px 15px;font-size:16px}
+}
