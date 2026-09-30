@@ -177,3 +177,23 @@ html.j-deck.j-last .j-stepper{bottom:69px}
   html.j-deck .j-demo-grid,html.j-deck .j-operations__list,html.j-deck .j-plan-grid{max-height:55svh;overflow-y:auto}
   html.j-deck .j-arrivals__media{max-height:63svh;overflow-y:auto}
 }
+
+/* On phones, preview cards move sideways within the fixed scene. */
+@media(max-width:750px){
+  html.j-deck .j-demo-grid{
+    display:flex;
+    max-width:none;
+    max-height:none;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    scroll-padding-inline:4px;
+    touch-action:pan-x;
+    padding:3px 4px 18px;
+    overscroll-behavior-inline:contain;
+  }
+  html.j-deck .j-demo{
+    flex:0 0 min(78vw,420px);
+    scroll-snap-align:start;
+  }
+}
