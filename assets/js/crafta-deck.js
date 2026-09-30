@@ -50,7 +50,7 @@
       event.preventDefault();
       return;
     }
-    const gallery = event.target.closest?.('.c-flow');
+    const gallery = event.target.closest?.('.c-flow,.c-plans__carousel');
     if (gallery && gallery.scrollWidth > gallery.clientWidth) {
       const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
       const canMove = delta > 0 ? gallery.scrollLeft < gallery.scrollWidth - gallery.clientWidth - 1 : gallery.scrollLeft > 1;
@@ -64,10 +64,10 @@
     event.preventDefault();
   }, { passive: false });
   document.addEventListener('touchmove', (event) => {
-    if (!event.target.closest?.('.zeni-shell__inner,.c-flow,.c-pocket')) event.preventDefault();
+    if (!event.target.closest?.('.zeni-shell__inner,.c-flow,.c-plans__carousel,.c-pocket')) event.preventDefault();
   }, { passive: false });
   window.addEventListener('keydown', (event) => {
-    if (event.target.closest?.('.c-pocket,.c-flow,button,a,input,textarea,select') || event.target.isContentEditable) return;
+    if (event.target.closest?.('.c-pocket,.c-flow,.c-plans__carousel,button,a,input,textarea,select') || event.target.isContentEditable) return;
     if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', ' ', 'Home', 'End'].includes(event.key)) event.preventDefault();
   });
 })();

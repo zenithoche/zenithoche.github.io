@@ -12,7 +12,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://zenithoche.com/products/craftacompanion/" />
   <link rel="stylesheet" href="/assets/css/fonts.css?v=self-hosted-1" />
-  <link rel="stylesheet" href="/assets/css/craftacompanion.css?v=dark-mobile-1" />
+  <link rel="stylesheet" href="/assets/css/craftacompanion.css?v=pricing-carousel-1" />
   <link rel="stylesheet" href="/assets/css/brand-shell.css?v=lotus-mask-1" />
 </head>
 <body>
@@ -85,16 +85,29 @@
       </div>
     </section>
 
-    <section class="section c-scene" id="plans">
-      <div class="c-pocket" tabindex="0">
-      <h2>Choose the experience level.</h2>
-      <p class="section-copy">The public plan names describe the experience instead of making people choose infrastructure by provider model name.</p>
-      <div class="grid">
-        <article class="card"><span class="pill">Everyday</span><div class="price">$6/mo</div><p>Fast, lower-cost access for normal companion use with an included AI allowance.</p><ul class="list"><li>Persistent companion core</li><li>Craft Helper access</li><li>Finalization and chat</li><li>Refills available</li></ul></article>
-        <article class="card"><span class="pill">Enhanced</span><div class="price">$12/mo</div><p>More reasoning capacity and a larger included allowance for richer conversation.</p><ul class="list"><li>Everything in Everyday</li><li>Higher capability routing</li><li>Larger included allowance</li><li>Refills available</li></ul></article>
-        <article class="card"><span class="pill">Deep</span><div class="price">$24/mo</div><p>The highest-capability Crafta tier with the largest included allowance.</p><ul class="list"><li>Everything in Enhanced</li><li>Premium model routing</li><li>Largest included allowance</li><li>Refills available</li></ul></article>
-      </div>
-      <p class="fine fine-spaced">Refills are optional prepaid usage entitlements and are not transferable currency. Billing and subscription management are handled through secure checkout and the customer billing portal.</p>
+    <section class="section c-scene c-plans" id="plans" aria-labelledby="plans-title">
+      <div class="c-plans__backdrop" aria-hidden="true"></div>
+      <div class="c-pocket c-plans__content" tabindex="0">
+        <div class="c-plans__intro">
+          <h2 id="plans-title">Choose the experience level.</h2>
+          <p class="section-copy">The public plan names describe the experience instead of making people choose infrastructure by provider model name.</p>
+        </div>
+        <div class="c-plans__carousel-wrap">
+          <button class="c-plans__arrow c-plans__arrow--prev" type="button" aria-label="Previous plan">‹</button>
+          <div class="c-plans__carousel" role="region" aria-label="Crafta plans" tabindex="0">
+            <article class="card c-plan-card" data-plan="Everyday"><span class="pill">Everyday</span><div class="price">$6/mo</div><p>Fast, lower-cost access for normal companion use with an included AI allowance.</p><ul class="list"><li>Persistent companion core</li><li>Craft Helper access</li><li>Finalization and chat</li><li>Refills available</li></ul></article>
+            <article class="card c-plan-card is-active" data-plan="Enhanced"><span class="pill">Enhanced</span><div class="price">$12/mo</div><p>More reasoning capacity and a larger included allowance for richer conversation.</p><ul class="list"><li>Everything in Everyday</li><li>Higher capability routing</li><li>Larger included allowance</li><li>Refills available</li></ul></article>
+            <article class="card c-plan-card" data-plan="Deep"><span class="pill">Deep</span><div class="price">$24/mo</div><p>The highest-capability Crafta tier with the largest included allowance.</p><ul class="list"><li>Everything in Enhanced</li><li>Premium model routing</li><li>Largest included allowance</li><li>Refills available</li></ul></article>
+          </div>
+          <button class="c-plans__arrow c-plans__arrow--next" type="button" aria-label="Next plan">›</button>
+        </div>
+        <div class="c-plans__pager" aria-label="Choose a plan">
+          <button type="button" data-plan-index="0" aria-label="Show Everyday plan"></button>
+          <button type="button" data-plan-index="1" aria-label="Show Enhanced plan" aria-current="true"></button>
+          <button type="button" data-plan-index="2" aria-label="Show Deep plan"></button>
+        </div>
+        <p class="c-plans__hint" aria-hidden="true"><span>↔</span> Swipe to explore plans</p>
+        <p class="fine c-plans__fine">Refills are optional prepaid usage entitlements and are not transferable currency. Billing and subscription management are handled through secure checkout and the customer billing portal.</p>
       </div>
     </section>
 
@@ -121,5 +134,6 @@
   </nav>
   <script src="/assets/js/crafta-deck.js?v=assembly-deck-1" defer></script>
   <script src="/assets/js/crafta-assembly.js?v=smooth-1" defer></script>
+  <script src="/assets/js/crafta-plans.js?v=carousel-1" defer></script>
 </body>
 </html>
