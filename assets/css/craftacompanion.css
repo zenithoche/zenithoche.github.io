@@ -240,3 +240,206 @@ html.c-deck .section .card{background:rgba(25,20,27,.88)}
   html{scroll-behavior:auto}
   .c-assembly__visual .c-assembly__frame{transition:none}
 }
+
+
+/* Continuity scene: preserve the completed companion as the visual bridge,
+   then move through alternate shells and back through the eye. */
+html.c-deck .c-continuity{
+  isolation:isolate;
+  padding:0;
+  background:#050507;
+}
+html.c-deck .c-continuity.is-active{align-items:stretch}
+.c-continuity__stage{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  overflow:hidden;
+  background:#050507;
+}
+.c-continuity__portrait-stack,
+.c-continuity__portrait{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+.c-continuity__portrait{
+  display:block;
+  object-fit:cover;
+  object-position:50% 38%;
+  opacity:0;
+  transform:scale(1.035);
+  transform-origin:54% 34%;
+  filter:saturate(.82) contrast(1.04) brightness(.82);
+  transition:
+    opacity .92s ease-in-out,
+    transform 1.7s cubic-bezier(.2,.7,.16,1),
+    filter .9s ease;
+  will-change:opacity,transform;
+}
+.c-continuity__portrait.is-current{opacity:1}
+.c-continuity__portrait--final{opacity:1}
+.c-continuity__portrait--complete,
+.c-continuity__portrait--forming{
+  -webkit-mask-image:radial-gradient(ellipse 23% 31% at 54% 34%,#000 0 58%,rgba(0,0,0,.92) 70%,transparent 100%);
+  mask-image:radial-gradient(ellipse 23% 31% at 54% 34%,#000 0 58%,rgba(0,0,0,.92) 70%,transparent 100%);
+}
+.c-continuity__portrait--complete{object-position:50% 42%}
+.c-continuity__portrait--forming{object-position:50% 40%}
+.c-continuity__shade{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(4,4,7,.28) 0%,rgba(4,4,7,.08) 34%,rgba(4,4,7,.22) 100%),
+    linear-gradient(90deg,rgba(5,5,8,.68) 0%,rgba(5,5,8,.42) 36%,rgba(5,5,8,.08) 68%,rgba(5,5,8,.22) 100%);
+}
+html.c-deck .c-continuity>.c-continuity__content{
+  position:relative;
+  z-index:5;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  width:min(1180px,calc(100% - 48px));
+  height:100%;
+  max-height:none;
+  margin:0 auto;
+  padding:clamp(34px,6svh,72px) 0 max(86px,8svh);
+  overflow-y:auto;
+}
+.c-continuity__heading{max-width:640px;text-shadow:0 4px 26px rgba(0,0,0,.78)}
+.c-continuity__heading .pill{color:#eee6eb}
+.c-continuity__heading h2{
+  max-width:620px;
+  margin-top:10px;
+  font-size:clamp(46px,5.2vw,78px);
+  line-height:.96;
+  color:#fff;
+}
+.c-continuity__cards{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+  width:100%;
+  margin-top:clamp(42px,12svh,140px);
+}
+html.c-deck .c-continuity .card{
+  min-height:190px;
+  padding:clamp(20px,2vw,28px);
+  border-color:rgba(255,255,255,.20);
+  background:rgba(12,12,16,.56);
+  box-shadow:0 22px 60px rgba(0,0,0,.34);
+  backdrop-filter:blur(18px) saturate(1.12);
+  -webkit-backdrop-filter:blur(18px) saturate(1.12);
+}
+html.c-deck .c-continuity .card h3{
+  margin:0;
+  color:#fff;
+  font-size:clamp(22px,2vw,28px);
+}
+html.c-deck .c-continuity .card p{
+  margin-top:12px;
+  color:rgba(247,242,245,.84);
+  font-size:clamp(16px,1.4vw,18px);
+  line-height:1.42;
+}
+.c-continuity__tunnel{
+  position:absolute;
+  inset:-22%;
+  z-index:2;
+  opacity:0;
+  transform:scale(.68);
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 54% 34%,transparent 0 4%,rgba(255,255,255,.72) 4.8%,transparent 6.3%),
+    repeating-radial-gradient(circle at 54% 34%,rgba(242,236,240,.20) 0 2px,transparent 3px 8.5%),
+    conic-gradient(from 10deg at 54% 34%,rgba(255,255,255,.06),rgba(255,255,255,.28),rgba(35,27,37,.08),rgba(255,255,255,.18),rgba(255,255,255,.06));
+  filter:blur(.2px) contrast(1.18);
+  transition:opacity .5s ease,transform 1.45s cubic-bezier(.18,.8,.15,1);
+}
+.c-continuity__ring{
+  position:absolute;
+  left:54%;
+  top:34%;
+  width:22vmin;
+  aspect-ratio:1;
+  border:1px solid rgba(255,255,255,.46);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 45px rgba(255,255,255,.12),inset 0 0 30px rgba(255,255,255,.08);
+}
+.c-continuity__ring--two{width:46vmin;opacity:.55}
+.c-continuity__ring--three{width:76vmin;opacity:.32}
+.c-continuity__stage.is-eye-dive .c-continuity__portrait.is-current{
+  transform:scale(8.2);
+  filter:saturate(.72) contrast(1.12) brightness(.72);
+}
+.c-continuity__stage.is-tunnel .c-continuity__portrait.is-current{opacity:0}
+.c-continuity__stage.is-tunnel .c-continuity__tunnel{
+  opacity:1;
+  transform:scale(1.22);
+  animation:c-continuity-spin 5.2s linear infinite;
+}
+.c-continuity__stage.is-returning .c-continuity__tunnel{opacity:0;transform:scale(1.7)}
+@keyframes c-continuity-spin{
+  from{rotate:0deg}
+  to{rotate:360deg}
+}
+
+@media(max-width:860px){
+  .c-continuity__shade{
+    background:
+      linear-gradient(180deg,rgba(5,5,8,.58) 0%,rgba(5,5,8,.13) 34%,rgba(5,5,8,.38) 67%,rgba(5,5,8,.78) 100%);
+  }
+  html.c-deck .c-continuity>.c-continuity__content{
+    width:calc(100% - 30px);
+    padding:clamp(24px,4svh,42px) 0 92px;
+  }
+  .c-continuity__heading{max-width:500px}
+  .c-continuity__heading h2{font-size:clamp(40px,10vw,58px)}
+  .c-continuity__cards{
+    grid-template-columns:1fr;
+    gap:10px;
+    width:min(560px,100%);
+    margin-top:min(26svh,210px);
+  }
+  html.c-deck .c-continuity .card{
+    min-height:0;
+    padding:17px 19px;
+    border-radius:20px;
+    background:rgba(10,10,14,.66);
+  }
+  html.c-deck .c-continuity .card h3{font-size:21px}
+  html.c-deck .c-continuity .card p{margin-top:7px;font-size:15.5px;line-height:1.36}
+  .c-continuity__portrait{
+    object-position:52% 34%;
+    transform-origin:54% 31%;
+  }
+  .c-continuity__portrait--complete,
+  .c-continuity__portrait--forming{
+    -webkit-mask-image:radial-gradient(ellipse 31% 25% at 54% 31%,#000 0 58%,rgba(0,0,0,.92) 70%,transparent 100%);
+    mask-image:radial-gradient(ellipse 31% 25% at 54% 31%,#000 0 58%,rgba(0,0,0,.92) 70%,transparent 100%);
+  }
+  .c-continuity__portrait--complete{object-position:50% 35%}
+  .c-continuity__portrait--forming{object-position:50% 34%}
+  .c-continuity__tunnel{
+    background:
+      radial-gradient(circle at 54% 31%,transparent 0 4%,rgba(255,255,255,.72) 4.8%,transparent 6.3%),
+      repeating-radial-gradient(circle at 54% 31%,rgba(242,236,240,.20) 0 2px,transparent 3px 8.5%),
+      conic-gradient(from 10deg at 54% 31%,rgba(255,255,255,.06),rgba(255,255,255,.28),rgba(35,27,37,.08),rgba(255,255,255,.18),rgba(255,255,255,.06));
+  }
+  .c-continuity__ring{left:54%;top:31%}
+}
+@media(max-width:500px){
+  html.c-deck .c-continuity>.c-continuity__content{width:calc(100% - 24px);padding-bottom:88px}
+  .c-continuity__heading h2{font-size:clamp(38px,10.8vw,50px)}
+  .c-continuity__cards{margin-top:min(24svh,170px)}
+  html.c-deck .c-continuity .card{padding:14px 16px}
+  html.c-deck .c-continuity .card p{font-size:14.5px}
+}
+@media(prefers-reduced-motion:reduce){
+  .c-continuity__portrait{transition:none}
+  .c-continuity__tunnel{display:none}
+}
