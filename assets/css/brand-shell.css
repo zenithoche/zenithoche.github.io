@@ -104,7 +104,15 @@
   width:28px;
   height:28px;
   object-fit:contain;
-  mix-blend-mode:screen;
+  /* Use the light pixels as the mask; the image's black square becomes clear. */
+  -webkit-mask-image:url("/assets/media/zenithoche-lotus-mark.webp");
+  mask-image:url("/assets/media/zenithoche-lotus-mark.webp");
+  -webkit-mask-mode:luminance;
+  mask-mode:luminance;
+  -webkit-mask-size:contain;
+  mask-size:contain;
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
 }
 .zeni-shell__nav{
   font-family:"Poiret One","Arial Narrow",sans-serif;

@@ -2219,7 +2219,6 @@ body,
   height:28px;
   flex:none;
   object-fit:contain;
-  mix-blend-mode:screen;
 }
 @media(max-width:640px){
   .zeni-shell__inner{
