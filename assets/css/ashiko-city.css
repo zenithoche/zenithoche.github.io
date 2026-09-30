@@ -65,7 +65,7 @@ html.j-deck .a-close{padding-bottom:115px}
     overflow-y:hidden;
     scroll-snap-type:x mandatory;
     scroll-padding-inline:4px;
-    touch-action:pan-x;
+    touch-action:auto;
     padding:3px 4px 18px;
     overscroll-behavior-inline:contain;
   }
@@ -79,5 +79,10 @@ html.j-deck .a-close{padding-bottom:115px}
     flex:0 0 auto;
     width:100%;
     height:min(28svh,235px);
+  }
+  html.j-deck .a-card-grid--two{
+    max-height:none;
+    overflow:visible;
+    scroll-snap-type:none;
   }
 }
