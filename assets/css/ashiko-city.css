@@ -55,3 +55,29 @@ html.j-deck .a-close{padding-bottom:115px}
   .a-card h3{font-size:1.4rem}
   .a-close figure{width:170px}
 }
+
+/* Community previews swipe horizontally, with the next card in view. */
+@media(max-width:750px){
+  html.j-deck .a-card-grid--three{
+    display:flex;
+    max-height:none;
+    overflow-x:auto;
+    overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    scroll-padding-inline:4px;
+    touch-action:pan-x;
+    padding:3px 4px 18px;
+    overscroll-behavior-inline:contain;
+  }
+  html.j-deck .a-card-grid--three .a-card{
+    flex:0 0 min(78vw,420px);
+    flex-direction:column!important;
+    min-height:0;
+    scroll-snap-align:start;
+  }
+  html.j-deck .a-card-grid--three .a-card__media{
+    flex:0 0 auto;
+    width:100%;
+    height:min(28svh,235px);
+  }
+}
