@@ -199,6 +199,26 @@ html.c-deck .section .card{background:rgba(25,20,27,.88)}
 .c-flow .card{flex:0 0 min(330px,82%);scroll-snap-align:start;padding:20px 23px;border-color:rgba(220,190,207,.25)}
 .c-flow .card h3{margin-top:8px;font-size:23px}
 .c-flow .card p{margin-top:9px;font-size:17px;line-height:1.35}
+.c-continuity{isolation:isolate;--eye-x:48%;--eye-y:34%}
+.c-continuity__visual{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:#05060a}
+.c-continuity__visual::after{content:"";position:absolute;inset:0;z-index:3;background:linear-gradient(90deg,rgba(5,5,9,.94),rgba(5,5,9,.78) 38%,rgba(5,5,9,.16) 76%),linear-gradient(0deg,rgba(5,5,9,.52),transparent 32%)}
+.c-continuity__stage{position:absolute;inset:0;transform-origin:var(--eye-x) var(--eye-y)}
+.c-continuity__face{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0}
+.c-continuity__face--base{opacity:1}
+.c-continuity__tunnel{position:absolute;inset:-15%;z-index:2;opacity:0;transform:scale(.4);transform-origin:var(--eye-x) var(--eye-y);background:repeating-radial-gradient(circle at var(--eye-x) var(--eye-y),rgba(236,241,245,.75) 0 2px,rgba(45,50,62,.85) 8px 22px,rgba(3,5,12,.98) 28px 66px);filter:blur(3px)}
+html.c-deck .c-continuity>.c-pocket{position:relative;z-index:1}
+html.c-deck .c-continuity .grid{grid-template-columns:1fr;max-width:560px;gap:14px}
+html.c-deck .c-continuity .card{padding:20px 25px;background:rgba(15,13,20,.72);border-color:rgba(225,211,223,.3);backdrop-filter:blur(12px)}
+.c-continuity .card h3{margin-top:0}
+.c-continuity .card p{margin-top:8px;line-height:1.38}
+.c-continuity.is-active .c-continuity__stage{animation:crafta-eye-camera 18s ease-in-out infinite}
+.c-continuity.is-active .c-continuity__face--masculine{animation:crafta-face-masculine 18s ease-in-out infinite}
+.c-continuity.is-active .c-continuity__face--androgynous{animation:crafta-face-androgynous 18s ease-in-out infinite}
+.c-continuity.is-active .c-continuity__tunnel{animation:crafta-eye-tunnel 18s ease-in-out infinite}
+@keyframes crafta-face-masculine{0%,10%,31%,100%{opacity:0}17%,24%{opacity:1}}
+@keyframes crafta-face-androgynous{0%,27%,51%,100%{opacity:0}35%,43%{opacity:1}}
+@keyframes crafta-eye-camera{0%,49%,92%,100%{transform:scale(1)}66%,75%{transform:scale(8)}}
+@keyframes crafta-eye-tunnel{0%,56%,91%,100%{opacity:0;transform:scale(.4)}67%,76%{opacity:.96;transform:scale(1.55)}84%{opacity:.78;transform:scale(2.1)}}
 .c-stepper[hidden]{display:none}
 .c-stepper{position:fixed;left:50%;bottom:max(12px,env(safe-area-inset-bottom));z-index:110;transform:translateX(-50%);display:grid;grid-template-columns:48px 90px 54px;align-items:center;gap:8px;padding:7px;border:1px solid rgba(66,51,62,.35);border-radius:999px;background:rgba(31,26,31,.83);color:#fff;box-shadow:0 15px 40px rgba(30,20,30,.25);backdrop-filter:blur(18px)}
 .c-stepper button{width:48px;height:48px;border:0;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font:28px "Poiret One",sans-serif;cursor:pointer}
@@ -232,6 +252,12 @@ html.c-deck .section .card{background:rgba(25,20,27,.88)}
   .c-flow .card{flex-basis:84%;padding:16px 18px}
   .c-flow .card h3{font-size:21px}
   .c-flow .card p{font-size:16px}
+  .c-continuity{--eye-x:45%;--eye-y:32%}
+  .c-continuity__visual::after{background:linear-gradient(180deg,rgba(5,5,9,.78),rgba(5,5,9,.62) 40%,rgba(5,5,9,.86) 100%)}
+  html.c-deck .c-continuity .grid{gap:12px}
+  html.c-deck .c-continuity .card{padding:17px 19px;background:rgba(13,11,18,.72)}
+  .c-continuity .card h3{font-size:22px}
+  .c-continuity .card p{font-size:16px;line-height:1.35}
   .c-stepper{grid-template-columns:42px 84px 50px;gap:6px;padding:6px}
   .c-stepper button{width:42px;height:42px}
   .c-stepper__next{width:50px!important;height:50px!important}
@@ -239,4 +265,8 @@ html.c-deck .section .card{background:rgba(25,20,27,.88)}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .c-assembly__visual .c-assembly__frame{transition:none}
+  .c-continuity.is-active .c-continuity__stage,
+  .c-continuity.is-active .c-continuity__face--masculine,
+  .c-continuity.is-active .c-continuity__face--androgynous,
+  .c-continuity.is-active .c-continuity__tunnel{animation:none}
 }
