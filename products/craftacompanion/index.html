@@ -12,7 +12,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://zenithoche.com/products/craftacompanion/" />
   <link rel="stylesheet" href="/assets/css/fonts.css?v=self-hosted-1" />
-  <link rel="stylesheet" href="/assets/css/craftacompanion.css?v=showroom-mobile-3" />
+  <link rel="stylesheet" href="/assets/css/craftacompanion.css?v=assembly-deck-1" />
   <link rel="stylesheet" href="/assets/css/brand-shell.css?v=lotus-mask-1" />
 </head>
 <body>
@@ -34,9 +34,9 @@
       </header>
   <main class="page">
 
-    <section class="hero" aria-labelledby="crafta-title">
+    <section class="hero c-scene" id="crafta-home" aria-labelledby="crafta-title">
       <div class="hero__art" role="img" aria-label="A painted white cloud-lit showroom with rows of robotic companions on individual display pods"></div>
-      <div class="hero__content">
+      <div class="hero__content c-pocket" tabindex="0">
         <p class="hero__eyebrow">CRAFTACOMPANION <span aria-hidden="true">/</span> LIVE PROTOTYPE</p>
         <h1 id="crafta-title">Craft a companion who feels like yours.</h1>
         <p class="lead">Give them an identity, a voice, and room to grow. Crafta keeps the choices in your hands and their core together.</p>
@@ -47,26 +47,40 @@
       </div>
     </section>
 
-    <section class="section" id="how">
-      <h2>You choose. We assemble.</h2>
-      <p class="section-copy">Crafta keeps the meaningful decisions with you while turning those decisions into a persistent companion core that can survive model changes and future feature expansion.</p>
-      <div class="grid">
-        <article class="card"><span class="pill">01 · Shape</span><h3>Describe the person</h3><p>Name them, choose the relationship, conversation style, initiative, personality, boundaries, interests, memory preferences, appearance notes, and voice notes.</p></article>
-        <article class="card"><span class="pill">02 · Refine</span><h3>Use Craft Helper</h3><p>Craft Helper reviews what you wrote, preserves your actual choices, flags meaningful contradictions, and can suggest clearer wording without taking authorship away from you.</p></article>
-        <article class="card"><span class="pill">03 · Meet</span><h3>Finalize and talk</h3><p>Approve version 1 of the companion core, begin chatting, preserve continuity, export the companion, and manage usage without rebuilding the identity underneath.</p></article>
+    <section class="section c-scene c-assembly" id="how" aria-labelledby="how-title">
+      <div class="c-pocket" tabindex="0">
+        <div class="c-assembly__intro">
+          <p class="pill">THE MAKING OF A COMPANION</p>
+          <h2 id="how-title">You choose. We assemble.</h2>
+          <p class="section-copy">Your choices take shape as a companion whose identity stays together.</p>
+        </div>
+        <div class="c-assembly__visual" role="img" aria-label="An ivory-and-gold companion head assembles as floating shell pieces and receptors settle into place in a painted cloud-lit gallery">
+          <img class="c-assembly__forming" src="/assets/media/crafta-companion-forming.webp" alt="" aria-hidden="true" />
+          <img class="c-assembly__complete" src="/assets/media/crafta-companion-complete.webp" alt="" aria-hidden="true" />
+          <span class="c-assembly__caption" aria-hidden="true">A companion, taking shape</span>
+        </div>
+        <div class="c-flow" aria-label="Crafta creation steps">
+          <article class="card"><span class="pill">01 · Shape</span><h3>Describe the person</h3><p>Choose their name, relationship, personality, boundaries, memory, appearance, and voice.</p></article>
+          <article class="card"><span class="pill">02 · Refine</span><h3>Use Craft Helper</h3><p>Refine your words and resolve contradictions while keeping authorship of every choice.</p></article>
+          <article class="card"><span class="pill">03 · Meet</span><h3>Finalize and talk</h3><p>Approve their core, begin chatting, preserve continuity, and export when you choose.</p></article>
+        </div>
+        <p class="c-swipe-hint">Swipe the steps sideways <span aria-hidden="true">↔</span></p>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section c-scene" id="continuity">
+      <div class="c-pocket" tabindex="0">
       <h2>Built around continuity.</h2>
       <div class="grid">
         <article class="card"><h3>Persistent core</h3><p>The companion identity is stored separately from whichever supported model is producing a response, so the model is infrastructure rather than the identity itself.</p></article>
         <article class="card"><h3>Provider-neutral direction</h3><p>Plans can route to different model capability levels while the companion core remains yours and does not become synonymous with a single provider name.</p></article>
         <article class="card"><h3>Exportable</h3><p>Crafta includes an export path so the companion is not trapped behind one chat surface. The prototype keeps that portability principle visible from the start.</p></article>
       </div>
+      </div>
     </section>
 
-    <section class="section" id="plans">
+    <section class="section c-scene" id="plans">
+      <div class="c-pocket" tabindex="0">
       <h2>Choose the experience level.</h2>
       <p class="section-copy">The public plan names describe the experience instead of making people choose infrastructure by provider model name.</p>
       <div class="grid">
@@ -75,9 +89,11 @@
         <article class="card"><span class="pill">Deep</span><div class="price">$24/mo</div><p>The highest-capability Crafta tier with the largest included allowance.</p><ul class="list"><li>Everything in Enhanced</li><li>Premium model routing</li><li>Largest included allowance</li><li>Refills available</li></ul></article>
       </div>
       <p class="fine fine-spaced">Refills are optional prepaid usage entitlements and are not transferable currency. Billing and subscription management are handled through secure checkout and the customer billing portal.</p>
+      </div>
     </section>
 
-    <section class="section">
+    <section class="section c-scene" id="open-crafta">
+      <div class="c-pocket" tabindex="0">
       <div class="launch-panel">
         <div>
           <h2>Crafta is live on Zenithoche.</h2>
@@ -85,12 +101,18 @@
         </div>
         <a class="btn primary" href="https://crafta.zenithoche.com/">Open CraftaCompanion</a>
       </div>
+      <footer class="footer">
+        <span>Zenithoche · CraftaCompanion</span>
+        <div class="footer-links"><a href="https://crafta.zenithoche.com/terms">Terms</a><a href="https://crafta.zenithoche.com/privacy">Privacy</a><a href="https://zenithoche.com/">Zenithoche</a></div>
+      </footer>
+      </div>
     </section>
-
-    <footer class="footer">
-      <span>Zenithoche · CraftaCompanion</span>
-      <div class="footer-links"><a href="https://crafta.zenithoche.com/terms">Terms</a><a href="https://crafta.zenithoche.com/privacy">Privacy</a><a href="https://zenithoche.com/">Zenithoche</a></div>
-    </footer>
   </main>
+  <nav class="c-stepper" aria-label="Product panels" hidden>
+    <button class="c-stepper__prev" type="button" aria-label="Previous panel">↑</button>
+    <span class="c-stepper__count" aria-live="polite">01 / 05</span>
+    <button class="c-stepper__next" type="button" aria-label="Next panel">↓</button>
+  </nav>
+  <script src="/assets/js/crafta-deck.js?v=assembly-deck-1" defer></script>
 </body>
 </html>
