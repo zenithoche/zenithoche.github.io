@@ -2211,3 +2211,54 @@ body,
     font-size:.84rem!important;
   }
 }
+
+/* Keep the homepage wordmark and links in one swipeable mobile rail. */
+.zeni-shell__lotus{
+  display:block;
+  width:28px;
+  height:28px;
+  flex:none;
+  object-fit:contain;
+  mix-blend-mode:screen;
+}
+@media(max-width:640px){
+  .zeni-shell__inner{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    width:100%;
+    min-height:68px;
+    gap:20px;
+    padding:0 18px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    touch-action:pan-x;
+    overscroll-behavior-x:contain;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .zeni-shell__inner::-webkit-scrollbar{display:none}
+  .zeni-shell__brand{
+    display:inline-flex;
+    align-items:center;
+    flex:0 0 auto;
+    gap:5px;
+    padding:0;
+  }
+  .zeni-shell__lotus{width:24px;height:24px}
+  .zeni-shell__nav{
+    display:flex;
+    flex:0 0 auto;
+    min-width:max-content;
+    justify-content:flex-start;
+    gap:16px;
+    margin:0;
+    padding:0;
+    overflow:visible;
+    touch-action:auto;
+  }
+  .zeni-shell__nav a{
+    flex:0 0 auto;
+    min-height:44px;
+  }
+}
