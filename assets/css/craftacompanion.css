@@ -128,7 +128,7 @@ h1{
   .page{width:min(100% - 36px,var(--max))}
   .hero{
     display:block;
-    min-height:max(880px,calc(100svh + 80px));
+    min-height:max(830px,calc(100svh + 40px));
     background:#fff;
   }
   .hero__art{
@@ -139,9 +139,9 @@ h1{
     height:100%;
     background-color:#fff;
     background-image:
-      linear-gradient(180deg,#fff 0%,rgba(255,255,255,.98) 18%,rgba(255,255,255,.82) 39%,rgba(255,255,255,.18) 64%,transparent 80%),
+      linear-gradient(180deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.84) 18%,rgba(255,255,255,.55) 40%,rgba(255,255,255,.10) 61%,transparent 73%),
       url("/assets/media/crafta-painted-showroom.png");
-    background-size:100% 100%,auto 660px;
+    background-size:100% 100%,auto 735px;
     background-position:center,58% bottom;
     background-repeat:no-repeat;
   }
@@ -149,7 +149,7 @@ h1{
     position:relative;
     width:min(100% - 48px,560px);
     margin:0 auto;
-    padding:56px 0 360px;
+    padding:44px 0 320px;
   }
   h1{max-width:520px;font-size:clamp(50px,11vw,70px)}
   .lead{font-size:22px;margin-top:24px}
@@ -157,9 +157,9 @@ h1{
   .launch-panel{align-items:flex-start;flex-direction:column}
 }
 @media(max-width:430px){
-  .hero{min-height:max(850px,calc(100svh + 80px))}
-  .hero__content{width:calc(100% - 42px);padding-top:46px;padding-bottom:330px}
-  .hero__art{background-size:100% 100%,auto 615px;background-position:center,58% bottom}
+  .hero{min-height:max(800px,calc(100svh + 40px))}
+  .hero__content{width:calc(100% - 42px);padding-top:34px;padding-bottom:290px}
+  .hero__art{background-size:100% 100%,auto 710px;background-position:center,58% bottom}
   h1{font-size:clamp(46px,11.5vw,57px)}
   .lead{font-size:20px}
   .actions{gap:10px}
