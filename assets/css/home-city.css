@@ -830,19 +830,6 @@ html.scene-click-only .scene-stepper__count{
   font-size:.68rem;
   color:rgba(255,244,248,.74);
 }
-html.scene-click-only .scene-stepper::after{
-  content:"CLICK TO CHANGE SCENE";
-  position:absolute;
-  left:50%;
-  top:-24px;
-  transform:translateX(-50%);
-  white-space:nowrap;
-  font-family:var(--z-mono);
-  font-size:.54rem;
-  letter-spacing:.16em;
-  color:rgba(255,240,246,.44);
-  text-shadow:0 1px 8px #000;
-}
 @media(max-width:640px){
   html.scene-click-only .scene-stepper{
     bottom:10px;
@@ -850,7 +837,6 @@ html.scene-click-only .scene-stepper::after{
   }
   html.scene-click-only .scene-stepper__next{width:50px;height:50px}
   html.scene-click-only .scene-stepper__prev{width:40px;height:40px}
-  html.scene-click-only .scene-stepper::after{top:-20px;font-size:.48rem}
 }
 
 /* Typography restoration: mono identity + high-contrast Deco/editorial display + clean UI sans. */
