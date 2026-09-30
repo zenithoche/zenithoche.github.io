@@ -50,6 +50,12 @@
 
   // Wheel, touch and page keys stay inside a content pocket; only controls change scenes.
   window.addEventListener('wheel', (event) => {
+    const header = event.target.closest?.('.zeni-shell__inner');
+    if (header && header.scrollWidth > header.clientWidth) {
+      const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+      if (delta) { header.scrollLeft += delta; event.preventDefault(); }
+      return;
+    }
     const pocket = event.target.closest?.('.j-pocket,.j-scene__pocket');
     if (pocket) {
       const delta = event.deltaY;
@@ -64,7 +70,7 @@
     event.preventDefault();
   }, { passive: false });
   document.addEventListener('touchmove', (event) => {
-    if (!event.target.closest?.('.j-pocket,.j-scene__pocket')) event.preventDefault();
+    if (!event.target.closest?.('.zeni-shell__inner,.j-pocket,.j-scene__pocket')) event.preventDefault();
   }, { passive: false });
   window.addEventListener('keydown', (event) => {
     if (event.target.closest?.('.j-pocket,.j-scene__pocket') || event.target.closest?.('button,a,input,textarea,select') || event.target.isContentEditable) return;

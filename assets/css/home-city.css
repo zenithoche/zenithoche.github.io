@@ -2186,6 +2186,8 @@ body,
 @media(max-width:640px){
   .zeni-shell__nav{
     font-size:.80rem!important;
+    touch-action:pan-x;
+    overflow-x:auto;
   }
   .journey-eyebrow,
   .product-kicker{
