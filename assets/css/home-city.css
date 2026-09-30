@@ -2049,3 +2049,177 @@ body,
     letter-spacing:.10em!important;
   }
 }
+
+
+/* APPROVED TYPE STACK — FULL APPLICATION PASS
+   Same families. Stronger role coverage so the page no longer reads like
+   the previous generic UI system.
+*/
+
+/* Brand remains delicate and clearly separate from the display face. */
+.zeni-shell__brand{
+  font-family:"Sacramento","Oooh Baby","Segoe Script",cursive!important;
+  font-weight:400!important;
+  font-size:17px!important;
+  line-height:1!important;
+  letter-spacing:.012em!important;
+}
+
+/* Poiret is the actual interface language, not just eyebrow decoration. */
+.zeni-shell__nav,
+.journey-eyebrow,
+.product-kicker,
+.journey-button,
+.hero-label-button,
+.scene-stepper__count,
+.scene-stepper::after,
+.policy-num,
+.policy-text,
+.chip,
+.price-tier,
+.price-value,
+.signal-pill,
+.toshi-caption span{
+  font-family:"Poiret One","Arial Narrow",sans-serif!important;
+  font-weight:400!important;
+  letter-spacing:.055em!important;
+  text-shadow:none!important;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:geometricPrecision;
+}
+
+.zeni-shell__nav{
+  font-size:.86rem!important;
+  letter-spacing:.035em!important;
+}
+.journey-eyebrow,
+.product-kicker{
+  font-size:.72rem!important;
+  letter-spacing:.14em!important;
+}
+.policy-text{
+  font-size:.88rem!important;
+  line-height:1.12!important;
+}
+.policy-num{
+  font-size:.84rem!important;
+}
+.chip{
+  font-size:.78rem!important;
+  letter-spacing:.025em!important;
+}
+.price-tier,
+.price-value{
+  font-size:.98rem!important;
+  letter-spacing:.025em!important;
+}
+
+/* Grandstander owns every expressive/name/title layer. */
+.journey-title,
+.crimson-title,
+.product-name,
+.price-group-name,
+.preview-caption strong,
+.toshi-caption strong,
+.feature-panel strong,
+.tradesmith-host .sr-only{
+  font-family:"Grandstander","Arial Rounded MT Bold",sans-serif!important;
+  font-weight:500!important;
+  font-optical-sizing:auto;
+  text-transform:none!important;
+  letter-spacing:-.028em!important;
+  line-height:.94!important;
+  text-shadow:0 2px 15px rgba(0,0,0,.25)!important;
+}
+
+.hero-copy .journey-title{
+  font-size:clamp(2.55rem,3.25vw,3.55rem)!important;
+  line-height:.92!important;
+}
+.crimson-title{
+  font-size:clamp(2.15rem,2.55vw,2.8rem)!important;
+}
+.weight-scene .journey-title{
+  font-size:clamp(2.35rem,2.95vw,3.18rem)!important;
+}
+.preview-head .journey-title,
+.pricing-head .journey-title{
+  font-size:clamp(2.02rem,2.4vw,2.62rem)!important;
+}
+.toshi-scene .journey-title{
+  font-size:clamp(2.12rem,2.55vw,2.76rem)!important;
+}
+.product-name{
+  font-size:clamp(1.86rem,2.2vw,2.42rem)!important;
+}
+.price-group-name{
+  font-size:clamp(1.78rem,2.08vw,2.30rem)!important;
+}
+.feature-panel strong{
+  font-size:1.02rem!important;
+  letter-spacing:-.012em!important;
+}
+
+/* Dosis is only prose now: no navigation, chips, pricing labels or policy labels. */
+.journey-copy,
+.product-panel p,
+.feature-panel p,
+.price-note,
+.preview-caption span{
+  font-family:"Dosis","Arial Narrow",sans-serif!important;
+  font-weight:300!important;
+  font-size-adjust:none;
+  letter-spacing:.006em!important;
+  line-height:1.32!important;
+  text-transform:none!important;
+  color:rgba(255,255,255,.90)!important;
+}
+
+/* Give prose a visibly softer, narrower editorial rhythm. */
+.journey-copy{
+  max-width:34rem!important;
+}
+.product-panel p{
+  max-width:32rem!important;
+}
+.feature-panel p{
+  line-height:1.28!important;
+}
+
+/* Remove old squeeze transforms from the former segmented-label experiments. */
+.geo-break-text,
+.journey-eyebrow .geo-break-text,
+.product-kicker .geo-break-text,
+.hero-label-button .geo-break-text--button{
+  transform:none!important;
+  display:inline-block!important;
+  letter-spacing:inherit!important;
+}
+
+/* Mobile needs the same clear hierarchy, not a toned-down fallback. */
+@media(max-width:640px){
+  .zeni-shell__nav{
+    font-size:.80rem!important;
+  }
+  .journey-eyebrow,
+  .product-kicker{
+    font-size:.69rem!important;
+  }
+  .hero-copy .journey-title{
+    font-size:clamp(2.30rem,9.15vw,2.92rem)!important;
+  }
+  .weight-scene .journey-title{
+    font-size:clamp(2.08rem,8.4vw,2.62rem)!important;
+  }
+  .preview-head .journey-title,
+  .pricing-head .journey-title,
+  .toshi-scene .journey-title{
+    font-size:clamp(1.88rem,7.55vw,2.34rem)!important;
+  }
+  .product-name{
+    font-size:2.02rem!important;
+  }
+  .policy-text{
+    font-size:.84rem!important;
+  }
+}
