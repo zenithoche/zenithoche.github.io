@@ -37,7 +37,7 @@ h3{font-size:clamp(1.5rem,2vw,2.05rem);line-height:1.04}
   background:
     linear-gradient(90deg,rgba(4,4,7,.78),rgba(5,4,8,.55) 50%,rgba(6,4,7,.30)),
     linear-gradient(0deg,#08070a,transparent 22%),
-    url("/assets/media/city-hero.webp") center center/cover no-repeat;
+    url("/assets/media/product-worlds/jupnich-observatory.webp") center center/cover no-repeat;
   isolation:isolate;
 }
 .j-hero__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);align-items:center;gap:clamp(28px,5vw,82px);padding-block:clamp(72px,10vh,130px)}
@@ -58,7 +58,7 @@ h3{font-size:clamp(1.5rem,2vw,2.05rem);line-height:1.04}
 .j-heading{max-width:780px}
 .j-heading h2{margin:14px 0 20px}
 .j-heading>p:not(.j-kicker),.j-close__layout p:not(.j-kicker){font-size:clamp(1.08rem,1.5vw,1.38rem);line-height:1.5;color:var(--j-muted);max-width:48ch}
-.j-proof{background:linear-gradient(#08070a,rgba(7,6,9,.9)),url("/assets/media/city-weight.webp") center/cover no-repeat}
+.j-proof{background:linear-gradient(#08070a,rgba(7,6,9,.9)),url("/assets/media/product-worlds/jupnich-gallery.webp") center/cover no-repeat}
 .j-demo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:40px}
 .j-demo,.j-arrivals__media figure,.j-plan-grid article{border:1px solid var(--j-line);border-radius:24px;background:rgba(15,13,19,.75);backdrop-filter:blur(15px);overflow:hidden}
 .j-demo__media{aspect-ratio:4/3;background:#050506;overflow:hidden}
@@ -67,7 +67,7 @@ h3{font-size:clamp(1.5rem,2vw,2.05rem);line-height:1.04}
 .j-index{display:block;font-size:.78rem;color:#ecc3ce}
 .j-demo h3{margin:10px 0 12px}
 .j-demo p,.j-operations__list p,.j-plan-grid p{font-size:1.08rem;line-height:1.44;color:var(--j-muted)}
-.j-arrivals{background:linear-gradient(90deg,rgba(9,7,11,.97),rgba(8,6,10,.81)),url("/assets/media/city-preview.webp") center/cover no-repeat}
+.j-arrivals{background:linear-gradient(90deg,rgba(9,7,11,.87),rgba(8,6,10,.69)),url("/assets/media/product-worlds/jupnich-threshold.webp") center/cover no-repeat}
 .j-arrivals__layout{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(35px,5vw,90px);align-items:center}
 .j-arrivals__media{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .j-arrivals__media video{width:100%;aspect-ratio:4/3;object-fit:cover;background:#030303}
@@ -80,13 +80,13 @@ h3{font-size:clamp(1.5rem,2vw,2.05rem);line-height:1.04}
 .j-operations__list>div{display:grid;grid-template-columns:32px minmax(0,.7fr) minmax(0,1fr);align-items:start;gap:12px;padding:20px 0;border-bottom:1px solid var(--j-line)}
 .j-operations__list span{font-family:"Poiret One",sans-serif;font-size:.8rem;color:#ecc3ce}
 .j-operations__list strong{font-family:"Grandstander",sans-serif;font-size:1.28rem;font-weight:500}
-.j-plans{background:linear-gradient(180deg,rgba(8,7,10,.91),rgba(8,7,10,.78)),url("/assets/media/city-pricing.webp") center/cover no-repeat}
+.j-plans{background:linear-gradient(180deg,rgba(8,7,10,.82),rgba(8,7,10,.69)),url("/assets/media/product-worlds/jupnich-archive.webp") center/cover no-repeat}
 .j-plan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:37px}
 .j-plan-grid article{padding:30px;min-height:178px}
 .j-plan-grid h3{font-size:clamp(2.7rem,4vw,4.5rem);margin:13px 0 11px}
 .j-plan-grid h3 span{font-size:.36em;letter-spacing:0}
 .j-plan-note{font-size:.78rem;color:var(--j-soft);margin-top:18px;line-height:1.5}
-.j-close{padding:clamp(75px,8vw,115px) 0;background:linear-gradient(90deg,rgba(7,5,10,.88),rgba(7,5,10,.72)),url("/assets/media/city-toshi.webp") center/cover no-repeat}
+.j-close{padding:clamp(75px,8vw,115px) 0;background:linear-gradient(90deg,rgba(7,5,10,.84),rgba(7,5,10,.58)),url("/assets/media/product-worlds/jupnich-homecoming.webp") center/cover no-repeat}
 .j-close__layout{display:flex;align-items:center;justify-content:space-between;gap:35px}
 .j-close h2{margin:13px 0 17px}
 .j-close .j-actions{margin:0;flex-shrink:0}
