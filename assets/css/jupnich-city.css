@@ -122,3 +122,57 @@ h3{font-size:clamp(1.5rem,2vw,2.05rem);line-height:1.04}
   .j-button{font-size:.82rem}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.j-button{transition:none}}
+
+/* Fixed scenes with scrollable content pockets, matching the homepage controls. */
+html.j-deck,html.j-deck body{height:100%;overflow:hidden;overscroll-behavior:none}
+html.j-deck main{position:relative;height:calc(100svh - 72px);overflow:hidden}
+html.j-deck .j-scene{position:absolute;inset:0;display:none;align-items:center;width:100%;height:100%;min-height:0;padding:24px 0 96px;overflow:hidden}
+html.j-deck .j-scene.is-active{display:flex}
+html.j-deck .j-scene>.j-scene__pocket{max-height:100%;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+html.j-deck .j-scene__pocket::-webkit-scrollbar,.j-pocket::-webkit-scrollbar{display:none}
+html.j-deck .j-scene__pocket:focus-visible,.j-pocket:focus-visible{outline:1px solid rgba(255,224,235,.55);outline-offset:3px}
+html.j-deck .j-hero__grid{padding-block:12px}
+html.j-deck .j-hero__art{min-height:0}
+html.j-deck .j-demo-grid{margin-top:28px}
+html.j-deck .j-operations__layout{align-items:center}
+html.j-deck .j-plan-grid{margin-top:28px}
+html.j-deck .j-close{padding-bottom:115px}
+html.j-deck .j-footer{position:fixed;left:0;right:0;bottom:0;z-index:81;display:none;background:rgba(7,6,9,.8);backdrop-filter:blur(14px)}
+html.j-deck.j-last .j-footer{display:block}
+html.j-deck .j-footer .j-wrap{min-height:58px}
+.j-pocket{overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.j-stepper[hidden]{display:none}
+.j-stepper{position:fixed;left:50%;bottom:14px;z-index:90;transform:translateX(-50%);display:grid;grid-template-columns:48px 74px 56px;align-items:center;gap:7px;padding:7px;border:1px solid rgba(255,229,239,.42);border-radius:999px;background:rgba(8,7,10,.7);backdrop-filter:blur(15px);box-shadow:0 18px 54px rgba(0,0,0,.36)}
+.j-stepper button{width:48px;height:48px;border:0;border-radius:50%;background:rgba(255,255,255,.07);color:#fff;font-size:1.5rem;cursor:pointer}
+.j-stepper__next{width:56px!important;height:56px!important;background:linear-gradient(180deg,rgba(222,151,178,.3),rgba(92,52,70,.4))!important;border:1px solid rgba(255,225,236,.28)!important}
+.j-stepper button:disabled{opacity:.25;cursor:default}
+.j-stepper__count{text-align:center;font-family:"Poiret One",sans-serif;letter-spacing:.13em;font-size:1rem}
+html.j-deck.j-last .j-stepper{bottom:69px}
+@media(max-width:1050px){html.j-deck .j-hero__grid{gap:20px}}
+@media(max-width:750px){
+  html.j-deck main{height:calc(100svh - 66px)}
+  html.j-deck .j-scene{padding:15px 0 90px}
+  html.j-deck .j-hero__grid{gap:14px;padding-block:0}
+  html.j-deck .j-hero__art{aspect-ratio:1.8}
+  html.j-deck .j-hero__copy{padding:22px}
+  html.j-deck .j-hero h1{font-size:clamp(3.5rem,13vw,6rem);margin:10px 0 16px}
+  html.j-deck .j-hero__note{margin-top:14px}
+  html.j-deck .j-demo-grid,html.j-deck .j-arrivals__media,html.j-deck .j-operations__list,html.j-deck .j-plan-grid{max-height:min(53svh,570px);overflow-y:auto;overflow-x:hidden;scroll-snap-type:y proximity;padding:3px 4px 16px}
+  html.j-deck .j-demo,html.j-deck .j-arrivals__media figure,html.j-deck .j-operations__list>div,html.j-deck .j-plan-grid article{scroll-snap-align:start}
+  html.j-deck .j-heading h2{font-size:clamp(2.2rem,8vw,4rem)}
+  html.j-deck .j-section>.j-wrap{width:min(100% - 28px,570px)}
+  html.j-deck .j-close{padding-bottom:110px}
+}
+@media(max-width:500px){
+  html.j-deck .j-arrivals__media{grid-template-columns:1fr}
+  html.j-deck .j-hero__art{aspect-ratio:1.7}
+  .j-stepper{bottom:10px;grid-template-columns:42px 63px 50px}
+  .j-stepper button{width:42px;height:42px}
+  .j-stepper__next{width:50px!important;height:50px!important}
+  html.j-deck.j-last .j-stepper{bottom:87px}
+  html.j-deck .j-footer .j-wrap{min-height:80px;padding-block:9px;gap:7px}
+}
+@media(max-height:760px) and (min-width:751px){
+  html.j-deck .j-demo-grid,html.j-deck .j-operations__list,html.j-deck .j-plan-grid{max-height:55svh;overflow-y:auto}
+  html.j-deck .j-arrivals__media{max-height:63svh;overflow-y:auto}
+}

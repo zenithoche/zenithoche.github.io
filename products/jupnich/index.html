@@ -14,10 +14,10 @@
   <link rel="preload" as="font" type="font/woff" href="/assets/fonts/grandstander-500.woff" crossorigin />
   <link rel="stylesheet" href="/assets/css/fonts.css?v=self-hosted-1" />
   <link rel="stylesheet" href="/assets/css/brand-shell.css?v=wordmark-small-1" />
-  <link rel="stylesheet" href="/assets/css/jupnich-city.css?v=city-1" />
+  <link rel="stylesheet" href="/assets/css/jupnich-city.css?v=deck-1" />
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to Jupnich</a>
+  <a class="skip-link" href="#jupnich-home">Skip to Jupnich</a>
   <header class="zeni-shell">
     <div class="zeni-shell__inner">
       <a class="zeni-shell__brand" href="/" aria-label="Zenithoche home"><span>Zenithoche</span></a>
@@ -30,8 +30,8 @@
   </header>
 
   <main id="main">
-    <section class="j-hero" aria-labelledby="j-title">
-      <div class="j-wrap j-hero__grid">
+    <section class="j-hero j-scene" id="jupnich-home" aria-labelledby="j-title">
+      <div class="j-wrap j-hero__grid j-scene__pocket" tabindex="0" aria-label="Jupnich introduction">
         <div class="j-hero__copy">
           <p class="j-kicker">DISCORD SERVER OPERATIONS</p>
           <h1 id="j-title">Jupnich<span class="j-period">.</span></h1>
@@ -49,10 +49,10 @@
       </div>
     </section>
 
-    <section class="j-section j-proof" id="in-motion" aria-labelledby="j-proof-title">
-      <div class="j-wrap">
+    <section class="j-section j-proof j-scene" id="in-motion" aria-labelledby="j-proof-title">
+      <div class="j-wrap j-scene__pocket" tabindex="0" aria-label="Jupnich demonstrations">
         <div class="j-heading"><p class="j-kicker">THE WORK, IN MOTION</p><h2 id="j-proof-title">A clearer server surface.</h2><p>Three actual Jupnich flows.</p></div>
-        <div class="j-demo-grid">
+        <div class="j-demo-grid j-pocket" tabindex="0" aria-label="Scroll through Jupnich demonstrations">
           <article class="j-demo"><div class="j-demo__media"><video autoplay muted loop playsinline preload="metadata" src="/assets/media/jupnich-setup-loop.mp4" aria-label="Jupnich setup and repair demonstration"></video></div><div class="j-demo__copy"><span class="j-index">01</span><h3>Setup repair</h3><p>Find what is missing, fix what Discord permits, and get a clear next step when permissions block the way.</p></div></article>
           <article class="j-demo"><div class="j-demo__media"><video autoplay muted loop playsinline preload="metadata" src="/assets/media/jupnich-role-panels-loop.mp4" aria-label="Jupnich role panels demonstration"></video></div><div class="j-demo__copy"><span class="j-index">02</span><h3>Roles and access</h3><p>Give members a straightforward way into the right roles without turning routine changes into command work.</p></div></article>
           <article class="j-demo"><div class="j-demo__media"><video autoplay muted loop playsinline preload="metadata" src="/assets/media/jupnich-tickets-home.mp4" aria-label="Jupnich tickets demonstration"></video></div><div class="j-demo__copy"><span class="j-index">03</span><h3>Tickets</h3><p>A visible path from a request to a support conversation that owners can keep organized.</p></div></article>
@@ -60,20 +60,20 @@
       </div>
     </section>
 
-    <section class="j-section j-arrivals" aria-labelledby="j-arrivals-title">
-      <div class="j-wrap j-arrivals__layout">
+    <section class="j-section j-arrivals j-scene" id="welcome" aria-labelledby="j-arrivals-title">
+      <div class="j-wrap j-arrivals__layout j-scene__pocket" tabindex="0" aria-label="Welcome and goodbye flows">
         <div class="j-heading"><p class="j-kicker">WELCOME FLOWS</p><h2 id="j-arrivals-title">Make the first and last hello feel like yours.</h2><p>Welcome and goodbye cards can carry custom GIFs or MP4s. Here are both moments, side by side.</p></div>
-        <div class="j-arrivals__media">
+        <div class="j-arrivals__media j-pocket" tabindex="0" aria-label="Scroll through welcome and goodbye cards">
           <figure><video autoplay muted loop playsinline preload="metadata" src="/assets/media/jupnich-welcome-card-loop.mp4" aria-label="Jupnich welcome card demonstration"></video><figcaption>Welcome cards</figcaption></figure>
           <figure><video autoplay muted loop playsinline preload="metadata" src="/assets/media/jupnich-goodbye-card-loop.mp4" aria-label="Jupnich goodbye card demonstration"></video><figcaption>Goodbye cards</figcaption></figure>
         </div>
       </div>
     </section>
 
-    <section class="j-section j-operations" aria-labelledby="j-operations-title">
-      <div class="j-wrap j-operations__layout">
+    <section class="j-section j-operations j-scene" id="operations" aria-labelledby="j-operations-title">
+      <div class="j-wrap j-operations__layout j-scene__pocket" tabindex="0" aria-label="Jupnich operations">
         <div class="j-heading"><p class="j-kicker">BEHIND THE SCENES</p><h2 id="j-operations-title">The rest stays in order.</h2><p>Jupnich also supports everyday community work, without making each tool another wall of setup.</p><a class="j-text-link" href="https://discord.gg/eCNPT7YDvN" target="_blank" rel="noopener noreferrer">Ask for setup help <span aria-hidden="true">↗</span></a></div>
-        <div class="j-operations__list">
+        <div class="j-operations__list j-pocket" tabindex="0" aria-label="Scroll through operations">
           <div><span>01</span><strong>Source routing</strong><p>Send feeds and server signals to the channels where they belong.</p></div>
           <div><span>02</span><strong>Events and updates</strong><p>Keep community moments and announcements easy to find.</p></div>
           <div><span>03</span><strong>Permission clarity</strong><p>Know when Discord's role order or permissions need an owner to step in.</p></div>
@@ -82,9 +82,9 @@
       </div>
     </section>
 
-    <section class="j-section j-plans" id="plans" aria-labelledby="j-plans-title">
-      <div class="j-wrap"><div class="j-heading"><p class="j-kicker">JUPNICH PLANS</p><h2 id="j-plans-title">Start free. Grow when you need to.</h2></div>
-        <div class="j-plan-grid">
+    <section class="j-section j-plans j-scene" id="plans" aria-labelledby="j-plans-title">
+      <div class="j-wrap j-scene__pocket" tabindex="0" aria-label="Jupnich plans"><div class="j-heading"><p class="j-kicker">JUPNICH PLANS</p><h2 id="j-plans-title">Start free. Grow when you need to.</h2></div>
+        <div class="j-plan-grid j-pocket" tabindex="0" aria-label="Scroll through Jupnich plans">
           <article><span class="j-index">01 / FREE</span><h3>$0</h3><p>Core setup and server tools.</p></article>
           <article><span class="j-index">02 / PLUS</span><h3>$7<span>/mo</span></h3><p>More room for growing communities.</p></article>
           <article><span class="j-index">03 / PRO</span><h3>$13<span>/mo</span></h3><p>A higher ceiling for active servers.</p></article>
@@ -93,10 +93,12 @@
       </div>
     </section>
 
-    <section class="j-close" aria-labelledby="j-close-title"><div class="j-wrap j-close__layout"><div><p class="j-kicker">READY WHEN YOU ARE</p><h2 id="j-close-title">Bring Jupnich home.</h2><p>Start with the tools your server actually needs.</p></div><div class="j-actions"><a class="j-button j-button--primary" href="https://discord.com/oauth2/authorize?client_id=1492395787764764682">Install Jupnich <span aria-hidden="true">↗</span></a><a class="j-button" href="https://discord.gg/eCNPT7YDvN" target="_blank" rel="noopener noreferrer">Get support <span aria-hidden="true">↗</span></a></div></div></section>
+    <section class="j-close j-scene" id="bring-home" aria-labelledby="j-close-title"><div class="j-wrap j-close__layout j-scene__pocket" tabindex="0" aria-label="Install Jupnich"><div><p class="j-kicker">READY WHEN YOU ARE</p><h2 id="j-close-title">Bring Jupnich home.</h2><p>Start with the tools your server actually needs.</p></div><div class="j-actions"><a class="j-button j-button--primary" href="https://discord.com/oauth2/authorize?client_id=1492395787764764682">Install Jupnich <span aria-hidden="true">↗</span></a><a class="j-button" href="https://discord.gg/eCNPT7YDvN" target="_blank" rel="noopener noreferrer">Get support <span aria-hidden="true">↗</span></a></div></div></section>
   </main>
 
   <footer class="j-footer"><div class="j-wrap"><span>Jupnich · A Zenithoche product</span><nav aria-label="Footer"><a href="/">Zenithoche</a><a href="/terms.html">Terms</a><a href="/privacy.html">Privacy</a></nav></div></footer>
+  <div class="j-stepper" role="group" aria-label="Jupnich panel controls" hidden><button type="button" class="j-stepper__prev" aria-label="Previous panel">↑</button><span class="j-stepper__count" aria-live="polite"></span><button type="button" class="j-stepper__next" aria-label="Next panel">↓</button></div>
+  <script src="/assets/js/jupnich-deck.js?v=deck-1" defer></script>
   <script>
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.querySelectorAll('video[autoplay]').forEach((video) => { video.autoplay = false; video.pause(); });
