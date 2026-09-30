@@ -187,7 +187,7 @@
     });
 
     controls.prev.disabled=current===0;
-    controls.next.disabled=current===scenes.length-1;
+    controls.next.disabled=false;
     controls.count.textContent=String(current+1).padStart(2,'0')+' / '+String(scenes.length).padStart(2,'0');
     if(pageShell)pageShell.classList.toggle('is-last-scene',current===scenes.length-1);
   }
@@ -360,7 +360,7 @@
   }
 
   controls.prev.addEventListener('click',()=>goToScene(current-1,-1));
-  controls.next.addEventListener('click',()=>goToScene(current+1,1));
+  controls.next.addEventListener('click',()=>goToScene((current+1)%scenes.length,1));
 
   document.querySelectorAll('a[href^="#"]').forEach((link)=>{
     link.addEventListener('click',(event)=>{
