@@ -240,3 +240,210 @@ html.c-deck .section .card{background:rgba(25,20,27,.88)}
   html{scroll-behavior:auto}
   .c-assembly__visual .c-assembly__frame{transition:none}
 }
+
+
+/* Crafta pricing world */
+html.c-deck .c-plans{
+  isolation:isolate;
+  padding:0 0 92px;
+  background:#08080b;
+}
+html.c-deck .c-plans.is-active{align-items:stretch}
+.c-plans__backdrop{
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  background:
+    linear-gradient(180deg,rgba(7,6,9,.52) 0%,rgba(7,6,9,.24) 38%,rgba(7,6,9,.36) 66%,rgba(7,6,9,.76) 100%),
+    url("/assets/media/crafta-pricing-city.webp") center/cover no-repeat;
+  transform:scale(1.015);
+}
+.c-plans::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(8,7,10,.34),transparent 22% 78%,rgba(8,7,10,.34)),
+    radial-gradient(circle at 50% 42%,transparent 18%,rgba(7,6,9,.34) 88%);
+}
+html.c-deck .c-plans>.c-plans__content{
+  width:100%;
+  max-height:none;
+  padding:clamp(24px,4svh,46px) 0 24px;
+}
+.c-plans__intro{
+  width:min(1180px,calc(100% - 48px));
+  margin:0 auto;
+  text-shadow:0 3px 26px rgba(0,0,0,.88);
+}
+.c-plans__intro h2{
+  max-width:760px;
+  color:#fff;
+  font-size:clamp(42px,4.8vw,68px);
+}
+.c-plans__intro .section-copy{
+  max-width:760px;
+  color:rgba(247,242,245,.91);
+}
+.c-plans__carousel-wrap{
+  position:relative;
+  width:100%;
+  margin-top:clamp(20px,4svh,44px);
+}
+.c-plans__carousel{
+  display:flex;
+  gap:18px;
+  width:100%;
+  overflow-x:auto;
+  overflow-y:visible;
+  padding:18px max(11vw,calc((100vw - 560px)/2)) 28px;
+  scroll-snap-type:x mandatory;
+  scroll-padding-inline:max(11vw,calc((100vw - 560px)/2));
+  overscroll-behavior-x:contain;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  touch-action:pan-x;
+}
+.c-plans__carousel::-webkit-scrollbar{display:none}
+html.c-deck .c-plans .c-plan-card{
+  flex:0 0 min(560px,72vw);
+  min-height:390px;
+  scroll-snap-align:center;
+  padding:clamp(24px,2.5vw,34px);
+  border:1px solid rgba(226,194,216,.30);
+  border-radius:32px;
+  background:rgba(19,16,21,.58);
+  box-shadow:0 24px 70px rgba(0,0,0,.35);
+  opacity:.62;
+  transform:scale(.94);
+  transition:transform .28s ease,opacity .28s ease,border-color .28s ease,box-shadow .28s ease,background .28s ease;
+  backdrop-filter:blur(19px) saturate(1.08);
+  -webkit-backdrop-filter:blur(19px) saturate(1.08);
+}
+html.c-deck .c-plans .c-plan-card.is-active{
+  opacity:1;
+  transform:scale(1);
+  border-color:rgba(235,178,216,.72);
+  background:rgba(26,21,28,.69);
+  box-shadow:0 28px 85px rgba(0,0,0,.46),0 0 0 1px rgba(232,176,214,.08) inset;
+}
+.c-plan-card .pill{color:#d2aabc;font-size:17px}
+.c-plan-card .price{margin-top:12px;font-size:clamp(42px,4vw,58px);color:#fff}
+.c-plan-card p{max-width:470px;color:rgba(247,242,245,.86)!important;font-size:19px!important;line-height:1.42!important}
+.c-plan-card .list{
+  margin-top:20px;
+  padding-top:17px;
+  border-top:1px solid rgba(238,217,230,.25);
+  color:rgba(247,242,245,.88);
+  line-height:1.72;
+}
+.c-plan-card .list li::marker{color:#d79fbe}
+.c-plans__arrow{
+  position:absolute;
+  top:50%;
+  z-index:5;
+  width:52px;
+  height:52px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:50%;
+  transform:translateY(-50%);
+  background:rgba(132,91,118,.76);
+  color:#fff;
+  box-shadow:0 12px 30px rgba(0,0,0,.35);
+  font:38px/1 "Poiret One","Arial Narrow",sans-serif;
+  cursor:pointer;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+.c-plans__arrow--prev{left:max(18px,calc(50% - 350px))}
+.c-plans__arrow--next{right:max(18px,calc(50% - 350px))}
+.c-plans__arrow:disabled{opacity:.28;cursor:default}
+.c-plans__arrow:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.c-plans__pager{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  margin-top:2px;
+}
+.c-plans__pager button{
+  width:10px;
+  height:10px;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:rgba(235,229,233,.42);
+  cursor:pointer;
+  transition:transform .2s ease,background .2s ease;
+}
+.c-plans__pager button[aria-current="true"]{
+  transform:scale(1.35);
+  background:#d69ab9;
+}
+.c-plans__hint{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:9px;
+  margin-top:14px;
+  color:rgba(231,213,224,.72);
+  font-family:"Poiret One","Arial Narrow",sans-serif;
+  font-size:16px;
+  letter-spacing:.03em;
+  text-shadow:0 2px 18px rgba(0,0,0,.9);
+}
+.c-plans__hint>span{font-size:25px}
+.c-plans__fine{
+  width:min(720px,calc(100% - 48px));
+  margin:15px auto 0;
+  padding:10px 14px;
+  border-radius:16px;
+  background:rgba(10,9,12,.42);
+  color:rgba(224,215,221,.74);
+  text-align:center;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+@media(max-width:860px){
+  html.c-deck .c-plans{padding:0 0 88px}
+  html.c-deck .c-plans>.c-plans__content{padding:24px 0 18px}
+  .c-plans__backdrop{background-position:50% 48%}
+  .c-plans__intro{width:calc(100% - 36px)}
+  .c-plans__intro h2{font-size:clamp(38px,9.4vw,54px);line-height:1.02}
+  .c-plans__intro .section-copy{font-size:18px;line-height:1.36;margin-top:14px}
+  .c-plans__carousel-wrap{margin-top:18px}
+  .c-plans__carousel{gap:13px;padding:12px 11vw 22px;scroll-padding-inline:11vw}
+  html.c-deck .c-plans .c-plan-card{
+    flex-basis:78vw;
+    min-height:430px;
+    padding:24px 23px;
+    border-radius:28px;
+  }
+  .c-plan-card .price{font-size:44px}
+  .c-plan-card p{font-size:17px!important}
+  .c-plan-card .list{font-size:16px;line-height:1.58}
+  .c-plans__arrow{width:48px;height:48px;font-size:34px}
+  .c-plans__arrow--prev{left:10px}
+  .c-plans__arrow--next{right:10px}
+  .c-plans__fine{width:calc(100% - 36px);font-size:13px}
+}
+@media(max-width:500px){
+  .c-plans__backdrop{background-position:50% center;background-size:auto 100%}
+  .c-plans__intro{width:calc(100% - 30px)}
+  .c-plans__intro h2{font-size:clamp(38px,10vw,48px)}
+  .c-plans__intro .section-copy{font-size:17px}
+  .c-plans__carousel{gap:12px;padding-inline:11vw}
+  html.c-deck .c-plans .c-plan-card{flex-basis:78vw;min-height:420px;padding:22px 20px}
+  .c-plan-card .pill{font-size:15px}
+  .c-plan-card .price{font-size:42px}
+  .c-plan-card p{font-size:16px!important}
+  .c-plan-card .list{font-size:15px}
+  .c-plans__hint{margin-top:10px;font-size:15px}
+  .c-plans__fine{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  html.c-deck .c-plans .c-plan-card{transition:none}
+  .c-plans__pager button{transition:none}
+}
