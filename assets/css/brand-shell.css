@@ -90,3 +90,49 @@
   .zeni-shell__mark{width:34px;height:34px}
   .zeni-shell__inner{gap:8px}
 }
+
+/* Shared wordmark and supplied lotus across all product headers. */
+.zeni-shell__brand{
+  gap:6px;
+  font-family:"Sacramento","Oooh Baby","Segoe Script",cursive;
+  font-size:19px;
+  letter-spacing:.012em;
+}
+.zeni-shell__lotus{
+  display:block;
+  flex:0 0 auto;
+  width:28px;
+  height:28px;
+  object-fit:contain;
+  mix-blend-mode:screen;
+}
+.zeni-shell__nav{
+  font-family:"Poiret One","Arial Narrow",sans-serif;
+  font-size:.91rem;
+  letter-spacing:.03em;
+}
+@media(max-width:750px){
+  .zeni-shell__inner{
+    width:100%;
+    padding-inline:max(14px,env(safe-area-inset-left)) max(14px,env(safe-area-inset-right));
+    justify-content:flex-start;
+    gap:16px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    overscroll-behavior-x:contain;
+    touch-action:pan-x;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .zeni-shell__inner::-webkit-scrollbar{display:none}
+  .zeni-shell__brand{flex:0 0 auto;font-size:17px}
+  .zeni-shell__lotus{width:24px;height:24px}
+  .zeni-shell__nav{
+    flex:0 0 auto;
+    min-width:max-content;
+    justify-content:flex-start;
+    gap:8px;
+    overflow:visible;
+  }
+  .zeni-shell__nav a{flex:0 0 auto;padding-inline:7px}
+}
