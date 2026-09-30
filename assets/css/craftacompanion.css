@@ -255,7 +255,7 @@ html.c-deck .c-plans.is-active{align-items:stretch}
   z-index:-2;
   background:
     linear-gradient(180deg,rgba(7,6,9,.52) 0%,rgba(7,6,9,.24) 38%,rgba(7,6,9,.36) 66%,rgba(7,6,9,.76) 100%),
-    url("/assets/media/crafta-pricing-city.webp") center/cover no-repeat;
+    url("https://d2ol7oe51mr4n9.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/9e72dff9-6d57-4169-abc7-355b01ccbcbf.jpg") center/cover no-repeat;
   transform:scale(1.015);
 }
 .c-plans::after{
