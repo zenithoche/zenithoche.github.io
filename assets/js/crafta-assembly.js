@@ -23,13 +23,13 @@
       timer = window.setTimeout(() => {
         show(0);
         timer = window.setTimeout(advance, 700);
-      }, 3000);
+      }, 2600);
       return;
     }
     timer = window.setTimeout(() => {
       show(current + 1);
       advance();
-    }, 420);
+    }, 820);
   }
 
   function sync() {
