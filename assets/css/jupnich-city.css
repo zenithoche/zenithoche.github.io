@@ -213,3 +213,28 @@ html.j-deck.j-last .j-stepper{bottom:69px}
     scroll-snap-type:none;
   }
 }
+
+/* Product navigation stays one readable, swipeable row on narrow screens. */
+@media(max-width:750px){
+  .zeni-shell__inner{
+    width:100%;
+    padding-inline:max(14px,env(safe-area-inset-left)) max(14px,env(safe-area-inset-right));
+    justify-content:flex-start;
+    gap:16px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    overscroll-behavior-x:contain;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .zeni-shell__inner::-webkit-scrollbar{display:none}
+  .zeni-shell__brand{flex:0 0 auto}
+  .zeni-shell__nav{
+    flex:0 0 auto;
+    min-width:max-content;
+    justify-content:flex-start;
+    gap:8px;
+    overflow:visible;
+  }
+  .zeni-shell__nav a{flex:0 0 auto;padding-inline:7px}
+}
