@@ -125,7 +125,8 @@ h3{font-size:clamp(1.5rem,2vw,2.05rem);line-height:1.04}
 
 /* Fixed scenes with scrollable content pockets, matching the homepage controls. */
 html.j-deck,html.j-deck body{height:100%;overflow:hidden;overscroll-behavior:none}
-html.j-deck main{position:relative;height:calc(100svh - 72px);overflow:hidden}
+html.j-deck .zeni-shell{position:fixed;top:0;left:0;right:0;z-index:100;isolation:isolate;transform:translateZ(0)}
+html.j-deck main{position:relative;height:calc(100svh - 72px);margin-top:72px;overflow:hidden}
 html.j-deck .j-scene{position:absolute;inset:0;display:none;align-items:center;width:100%;height:100%;min-height:0;padding:24px 0 96px;overflow:hidden}
 html.j-deck .j-scene.is-active{display:flex}
 html.j-deck .j-scene>.j-scene__pocket{max-height:100%;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -150,7 +151,7 @@ html.j-deck .j-footer .j-wrap{min-height:58px}
 html.j-deck.j-last .j-stepper{bottom:69px}
 @media(max-width:1050px){html.j-deck .j-hero__grid{gap:20px}}
 @media(max-width:750px){
-  html.j-deck main{height:calc(100svh - 66px)}
+  html.j-deck main{height:calc(100svh - 66px);margin-top:66px}
   html.j-deck .j-scene{padding:15px 0 90px}
   html.j-deck .j-hero__grid{gap:14px;padding-block:0}
   html.j-deck .j-hero__art{aspect-ratio:1.8}
