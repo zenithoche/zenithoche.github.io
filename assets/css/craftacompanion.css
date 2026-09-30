@@ -279,6 +279,12 @@ html.c-deck .c-continuity.is-active{align-items:stretch}
   will-change:opacity,transform;
 }
 .c-continuity__portrait.is-current{opacity:1}
+.c-continuity__portrait--final{opacity:1}
+.c-continuity__portrait--complete,
+.c-continuity__portrait--forming{
+  -webkit-mask-image:radial-gradient(ellipse 23% 31% at 54% 34%,#000 0 58%,rgba(0,0,0,.92) 70%,transparent 100%);
+  mask-image:radial-gradient(ellipse 23% 31% at 54% 34%,#000 0 58%,rgba(0,0,0,.92) 70%,transparent 100%);
+}
 .c-continuity__portrait--complete{object-position:50% 42%}
 .c-continuity__portrait--forming{object-position:50% 40%}
 .c-continuity__shade{
@@ -410,6 +416,11 @@ html.c-deck .c-continuity .card p{
   .c-continuity__portrait{
     object-position:52% 34%;
     transform-origin:54% 31%;
+  }
+  .c-continuity__portrait--complete,
+  .c-continuity__portrait--forming{
+    -webkit-mask-image:radial-gradient(ellipse 31% 25% at 54% 31%,#000 0 58%,rgba(0,0,0,.92) 70%,transparent 100%);
+    mask-image:radial-gradient(ellipse 31% 25% at 54% 31%,#000 0 58%,rgba(0,0,0,.92) 70%,transparent 100%);
   }
   .c-continuity__portrait--complete{object-position:50% 35%}
   .c-continuity__portrait--forming{object-position:50% 34%}
