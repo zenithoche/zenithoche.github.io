@@ -1918,3 +1918,134 @@ body,
     font-size:17px!important;
   }
 }
+
+
+/* APPROVED ZENITHOCHE TYPE STACK — 2026-09-29
+   Display: Grandstander
+   Wordmark: Sacramento
+   Micro labels/buttons: Poiret One
+   Body: Dosis 300
+   Layout, scroll pockets, media, lotus, pricing and scene navigation unchanged.
+*/
+
+/* WORDMARK */
+.zeni-shell__brand{
+  font-family:"Sacramento","Oooh Baby","Segoe Script",cursive!important;
+  font-weight:400!important;
+  letter-spacing:.01em!important;
+  text-transform:none!important;
+}
+
+/* MICRO LANGUAGE */
+.journey-eyebrow,
+.product-kicker,
+.journey-button,
+.hero-label-button,
+.scene-stepper__count,
+.scene-stepper::after{
+  font-family:"Poiret One","Arial Narrow",sans-serif!important;
+  font-weight:400!important;
+  text-transform:uppercase!important;
+  letter-spacing:.12em!important;
+  text-shadow:none!important;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:geometricPrecision;
+}
+
+.journey-eyebrow .geo-break-text,
+.product-kicker .geo-break-text,
+.hero-label-button .geo-break-text--button{
+  transform:none!important;
+  letter-spacing:inherit!important;
+}
+
+/* MAIN DISPLAY */
+.journey-title,
+.crimson-title,
+.product-name,
+.price-group-name,
+.preview-caption strong,
+.toshi-caption strong,
+.tradesmith-host .sr-only{
+  font-family:"Grandstander","Arial Rounded MT Bold",sans-serif!important;
+  font-weight:400!important;
+  font-optical-sizing:auto;
+  text-transform:none!important;
+  letter-spacing:-.018em!important;
+  line-height:.96!important;
+  text-shadow:0 2px 16px rgba(0,0,0,.28)!important;
+  text-wrap:balance;
+}
+
+/* Keep the current composition restrained with Grandstander's wider forms. */
+.hero-copy .journey-title{
+  max-width:560px!important;
+  font-size:clamp(2.35rem,3vw,3.35rem)!important;
+}
+.crimson-title{
+  font-size:clamp(1.95rem,2.35vw,2.55rem)!important;
+}
+.weight-scene .journey-title{
+  font-size:clamp(2.20rem,2.75vw,3rem)!important;
+}
+.preview-head .journey-title,
+.pricing-head .journey-title{
+  font-size:clamp(1.90rem,2.25vw,2.45rem)!important;
+}
+.toshi-scene .journey-title{
+  font-size:clamp(2rem,2.4vw,2.6rem)!important;
+}
+.product-name{
+  font-size:clamp(1.68rem,2vw,2.18rem)!important;
+}
+.price-group-name{
+  font-size:clamp(1.62rem,1.95vw,2.12rem)!important;
+}
+
+/* SOFT BODY */
+body,
+.journey-copy,
+.product-panel p,
+.feature-panel,
+.feature-panel p,
+.price-row,
+.price-note,
+.preview-caption span,
+.policy-text,
+.signal-pill,
+.zeni-shell__nav,
+.chip{
+  font-family:"Dosis","Arial Narrow",sans-serif!important;
+}
+
+.journey-copy,
+.product-panel p,
+.feature-panel p,
+.price-note,
+.preview-caption span,
+.policy-text{
+  font-weight:300!important;
+  letter-spacing:.008em!important;
+  word-spacing:.002em!important;
+  line-height:1.30!important;
+  text-transform:none!important;
+  color:rgba(255,255,255,.90)!important;
+}
+
+@media(max-width:640px){
+  .hero-copy .journey-title{
+    font-size:clamp(2.05rem,8.1vw,2.62rem)!important;
+  }
+  .weight-scene .journey-title{
+    font-size:clamp(1.92rem,7.7vw,2.42rem)!important;
+  }
+  .preview-head .journey-title,
+  .pricing-head .journey-title,
+  .toshi-scene .journey-title{
+    font-size:clamp(1.72rem,7vw,2.16rem)!important;
+  }
+  .journey-eyebrow,
+  .product-kicker{
+    letter-spacing:.10em!important;
+  }
+}
