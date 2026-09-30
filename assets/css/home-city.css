@@ -2223,3 +2223,275 @@ body,
     font-size:.84rem!important;
   }
 }
+
+
+/* PROTOTYPE COMPOSITION FINAL — 2026-09-29
+   Goal: preserve the glass/city system while removing the consumer-SaaS typography rhythm.
+   This is composition, not another family swap.
+*/
+
+.tradesmith-heading,
+.tradesmith-host .sr-only{display:none!important}
+
+/* GRANDSTANDER — soft, hand-built display, deliberately light rather than chunky. */
+.journey-title,
+.crimson-title,
+.product-name,
+.price-group-name,
+.preview-caption strong,
+.toshi-caption strong,
+.feature-panel strong{
+  font-family:"Grandstander","Arial Rounded MT Bold",sans-serif!important;
+  font-weight:300!important;
+  font-optical-sizing:auto;
+  text-transform:none!important;
+  letter-spacing:-.042em!important;
+  line-height:.86!important;
+  text-wrap:balance;
+  color:rgba(255,250,252,.98)!important;
+  text-shadow:0 3px 18px rgba(0,0,0,.32)!important;
+}
+
+/* Explicit poster composition: titles are built from lines, not generic heading blocks. */
+.journey-title>span,
+.crimson-title>span{
+  display:block;
+}
+.title-line--shift{
+  margin-left:.72em;
+}
+.title-line--shift-small{
+  margin-left:.46em;
+}
+
+.hero-copy .journey-title{
+  max-width:13.7ch!important;
+  font-size:clamp(2.55rem,3.35vw,3.72rem)!important;
+  margin:13px 0 22px!important;
+}
+.crimson-title{
+  max-width:12ch!important;
+  font-size:clamp(2.42rem,3vw,3.25rem)!important;
+  margin:0 0 20px!important;
+}
+.weight-scene .journey-title{
+  max-width:13.6ch!important;
+  font-size:clamp(2.42rem,3.1vw,3.42rem)!important;
+  margin:13px 0 20px!important;
+}
+.preview-head .journey-title,
+.pricing-head .journey-title{
+  max-width:9.5ch!important;
+  font-size:clamp(2.18rem,2.7vw,2.98rem)!important;
+  margin:10px 0 14px!important;
+}
+.toshi-scene .journey-title{
+  max-width:10ch!important;
+  font-size:clamp(2.30rem,2.85vw,3.08rem)!important;
+  margin:11px 0 17px!important;
+}
+.product-name{
+  font-weight:400!important;
+  font-size:clamp(2.0rem,2.48vw,2.72rem)!important;
+  margin:9px 0 13px!important;
+}
+.price-group-name{
+  font-weight:400!important;
+  font-size:clamp(1.92rem,2.25vw,2.48rem)!important;
+}
+.feature-panel strong{
+  font-weight:400!important;
+  font-size:1.08rem!important;
+  letter-spacing:-.025em!important;
+  line-height:1!important;
+}
+
+/* POIRET ONE — the interface inscription layer. */
+.zeni-shell__nav,
+.journey-eyebrow,
+.product-kicker,
+.journey-button,
+.hero-label-button,
+.scene-stepper__count,
+.scene-stepper::after,
+.chip,
+.price-tier,
+.price-value,
+.signal-pill,
+.toshi-caption span,
+.policy-num{
+  font-family:"Poiret One","Arial Narrow",sans-serif!important;
+  font-weight:400!important;
+  text-transform:none!important;
+  text-shadow:none!important;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:geometricPrecision;
+}
+.journey-eyebrow,
+.product-kicker{
+  font-size:.80rem!important;
+  letter-spacing:.16em!important;
+  text-transform:uppercase!important;
+  color:rgba(255,239,245,.68)!important;
+}
+.zeni-shell__nav{
+  font-size:.92rem!important;
+  letter-spacing:.018em!important;
+  color:rgba(255,242,247,.70)!important;
+}
+.journey-button,
+.hero-label-button{
+  font-size:.88rem!important;
+  letter-spacing:.10em!important;
+  text-transform:uppercase!important;
+}
+.chip{
+  font-size:.86rem!important;
+  letter-spacing:.02em!important;
+}
+.price-tier,
+.price-value{
+  font-size:1.02rem!important;
+  letter-spacing:.018em!important;
+}
+.scene-stepper__count{
+  letter-spacing:.14em!important;
+}
+
+/* POLICY rows should feel authored, not like dashboard metadata. */
+.policy-text{
+  font-family:"Grandstander","Arial Rounded MT Bold",sans-serif!important;
+  font-weight:300!important;
+  font-size:.95rem!important;
+  letter-spacing:-.018em!important;
+  line-height:1.05!important;
+  color:rgba(255,249,251,.92)!important;
+}
+.policy-num{
+  font-size:.88rem!important;
+  letter-spacing:.08em!important;
+}
+
+/* DOSIS — prose only, lighter and narrower than the previous generic web paragraph rhythm. */
+.journey-copy,
+.product-panel p,
+.feature-panel p,
+.price-note,
+.preview-caption span{
+  font-family:"Dosis","Arial Narrow",sans-serif!important;
+  font-weight:300!important;
+  text-transform:none!important;
+  letter-spacing:.018em!important;
+  word-spacing:.01em!important;
+  line-height:1.42!important;
+  color:rgba(255,246,249,.86)!important;
+}
+.journey-copy{
+  max-width:31ch!important;
+  font-size:1.02rem!important;
+}
+.product-panel p{
+  max-width:34ch!important;
+  font-size:.98rem!important;
+}
+.feature-panel p{
+  font-size:.90rem!important;
+  line-height:1.34!important;
+}
+.price-note{
+  font-size:.88rem!important;
+  line-height:1.34!important;
+}
+.preview-caption span{
+  font-size:.88rem!important;
+}
+
+/* The signature is intentionally wispy and undersized. */
+.zeni-shell__brand{
+  font-family:"Sacramento","Segoe Script",cursive!important;
+  font-weight:400!important;
+  font-size:16px!important;
+  letter-spacing:.01em!important;
+  line-height:1!important;
+  text-transform:none!important;
+}
+
+/* Remove old experimental horizontal squashing from micro labels. */
+.geo-break-text,
+.journey-eyebrow .geo-break-text,
+.product-kicker .geo-break-text,
+.hero-label-button .geo-break-text--button{
+  transform:none!important;
+  display:inline-block!important;
+  letter-spacing:inherit!important;
+}
+
+/* More editorial negative space without changing the panel architecture. */
+.hero-copy{
+  max-width:610px!important;
+}
+.hero-copy>.journey-copy{
+  margin-top:0!important;
+  margin-bottom:21px!important;
+}
+.crimson-head{
+  margin-bottom:8px!important;
+}
+.preview-head,
+.pricing-head{
+  gap:26px!important;
+}
+
+/* Mobile keeps the same poster logic instead of collapsing back to a normal app header. */
+@media(max-width:640px){
+  .zeni-shell__brand{
+    font-size:15px!important;
+  }
+  .zeni-shell__nav{
+    font-size:.84rem!important;
+  }
+  .journey-eyebrow,
+  .product-kicker{
+    font-size:.73rem!important;
+    letter-spacing:.14em!important;
+  }
+  .hero-copy .journey-title{
+    max-width:12.8ch!important;
+    font-size:clamp(2.44rem,10vw,3.12rem)!important;
+    margin-bottom:19px!important;
+  }
+  .crimson-title{
+    font-size:clamp(2.28rem,9.4vw,2.95rem)!important;
+    margin-bottom:17px!important;
+  }
+  .weight-scene .journey-title{
+    font-size:clamp(2.20rem,9.2vw,2.86rem)!important;
+  }
+  .preview-head .journey-title,
+  .pricing-head .journey-title,
+  .toshi-scene .journey-title{
+    font-size:clamp(2.02rem,8.5vw,2.58rem)!important;
+  }
+  .product-name{
+    font-size:2.16rem!important;
+  }
+  .journey-copy{
+    max-width:29ch!important;
+    font-size:1.0rem!important;
+    line-height:1.40!important;
+  }
+  .product-panel p{
+    max-width:30ch!important;
+    font-size:.96rem!important;
+    line-height:1.38!important;
+  }
+  .policy-text{
+    font-size:.92rem!important;
+  }
+  .title-line--shift{
+    margin-left:.56em;
+  }
+  .title-line--shift-small{
+    margin-left:.38em;
+  }
+}
