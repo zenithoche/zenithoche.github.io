@@ -188,12 +188,28 @@ html.j-deck.j-last .j-stepper{bottom:69px}
     overflow-y:hidden;
     scroll-snap-type:x mandatory;
     scroll-padding-inline:4px;
-    touch-action:pan-x;
+    touch-action:auto;
     padding:3px 4px 18px;
     overscroll-behavior-inline:contain;
   }
   html.j-deck .j-demo{
     flex:0 0 min(78vw,420px);
     scroll-snap-align:start;
+  }
+
+  /* Keep the entire panel reachable above the fixed controls. */
+  html.j-deck .j-scene{align-items:flex-start}
+  html.j-deck .j-scene>.j-scene__pocket{
+    min-height:0;
+    max-height:100%;
+    overflow-y:auto;
+    overflow-x:hidden;
+  }
+  html.j-deck .j-arrivals__media,
+  html.j-deck .j-operations__list,
+  html.j-deck .j-plan-grid{
+    max-height:none;
+    overflow:visible;
+    scroll-snap-type:none;
   }
 }
