@@ -31,7 +31,7 @@
   }
 
   const pocketSelector='.scene-pocket-scroll';
-  const horizontalPocketSelector='.scene-pocket-scroll-x,.zeni-shell__nav';
+  const horizontalPocketSelector='.scene-pocket-scroll-x,.zeni-shell__inner';
 
   function verticalPocketFor(target){
     return target&&target.closest?target.closest(pocketSelector):null;
