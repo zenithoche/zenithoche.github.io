@@ -178,8 +178,13 @@
 
       scene.querySelectorAll('video').forEach((video)=>{
         if(active){
-          const play=video.play();
-          if(play&&typeof play.catch==='function')play.catch(()=>{});
+          video.preload='auto';
+          if(!reducedMotion){
+            const play=video.play();
+            if(play&&typeof play.catch==='function')play.catch(()=>{});
+          }else{
+            video.pause();
+          }
         }else{
           video.pause();
         }
@@ -358,6 +363,18 @@
       .to(portal.particles,{autoAlpha:0,y:-dir*38,duration:.28*durationScale,ease:'power1.in'},.38*durationScale)
       .set(portal.portal,{autoAlpha:0,visibility:'hidden'},.78*durationScale);
   }
+
+  document.addEventListener('visibilitychange',()=>{
+    scenes.forEach((scene,index)=>{
+      scene.querySelectorAll('video').forEach((video)=>{
+        if(document.hidden || index!==current) video.pause();
+        else if(!reducedMotion){
+          video.preload='auto';
+          video.play().catch(()=>{});
+        }
+      });
+    });
+  });
 
   controls.prev.addEventListener('click',()=>goToScene(current-1,-1));
   controls.next.addEventListener('click',()=>goToScene((current+1)%scenes.length,1));
