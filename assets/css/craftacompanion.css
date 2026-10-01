@@ -293,7 +293,6 @@ html.c-deck #open-crafta{
   .c-stepper__next{width:50px!important;height:50px!important}
 }
 @media(prefers-reduced-motion:reduce){
-  .hero__video{display:none}
   html{scroll-behavior:auto}
   .c-assembly__visual .c-assembly__frame{transition:none}
 }
@@ -497,7 +496,6 @@ html.c-deck .c-plans .c-plan-card.is-active{
   .c-plans__fine{display:none}
 }
 @media(prefers-reduced-motion:reduce){
-  .c-plans__video{display:none}
   html.c-deck .c-plans .c-plan-card{transition:none}
   .c-plans__pager button{transition:none}
 }
