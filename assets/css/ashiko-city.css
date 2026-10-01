@@ -8,8 +8,8 @@
 .a-builder{background:linear-gradient(100deg,rgba(11,5,15,.86),rgba(15,5,18,.7)),url("/assets/media/product-worlds/ashiko-workshop.webp") center/cover no-repeat}
 .a-signal{background:linear-gradient(180deg,rgba(12,5,15,.87),rgba(13,5,17,.68)),url("/assets/media/product-worlds/ashiko-passage.webp") center/cover no-repeat}
 .a-moments{background:linear-gradient(180deg,rgba(12,5,16,.83),rgba(10,5,14,.72)),url("/assets/media/product-worlds/ashiko-plaza.webp") center/cover no-repeat}
-.a-plans{background:linear-gradient(180deg,rgba(10,5,13,.88),rgba(11,5,14,.74)),url("/assets/media/ashiko-sleeper-tools-optimized.webp") center/cover no-repeat}
-.a-close{background:linear-gradient(90deg,rgba(18,4,17,.86),rgba(19,4,17,.57)),url("/assets/media/ashiko-hero-optimized.webp") center/cover no-repeat}
+.a-plans{background:linear-gradient(180deg,rgba(10,5,13,.88),rgba(11,5,14,.74)),url("/assets/media/ashiko-sleeper-tools-optimized.webp?v=2") center/cover no-repeat}
+.a-close{background:linear-gradient(90deg,rgba(18,4,17,.86),rgba(19,4,17,.57)),url("/assets/media/ashiko-hero-optimized.webp?v=2") center/cover no-repeat}
 .a-split{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:center;gap:clamp(35px,5vw,85px)}
 .a-split .j-heading{max-width:520px}.a-split .j-heading h2{margin-bottom:24px}
 .a-mini-list{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}
