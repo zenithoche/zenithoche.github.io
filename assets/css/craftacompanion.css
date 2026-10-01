@@ -525,3 +525,49 @@ html.c-deck .c-plans .c-plan-card.is-active{
   html.c-deck .c-plans .c-plan-card{transition:none}
   .c-plans__pager button{transition:none}
 }
+
+
+/* iOS Safari video compositing fix: keep ambient video layers behind every panel UI. */
+.hero,
+.c-continuity,
+.c-plans{
+  isolation:isolate;
+  -webkit-transform:translateZ(0);
+  transform:translateZ(0);
+}
+
+.hero__video,
+.c-continuity__video,
+.c-plans__video{
+  z-index:0!important;
+  pointer-events:none;
+  -webkit-transform:translate3d(0,0,0);
+  transform:translate3d(0,0,0);
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
+}
+
+.hero__art,
+.c-continuity::after,
+.c-plans__backdrop,
+.c-plans::after{
+  pointer-events:none;
+  -webkit-transform:translate3d(0,0,1px);
+  transform:translate3d(0,0,1px);
+}
+
+.hero__art{z-index:1!important}
+.c-continuity::after{z-index:1!important}
+.c-plans__backdrop{z-index:1!important}
+.c-plans::after{z-index:2!important}
+
+.hero__content,
+.c-continuity>.c-pocket,
+.c-plans>.c-plans__content{
+  position:relative;
+  z-index:4!important;
+  -webkit-transform:translate3d(0,0,3px);
+  transform:translate3d(0,0,3px);
+  -webkit-backface-visibility:hidden;
+  backface-visibility:hidden;
+}
