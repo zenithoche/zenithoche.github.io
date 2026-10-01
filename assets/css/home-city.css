@@ -2309,3 +2309,9 @@ html.scene-deck-mode .plane-section>.journey-wrap{transform:none}
   overflow-wrap:anywhere;
 }
 .product-panel__identity .product-kicker{line-height:1.35!important}
+
+/* Plan values may wrap within their row instead of overrunning the card. */
+.price-group{min-width:0}
+.price-row{grid-template-columns:32px minmax(0,.65fr) minmax(0,1.35fr);gap:8px}
+.price-tier,.price-value{min-width:0;line-height:1.35!important}
+.price-value{white-space:normal!important;text-align:right;overflow-wrap:break-word;letter-spacing:.01em!important}
