@@ -223,11 +223,36 @@ html.c-deck #open-crafta{
 .c-flow .card p{margin-top:9px;font-size:17px;line-height:1.35}
 
 .c-continuity{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
   background-color:#eee9e5!important;
   background-image:url("https://d2ol7oe51mr4n9.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/3598dc01-32a3-4726-9195-dd4cfe26a2e3.webp")!important;
   background-position:center!important;
   background-size:cover!important;
   background-repeat:no-repeat!important;
+}
+.c-continuity__video{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:50% 50%;
+  background:#eee9e5;
+}
+.c-continuity::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,252,248,.16) 0%,rgba(255,252,248,.06) 44%,rgba(238,233,229,.12) 100%);
+}
+.c-continuity>.c-pocket{
+  position:relative;
+  z-index:2;
 }
 .c-continuity__intro h2{
   color:#171517;
@@ -259,6 +284,7 @@ html.c-deck #open-crafta{
 @media(max-width:860px){
   .c-assembly{background-position:56% center}
   .c-continuity{background-position:62% center!important}
+  .c-continuity__video{object-position:50% 50%}
   html.c-deck .page{height:calc(100svh - 66px);margin-top:66px}
   html.c-deck .c-scene{padding:16px 18px 88px}
   html.c-deck .hero{padding:0 0 80px}
