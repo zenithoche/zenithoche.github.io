@@ -184,6 +184,12 @@ html.c-deck .c-pocket:focus-visible{outline:2px solid #8e7480;outline-offset:-3p
 html.c-deck .hero{padding:0 0 94px}
 html.c-deck .hero__content{width:min(480px,calc(100% - 48px));margin-left:max(6vw,24px);padding:clamp(42px,9vh,100px) 0 24px}
 html.c-deck .section:not(.c-assembly){background:radial-gradient(circle at 90% 10%,#211922,#0b090e 60%)}
+html.c-deck #open-crafta{
+  background-image:url("https://d2ol7oe51mr4n9.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/9e0a7679-8f9b-448a-977c-8840d43ca087.jpg");
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+}
 html.c-deck .section>.c-pocket{padding:clamp(12px,3vw,40px) 0 20px}
 html.c-deck .section .grid{margin-top:28px}
 html.c-deck .section .card{background:rgba(25,20,27,.88)}
