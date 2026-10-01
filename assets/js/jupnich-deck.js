@@ -6,8 +6,25 @@
   const prev = stepper.querySelector('.j-stepper__prev');
   const next = stepper.querySelector('.j-stepper__next');
   const count = stepper.querySelector('.j-stepper__count');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const indexForHash = (hash) => scenes.findIndex((scene) => scene.id === hash.slice(1) || (hash.length > 1 && scene.querySelector(`[id="${CSS.escape(hash.slice(1))}"]`)));
   let current = Math.max(0, indexForHash(location.hash));
+
+  function syncVideo(video, active) {
+    if (!active) {
+      video.pause();
+      return;
+    }
+
+    if (video.preload === 'none') video.preload = reducedMotion.matches ? 'metadata' : 'auto';
+    if (reducedMotion.matches) {
+      video.pause();
+      return;
+    }
+
+    const play = video.play();
+    if (play && typeof play.catch === 'function') play.catch(() => {});
+  }
 
   function show(index, updateUrl = true) {
     current = (index + scenes.length) % scenes.length;
@@ -16,11 +33,11 @@
       scene.classList.toggle('is-active', active);
       scene.inert = !active;
       scene.setAttribute('aria-hidden', String(!active));
-      scene.querySelectorAll('video').forEach((video) => {
-        if (active && !matchMedia('(prefers-reduced-motion: reduce)').matches) video.play().catch(() => {});
-        else video.pause();
+      scene.querySelectorAll('video').forEach((video) => syncVideo(video, active));
+      if (active) scene.querySelectorAll('.j-scene__pocket,.j-pocket').forEach((pocket) => {
+        pocket.scrollTop = 0;
+        pocket.scrollLeft = 0;
       });
-      if (active) scene.querySelectorAll('.j-scene__pocket,.j-pocket').forEach((pocket) => { pocket.scrollTop = 0; });
     });
     prev.disabled = current === 0;
     count.textContent = `${String(current + 1).padStart(2, '0')} / ${String(scenes.length).padStart(2, '0')}`;
@@ -43,9 +60,18 @@
       if (link.classList.contains('skip-link')) scenes[index].querySelector('.j-scene__pocket')?.focus();
     });
   });
+
   window.addEventListener('hashchange', () => {
     const index = indexForHash(location.hash);
     if (index >= 0 && index !== current) show(index, false);
+  });
+
+  reducedMotion.addEventListener('change', () => show(current, false));
+  document.addEventListener('visibilitychange', () => {
+    scenes[current]?.querySelectorAll('video').forEach((video) => {
+      if (document.hidden) video.pause();
+      else syncVideo(video, true);
+    });
   });
 
   // Wheel, touch and page keys stay inside a content pocket; only controls change scenes.
@@ -69,9 +95,11 @@
     }
     event.preventDefault();
   }, { passive: false });
+
   document.addEventListener('touchmove', (event) => {
     if (!event.target.closest?.('.zeni-shell__inner,.j-pocket,.j-scene__pocket')) event.preventDefault();
   }, { passive: false });
+
   window.addEventListener('keydown', (event) => {
     if (event.target.closest?.('.j-pocket,.j-scene__pocket') || event.target.closest?.('button,a,input,textarea,select') || event.target.isContentEditable) return;
     if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', ' ', 'Home', 'End'].includes(event.key)) event.preventDefault();
