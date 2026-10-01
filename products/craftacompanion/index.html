@@ -12,7 +12,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://zenithoche.com/products/craftacompanion/" />
   <link rel="stylesheet" href="/assets/css/fonts.css?v=self-hosted-1" />
-  <link rel="stylesheet" href="/assets/css/craftacompanion.css?v=assembly-bg-2" />
+  <link rel="stylesheet" href="/assets/css/craftacompanion.css?v=continuity-gallery-1" />
   <link rel="stylesheet" href="/assets/css/brand-shell.css?v=lotus-mask-1" />
 </head>
 <body>
@@ -54,7 +54,7 @@
           <h2 id="how-title">You choose. We assemble.</h2>
           <p class="section-copy">Your choices take shape as a companion whose identity stays together.</p>
         </div>
-        <div class="c-assembly__visual" role="img" aria-label="An ivory-and-chrome robotic companion with softly glowing eyes gradually assembles from floating shell pieces in a dark, cloud-hazed showroom">
+        <div class="c-assembly__visual" data-stage-gallery data-stage-interval="820" data-stage-hold="2600" data-stage-start-delay="700" role="img" aria-label="An ivory-and-chrome robotic companion with softly glowing eyes gradually assembles from floating shell pieces in a dark, cloud-hazed showroom">
           <img class="c-assembly__frame is-current" src="/assets/media/crafta-assembly-01.webp" alt="" aria-hidden="true" width="1672" height="941" />
           <img class="c-assembly__frame" src="/assets/media/crafta-assembly-02.webp" alt="" aria-hidden="true" width="1672" height="941" />
           <img class="c-assembly__frame" src="/assets/media/crafta-assembly-03.webp" alt="" aria-hidden="true" width="1672" height="941" />
@@ -74,14 +74,22 @@
       </div>
     </section>
 
-    <section class="section c-scene" id="continuity">
+    <section class="section c-scene c-continuity" id="continuity" aria-labelledby="continuity-title">
       <div class="c-pocket" tabindex="0">
-      <h2>Built around continuity.</h2>
-      <div class="grid">
-        <article class="card"><h3>Persistent core</h3><p>The companion identity is stored separately from whichever supported model is producing a response, so the model is infrastructure rather than the identity itself.</p></article>
-        <article class="card"><h3>Provider-neutral direction</h3><p>Plans can route to different model capability levels while the companion core remains yours and does not become synonymous with a single provider name.</p></article>
-        <article class="card"><h3>Exportable</h3><p>Crafta includes an export path so the companion is not trapped behind one chat surface. The prototype keeps that portability principle visible from the start.</p></article>
-      </div>
+        <div class="c-continuity__intro">
+          <h2 id="continuity-title">Built around continuity.</h2>
+        </div>
+        <div class="c-assembly__visual c-continuity__visual" data-stage-gallery data-stage-interval="1150" data-stage-hold="2800" data-stage-start-delay="650" role="img" aria-label="Four monochrome organic-scientific artworks transition through stages of continuity, memory, routing, and embodiment">
+          <img class="c-assembly__frame is-current" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/e5821588-1836-4293-806c-2a2ff8a8c648.png" alt="" aria-hidden="true" width="1672" height="941" />
+          <img class="c-assembly__frame" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/bf6af2cd-312d-458b-bb7a-546b00b3876a.png" alt="" aria-hidden="true" width="1672" height="941" />
+          <img class="c-assembly__frame" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/03ac694c-1107-45d5-bf76-615d551931de.png" alt="" aria-hidden="true" width="1672" height="941" />
+          <img class="c-assembly__frame" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/6bee4e28-a0d0-469f-8c66-809da26be040.png" alt="" aria-hidden="true" width="1672" height="941" />
+        </div>
+        <div class="c-flow c-continuity__flow" aria-label="Crafta continuity principles">
+          <article class="card"><span class="pill">01 · Core</span><h3>Persistent core</h3><p>The companion identity is stored separately from whichever supported model is producing a response, so the model is infrastructure rather than the identity itself.</p></article>
+          <article class="card"><span class="pill">02 · Routing</span><h3>Provider-neutral direction</h3><p>Plans can route to different model capability levels while the companion core remains yours and does not become synonymous with a single provider name.</p></article>
+          <article class="card"><span class="pill">03 · Portability</span><h3>Exportable</h3><p>Crafta includes an export path so the companion is not trapped behind one chat surface. The prototype keeps that portability principle visible from the start.</p></article>
+        </div>
       </div>
     </section>
 
@@ -132,7 +140,7 @@
     <button class="c-stepper__next" type="button" aria-label="Next panel">↓</button>
   </nav>
   <script src="/assets/js/crafta-deck.js?v=assembly-deck-1" defer></script>
-  <script src="/assets/js/crafta-assembly.js?v=smooth-1" defer></script>
+  <script src="/assets/js/crafta-assembly.js?v=multi-gallery-1" defer></script>
   <script src="/assets/js/crafta-plans.js?v=carousel-1" defer></script>
 </body>
 </html>
