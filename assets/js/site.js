@@ -274,6 +274,7 @@
       // No black veil, alignment seek, or ten-second wait after a click.
       film.forEach((video) => video.pause());
       fallbackTimer = setTimeout(enter, 4500);
+      sink.preload = "auto";
       sink.playbackRate = 4;
       sink.addEventListener("playing", () => {
         if (entrance.hidden) { sink.pause(); return; }
