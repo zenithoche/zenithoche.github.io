@@ -3,6 +3,16 @@
   const galleries = [...document.querySelectorAll('[data-stage-gallery]')];
   if (!galleries.length) return;
 
+  const loadFrame = async (frame) => {
+    if (!frame.getAttribute('src') && frame.dataset.src) {
+      frame.setAttribute('src', frame.dataset.src);
+    }
+    if (!frame.getAttribute('src')) return;
+    try {
+      if (frame.decode) await frame.decode();
+    } catch (_) {}
+  };
+
   galleries.forEach((gallery) => {
     const scene = gallery.closest('.c-scene');
     const frames = [...gallery.querySelectorAll('.c-assembly__frame')];
@@ -14,6 +24,7 @@
 
     let timer;
     let current = 0;
+    let loading;
     let ready = false;
 
     function show(index) {
@@ -27,6 +38,10 @@
     }
 
     function advance() {
+      if (!scene.classList.contains('is-active') || document.hidden) {
+        stop();
+        return;
+      }
       if (current === frames.length - 1) {
         timer = window.setTimeout(() => {
           show(0);
@@ -41,18 +56,32 @@
       }, interval);
     }
 
-    function sync() {
+    async function prepare() {
+      if (ready) return;
+      if (!loading) {
+        loading = Promise.all(frames.map(loadFrame)).then(() => {
+          ready = true;
+          show(reducedMotion.matches ? frames.length - 1 : 0);
+        });
+      }
+      await loading;
+    }
+
+    async function sync() {
       stop();
 
+      if (!scene.classList.contains('is-active') || document.hidden) return;
+
+      await prepare();
+
+      if (!scene.classList.contains('is-active') || document.hidden) return;
       if (reducedMotion.matches) {
         show(frames.length - 1);
         return;
       }
 
-      if (ready && scene.classList.contains('is-active') && !document.hidden) {
-        show(0);
-        timer = window.setTimeout(advance, startDelay);
-      }
+      show(0);
+      timer = window.setTimeout(advance, startDelay);
     }
 
     new MutationObserver(sync).observe(scene, {
@@ -62,12 +91,6 @@
 
     document.addEventListener('visibilitychange', sync);
     reducedMotion.addEventListener('change', sync);
-
-    Promise.all(frames.map((frame) => frame.decode().catch(() => {}))).then(() => {
-      ready = true;
-      sync();
-    });
-
     sync();
   });
 })();
