@@ -174,7 +174,8 @@
     const trigger = byId("bloom-trigger");
     const skip = byId("bloom-skip");
     const page = document.querySelector(".page-shell");
-    const pageVideos = page ? Array.from(page.querySelectorAll("video[autoplay]")) : [];
+    const pageVideos = page ? Array.from(page.querySelectorAll("video")) : [];
+    const activePageVideos = () => page ? Array.from(page.querySelectorAll(".journey-scene.is-deck-active video, .plane-section.is-deck-active video")) : [];
     const previousOverflow = document.body.style.overflow;
     let active = false;
     let revealing = false;
@@ -216,6 +217,9 @@
 
     // Start the actual film explicitly instead of relying on browser autoplay policy.
     playIdleSegment();
+    window.setTimeout(() => {
+      if (!active && film.length > 1) film[(currentSegment + 1) % film.length].preload = "auto";
+    }, 4000);
     idleRecoveryTimer = window.setInterval(recoverIdlePlayback, 1800);
     window.addEventListener("pageshow", recoverIdlePlayback);
     document.addEventListener("visibilitychange", () => {
@@ -253,7 +257,10 @@
       entrance.hidden = true;
       document.body.style.overflow = previousOverflow;
       if (page) page.inert = false;
-      pageVideos.forEach((video) => video.play().catch(() => {}));
+      if (!prefersReducedMotion) activePageVideos().forEach((video) => {
+        video.preload = "auto";
+        video.play().catch(() => {});
+      });
       document.querySelector(".zeni-shell__brand")?.focus({ preventScroll: true });
     }
 
@@ -280,7 +287,10 @@
     sink.addEventListener("timeupdate", () => {
       if (active && !revealing && sink.currentTime >= (Number.isFinite(sink.duration) ? sink.duration - 1.4 : 8.8)) {
         revealing = true;
-        pageVideos.forEach((video) => video.play().catch(() => {}));
+        if (!prefersReducedMotion) activePageVideos().forEach((video) => {
+          video.preload = "auto";
+          video.play().catch(() => {});
+        });
         entrance.classList.add("is-revealing");
       }
     });
