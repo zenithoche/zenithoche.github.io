@@ -6,7 +6,6 @@
   const prev = stepper.querySelector('.c-stepper__prev');
   const next = stepper.querySelector('.c-stepper__next');
   const count = stepper.querySelector('.c-stepper__count');
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const indexForHash = (hash) => scenes.findIndex((scene) => scene.id === hash.slice(1));
   let current = Math.max(0, indexForHash(location.hash));
 
@@ -18,7 +17,13 @@
       scene.inert = !active;
       scene.setAttribute('aria-hidden', String(!active));
       scene.querySelectorAll('video').forEach((video) => {
-        if (active && !document.hidden && !reducedMotion.matches) {
+        if (active && !document.hidden) {
+          video.muted = true;
+          video.defaultMuted = true;
+          video.playsInline = true;
+          video.setAttribute('playsinline', '');
+          video.setAttribute('webkit-playsinline', '');
+          if (video.preload === 'none') video.preload = 'auto';
           const playback = video.play();
           if (playback && typeof playback.catch === 'function') playback.catch(() => {});
         } else {
@@ -46,8 +51,24 @@
       show(index);
     });
   });
+  function retryActiveVideos() {
+    const scene = scenes[current];
+    if (!scene || document.hidden) return;
+    scene.querySelectorAll('video').forEach((video) => {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
+      if (video.preload === 'none') video.preload = 'auto';
+      const playback = video.play();
+      if (playback && typeof playback.catch === 'function') playback.catch(() => {});
+    });
+  }
+
   document.addEventListener('visibilitychange', () => show(current, false));
-  reducedMotion.addEventListener('change', () => show(current, false));
+  window.addEventListener('pageshow', retryActiveVideos);
+  document.addEventListener('touchstart', retryActiveVideos, { passive: true });
 
   window.addEventListener('hashchange', () => {
     const index = indexForHash(location.hash);
