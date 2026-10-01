@@ -167,6 +167,37 @@
     }
   }
 
+  function syncVideo(video,active){
+    if(!active||document.hidden||document.documentElement.classList.contains('bloom-enabled')){
+      video.pause();
+      return;
+    }
+    video.muted=true;
+    video.defaultMuted=true;
+    video.playsInline=true;
+    video.preload='auto';
+    const playback=video.play();
+    if(playback&&typeof playback.catch==='function')playback.catch(()=>{
+      // A browser that blocks autoplay must still offer a working play button.
+      if(!video.hasAttribute('aria-hidden'))video.controls=true;
+    });
+  }
+
+  const warmedImages=new Set();
+  function warmNextScene(){
+    const next=scenes[(current+1)%scenes.length];
+    const background=getComputedStyle(next).getPropertyValue('--scene-image');
+    const match=background.match(/url\(["']?([^"')]+)["']?\)/);
+    if(match&&!warmedImages.has(match[1])){
+      warmedImages.add(match[1]);
+      const image=new Image();
+      image.src=match[1];
+    }
+    next.querySelectorAll('video').forEach((video)=>{
+      if(video.preload==='none')video.preload='metadata';
+    });
+  }
+
   function syncSceneState(){
     scenes.forEach((scene,index)=>{
       const active=index===current;
@@ -175,22 +206,13 @@
         setSceneVisibility(scene,active,active?3:0);
       }
       scene.setAttribute('aria-hidden',active?'false':'true');
+      scene.inert=!active;
+      if(active)scene.querySelectorAll('[data-reveal]').forEach((node)=>node.classList.add('is-visible'));
 
-      scene.querySelectorAll('video').forEach((video)=>{
-        if(active){
-          video.preload='auto';
-          if(!reducedMotion){
-            const play=video.play();
-            if(play&&typeof play.catch==='function')play.catch(()=>{});
-          }else{
-            video.pause();
-          }
-        }else{
-          video.pause();
-        }
-      });
+      scene.querySelectorAll('video').forEach((video)=>syncVideo(video,active));
     });
 
+    warmNextScene();
     controls.prev.disabled=current===0;
     controls.next.disabled=false;
     controls.count.textContent=String(current+1).padStart(2,'0')+' / '+String(scenes.length).padStart(2,'0');
@@ -200,7 +222,7 @@
   scenes.forEach((scene,index)=>{
     const panel=scene.querySelector(':scope > .journey-wrap');
     setSceneVisibility(scene,index===current,index===current?3:0);
-    if(panel&&hasGsap)gsap.set(panel,{clearProps:'transform,opacity'});
+    if(panel&&hasGsap)gsap.set(panel,{clearProps:'transform,opacity,visibility'});
   });
   if(hasGsap)gsap.set(portal.portal,{autoAlpha:0});
   syncSceneState();
@@ -234,8 +256,8 @@
     if(hasGsap){
       gsap.set(scenes[previous],{clearProps:'--scene-bg-blur,--scene-bg-brightness,--scene-bg-scale'});
       gsap.set(scenes[current],{clearProps:'--scene-bg-blur,--scene-bg-brightness,--scene-bg-scale'});
-      if(outgoingPanel)gsap.set(outgoingPanel,{clearProps:'transform,opacity'});
-      if(incomingPanel)gsap.set(incomingPanel,{clearProps:'transform,opacity'});
+      if(outgoingPanel)gsap.set(outgoingPanel,{clearProps:'transform,opacity,visibility'});
+      if(incomingPanel)gsap.set(incomingPanel,{clearProps:'transform,opacity,visibility'});
     }
     if(incomingPanel){
       incomingPanel.scrollTop=0;
@@ -273,7 +295,7 @@
     incoming.classList.add('is-deck-transition');
     incoming.setAttribute('aria-hidden','false');
 
-    if(!hasGsap){
+    if(!hasGsap||reducedMotion){
       setSceneVisibility(outgoing,false,0);
       setSceneVisibility(incoming,true,3);
       finishSceneSwap(previous,nextIndex,outgoingPanel,incomingPanel);
@@ -294,7 +316,7 @@
         autoAlpha:reducedMotion?0:.18,
         y:reducedMotion?0:dir*110,
         scale:reducedMotion?1:1.035,
-        rotateX:reducedMotion?0:dir*-1.15,
+        force3D:false,
         transformOrigin:'50% 50%'
       });
     }
@@ -305,12 +327,6 @@
       onComplete:()=>finishSceneSwap(previous,nextIndex,outgoingPanel,incomingPanel)
     });
 
-    if(reducedMotion){
-      tl
-        .to(outgoing,{autoAlpha:0,duration:.12},0)
-        .to(incoming,{autoAlpha:1,duration:.18},.08);
-      return;
-    }
 
     tl
       .set(portal.portal,{autoAlpha:1,visibility:'visible'},0)
@@ -321,9 +337,9 @@
 
     if(outgoingPanel){
       tl.to(outgoingPanel,{
+        force3D:false,
         y:-dir*96,
         scale:.955,
-        rotateX:dir*1.05,
         autoAlpha:.08,
         duration:.34*durationScale,
         ease:'power3.in'
@@ -341,9 +357,9 @@
 
     if(incomingPanel){
       tl.to(incomingPanel,{
+        force3D:false,
         y:0,
         scale:1,
-        rotateX:0,
         autoAlpha:1,
         duration:.52*durationScale,
         ease:'expo.out'
@@ -365,16 +381,14 @@
   }
 
   document.addEventListener('visibilitychange',()=>{
-    scenes.forEach((scene,index)=>{
-      scene.querySelectorAll('video').forEach((video)=>{
-        if(document.hidden || index!==current) video.pause();
-        else if(!reducedMotion){
-          video.preload='auto';
-          video.play().catch(()=>{});
-        }
-      });
-    });
+    scenes.forEach((scene,index)=>scene.querySelectorAll('video').forEach((video)=>syncVideo(video,index===current)));
   });
+  window.addEventListener('pageshow',()=>{if(!animating)syncSceneState();});
+  document.addEventListener('pointerup',()=>{
+    scenes[current].querySelectorAll('video').forEach((video)=>{
+      if(video.paused&&!video.controls)syncVideo(video,true);
+    });
+  },{passive:true});
 
   controls.prev.addEventListener('click',()=>goToScene(current-1,-1));
   controls.next.addEventListener('click',()=>goToScene((current+1)%scenes.length,1));

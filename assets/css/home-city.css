@@ -2285,3 +2285,16 @@ body,
   .product-panel__identity{gap:12px}
   .product-panel__portrait{flex-basis:104px;width:104px;height:104px}
 }
+
+/* Keep content in a flat layer across Firefox and Chromium compositors. */
+html.scene-deck-mode .journey-scene>.journey-wrap,
+html.scene-deck-mode .plane-section>.journey-wrap{
+  transform-style:flat;
+  backface-visibility:visible;
+  -webkit-backface-visibility:visible;
+  will-change:auto;
+}
+html.scene-deck-mode [data-reveal]{opacity:1;transform:none}
+html.scene-deck-mode .journey-main{perspective:none}
+html.scene-deck-mode .journey-scene>.journey-wrap,
+html.scene-deck-mode .plane-section>.journey-wrap{transform:none}

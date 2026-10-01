@@ -16,14 +16,13 @@
       return;
     }
 
-    if (video.preload === 'none') video.preload = reducedMotion.matches ? 'metadata' : 'auto';
-    if (reducedMotion.matches) {
-      video.pause();
-      return;
-    }
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.preload = 'auto';
 
     const play = video.play();
-    if (play && typeof play.catch === 'function') play.catch(() => {});
+    if (play && typeof play.catch === 'function') play.catch(() => { video.controls = true; });
   }
 
   function show(index, updateUrl = true) {

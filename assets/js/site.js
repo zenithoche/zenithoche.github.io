@@ -257,7 +257,7 @@
       entrance.hidden = true;
       document.body.style.overflow = previousOverflow;
       if (page) page.inert = false;
-      if (!prefersReducedMotion) activePageVideos().forEach((video) => {
+      activePageVideos().forEach((video) => {
         video.preload = "auto";
         video.play().catch(() => {});
       });
@@ -288,7 +288,7 @@
     sink.addEventListener("timeupdate", () => {
       if (active && !revealing && sink.currentTime >= (Number.isFinite(sink.duration) ? sink.duration - 1.4 : 8.8)) {
         revealing = true;
-        if (!prefersReducedMotion) activePageVideos().forEach((video) => {
+        activePageVideos().forEach((video) => {
           video.preload = "auto";
           video.play().catch(() => {});
         });
