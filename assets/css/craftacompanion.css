@@ -195,7 +195,16 @@ html.c-deck #open-crafta{
   background-repeat:no-repeat;
 }
 
-.c-assembly{background:radial-gradient(circle at 70% 5%,#1d1820,#0b090e 62%)}
+.c-assembly{
+  background-color:#eee9e5;
+  background-image:url("https://d2ol7oe51mr4n9.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/e030a9a7-4f00-4ee7-beaa-706e2448af21.jpg");
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+}
+.c-assembly__intro .pill,
+.c-assembly__intro h2{color:#171517}
+.c-assembly__intro .section-copy{color:rgba(23,21,23,.78)}
 .c-assembly__intro{position:relative;z-index:1}
 .c-assembly__intro h2{margin-top:9px}
 .c-assembly__intro .section-copy{margin-top:10px}
@@ -214,6 +223,7 @@ html.c-deck #open-crafta{
 .c-stepper button:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .c-stepper__count{text-align:center;font-family:"Poiret One",sans-serif;letter-spacing:.08em;white-space:nowrap}
 @media(max-width:860px){
+  .c-assembly{background-position:56% center}
   html.c-deck .page{height:calc(100svh - 66px);margin-top:66px}
   html.c-deck .c-scene{padding:16px 18px 88px}
   html.c-deck .hero{padding:0 0 80px}
