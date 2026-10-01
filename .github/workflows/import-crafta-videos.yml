@@ -1,0 +1,41 @@
+name: Import Crafta background videos
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/import-crafta-videos.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download optimized Crafta videos
+        run: |
+          set -euo pipefail
+          mkdir -p assets/media
+          curl -LfsS "https://d2ol7oe51mr4n9.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/c312a656-e9d0-4e14-8f11-5c2c084d49eb.mp4" -o assets/media/crafta-hero-loop.mp4
+          curl -LfsS "https://d2ol7oe51mr4n9.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/49ac3934-ff67-4995-8bee-5b4d6a1cfd0a.mp4" -o assets/media/crafta-plans-loop.mp4
+          test -s assets/media/crafta-hero-loop.mp4
+          test -s assets/media/crafta-plans-loop.mp4
+
+      - name: Commit imported media
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/media/crafta-hero-loop.mp4 assets/media/crafta-plans-loop.mp4
+          if git diff --cached --quiet; then
+            echo "Crafta media already current."
+            exit 0
+          fi
+          git commit -m "Host Crafta background videos on-site"
+          git push origin HEAD:main
