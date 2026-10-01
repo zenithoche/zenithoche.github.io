@@ -27,7 +27,7 @@ h1,h2,h3,p{margin:0}
   min-height:clamp(720px,90svh,980px);
   margin-left:calc(50% - 50vw);
   overflow:hidden;
-  background:#08090d url("https://d2ol7oe51mr4n9.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/531c5bd1-dd27-40b2-8b93-43eee20c8289.webp") center 54%/cover no-repeat;
+  background:#eee9e3 url("/assets/media/crafta-hero-poster.webp") center/cover no-repeat;
 }
 .hero__video{
   position:absolute;
@@ -37,14 +37,6 @@ h1,h2,h3,p{margin:0}
   height:100%;
   object-fit:cover;
   object-position:50% 50%;
-}
-.hero__art{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  background:
-    linear-gradient(90deg,rgba(8,9,13,.98) 0%,rgba(8,9,13,.86) 33%,rgba(8,9,13,.24) 60%,transparent 76%);
 }
 .hero__content{
   position:relative;
@@ -60,10 +52,10 @@ h1,h2,h3,p{margin:0}
 }
 .hero__eyebrow{
   font-size:14px;
-  color:#e2dce0;
+  color:#252126;
 }
-.hero__eyebrow span{margin-inline:8px;color:#b5aeb4}
-.hero h1{color:#f8f6f5}
+.hero__eyebrow span{margin-inline:8px;color:#5b5359}
+.hero h1{color:#1c191b}
 h1,h2,h3{
   font-family:"Grandstander",ui-sans-serif,system-ui,sans-serif;
   font-weight:500;
@@ -80,7 +72,7 @@ h1{
   margin-top:30px;
   font-size:clamp(21px,1.9vw,27px);
   line-height:1.33;
-  color:#e6e2e4;
+  color:#282428;
 }
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:33px}
 .btn{
@@ -102,10 +94,10 @@ h1{
 .btn:hover,.btn:focus-visible{transform:translateY(-2px);background:#4b3d49}
 .btn.primary{background:#f4f0f2;color:#242126;border-color:#f4f0f2}
 .btn.primary:hover,.btn.primary:focus-visible{background:#ded5db}
-.hero .btn.primary{background:#f8f6f5;color:#242126;border-color:#f8f6f5}
-.hero .btn.primary:hover,.hero .btn.primary:focus-visible{background:#e7e3e5}
-.hero .btn:not(.primary){background:rgba(16,16,20,.6);color:#f8f6f5;border-color:rgba(255,255,255,.65)}
-.hero .btn:not(.primary):hover,.hero .btn:not(.primary):focus-visible{background:rgba(53,48,54,.9)}
+.hero .btn.primary{background:#252125;color:#f8f6f5;border-color:#252125}
+.hero .btn.primary:hover,.hero .btn.primary:focus-visible{background:#4a4046}
+.hero .btn:not(.primary){background:transparent;color:#252125;border-color:rgba(37,33,37,.7)}
+.hero .btn:not(.primary):hover,.hero .btn:not(.primary):focus-visible{background:rgba(255,255,255,.4)}
 .section{padding:clamp(68px,7vw,110px) 0;border-bottom:1px solid var(--line)}
 .section h2{font-size:clamp(32px,3.3vw,50px);line-height:1.03;letter-spacing:-.035em}
 .section-copy{max-width:620px;margin-top:18px;color:var(--muted);font-size:21px;line-height:1.42}
@@ -143,19 +135,10 @@ h1{
   .hero{
     display:block;
     min-height:max(830px,calc(100svh + 40px));
-    background:#08090d;
+    background:#eee9e3 url("/assets/media/crafta-hero-poster.webp") center/cover no-repeat;
   }
   .hero__video{
     object-position:50% 50%;
-  }
-  .hero__art{
-    position:absolute;
-    inset:0;
-    z-index:1;
-    width:100%;
-    height:100%;
-    background:
-      linear-gradient(180deg,rgba(8,9,13,.98) 0%,rgba(8,9,13,.92) 24%,rgba(8,9,13,.68) 42%,rgba(8,9,13,.30) 60%,rgba(8,9,13,.10) 78%,transparent 100%);
   }
   .hero__content{
     position:relative;
@@ -203,7 +186,7 @@ html.c-deck #open-crafta{
 
 .c-assembly{
   background-color:#eee9e5;
-  background-image:url("https://d2ol7oe51mr4n9.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/17ff0641-dbd7-4ad5-9f89-18a15ce83045.jpg");
+  background-image:url("/assets/media/crafta-assembly-wallpaper.jpg");
   background-position:center;
   background-size:cover;
   background-repeat:no-repeat;
@@ -227,28 +210,10 @@ html.c-deck #open-crafta{
   isolation:isolate;
   overflow:hidden;
   background-color:#eee9e5!important;
-  background-image:url("https://d2ol7oe51mr4n9.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/3598dc01-32a3-4726-9195-dd4cfe26a2e3.webp")!important;
+  background-image:url("/assets/media/crafta-continuity-wallpaper.jpg")!important;
   background-position:center!important;
   background-size:cover!important;
   background-repeat:no-repeat!important;
-}
-.c-continuity__video{
-  position:absolute;
-  inset:0;
-  z-index:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:50% 50%;
-  background:#eee9e5;
-}
-.c-continuity::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  background:linear-gradient(180deg,rgba(255,252,248,.16) 0%,rgba(255,252,248,.06) 44%,rgba(238,233,229,.12) 100%);
 }
 .c-continuity>.c-pocket{
   position:relative;
@@ -284,8 +249,7 @@ html.c-deck #open-crafta{
 @media(max-width:860px){
   .c-assembly{background-position:56% center}
   .c-continuity{background-position:62% center!important}
-  .c-continuity__video{object-position:50% 50%}
-  html.c-deck .page{height:calc(100svh - 66px);margin-top:66px}
+    html.c-deck .page{height:calc(100svh - 66px);margin-top:66px}
   html.c-deck .c-scene{padding:16px 18px 88px}
   html.c-deck .hero{padding:0 0 80px}
   html.c-deck .hero.is-active{align-items:flex-start}
@@ -328,38 +292,9 @@ html.c-deck #open-crafta{
 html.c-deck .c-plans{
   isolation:isolate;
   padding:0 0 92px;
-  background:#eee9e5 url("https://d2ol7oe51mr4n9.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/4a5b7fd9-2e9d-44f7-b453-81cd6dff7220.jpg") center/cover no-repeat;
+  background:#eee9e5 url("/assets/media/crafta-plans-wallpaper.jpg") center/cover no-repeat;
 }
 html.c-deck .c-plans.is-active{align-items:stretch}
-.c-plans__video{
-  position:absolute;
-  inset:0;
-  z-index:-3;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:50% 50%;
-  background:#eee9e5;
-  transform:scale(1.015);
-}
-.c-plans__backdrop{
-  position:absolute;
-  inset:0;
-  z-index:-2;
-  background:
-    linear-gradient(180deg,rgba(255,255,255,.08) 0%,rgba(255,255,255,.025) 50%,rgba(15,14,16,.20) 100%);
-  transform:scale(1.015);
-}
-.c-plans::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  background:
-    linear-gradient(90deg,rgba(8,7,10,.10),transparent 22% 78%,rgba(8,7,10,.10)),
-    radial-gradient(circle at 50% 42%,transparent 22%,rgba(7,6,9,.14) 92%);
-}
 html.c-deck .c-plans>.c-plans__content{
   width:100%;
   max-height:none;
@@ -488,8 +423,7 @@ html.c-deck .c-plans .c-plan-card.is-active{
 @media(max-width:860px){
   html.c-deck .c-plans{padding:0 0 88px}
   html.c-deck .c-plans>.c-plans__content{padding:24px 0 18px}
-  .c-plans__video{object-position:50% 50%}
-  .c-plans__intro{width:calc(100% - 36px)}
+    .c-plans__intro{width:calc(100% - 36px)}
   .c-plans__intro h2{font-size:clamp(38px,9.4vw,54px);line-height:1.02}
   .c-plans__intro .section-copy{font-size:18px;line-height:1.36;margin-top:14px}
   .c-plans__carousel-wrap{margin-top:18px}
@@ -509,8 +443,7 @@ html.c-deck .c-plans .c-plan-card.is-active{
   .c-plans__fine{width:calc(100% - 36px);font-size:13px}
 }
 @media(max-width:500px){
-  .c-plans__video{object-position:50% 50%}
-  .c-plans__intro{width:calc(100% - 30px)}
+    .c-plans__intro{width:calc(100% - 30px)}
   .c-plans__intro h2{font-size:clamp(38px,10vw,48px)}
   .c-plans__intro .section-copy{font-size:17px}
   .c-plans__carousel{gap:11px;padding-inline:16vw}
@@ -527,47 +460,23 @@ html.c-deck .c-plans .c-plan-card.is-active{
 }
 
 
-/* iOS Safari video compositing fix: keep ambient video layers behind every panel UI. */
-.hero,
-.c-continuity,
-.c-plans{
+/* Keep the hero wallpaper video behind its content on iOS Safari. */
+.hero{
   isolation:isolate;
   -webkit-transform:translateZ(0);
   transform:translateZ(0);
 }
-
-.hero__video,
-.c-continuity__video,
-.c-plans__video{
-  z-index:0!important;
+.hero__video{
+  z-index:0;
   pointer-events:none;
   -webkit-transform:translate3d(0,0,0);
   transform:translate3d(0,0,0);
   -webkit-backface-visibility:hidden;
   backface-visibility:hidden;
 }
-
-.hero__art,
-.c-continuity::after,
-.c-plans__backdrop,
-.c-plans::after{
-  pointer-events:none;
+.hero__content{
+  position:relative;
+  z-index:2;
   -webkit-transform:translate3d(0,0,1px);
   transform:translate3d(0,0,1px);
-}
-
-.hero__art{z-index:1!important}
-.c-continuity::after{z-index:1!important}
-.c-plans__backdrop{z-index:1!important}
-.c-plans::after{z-index:2!important}
-
-.hero__content,
-.c-continuity>.c-pocket,
-.c-plans>.c-plans__content{
-  position:relative;
-  z-index:4!important;
-  -webkit-transform:translate3d(0,0,3px);
-  transform:translate3d(0,0,3px);
-  -webkit-backface-visibility:hidden;
-  backface-visibility:hidden;
 }
