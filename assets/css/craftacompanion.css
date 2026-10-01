@@ -303,16 +303,26 @@ html.c-deck #open-crafta{
 html.c-deck .c-plans{
   isolation:isolate;
   padding:0 0 92px;
-  background:#08080b;
+  background:#eee9e5 url("https://d2ol7oe51mr4n9.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/4a5b7fd9-2e9d-44f7-b453-81cd6dff7220.jpg") center/cover no-repeat;
 }
 html.c-deck .c-plans.is-active{align-items:stretch}
+.c-plans__video{
+  position:absolute;
+  inset:0;
+  z-index:-3;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:50% 50%;
+  background:#eee9e5;
+  transform:scale(1.015);
+}
 .c-plans__backdrop{
   position:absolute;
   inset:0;
   z-index:-2;
   background:
-    linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,.015) 52%,rgba(15,14,16,.18) 100%),
-    url("https://d2ol7oe51mr4n9.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/4a5b7fd9-2e9d-44f7-b453-81cd6dff7220.jpg") center/cover no-repeat;
+    linear-gradient(180deg,rgba(255,255,255,.08) 0%,rgba(255,255,255,.025) 50%,rgba(15,14,16,.20) 100%);
   transform:scale(1.015);
 }
 .c-plans::after{
@@ -453,7 +463,7 @@ html.c-deck .c-plans .c-plan-card.is-active{
 @media(max-width:860px){
   html.c-deck .c-plans{padding:0 0 88px}
   html.c-deck .c-plans>.c-plans__content{padding:24px 0 18px}
-  .c-plans__backdrop{background-position:50% 48%}
+  .c-plans__video{object-position:50% 50%}
   .c-plans__intro{width:calc(100% - 36px)}
   .c-plans__intro h2{font-size:clamp(38px,9.4vw,54px);line-height:1.02}
   .c-plans__intro .section-copy{font-size:18px;line-height:1.36;margin-top:14px}
@@ -474,7 +484,7 @@ html.c-deck .c-plans .c-plan-card.is-active{
   .c-plans__fine{width:calc(100% - 36px);font-size:13px}
 }
 @media(max-width:500px){
-  .c-plans__backdrop{background-position:50% center;background-size:auto 100%}
+  .c-plans__video{object-position:50% 50%}
   .c-plans__intro{width:calc(100% - 30px)}
   .c-plans__intro h2{font-size:clamp(38px,10vw,48px)}
   .c-plans__intro .section-copy{font-size:17px}
@@ -487,6 +497,7 @@ html.c-deck .c-plans .c-plan-card.is-active{
   .c-plans__fine{display:none}
 }
 @media(prefers-reduced-motion:reduce){
+  .c-plans__video{display:none}
   html.c-deck .c-plans .c-plan-card{transition:none}
   .c-plans__pager button{transition:none}
 }
