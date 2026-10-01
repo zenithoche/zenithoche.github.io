@@ -2298,3 +2298,14 @@ html.scene-deck-mode [data-reveal]{opacity:1;transform:none}
 html.scene-deck-mode .journey-main{perspective:none}
 html.scene-deck-mode .journey-scene>.journey-wrap,
 html.scene-deck-mode .plane-section>.journey-wrap{transform:none}
+
+/* Card labels share available space with the portrait, including narrow screens. */
+.product-panel__identity>div{flex:1;min-width:0}
+.product-panel__identity .product-name,
+.product-panel__identity .product-kicker,
+.product-panel__identity .product-kicker .geo-break-text{
+  max-width:100%;
+  white-space:normal!important;
+  overflow-wrap:anywhere;
+}
+.product-panel__identity .product-kicker{line-height:1.35!important}
