@@ -216,6 +216,17 @@ html.c-deck #open-crafta{
 .c-flow .card h3{margin-top:8px;font-size:23px}
 .c-flow .card p{margin-top:9px;font-size:17px;line-height:1.35}
 
+.c-continuity{
+  background-color:#eee9e5!important;
+  background-image:url("https://d2ol7oe51mr4n9.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/a644f134-92ee-4d2d-ab32-e82cdc7149a6.png")!important;
+  background-position:center!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+}
+.c-continuity__intro h2{
+  color:#171517;
+  text-shadow:0 2px 18px rgba(255,255,255,.38);
+}
 .c-continuity__intro{position:relative;z-index:1}
 .c-continuity__intro h2{margin:0}
 .c-continuity__visual{
@@ -241,6 +252,7 @@ html.c-deck #open-crafta{
 .c-stepper__count{text-align:center;font-family:"Poiret One",sans-serif;letter-spacing:.08em;white-space:nowrap}
 @media(max-width:860px){
   .c-assembly{background-position:56% center}
+  .c-continuity{background-position:62% center!important}
   html.c-deck .page{height:calc(100svh - 66px);margin-top:66px}
   html.c-deck .c-scene{padding:16px 18px 88px}
   html.c-deck .hero{padding:0 0 80px}
