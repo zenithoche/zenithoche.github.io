@@ -289,7 +289,7 @@ html.c-deck #open-crafta{
 
 
 /* Crafta pricing world */
-html.c-deck .c-plans{
+html.c-deck .section.c-plans{
   isolation:isolate;
   padding:0 0 92px;
   background:#eee9e5 url("/assets/media/crafta-plans-wallpaper.jpg") center/cover no-repeat;
