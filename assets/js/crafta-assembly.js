@@ -1,15 +1,20 @@
 (() => {
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const galleries = [...document.querySelectorAll('[data-stage-gallery]')];
   if (!galleries.length) return;
 
   const loadFrame = async (frame) => {
+    frame.loading = 'eager';
     if (!frame.getAttribute('src') && frame.dataset.src) {
       frame.setAttribute('src', frame.dataset.src);
     }
     if (!frame.getAttribute('src')) return;
     try {
-      if (frame.decode) await frame.decode();
+      if (frame.decode) {
+        await Promise.race([
+          frame.decode(),
+          new Promise((resolve) => window.setTimeout(resolve, 8000))
+        ]);
+      }
     } catch (_) {}
   };
 
@@ -26,6 +31,7 @@
     let current = 0;
     let loading;
     let ready = false;
+    let run = 0;
 
     function show(index) {
       current = index;
@@ -61,24 +67,21 @@
       if (!loading) {
         loading = Promise.all(frames.map(loadFrame)).then(() => {
           ready = true;
-          show(reducedMotion.matches ? frames.length - 1 : 0);
+          show(0);
         });
       }
       await loading;
     }
 
     async function sync() {
+      const thisRun = ++run;
       stop();
 
       if (!scene.classList.contains('is-active') || document.hidden) return;
 
       await prepare();
 
-      if (!scene.classList.contains('is-active') || document.hidden) return;
-      if (reducedMotion.matches) {
-        show(frames.length - 1);
-        return;
-      }
+      if (thisRun !== run || !scene.classList.contains('is-active') || document.hidden) return;
 
       show(0);
       timer = window.setTimeout(advance, startDelay);
@@ -90,7 +93,7 @@
     });
 
     document.addEventListener('visibilitychange', sync);
-    reducedMotion.addEventListener('change', sync);
+    window.addEventListener('pageshow', sync);
     sync();
   });
 })();
