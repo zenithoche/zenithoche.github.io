@@ -6,6 +6,7 @@
   const prev = stepper.querySelector('.c-stepper__prev');
   const next = stepper.querySelector('.c-stepper__next');
   const count = stepper.querySelector('.c-stepper__count');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const indexForHash = (hash) => scenes.findIndex((scene) => scene.id === hash.slice(1));
   let current = Math.max(0, indexForHash(location.hash));
 
@@ -16,6 +17,14 @@
       scene.classList.toggle('is-active', active);
       scene.inert = !active;
       scene.setAttribute('aria-hidden', String(!active));
+      scene.querySelectorAll('video').forEach((video) => {
+        if (active && !document.hidden && !reducedMotion.matches) {
+          const playback = video.play();
+          if (playback && typeof playback.catch === 'function') playback.catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
       if (active) scene.querySelector('.c-pocket')?.scrollTo(0, 0);
     });
     prev.disabled = current === 0;
@@ -37,6 +46,9 @@
       show(index);
     });
   });
+  document.addEventListener('visibilitychange', () => show(current, false));
+  reducedMotion.addEventListener('change', () => show(current, false));
+
   window.addEventListener('hashchange', () => {
     const index = indexForHash(location.hash);
     if (index >= 0 && index !== current) show(index, false);
