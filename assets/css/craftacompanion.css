@@ -280,7 +280,7 @@ html.c-deck #open-crafta{
   html.c-deck .hero .actions{margin-top:22px}
   .c-assembly__intro h2{font-size:clamp(32px,9vw,43px)}
   .c-assembly__intro .section-copy{font-size:18px;line-height:1.3}
-  .c-assembly__visual{height:clamp(245px,35svh,330px);border-radius:20px}
+  .c-assembly__visual{height:clamp(225px,32svh,310px);border-radius:20px}
   .c-continuity__visual{height:clamp(215px,31svh,300px);border-radius:20px}
   .c-continuity__flow{margin-top:14px}
   .c-continuity__flow .card{flex-basis:84%;padding:16px 18px}
