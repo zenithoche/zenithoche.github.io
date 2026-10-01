@@ -35,7 +35,7 @@ h1,h2,h3,p{margin:0}
   z-index:-1;
   background-image:
     linear-gradient(90deg,rgba(8,9,13,.98) 0%,rgba(8,9,13,.86) 33%,rgba(8,9,13,.24) 60%,transparent 76%),
-    url("/assets/media/crafta-void-showroom-v2.webp");
+    url("https://d2ol7oe51mr4n9.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/8e044e12-e546-4f91-bfd0-d07dbf678c31.png");
   background-size:cover;
   background-position:center 54%;
 }
@@ -146,7 +146,7 @@ h1{
     background-color:#08090d;
     background-image:
       linear-gradient(180deg,#08090d 0%,rgba(8,9,13,.90) 28%,rgba(8,9,13,.15) 62%,transparent 78%),
-      url("/assets/media/crafta-void-showroom-v2.webp");
+      url("https://d2ol7oe51mr4n9.cloudfront.net/user_3JyAcZdKeu73DBOIrwVBtd2tUGQ/8e044e12-e546-4f91-bfd0-d07dbf678c31.png");
     background-size:100% 100%,auto 735px;
     background-position:center,58% bottom;
     background-repeat:no-repeat;
