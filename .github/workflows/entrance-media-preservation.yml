@@ -9,6 +9,7 @@ on:
       - 'assets/js/site.js'
       - 'index.html'
       - 'tests/entrance-media-preservation.test.mjs'
+      - 'tests/entrance-browser-smoke.test.cjs'
       - '.github/workflows/entrance-media-preservation.yml'
   workflow_dispatch:
 
@@ -37,3 +38,15 @@ jobs:
         run: |
           ffprobe -version
           node --test tests/entrance-media-preservation.test.mjs
+      - name: Install temporary browser test driver without running package scripts
+        run: |
+          mkdir -p "$RUNNER_TEMP/zenithoche-browser-tools"
+          npm install --prefix "$RUNNER_TEMP/zenithoche-browser-tools" --no-save --no-package-lock --ignore-scripts --no-audit --no-fund puppeteer-core@24.13.0
+      - name: Exercise local entrance buttons in installed Chromium
+        env:
+          BROWSER_TEST_TOOLS: ${{ runner.temp }}/zenithoche-browser-tools
+        run: |
+          CHROME_BIN="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          test -n "$CHROME_BIN"
+          export CHROME_BIN
+          node --test tests/entrance-browser-smoke.test.cjs
