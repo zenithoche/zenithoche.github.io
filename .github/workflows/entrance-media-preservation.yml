@@ -27,6 +27,10 @@ jobs:
       - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
         with:
           node-version: '22'
+      - name: Install ffprobe from Ubuntu package repositories
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
       - name: Inspect metadata placement and encoded stream integrity
         env:
           GITHUB_BASE_SHA: '7a5131ffdd8035dc18279454e4bc3baad2302aa9' # Published pre-faststart main revision
