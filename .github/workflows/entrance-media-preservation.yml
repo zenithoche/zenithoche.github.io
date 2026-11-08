@@ -10,6 +10,7 @@ on:
       - 'index.html'
       - 'tests/entrance-media-preservation.test.mjs'
       - 'tests/entrance-browser-smoke.test.cjs'
+      - 'tests/entrance-candidate-comparison.test.cjs'
       - '.github/workflows/entrance-media-preservation.yml'
   workflow_dispatch:
 
@@ -50,3 +51,4 @@ jobs:
           test -n "$CHROME_BIN"
           export CHROME_BIN
           node --test tests/entrance-browser-smoke.test.cjs
+          node --test tests/entrance-candidate-comparison.test.cjs
