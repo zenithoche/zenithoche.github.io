@@ -1,0 +1,54 @@
+name: Zenithoche entrance film preservation
+
+on:
+  pull_request:
+    paths:
+      - 'assets/media/bloom-film-0*.mp4'
+      - 'assets/media/bloom-full-sink.mp4'
+      - 'assets/media/bloom-axis-poster.jpg'
+      - 'assets/js/site.js'
+      - 'index.html'
+      - 'tests/entrance-media-preservation.test.mjs'
+      - 'tests/entrance-browser-smoke.test.cjs'
+      - 'tests/entrance-candidate-comparison.test.cjs'
+      - '.github/workflows/entrance-media-preservation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '22'
+      - name: Install ffprobe from Ubuntu package repositories
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+      - name: Inspect metadata placement and encoded stream integrity
+        env:
+          GITHUB_BASE_SHA: '7a5131ffdd8035dc18279454e4bc3baad2302aa9' # Published pre-faststart main revision
+        run: |
+          ffprobe -version
+          node --test tests/entrance-media-preservation.test.mjs
+      - name: Install temporary browser test driver without running package scripts
+        run: |
+          mkdir -p "$RUNNER_TEMP/zenithoche-browser-tools"
+          npm install --prefix "$RUNNER_TEMP/zenithoche-browser-tools" --no-save --no-package-lock --ignore-scripts --no-audit --no-fund puppeteer-core@24.13.0
+      - name: Exercise local entrance buttons in installed Chromium
+        env:
+          BROWSER_TEST_TOOLS: ${{ runner.temp }}/zenithoche-browser-tools
+        run: |
+          CHROME_BIN="$(command -v google-chrome || command -v chromium || command -v chromium-browser)"
+          test -n "$CHROME_BIN"
+          export CHROME_BIN
+          node --test tests/entrance-browser-smoke.test.cjs
+          node --test tests/entrance-candidate-comparison.test.cjs
