@@ -1,0 +1,35 @@
+name: Zenithoche entrance film preservation
+
+on:
+  pull_request:
+    paths:
+      - 'assets/media/bloom-film-0*.mp4'
+      - 'assets/media/bloom-full-sink.mp4'
+      - 'assets/media/bloom-axis-poster.jpg'
+      - 'assets/js/site.js'
+      - 'index.html'
+      - 'tests/entrance-media-preservation.test.mjs'
+      - '.github/workflows/entrance-media-preservation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '22'
+      - name: Inspect metadata placement and encoded stream integrity
+        env:
+          GITHUB_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          ffprobe -version
+          node --test tests/entrance-media-preservation.test.mjs
