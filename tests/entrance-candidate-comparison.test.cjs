@@ -55,7 +55,7 @@ async function snapshot(browser, url, viewportWidth, phase) {
       };
     });
     page.on("pageerror", e => exceptions.push(String(e)));
-    const response = await page.goto(url, { waitUntil: "networkidle2", timeout: 20000 });
+    const response = await page.goto(url, { waitUntil: "domcontentloaded", timeout: 20000 });
     assert.equal(response.status(), 200);
     await page.waitForFunction(() => document.body.style.overflow === "hidden");
     await page.evaluate(() => document.fonts.ready);
