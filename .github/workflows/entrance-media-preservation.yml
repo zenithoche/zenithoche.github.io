@@ -29,7 +29,7 @@ jobs:
           node-version: '22'
       - name: Inspect metadata placement and encoded stream integrity
         env:
-          GITHUB_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          GITHUB_BASE_SHA: '7a5131ffdd8035dc18279454e4bc3baad2302aa9' # Published pre-faststart main revision
         run: |
           ffprobe -version
           node --test tests/entrance-media-preservation.test.mjs
