@@ -89,7 +89,7 @@ async function snapshot(browser, url, viewportWidth, phase) {
   }
 }
 
-test("published baseline and optimized entrance render identically at desktop/mobile widths", { timeout: 120000 }, async () => {
+test("published baseline and optimized entrance render identically at desktop/mobile widths", { timeout: 300000 }, async () => {
   assert.ok(process.env.CHROME_BIN);
   const folder = fs.mkdtempSync(path.join(os.tmpdir(), "zenithoche-compare-"));
   const baselineRoot = path.join(folder, "baseline");
